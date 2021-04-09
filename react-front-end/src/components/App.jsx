@@ -1,6 +1,5 @@
-import Button from '@material-ui/core/Button';
-
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import IconLabelButtons from './Button';
 
 const theme = createMuiTheme({
   typography: {
@@ -8,7 +7,20 @@ const theme = createMuiTheme({
       'Poppins',
       'sans-serif',
     ].join(','),
-  },});
+  },
+  palette: {
+    common: {
+      black:'#2A2D34'
+    },
+    primary: {
+      light:'#D3F5A3',
+      main: '#AED6B5',
+    },
+    secondary: {
+      main: '#6F8695',
+    }
+  }
+});
 
 function App() {
   return (
@@ -21,9 +33,9 @@ function App() {
           <h4>h4: This is App.jsx</h4>
           <p>p: This is App.jsx</p>
           <div>
-            <a href='#'>Link to somewhere</a>
+            <a href='#text-buttons'>Link to somewhere</a>
           </div>
-          <Button variant="contained" color="primary">Hello World</Button>
+          <IconLabelButtons />
         </header>
       </div>
     </ThemeProvider>
