@@ -3,7 +3,7 @@ const client = require("../../elephantsql");
 const addClinicalVisit = (cv) => {
   const query = `
       INSERT INTO clinical_visits (user_id, clinic_id, referral_doctor_id, date, type_of_visit, reason_for_visit, doctor_diagnosis)
-      VALUES ($1, $2, $3, $4, $5, $6, $7)
+      VALUES ($1, (SELECT id FROM clinics WHERE name = $2), (SELECT id FROM doctors WHERE name = $3), $4, $5, $6, $7)
       RETURNING *
       ;`
   
