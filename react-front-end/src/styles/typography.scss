@@ -21,18 +21,6 @@ h4 {
   @include typography-style($heading-font, 14, $regular-weight);
 }
 
-.button-primary {
-  @include typography-style($heading-font, 18, $bold-weight);
-}
-
-.button-secondary {
-  @include typography-style($heading-font, 16, $medium-weight);
-}
-
-.button-small {
-  @include typography-style($heading-font, 14, $bold-weight);
-}
-
 a {
   @include typography-style($heading-font, 14, $regular-weight)
 }
