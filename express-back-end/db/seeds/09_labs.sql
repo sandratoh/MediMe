@@ -3,4 +3,4 @@ INSERT INTO labs (name)
                  ('Greig Associates X-Ray, Ultrasound & Mammography Inc. - Victoria Drive'),
                  ('West Coast Medical Imaging - New Westminster'),
                  ('Downtown Radiology - Keefer Imaging'),
-                 ('AIM Medical Imaging - West Broadway'),
+                 ('AIM Medical Imaging - West Broadway')
