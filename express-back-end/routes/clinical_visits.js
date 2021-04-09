@@ -27,7 +27,20 @@ module.exports     = (client) => {
   });
 
 
+  router.get("/:id", (req, res) => {
+      let query = `SELECT * FROM clinical_visits WHERE id = $1;`;
 
+      client
+        .query(query, [req.params.id])
+        .then((data) => {
+          const clinical_visit = data.rows;
+          res.status(200).json({ clinical_visit })
+        })
+        .catch((err) => {
+          res.status(500).json({ error: err.message });
+        });
+  })
 
   return router;
 };
+
