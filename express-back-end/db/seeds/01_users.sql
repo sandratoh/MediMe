@@ -1,1 +1,2 @@
-INSERT INTO users (first_name, last_name, email, password, height_in_cm, weight_in_lb, blood_type, rh_group) VALUES ('Rachel', 'Greene', 'rachel@email.com', 'password', 150, 120, 'O', 'POSITIVE');
+INSERT INTO users (first_name, last_name, email, password, height_in_cm, weight_in_lb, blood_type, rh_group)
+            VALUES ('Rachel', 'Greene', 'rachel@email.com', 'password', 150, 120, 'O', 'POSITIVE');
