@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { addMedication } = require("../db/queries/queries-medications");
+const {
+  addMedication,
+  updateMedication,
+} = require("../db/queries/queries-medications");
 
 module.exports = (client) => {
   router.get("/", (req, res) => {
@@ -21,7 +24,7 @@ module.exports = (client) => {
     console.log("req.body", req.body);
 
     addMedication({ ...req.body })
-      .then((med) => res.json(med))
+      .then((med) => res.status(200).json(med))
       .catch((err) => res.json({ error: err.message }));
   });
 
@@ -37,6 +40,13 @@ module.exports = (client) => {
       .catch((err) => {
         res.status(500).json({ error: err.message });
       });
+  });
+
+  router.put("/:id", (req, res) => {
+    const id = req.params.id;
+    updateMedication({ id, ...req.body })
+      .then((med) => res.status(200).json(med))
+      .catch((err) => res.json({ error: err.message }));
   });
 
   return router;
