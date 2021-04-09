@@ -23,8 +23,6 @@ const addMedication = async (med) => {
   const prescribed_doctor_id = await getDoctorIdByName(
     med.prescribed_doctor_id
   );
-  // console.log(pharmacy);
-  // console.log(prescribed_doctor);
 
   const values = [
     med.name,
@@ -42,12 +40,9 @@ const addMedication = async (med) => {
   return client.query(query, values).then((res) => res.rows);
 };
 
-// Update medication
-
 const updateMedication = async (med) => {
   const query = `
-      INSERT INTO medications (name, nickname, prescribed_date, pharmacy_id, prescribed_doctor_id, refills_remaining, instructions, is_take_with_water, is_take_with_food)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      UPDATE medications SET name = $1, nickname = $2, prescribed_date = $3, pharmacy_id = $4, prescribed_doctor_id = $5, refills_remaining = $6, instructions = $7, is_take_with_water = $8, is_take_with_food = $9 WHERE id = $10
       RETURNING *;
       `;
 
@@ -55,8 +50,6 @@ const updateMedication = async (med) => {
   const prescribed_doctor_id = await getDoctorIdByName(
     med.prescribed_doctor_id
   );
-  // console.log(pharmacy);
-  // console.log(prescribed_doctor);
 
   const values = [
     med.name,
@@ -68,10 +61,10 @@ const updateMedication = async (med) => {
     med.instructions,
     med.is_take_with_water,
     med.is_take_with_food,
+    med.id,
   ];
 
-  console.log("values", values);
   return client.query(query, values).then((res) => res.rows);
 };
 
-exports.addMedication = addMedication;
+module.exports = { addMedication, updateMedication };
