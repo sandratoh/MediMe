@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS clinics_visits CASCADE;
-CREATE TABLE clinics_visits (
+DROP TABLE IF EXISTS clinical_visits CASCADE;
+CREATE TABLE clinical_visits (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   clinic_id INT NOT NULL REFERENCES clinics(id) ON DELETE CASCADE,
