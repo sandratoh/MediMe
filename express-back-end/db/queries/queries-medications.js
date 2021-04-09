@@ -42,7 +42,8 @@ const addMedication = async (med) => {
 
 const updateMedication = async (med) => {
   const query = `
-      UPDATE medications SET name = $1, nickname = $2, prescribed_date = $3, pharmacy_id = $4, prescribed_doctor_id = $5, refills_remaining = $6, instructions = $7, is_take_with_water = $8, is_take_with_food = $9 WHERE id = $10
+      UPDATE medications SET name = $1, nickname = $2, prescribed_date = $3, pharmacy_id = $4, prescribed_doctor_id = $5, refills_remaining = $6, instructions = $7, is_take_with_water = $8, is_take_with_food = $9
+      WHERE id = $10
       RETURNING *;
       `;
 
