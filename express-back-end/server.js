@@ -1,25 +1,28 @@
 require("dotenv").config();
 
-const express = require("express");
-const app = express();
+// Web server config
+const express      = require("express");
+const app          = express();
+const bodyParser   = require("body-parser");
 
-const PORT = process.env.PORT || 8000;
-const client = require("./elephantsql");
-
-// app.get("/", function (req, res) {
-  
-//   res.send(client.query('SELECT * FROM users'));
-// });
-
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
-});
+const PORT         = process.env.PORT || 8000;
+const client       = require("./elephantsql");
 
 
+
+app.use(bodyParser.urlencoded({ extend: true }));
+
+
+
+//Seperate Routes for each Reasource
+const clinicVisitsRoutes = require('./routes/clinic_visits');
+
+//Mount Reasources
+app.use('/clinics', clinicVisitsRoutes(client))
 
 
 app.get("/", (req, res) => {
-  client.query(`SELECT * FROM users;`)
+  client.query(`SELECT * FROM pharmacies;`)
     .then(data => {
       const users = data.rows;
       res.json({ users });
@@ -30,3 +33,15 @@ app.get("/", (req, res) => {
         .json({ error: err.message });
     });
 });
+
+
+
+
+
+
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+});
+
+
+
