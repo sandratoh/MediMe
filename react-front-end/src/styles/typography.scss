@@ -1,0 +1,47 @@
+$heading-font: 'Poppins', sans-serif;
+$body-font: 'Noto Sans', sans-serif;
+
+$regular-weight: 400;
+$medium-weight: 500;
+$bold-weight: 700;
+
+h1 {
+  @include typography-style($heading-font, 36, $bold-weight);
+}
+
+h2 {
+  @include typography-style($heading-font, 26, $regular-weight);
+}
+
+h3 {
+  @include typography-style($heading-font, 18, $bold-weight);
+}
+
+h4 {
+  @include typography-style($heading-font, 14, $regular-weight);
+}
+
+.button-primary {
+  @include typography-style($heading-font, 18, $bold-weight);
+}
+
+.button-secondary {
+  @include typography-style($heading-font, 16, $medium-weight);
+}
+
+.button-small {
+  @include typography-style($heading-font, 14, $bold-weight);
+}
+
+a {
+  @include typography-style($heading-font, 14, $regular-weight)
+}
+
+.form-label {
+  @include typography-style($heading-font, 14, $medium-weight)
+}
+
+body, p, .form-body {
+  @include typography-style($body-font, 13, $regular-weight)
+}
+
