@@ -30,9 +30,32 @@ const addClinicalVisit = async (cv) => {
     cv.reason_for_visit,
     cv.doctor_diagnosis
   ];
+  return client.query(query, values).then((res) => res.rows);
+
+};
+
+  const updateClinicalVisit = async (cv) => {
+    const query = `
+        UPDATE clinical_visits SET user_id = $1, clinic_id = $2, referral_doctor_id = $3, date = $4, type_of_visit = $5, reason_for_visit = $6, doctor_diagnosis = $7
+        WHERE id = $8
+        RETURNING *;
+        `;
+  
+    const referral_doctor_id = await getDoctorIdByName(cv.referral_doctor_id)
+    const clinic_id = await getClinicIdByName(cv.clinic_id)
+    const values = [
+      cv.user_id,
+      clinic_id,
+      referral_doctor_id,
+      cv.date,
+      cv.type_of_visit,
+      cv.reason_for_visit,
+      cv.doctor_diagnosis,
+      cv.id
+    ];
 
   return client.query(query, values).then((res) => res.rows);
 
 };
 
-exports.addClinicalVisit = addClinicalVisit
+module.exports = { addClinicalVisit, updateClinicalVisit };
