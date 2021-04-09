@@ -15,12 +15,16 @@ app.use(bodyParser.urlencoded({ extend: true }));
 
 
 //Seperate Routes for each Reasource
-const clinicVisitsRoutes = require('./routes/clinics_visits');
+const clinicVisitsRoutes = require('./routes/clinical_visits');
 const vaccinationsRoutes = require('./routes/vaccinations');
+const medicationsRoutes = require('./routes/medications');
+const labRecordsRoutes = require('./routes/lab_records');
 
 //Mount Reasources
-app.use('/clinics', clinicVisitsRoutes(client))
-app.use('/vaccinations', vaccinationsRoutes(client))
+app.use('/api/clinics', clinicVisitsRoutes(client))
+app.use('/api/vaccinations', vaccinationsRoutes(client))
+app.use('/api/medications', medicationsRoutes(client))
+app.use('/api/labs', labRecordsRoutes(client))
 
 
 
