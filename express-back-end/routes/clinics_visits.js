@@ -1,7 +1,7 @@
 const express      = require("express");
 const router       = express.Router();
 
-module.exports = (client) => {
+module.exports     = (client) => {
 
   router.get("/", (req, res) => {
 
