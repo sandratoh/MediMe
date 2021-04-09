@@ -5,5 +5,5 @@ CREATE TABLE lab_records (
   date DATE NOT NULL DEFAULT CURRENT_DATE,
   referral_doctor_id INT NOT NULL REFERENCES doctors(id) ON DELETE CASCADE,
   lab_id INT NOT NULL REFERENCES labs(id) ON DELETE CASCADE,
-  type_of_test VARCHAR(10) CHECK (type_of_test IN ('BLOOD', 'URINE', 'MAMMOGRAM', 'XRAY', 'ULTRASOUND', 'MRI'))
+  type_of_test VARCHAR(20) CHECK (type_of_test IN ('BLOOD', 'URINE', 'MAMMOGRAM', 'XRAY', 'ULTRASOUND', 'MRI'))
  );
