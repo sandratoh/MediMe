@@ -15,27 +15,12 @@ app.use(bodyParser.urlencoded({ extend: true }));
 
 
 //Seperate Routes for each Reasource
-const clinicVisitsRoutes = require('./routes/clinic_visits');
+const clinicVisitsRoutes = require('./routes/clinics_visits');
+const vaccinationsRoutes = require('./routes/vaccinations');
 
 //Mount Reasources
 app.use('/clinics', clinicVisitsRoutes(client))
-
-
-app.get("/", (req, res) => {
-  client.query(`SELECT * FROM pharmacies;`)
-    .then(data => {
-      const users = data.rows;
-      res.json({ users });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
-
-
-
+app.use('/vaccinations', vaccinationsRoutes(client))
 
 
 
@@ -45,3 +30,20 @@ app.listen(PORT, () => {
 
 
 
+
+
+
+//EXAMPLE
+
+// app.get("/", (req, res) => {
+//   client.query(`SELECT * FROM pharmacies;`)
+//     .then(data => {
+//       const users = data.rows;
+//       res.json({ users });
+//     })
+//     .catch(err => {
+//       res
+//         .status(500)
+//         .json({ error: err.message });
+//     });
+// });
