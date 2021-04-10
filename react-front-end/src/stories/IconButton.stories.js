@@ -10,9 +10,9 @@ export default {
   component: IconButton,
  };
 
-
 export const Delete = () => (
   <IconButton
+    delete
     onClick={action('Delete button clicked')}
     variant="outlined"
     color="secondary"
@@ -24,6 +24,7 @@ export const Delete = () => (
 
 export const Save = () => (
   <IconButton
+    save
     onClick={action('Save button clicked')} 
     color="primary"
     variant="contained"
@@ -35,6 +36,7 @@ export const Save = () => (
 
 export const New = () => (
   <IconButton 
+    new
     onClick={action('New button clicked')} 
     color="secondary" 
     variant="contained"

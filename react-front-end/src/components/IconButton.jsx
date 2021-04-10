@@ -8,7 +8,7 @@ import './IconButton.scss';
 
 
 export default function IconButton(props){
-  const buttonClass = classnames('button', 'button-secondary', {
+  const buttonClass = classnames('button', {
     'button--save': props.save,
     'button--delete': props.delete,
     'button--new': props.new

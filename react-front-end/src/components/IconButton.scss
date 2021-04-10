@@ -4,23 +4,14 @@ $button-height: 36px;
 $wide-button: 157px;
 $small-button: 98px;
 
-.button-wide {
-  height: $button-height;
-  width: $wide-button;
-}
-
 .button {
   height: $button-height;
+};
 
-  .button--save {
-    width: $wide-button
-  }
+.button--save, .button--delete {
+  width: $wide-button;
+};
 
-  .button--delete {
-    width: $wide-button
-  }
-
-  .button--new {
-    width: $small-button;
-  }
-}
+.button--new {
+  width: $small-button;
+};
