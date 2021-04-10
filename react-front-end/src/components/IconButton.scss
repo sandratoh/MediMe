@@ -1,0 +1,17 @@
+@import "../styles/variables.scss";
+
+$button-height: 36px;
+$wide-button: 157px;
+$small-button: 98px;
+
+.button {
+  height: $button-height;
+};
+
+.button--save, .button--delete {
+  width: $wide-button;
+};
+
+.button--new {
+  width: $small-button;
+};
