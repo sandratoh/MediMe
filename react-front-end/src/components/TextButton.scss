@@ -1,0 +1,19 @@
+$tall-button: 48px;
+$short-button: 36px;
+$wide-button: 214px;
+$small-button: 98px;
+
+.button--user-action {
+  height: $tall-button;
+  width: $wide-button;
+};
+
+.button-group--selected {
+  height: $short-button;
+  width: $small-button;
+};
+
+.button-group--default {
+  height: $short-button;
+  width: $small-button;
+}
