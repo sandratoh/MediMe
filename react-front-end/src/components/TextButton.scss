@@ -8,12 +8,8 @@ $small-button: 98px;
   width: $wide-button;
 };
 
-.button-group--selected {
+.button--group {
   height: $short-button;
   width: $small-button;
 };
 
-.button-group--default {
-  height: $short-button;
-  width: $small-button;
-}
