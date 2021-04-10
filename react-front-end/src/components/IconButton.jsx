@@ -12,17 +12,29 @@ export default function IconButton(props){
     'button--save': props.save,
     'button--delete': props.delete,
     'button--new': props.new
-  })
+  });
+
+  const icon = props => {
+    if (props.save) {
+      return <SaveIcon />;
+    }
+    if (props.delete) {
+      return <DeleteIcon />;
+    }
+    if (props.new) {
+      return <AddIcon />;
+    }
+  };
 
   return (
     <Button
       className={buttonClass}
       variant={props.variant}
       color={props.color}
-      startIcon={props.startIcon}
+      icon={icon(props)}
       onClick={props.onClick}
     >
     {props.children}
     </Button>
-  )
-}
+  );
+};
