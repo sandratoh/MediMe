@@ -22,8 +22,10 @@ module.exports = (client) => {
 
   router.post("/", (req, res) => {
     console.log("req.body", req.body);
+    // may need to update user_id later...
+    const user_id = 1;
 
-    addMedication({ ...req.body })
+    addMedication({ user_id, ...req.body })
       .then((med) => res.status(200).json(med))
       .catch((err) => res.json({ error: err.message }));
   });
@@ -43,8 +45,11 @@ module.exports = (client) => {
   });
 
   router.put("/:id", (req, res) => {
+    // may need to update user_id later...
+    const user_id = 1;
     const id = req.params.id;
-    updateMedication({ id, ...req.body })
+
+    updateMedication({ user_id, id, ...req.body })
       .then((med) => res.status(200).json(med))
       .catch((err) => res.json({ error: err.message }));
   });
