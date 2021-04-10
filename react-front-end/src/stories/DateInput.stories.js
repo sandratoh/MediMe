@@ -1,4 +1,3 @@
-import { action } from "@storybook/addon-actions";
 import DateInput from "../components/DateInput";
 
 export default { 
