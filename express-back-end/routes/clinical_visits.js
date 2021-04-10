@@ -1,24 +1,27 @@
-const express      = require("express");
-const router       = express.Router();
-const { addClinicalVisit, updateClinicalVisit } = require("../db/queries/queries-clinics")
+const express = require("express");
+const router = express.Router();
+const {
+  addClinicalVisit,
+  updateClinicalVisit,
+} = require("../db/queries/queries-clinics");
 
-module.exports     = (client) => {
-
+module.exports = (client) => {
+  // get all clinical visit records
   router.get("/", (req, res) => {
-
-    let query = `SELECT * FROM clinical_visits;`
+    let query = `SELECT * FROM clinical_visits;`;
 
     client
       .query(query)
-      .then(data => {
+      .then((data) => {
         const clinical_visits = data.rows;
         res.json({ clinical_visits });
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(500).json({ error: err.message });
       });
   });
 
+  // add new clinical visit record
   router.post("/", (req, res) => {
     const user_id = 1;
     addClinicalVisit({ user_id, ...req.body })
@@ -26,9 +29,23 @@ module.exports     = (client) => {
       .catch((err) => res.json({ error: err.message }));
   });
 
+  // get all clinics
+  router.get("/list", (req, res) => {
+    let query = `SELECT * FROM clinics;`;
 
+    client
+      .query(query)
+      .then((data) => {
+        const clinics = data.rows;
+        res.json({ clinics });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+  // get specific clinical record
   router.get("/:id", (req, res) => {
-    
     let query = `SELECT * FROM clinical_visits WHERE id = $1;`;
 
     client
@@ -42,7 +59,7 @@ module.exports     = (client) => {
       });
   });
 
-
+  // update specific clinical record
   router.put("/:id", (req, res) => {
     const user_id = 1;
     const id = req.params.id;
@@ -53,4 +70,3 @@ module.exports     = (client) => {
 
   return router;
 };
-

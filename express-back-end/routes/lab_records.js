@@ -3,6 +3,7 @@ const router = express.Router();
 const { addLab, updateLab } = require("../db/queries/queries-lab_records");
 
 module.exports = (client) => {
+  // get all lab records
   router.get("/", (req, res) => {
     let query = `SELECT * FROM lab_records;`;
 
@@ -17,6 +18,7 @@ module.exports = (client) => {
       });
   });
 
+  // add new lab record
   router.post("/", (req, res) => {
     console.log("req.body", req.body);
     // may need to update user_id later...
@@ -27,6 +29,22 @@ module.exports = (client) => {
       .catch((err) => res.json({ error: err.message }));
   });
 
+  // get all labs
+  router.get("/list", (req, res) => {
+    let query = `SELECT * FROM labs;`;
+
+    client
+      .query(query)
+      .then((data) => {
+        const labs = data.rows;
+        res.json({ labs });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+  // get specific lab record
   router.get("/:id", (req, res) => {
     let query = `SELECT * FROM lab_records where id = $1;`;
 
@@ -41,6 +59,7 @@ module.exports = (client) => {
       });
   });
 
+  // update specific lab record
   router.put("/:id", (req, res) => {
     // may need to update user_id later...
     const user_id = 1;

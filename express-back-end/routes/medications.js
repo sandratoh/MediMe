@@ -6,6 +6,7 @@ const {
 } = require("../db/queries/queries-medications");
 
 module.exports = (client) => {
+  // get all medications
   router.get("/", (req, res) => {
     let query = `SELECT * FROM medications`;
 
@@ -20,6 +21,7 @@ module.exports = (client) => {
       });
   });
 
+  // add new medication
   router.post("/", (req, res) => {
     console.log("req.body", req.body);
     // may need to update user_id later...
@@ -30,6 +32,7 @@ module.exports = (client) => {
       .catch((err) => res.json({ error: err.message }));
   });
 
+  // get specific medication
   router.get("/:id", (req, res) => {
     let query = `SELECT * FROM medications where id = $1;`;
 
@@ -44,6 +47,7 @@ module.exports = (client) => {
       });
   });
 
+  // update specific medication
   router.put("/:id", (req, res) => {
     // may need to update user_id later...
     const user_id = 1;
