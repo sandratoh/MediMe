@@ -20,8 +20,8 @@ module.exports     = (client) => {
   });
 
   router.post("/", (req, res) => {
-
-    addClinicalVisit({ ...req.body })
+    const user_id = 1;
+    addClinicalVisit({ user_id, ...req.body })
       .then((cv) => res.json(cv))
       .catch((err) => res.json({ error: err.message }));
   });
@@ -44,8 +44,9 @@ module.exports     = (client) => {
 
 
   router.put("/:id", (req, res) => {
+    const user_id = 1;
     const id = req.params.id;
-    updateClinicalVisit({ id, ...req.body })
+    updateClinicalVisit({ user_id, id, ...req.body })
       .then((med) => res.status(200).json(med))
       .catch((err) => res.json({ error: err.message }));
   });
