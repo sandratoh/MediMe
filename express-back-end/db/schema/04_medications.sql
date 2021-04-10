@@ -3,6 +3,7 @@ CREATE TABLE medications (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
   nickname VARCHAR(255),
+  user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   prescribed_date DATE DEFAULT CURRENT_DATE,
   pharmacy_id INT NOT NULL REFERENCES pharmacies(id) ON DELETE CASCADE,
   prescribed_doctor_id INT NOT NULL REFERENCES doctors(id) ON DELETE CASCADE,
