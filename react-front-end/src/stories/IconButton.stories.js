@@ -1,10 +1,9 @@
-// import { storiesOf } from "@storybook/react";
-import { action }    from "@storybook/addon-actions";
+import { action } from "@storybook/addon-actions";
 import IconButton from "../components/IconButton";
 import DeleteIcon from '@material-ui/icons/Delete';
 import SaveIcon from '@material-ui/icons/Save';
 import AddIcon from '@material-ui/icons/Add';
-import '../index.scss'
+import '../index.scss';
 
 export default { 
   title: 'IconButton',
@@ -44,22 +43,4 @@ export const New = () => (
     New
   </IconButton>
 );
-
-// export const Delete = Template.bind({});
-// Delete.args = {
-//   secondary: true,
-//   label: 'Delete',
-// };
-
-// export const Save = Template.bind({})
-// Save.args = {
-//   label: 'Save',
-//   color: 'secondary'
-// };
-
-// export const New = Template.bind({})
-// New.args = {
-//   primary: true,
-//   label: 'New'
-// };
 
