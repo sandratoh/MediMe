@@ -1,5 +1,5 @@
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import IconLabelButtons from './Button';
+import IconButton from './IconButton';
 
 const theme = createMuiTheme({
   typography: {
@@ -35,7 +35,7 @@ function App() {
           <div>
             <a href='#text-buttons'>Link to somewhere</a>
           </div>
-          <IconLabelButtons />
+          <IconButton />
         </header>
       </div>
     </ThemeProvider>
