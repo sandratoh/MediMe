@@ -3,7 +3,7 @@ import TextInput from "../components/TextInput";
 export default { 
   title: 'TextInput',
   component: TextInput,
- };
+};
 
 export const Required = () => (
   <TextInput

@@ -1,6 +1,5 @@
 import { action } from "@storybook/addon-actions";
 import IconButton from "../components/IconButton";
-import '../index.scss';
 
 export default { 
   title: 'IconButton',
