@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { addLab } = require("../db/queries/queries-lab_records");
+const { addLab, updateLab } = require("../db/queries/queries-lab_records");
 
 module.exports = (client) => {
   router.get("/", (req, res) => {
@@ -39,6 +39,15 @@ module.exports = (client) => {
       .catch((err) => {
         res.status(500).json({ error: err.message });
       });
+  });
+
+  router.put("/:id", (req, res) => {
+    // may need to update user_id later...
+    const user_id = 1;
+    const id = req.params.id;
+    updateLab({ user_id, id, ...req.body })
+      .then((lab) => res.status(200).json(lab))
+      .catch((err) => res.json({ error: err.message }));
   });
 
   return router;

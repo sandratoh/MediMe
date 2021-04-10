@@ -34,4 +34,26 @@ const addLab = async (lab) => {
   return client.query(query, values).then((res) => res.rows);
 };
 
-module.exports = { addLab };
+const updateLab = async (lab) => {
+  const query = `
+      UPDATE lab_records SET user_id = $1, date = $2, referral_doctor_id = $3, lab_id = $4, type_of_test = $5
+      WHERE id = $6
+      RETURNING *;
+      `;
+
+  const referral_doctor_id = await getDoctorIdByName(lab.referral_doctor_id);
+  const lab_id = await getLabIdByName(lab.lab_id);
+
+  const values = [
+    lab.user_id,
+    lab.date,
+    referral_doctor_id,
+    lab_id,
+    lab.type_of_test,
+    lab.id,
+  ];
+
+  return client.query(query, values).then((res) => res.rows);
+};
+
+module.exports = { addLab, updateLab };
