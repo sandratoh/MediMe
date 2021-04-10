@@ -1,4 +1,3 @@
-
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
@@ -18,6 +17,8 @@ export default function BasicTextFields(props) {
     <form className={classes.root} noValidate autoComplete="off">
       <TextField 
       required={props.required}
+      error={props.error}
+      helperText={props.helperText}
       id="standard"
       label={props.children}
       InputLabelProps={{
@@ -27,4 +28,4 @@ export default function BasicTextFields(props) {
     />
     </form>
   );
-}
+};

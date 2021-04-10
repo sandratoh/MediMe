@@ -6,7 +6,7 @@ module.exports     = (client) => {
 
   router.get("/", (req, res) => {
 
-    let query = `SELECT * FROM users;`
+    let query = `SELECT * FROM users;`;
 
     client
       .query(query)
@@ -29,18 +29,18 @@ module.exports     = (client) => {
 
   router.get("/:id", (req, res) => {
     
-      let query = `SELECT * FROM users WHERE id = $1;`;
+    let query = `SELECT * FROM users WHERE id = $1;`;
 
-      client
-        .query(query, [req.params.id])
-        .then((data) => {
-          const user = data.rows;
-          res.status(200).json({ user })
-        })
-        .catch((err) => {
-          res.status(500).json({ error: err.message });
-        });
-  })
+    client
+      .query(query, [req.params.id])
+      .then((data) => {
+        const user = data.rows;
+        res.status(200).json({ user })
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
 
 
   router.put("/:id", (req, res) => {
