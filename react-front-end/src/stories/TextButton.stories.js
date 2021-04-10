@@ -52,9 +52,9 @@ export const ButtonGroupDefault = () => (
   <TextButton
     variant="contained"
     color="primary"
-    default
+    groupButtons
   >
-    Default
+    Group
   </TextButton>
 );
 
@@ -62,8 +62,9 @@ export const ButtonGroupSelected = () => (
   <TextButton
     variant="contained"
     color="primary"
+    groupButtons
     selected
   >
-    Selected
+    Group
   </TextButton>
 );
