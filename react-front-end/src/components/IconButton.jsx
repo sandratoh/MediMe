@@ -1,29 +1,28 @@
-import classnames from 'classnames';
-
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SaveIcon from '@material-ui/icons/Save';
 import AddIcon from '@material-ui/icons/Add';
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
+import classnames from 'classnames';
+import './IconButton.scss';
+
 
 export default function IconButton(props){
-
-  const classes = useStyles();
+  const buttonClass = classnames('button', 'button-secondary', {
+    'button--save': props.save,
+    'button--delete': props.delete,
+    'button--new': props.new
+  })
 
   return (
     <Button
-    variant="contained"
-    color="primary"
-    className={classes.button}
-    startIcon={<DeleteIcon />}
-  >
-    Delete
-  </Button>
+      className={buttonClass}
+      variant={props.variant}
+      color={props.color}
+      startIcon={props.startIcon}
+      onClick={props.onClick}
+    >
+    {props.children}
+    </Button>
   )
 }
