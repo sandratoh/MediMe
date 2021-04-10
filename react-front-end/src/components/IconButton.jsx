@@ -31,7 +31,7 @@ export default function IconButton(props){
       className={buttonClass}
       variant={props.variant}
       color={props.color}
-      icon={icon(props)}
+      startIcon={icon(props)}
       onClick={props.onClick}
     >
     {props.children}
