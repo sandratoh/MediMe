@@ -1,0 +1,22 @@
+ .clinics-list {
+  display: flex;
+  flex-direction: column;
+  
+ }
+
+.clinics-list--icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clinics-list--title {
+  margin: 32px 0;
+}
+
+.clinics-list--content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 16px 0;
+}
