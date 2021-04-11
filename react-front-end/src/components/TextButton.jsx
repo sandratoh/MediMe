@@ -23,6 +23,7 @@ export default function TextButton(props) {
       className={buttonClass}
       variant={props.groupButtons ? variantStateGroup() : "contained"}
       color={props.color}
+      onChange={props.onChange}
       onClick={props.onClick}
       disabled={props.disabled}
       selected={props.selected}
