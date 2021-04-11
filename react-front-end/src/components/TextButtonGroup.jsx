@@ -24,7 +24,7 @@ export default function TextButton(props) {
       variant={props.groupButtons ? variantStateGroup() : "contained"}
       color={props.color}
       onChange={props.onChange}
-      onClick={props.onClick}
+      onClick={props.setRhGroup}
       disabled={props.disabled}
       selected={props.selected}
     >
@@ -32,4 +32,3 @@ export default function TextButton(props) {
     </Button>
   );
 };
-
