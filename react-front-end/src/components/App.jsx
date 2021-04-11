@@ -1,4 +1,5 @@
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Header from './Header';
 
 const theme = createMuiTheme({
   typography: {
@@ -25,7 +26,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <header className="App-header">
+        <Header />
           <h1>h1: This is App.jsx</h1>
           <h2>h2: This is App.jsx</h2>
           <h3>h3: This is App.jsx</h3>
@@ -34,7 +35,6 @@ function App() {
           <div>
             <a href='#text-buttons'>Link to somewhere</a>
           </div>
-        </header>
       </div>
     </ThemeProvider>
   );
