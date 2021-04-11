@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import TextButton from "../TextButton";
+import TextButton from "../TextButtonGroup";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,24 +12,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ClinicGroupedButtons(props) {
   const classes = useStyles();
+  const clinicGroupArray = [
+    { id: 1, name: "HOSPITAL" },
+    { id: 2, name: "CLINIC" }
+    
+  ];
 
-  return (
-    <div className={classes.root}>
+  const clinicGroup = clinicGroupArray.map((value) => {
+    return (
       <TextButton
+        key={value.id}
+        setState={(event) => props.onChange(value.name)}
         groupButtons
-        selected={"CLINIC" === props.value}
-        onClick={props.onClick}
+        selected={value.name === props.value}
+        value={value.name}
       >
-        CLINIC
+        {value.name}
       </TextButton>
+    );
+  });
 
-      <TextButton
-        groupButtons
-        selected={"HOSPITAL" === props.value}
-        onClick={props.onClick}
-      >
-        HOSPITAL
-      </TextButton>
-    </div>
-  );
-}
+  return <div className={classes.root}>{clinicGroup}</div>;
+};
