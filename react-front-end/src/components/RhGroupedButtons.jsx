@@ -21,7 +21,8 @@ export default function RhGroupedButtons(props) {
 
 
       <div className={classes.root}>
-        <TextButton 
+        <TextButton
+        setRhGroup={(event) => props.onChange(rhGroup)}
         groupButtons
         selected={"POSITIVE" === props.value}
         // onClick={props.onClick}
