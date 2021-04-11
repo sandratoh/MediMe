@@ -28,6 +28,7 @@ export default function ClinicsCardList(props) {
   const visits = clinical_visits.map((clinical_visit) => {
     return (
       <Card
+        key={clinical_visit.id}
         className="list-items"
         date={clinical_visit.date}
         type={clinical_visit.type_of_visit}

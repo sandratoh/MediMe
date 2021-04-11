@@ -7,15 +7,14 @@ const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
     flexWrap: 'wrap',
+    marginBottom: theme.spacing(2),
   },
   textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
     width: 327,
   },
 }));
 
-export default function DatePickers(props) {
+export default function DateInput(props) {
   const classes = useStyles();
 
   const dateInputClass = classNames('date-input');

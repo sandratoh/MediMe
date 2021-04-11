@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "../Header";
 import ClinicsCardList from "./ClinicsCardList";
 import IconButton from "../IconButton";
@@ -45,17 +45,14 @@ const clinical_visits = [
 ];
 
 export default function ClinicsList(props) {
-  const [typeOfVisit, setTypeOfVisit] = useState(null);
-  console.log("Type of Visit", typeOfVisit);
 
   return (
     <section className="clinics-list">
       <Header />
       <div className="clinics-list--icons">
         <ArrowBackIosIcon />
-
         <IconButton new color="secondary" variant="contained">
-          New
+          <Link to="/clinics/new">New</Link>
         </IconButton>
       </div>
       <h1 className="clinics-list--title">Clinical Visits</h1>

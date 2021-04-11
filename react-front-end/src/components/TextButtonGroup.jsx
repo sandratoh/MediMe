@@ -3,7 +3,7 @@ import Button, { ButtonGroup } from '@material-ui/core/Button';
 import classnames from 'classnames';
 import './TextButton.scss';
 
-export default function TextButton(props) {
+export default function TextButtonGroup(props) {
   const buttonClass = classnames({
     'button--user-action': props.userAction,
     'button--group': props.groupButtons
