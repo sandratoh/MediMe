@@ -1,4 +1,6 @@
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import ClinicsList from './ClinicsList';
 import Header from './Header';
 
 const theme = createMuiTheme({
@@ -26,15 +28,11 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Header />
-          <h1>h1: This is App.jsx</h1>
-          <h2>h2: This is App.jsx</h2>
-          <h3>h3: This is App.jsx</h3>
-          <h4>h4: This is App.jsx</h4>
-          <p>p: This is App.jsx</p>
-          <div>
-            <a href='#text-buttons'>Link to somewhere</a>
-          </div>
+        <Router>
+          <Header />
+            <Link to="/clinics">Clinics</Link>
+            <Route path="/clinics" component={ClinicsList}/>
+        </Router>
       </div>
     </ThemeProvider>
   );

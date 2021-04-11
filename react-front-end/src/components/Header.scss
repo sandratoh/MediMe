@@ -1,5 +1,9 @@
 .nav-bar {
   flex-grow: 1;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .nav-bar--logo {
