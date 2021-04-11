@@ -4,21 +4,22 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import App from './App'
+// import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+// import App from './App'
 
 export default function Header(props) {
 
   return (
     <AppBar position="absolute" className='nav-bar'>
-      <Router>
+      {/* <Router> */}
         <Toolbar>
           <Typography 
             variant="h6" 
             className='nav-bar--logo'
             onClick={props.onLogo}>
-            <Link to="/">MediMe</Link>
-            <Route path="/" component={App}></Route>
+              MediMe
+            {/* <Link to="/">MediMe</Link> */}
+            {/* <Route path="/" component={App}></Route> */}
           </Typography>
           <IconButton 
             edge="end" 
@@ -29,7 +30,7 @@ export default function Header(props) {
             <MenuIcon />
           </IconButton>
         </Toolbar>
-      </Router>
+      {/* </Router> */}
       
     </AppBar>
   );
