@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TextButton from './TextButton';
+import TextButton from './TextButtonGroup';
 
 
 const useStyles = makeStyles((theme) => ({
