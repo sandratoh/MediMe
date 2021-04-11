@@ -15,42 +15,37 @@ const useStyles = makeStyles((theme) => ({
 
 export default function RhGroupedButtons(props) {
   const classes = useStyles();
+  const rhGroupArray = [
+    {id: 1,
+    name: "POSITIVE"
+  },
+    {id: 2,
+    name: "NEGATIVE"
+  },
+    {id: 3,
+    name: "UNKNOWN"
+  }
+    ]
 
+  const rhGroup = rhGroupArray.map((value) => {
+    return (
+    <TextButton
+    key={value.id}
+    setState={(event) => props.onChange(value.name)}
+    groupButtons
+    selected={value.name === props.value}
+    value={value.name}
+    >
+     {value.name}
+    </TextButton>
+    )
+  });
 
   return (
-
-
       <div className={classes.root}>
-        <TextButton
-        setRhGroup={(event) => props.onChange(rhGroup)}
-        groupButtons
-        selected={"POSITIVE" === props.value}
-        // onClick={props.onClick}
-        onChange={props.onChange}
-        
-        >
-          POSITIVE
-        </TextButton>
-
-        <TextButton 
-        groupButtons 
-        selected={"NEGATIVE" === props.value}
-        // onClick={props.onClick}
-        onChange={props.onChange}
-        >
-          NEGATIVE
-        </TextButton>
-
-        <TextButton 
-        groupButtons 
-        selected={"UNKNOWN" === props.value}
-        // onClick={props.onClick}
-        onChange={props.onChange}
-        >
-          UNKNOWN
-        </TextButton>
-        
-
+      
+      {rhGroup}
+    
       </div>
 
    

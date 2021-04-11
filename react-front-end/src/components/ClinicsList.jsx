@@ -1,9 +1,11 @@
+import { useState } from "react"
 import Header from "./Header";
 import ClinicsCardList from "./ClinicsCardList";
 import IconButton from "./IconButton";
 import './ClinicsList.scss';
 
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import RhGroupedButtons from "./RhGroupedButtons";
 
 const clinics = [
   {
@@ -46,11 +48,18 @@ const clinical_visits = [
 
 export default function ClinicsList(props) {
 
+
+  const [rhGroup, setRhGroup] = useState(null);
+  console.log("RH Group", rhGroup)
+
   return (
     <section className="clinics-list">
       <Header />
       <div className="clinics-list--icons">
       <ArrowBackIosIcon/>
+      
+
+      
       <IconButton 
         new 
         color="secondary" 
