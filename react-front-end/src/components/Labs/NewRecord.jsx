@@ -2,13 +2,12 @@ import { useState } from "react";
 import TextInput from "../TextInput";
 import DateInput from "../DateInput";
 import TextButton from "../TextButton";
+import LabRecordType from "./LabsDropdown";
 
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import "./NewRecord.scss";
 
 export default function NewRecord() {
-  const [typeOfTest, setTypeOfTest] = useState(null);
-
   const onCancel = () => {
     console.log("cancel button clicked");
   };
@@ -26,6 +25,7 @@ export default function NewRecord() {
         <div className="lab-new--form">
           <DateInput>Date:</DateInput>
           <TextInput required>Lab:</TextInput>
+          <LabRecordType />
           <TextInput required>Referral Doctor:</TextInput>
         </div>
         <div className="form--user-action">
