@@ -31,13 +31,11 @@ function App() {
         <Router>
           <Header />
           <Link to="/clinics">Clinics</Link>
-          <Switch>
-            <Route path="/clinics/new" component={NewVisit} />
-            <Route exact path="/clinics" component={ClinicsList} />
-          </Switch>
           <Link to="/labs">Labs</Link>
           <Switch>
+            <Route path="/clinics/new" component={NewVisit} />
             <Route path="/labs/new" component={NewRecord} />
+            <Route exact path="/clinics" component={ClinicsList} />
             <Route exact path="/labs" component={LabsList} />
           </Switch>
         </Router>
