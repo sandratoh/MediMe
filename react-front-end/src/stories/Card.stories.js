@@ -23,21 +23,6 @@ const clinical_visits = [
   },
 ];
 
-const clinics = [
-  {
-    id: 1,
-    name: "Dr. Dodek Wenner Family Practice",
-  },
-  {
-    id: 2,
-    name: "Dr. Howard Liang S.H. Inc.",
-  },
-  {
-    id: 3,
-    name: "Vancouver General Hospital",
-  },
-];
-
 export default {
   title: "Card",
   comonent: CardListItem,
@@ -47,16 +32,14 @@ export const Hospital = () => (
   <CardListItem
     date={clinical_visits[0].date}
     type={clinical_visits[0].type_of_visit}
-  >
-    Vancouver General Hospital
-  </CardListItem>
+    value={clinical_visits[0].clinic_id}
+  ></CardListItem>
 );
 
 export const Clinic = () => (
   <CardListItem
     date={clinical_visits[1].date}
     type={clinical_visits[1].type_of_visit}
-  >
-    Olympic Village Green Clinic
-  </CardListItem>
+    value={clinical_visits[1].clinic_id}
+  ></CardListItem>
 );
