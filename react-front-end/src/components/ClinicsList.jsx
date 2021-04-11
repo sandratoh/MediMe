@@ -5,7 +5,8 @@ import IconButton from "./IconButton";
 import './ClinicsList.scss';
 
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import RhGroupedButtons from "./RhGroupedButtons";
+// import RhGroupedButtons from "./RhGroupedButtons";
+// import BloodGroupedButtons from "./BloodGroupButtons";
 
 const clinics = [
   {
@@ -49,16 +50,12 @@ const clinical_visits = [
 export default function ClinicsList(props) {
 
 
-  const [rhGroup, setRhGroup] = useState(null);
-  console.log("RH Group", rhGroup)
-
   return (
     <section className="clinics-list">
       <Header />
       <div className="clinics-list--icons">
       <ArrowBackIosIcon/>
       
-
       
       <IconButton 
         new 
