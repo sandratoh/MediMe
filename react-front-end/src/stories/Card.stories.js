@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import CardListItem from "../components/Card";
 
 const clinical_visits = [
@@ -33,6 +34,7 @@ export const Hospital = () => (
     date={clinical_visits[0].date}
     type={clinical_visits[0].type_of_visit}
     value={clinical_visits[0].clinic_id}
+    onClick={action("Card clicked")}
   ></CardListItem>
 );
 
@@ -41,5 +43,6 @@ export const Clinic = () => (
     date={clinical_visits[1].date}
     type={clinical_visits[1].type_of_visit}
     value={clinical_visits[1].clinic_id}
+    onClick={action("Card clicked")}
   ></CardListItem>
 );

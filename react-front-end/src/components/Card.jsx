@@ -1,5 +1,4 @@
 import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import hospitalIcon from "../images/hospital.png";
 import clinicIcon from "../images/clinic.png";
@@ -47,7 +46,7 @@ export default function CardListItem(props) {
   };
 
   return (
-    <Card className="card" variant="outlined">
+    <Card className="card" variant="outlined" onClick={props.onClick}>
       <div className="card--details">
         <Typography variant="subtitle1" color="textSecondary">
           {formatDate(props)}
