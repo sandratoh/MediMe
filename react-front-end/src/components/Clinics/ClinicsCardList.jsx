@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./Card";
+import Card from "../Card";
 
 const clinical_visits = [
   {
@@ -27,7 +27,8 @@ const clinical_visits = [
 export default function ClinicsCardList(props) {
   const visits = clinical_visits.map((clinical_visit) => {
     return (
-      <Card className="list-items"
+      <Card
+        className="list-items"
         date={clinical_visit.date}
         type={clinical_visit.type_of_visit}
         value={clinical_visit.clinic_id}

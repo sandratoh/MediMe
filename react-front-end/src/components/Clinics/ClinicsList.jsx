@@ -1,11 +1,10 @@
-import { useState } from "react"
-import Header from "./Header";
+import { useState } from "react";
+import Header from "../Header";
 import ClinicsCardList from "./ClinicsCardList";
-import IconButton from "./IconButton";
-import './ClinicsList.scss';
+import IconButton from "../IconButton";
+import "./ClinicsList.scss";
 
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import RhGroupedButtons from "./RhGroupedButtons";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 const clinics = [
   {
@@ -45,34 +44,24 @@ const clinical_visits = [
   },
 ];
 
-
 export default function ClinicsList(props) {
-
-
-  const [rhGroup, setRhGroup] = useState(null);
-  console.log("RH Group", rhGroup)
+  const [typeOfVisit, setTypeOfVisit] = useState(null);
+  console.log("Type of Visit", typeOfVisit);
 
   return (
     <section className="clinics-list">
       <Header />
       <div className="clinics-list--icons">
-      <ArrowBackIosIcon/>
-      
+        <ArrowBackIosIcon />
 
-      
-      <IconButton 
-        new 
-        color="secondary" 
-        variant="contained"
-      >
-        New
-      </IconButton>
+        <IconButton new color="secondary" variant="contained">
+          New
+        </IconButton>
       </div>
       <h1 className="clinics-list--title">Clinical Visits</h1>
       <div className="clinics-list--content">
-      <ClinicsCardList/>
+        <ClinicsCardList />
       </div>
     </section>
-  )
-
+  );
 }
