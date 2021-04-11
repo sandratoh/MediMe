@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   textField: {
-    width: 327,
+    minWidth: 327,
   },
 }));
 

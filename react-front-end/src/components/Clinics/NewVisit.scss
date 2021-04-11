@@ -1,5 +1,18 @@
+.form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .clinic-new--form {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.form--user-action {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
