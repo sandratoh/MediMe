@@ -59,7 +59,7 @@ export default function ClinicsList(props) {
         New
       </IconButton>
       </div>
-      <h2 className="clinics-list--title">Clinical Visits</h2>
+      <h1 className="clinics-list--title">Clinical Visits</h1>
       <div className="clinics-list--content">
       <ClinicsCardList/>
       </div>
