@@ -21,14 +21,14 @@ export default function NewRecord() {
         <ArrowBackIosIcon />
       </div>
       <h1 className="labs-list--title">New Lab Record</h1>
-      <div className="form">
-        <div className="lab-new--form">
+      <div className="lab-form--container">
+        <div className="lab-form--field">
           <DateInput>Date:</DateInput>
           <TextInput required>Lab:</TextInput>
           <LabRecordType />
           <TextInput required>Referral Doctor:</TextInput>
         </div>
-        <div className="form--user-action">
+        <div className="lab-form--user-action">
           <IconButton cancel variant="outlined" color="secondary" onClick={() => onCancel()}>Cancel</IconButton>
           <IconButton save variant="contained" color="secondary" onClick={() => onSave()}>Save</IconButton>
         </div>
