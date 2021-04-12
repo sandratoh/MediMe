@@ -1,5 +1,6 @@
-import React from "react";
+import { useEffect } from "react";
 import ClinicCard from "./ClinicCard";
+import axios from "axios";
 
 const clinical_visits = [
   {
@@ -25,6 +26,17 @@ const clinical_visits = [
 ];
 
 export default function ClinicsCardList(props) {
+  useEffect(() => {
+    const apiClinicalVisitsUrl = '/api/clinics';
+    axios
+      .get(apiClinicalVisitsUrl)
+      .then(res => {
+        console.log(res);
+      })
+  },[])
+
+
+
   const visits = clinical_visits.map((clinical_visit) => {
     return (
       <ClinicCard
