@@ -18,8 +18,19 @@ const clinics = [
     id: 3,
     name: "Vancouver General Hospital",
   },
+  // {
+  //   id: 4,
+  //   name: "Granville Medical Clinic"
+  //   },
+  //   {
+  //   id: 5,
+  //   name: "Keefer Walk-In and Medical Clinic"
+  //   },
+  //   {
+  //   id: 6,
+  //   name: "Richmond General Hospital"
+  //   }
 ];
-
 
 
 export default function CardListItem(props) {
