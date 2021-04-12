@@ -11,8 +11,8 @@ export default function LabDropdown(props) {
   const handleChange = (e) => {
     setRecordType(e.target.value);
     console.log("target", e.target.value);
-    // console.log("recordType", recordType);
   };
+  console.log("recordType", recordType);
 
   return (
     <section className="dropdown-container">
