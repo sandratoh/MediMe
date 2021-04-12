@@ -1,6 +1,7 @@
 .card {
   display: flex;
-  width: 327px;
+  min-width: 327px;
+  width: 80vw;
   min-height: 88px;
   padding: 16px;
   justify-content: space-between;
