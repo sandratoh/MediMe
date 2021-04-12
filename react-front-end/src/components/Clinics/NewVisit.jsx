@@ -23,19 +23,19 @@ export default function NewVisit() {
         <ArrowBackIosIcon />
       </div>
       <h1 className="clinics-list--title">New Clinical Visit</h1>
-      <div className="form">
-      <div className="clinic-new--form">
-        <DateInput>Date:</DateInput>
-        <ClinicGroupedButtons onChange={ setTypeOfVisit } state={ typeOfVisit } />
-        <TextInput required>Medical Center:</TextInput>
-        <TextInput required>Doctor:</TextInput>
-        <TextInput>Reason for Visit:</TextInput>
-        <TextInput>Doctor's Diagnosis</TextInput>
-      </div>
-      <div className="form--user-action">
-        <IconButton cancel variant="outlined" color="secondary" onClick={() => onCancel()}>Cancel</IconButton>
-        <IconButton save variant="contained" color="secondary" onClick={() => onSave()}>Save</IconButton>
-      </div>
+      <div className="clinic-form--container">
+        <div className="clinic--form--field">
+          <DateInput>Date:</DateInput>
+          <ClinicGroupedButtons onChange={ setTypeOfVisit } state={ typeOfVisit } />
+          <TextInput required>Medical Center:</TextInput>
+          <TextInput required>Doctor:</TextInput>
+          <TextInput>Reason for Visit:</TextInput>
+          <TextInput>Doctor's Diagnosis</TextInput>
+        </div>
+        <div className="clinic-form--user-action">
+          <IconButton cancel variant="outlined" color="secondary" onClick={() => onCancel()}>Cancel</IconButton>
+          <IconButton save variant="contained" color="secondary" onClick={() => onSave()}>Save</IconButton>
+        </div>
       </div>
       
     </section>

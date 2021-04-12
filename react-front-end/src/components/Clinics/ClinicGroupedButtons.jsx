@@ -1,17 +1,8 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import TextButtonGroup from "../TextButtonGroup";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-  },
-}));
+import "./ClinicGroupedButtons.scss";
 
 export default function ClinicGroupedButtons(props) {
-  const classes = useStyles();
   const clinicGroupArray = [
     { id: 1, name: "HOSPITAL" },
     { id: 2, name: "CLINIC" }
@@ -33,5 +24,5 @@ export default function ClinicGroupedButtons(props) {
     );
   });
 
-  return <div className={classes.root}>{clinicGroup}</div>;
+  return <div className="grouped-buttons--container">{clinicGroup}</div>;
 };

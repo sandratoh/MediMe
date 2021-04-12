@@ -1,18 +1,24 @@
-.form {
-  width: 80%;
+.clinic-new {
+  display: flex;
+  flex-direction: column;
+}
+
+.clinic-form--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.clinic-form--field {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.clinic-new--form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.form--user-action {
+.clinic-form--user-action {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 95%;
+  margin: 32px 0;
 }
