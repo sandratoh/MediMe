@@ -1,5 +1,5 @@
 import React from "react";
-import Card2 from "../Card2";
+import Card2 from "./LabCard";
 
 const lab_records = [
   {

@@ -8,14 +8,14 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import "./NewVisit.scss";
 
 export default function NewVisit() {
-  const [typeOfVisit, setTypeOfVisit] = useState(null)
-  
+  const [typeOfVisit, setTypeOfVisit] = useState(null);
+
   const onCancel = () => {
-    console.log('cancel button clicked');
-  }
+    console.log("cancel button clicked");
+  };
   const onSave = () => {
-    console.log('save button clicked');
-  }
+    console.log("save button clicked");
+  };
 
   return (
     <section className="clinic-new">
@@ -26,19 +26,31 @@ export default function NewVisit() {
       <div className="clinic-form--container">
         <div className="clinic--form--field">
           <DateInput>Date:</DateInput>
-          <ClinicGroupedButtons onChange={ setTypeOfVisit } state={ typeOfVisit } />
+          <ClinicGroupedButtons state={typeOfVisit} onChange={setTypeOfVisit} />
           <TextInput required>Medical Center:</TextInput>
           <TextInput required>Doctor:</TextInput>
           <TextInput>Reason for Visit:</TextInput>
           <TextInput>Doctor's Diagnosis</TextInput>
         </div>
         <div className="clinic-form--user-action">
-          <IconButton cancel variant="outlined" color="secondary" onClick={() => onCancel()}>Cancel</IconButton>
-          <IconButton save variant="contained" color="secondary" onClick={() => onSave()}>Save</IconButton>
+          <IconButton
+            cancel
+            variant="outlined"
+            color="secondary"
+            onClick={() => onCancel()}
+          >
+            Cancel
+          </IconButton>
+          <IconButton
+            save
+            variant="contained"
+            color="secondary"
+            onClick={() => onSave()}
+          >
+            Save
+          </IconButton>
         </div>
       </div>
-      
     </section>
-  )
-};
-
+  );
+}

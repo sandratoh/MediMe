@@ -1,13 +1,13 @@
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
-import bloodIcon from "../images/blood.png";
-import mammogramIcon from "../images/mammogram.png";
-import mriIcon from "../images/mri.png";
-import ultrasoundIcon from "../images/ultrasound.png";
-import urineIcon from "../images/urine.png";
-import xrayIcon from "../images/x-ray.png";
+import bloodIcon from "../../images/blood.png";
+import mammogramIcon from "../../images/mammogram.png";
+import mriIcon from "../../images/mri.png";
+import ultrasoundIcon from "../../images/ultrasound.png";
+import urineIcon from "../../images/urine.png";
+import xrayIcon from "../../images/x-ray.png";
 
-import "./Card.scss";
+import "../../styles/card.scss";
 
 const labs = [
   {

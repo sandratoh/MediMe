@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../Card";
+import ClinicCard from "./ClinicCard";
 
 const clinical_visits = [
   {
@@ -27,7 +27,7 @@ const clinical_visits = [
 export default function ClinicsCardList(props) {
   const visits = clinical_visits.map((clinical_visit) => {
     return (
-      <Card
+      <ClinicCard
         key={clinical_visit.id}
         className="list-items"
         date={clinical_visit.date}

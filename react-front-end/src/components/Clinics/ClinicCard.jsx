@@ -1,8 +1,9 @@
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
-import hospitalIcon from "../images/hospital.png";
-import clinicIcon from "../images/clinic.png";
-import "./Card.scss";
+import hospitalIcon from "../../images/hospital.png";
+import clinicIcon from "../../images/clinic.png";
+
+import "../../styles/card.scss";
 
 const clinics = [
   {

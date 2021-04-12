@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import CardListItem from "../components/Card";
+import CardListItem from "../components/Clinics/ClinicCard";
 
 const clinical_visits = [
   {
@@ -26,7 +26,7 @@ const clinical_visits = [
 
 export default {
   title: "Card",
-  comonent: CardListItem,
+  component: CardListItem,
 };
 
 export const Hospital = () => (

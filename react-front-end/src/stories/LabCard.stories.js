@@ -1,5 +1,5 @@
 import { action } from "@storybook/addon-actions";
-import CardListItem from "../components/Card2";
+import CardListItem from "../components/Labs/LabCard";
 
 const lab_records = [
   {
@@ -22,7 +22,7 @@ const lab_records = [
 
 export default {
   title: "Card",
-  comonent: CardListItem,
+  component: CardListItem,
 };
 
 export const Xray = () => (
