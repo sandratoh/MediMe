@@ -4,7 +4,9 @@ import ClinicsList from "./Clinics/ClinicsList";
 import LabsList from "./Labs/LabsList";
 import Header from "./Header";
 import NewVisit from "./Clinics/NewVisit";
+import EditVisit from "./Clinics/EditVisit";
 import NewRecord from "./Labs/NewRecord";
+import ClinicDetail from "./Clinics/ClinicDetail";
 
 const theme = createMuiTheme({
   typography: {
@@ -33,9 +35,15 @@ function App() {
           <Link to="/clinics">Clinics</Link>
           <Link to="/labs">Labs</Link>
           <Switch>
+
+            <Route path="/clinics/edit" component={EditVisit} />
             <Route path="/clinics/new" component={NewVisit} />
-            <Route path="/labs/new" component={NewRecord} />
+            <Route path="/clinics/view" component={ClinicDetail} />
+            
             <Route exact path="/clinics" component={ClinicsList} />
+
+            <Route path="/labs/new" component={NewRecord} />
+            
             <Route exact path="/labs" component={LabsList} />
           </Switch>
         </Router>

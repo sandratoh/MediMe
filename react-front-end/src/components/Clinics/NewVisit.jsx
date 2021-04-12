@@ -5,7 +5,7 @@ import DateInput from "../DateInput";
 import IconButton from "../IconButton";
 
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import "./NewVisit.scss";
+import "../../styles/form.scss";
 
 export default function NewVisit() {
   const [typeOfVisit, setTypeOfVisit] = useState(null);

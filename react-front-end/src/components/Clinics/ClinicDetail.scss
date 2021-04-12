@@ -1,0 +1,23 @@
+.clinic-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.clinic-detail--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.clinic-detail--data {
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0;
+}
+
+.clinic-detail--user-action {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: 32px 0;
+}

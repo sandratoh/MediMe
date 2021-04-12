@@ -50,3 +50,14 @@ export const Cancel = () => (
   </IconButton>
 );
 
+export const Edit = () => (
+  <IconButton 
+    cancel
+    onClick={action('Edit button clicked')} 
+    color="secondary" 
+    variant="contained"
+  >
+    Edit
+  </IconButton>
+);
+

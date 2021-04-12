@@ -20,6 +20,8 @@ const clinics = [
   },
 ];
 
+
+
 export default function CardListItem(props) {
   const iconByType = (props) => {
     const visitType = props.type.toUpperCase();
