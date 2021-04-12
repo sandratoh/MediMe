@@ -5,26 +5,37 @@ import axios from "axios";
 
 export default function ClinicsCardList(props) {
   
-  const [clinicData, setClinicData] = useState([]);
+  const [clinicalVisits, setClinicalVisits] = useState([]);
+  const [clinics, setClinics] = useState([]);
+  
   useEffect(() => {
     const apiClinicalVisitsUrl = '/api/clinics';
-    axios
-      .get(apiClinicalVisitsUrl)
-      .then(res => {
-        console.log(res.data.clinical_visits);
-        return setClinicData(res.data.clinical_visits);
+    const apiClinicsUrl = '/api/clinics/list';
+    Promise.all([
+      axios.get(apiClinicalVisitsUrl),
+      axios.get(apiClinicsUrl)
+    ]).then(res => {
+        // console.log('visit', res[0].data.clinical_visits);
+        // console.log('clinics-list', res[1].data.clinics);
+        const visits = res[0].data.clinical_visits;
+        const clinics = res[1].data.clinics;
+
+        setClinicalVisits(visits);
+        setClinics(clinics);
+        return;
       })
   },[])
 
 
-  const visits = clinicData.map((clinical_visit) => {
+  const visits = clinicalVisits.map((visit) => {
     return (
       <ClinicCard
-        key={clinical_visit.id}
+        key={visit.id}
         className="list-items"
-        date={clinical_visit.date}
-        type={clinical_visit.type_of_visit}
-        value={clinical_visit.clinic_id}
+        date={visit.date}
+        type={visit.type_of_visit}
+        value={visit.clinic_id}
+        clinics={clinics}
       />
     );
   });

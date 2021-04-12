@@ -5,34 +5,6 @@ import clinicIcon from "../../images/clinic.png";
 
 import "../../styles/card.scss";
 
-const clinics = [
-  {
-    id: 1,
-    name: "Dr. Dodek Wenner Family Practice",
-  },
-  {
-    id: 2,
-    name: "Dr. Howard Liang S.H. Inc.",
-  },
-  {
-    id: 3,
-    name: "Vancouver General Hospital",
-  },
-  // {
-  //   id: 4,
-  //   name: "Granville Medical Clinic"
-  //   },
-  //   {
-  //   id: 5,
-  //   name: "Keefer Walk-In and Medical Clinic"
-  //   },
-  //   {
-  //   id: 6,
-  //   name: "Richmond General Hospital"
-  //   }
-];
-
-
 export default function CardListItem(props) {
   const iconByType = (props) => {
     const visitType = props.type.toUpperCase();
@@ -48,11 +20,8 @@ export default function CardListItem(props) {
 
   const findClinicById = (props) => {
     let name;
-    clinics.forEach((clinic) => {
+    props.clinics.forEach((clinic) => {
       if (clinic.id === props.value) {
-        // console.log("clinic", clinic);
-        // console.log("clinic name", clinic.name);
-
         name = clinic.name;
       }
     });
