@@ -39,3 +39,14 @@ export const New = () => (
   </IconButton>
 );
 
+export const Cancel = () => (
+  <IconButton 
+    cancel
+    onClick={action('New button clicked')} 
+    color="secondary" 
+    variant="outlined"
+  >
+    Cancel
+  </IconButton>
+);
+

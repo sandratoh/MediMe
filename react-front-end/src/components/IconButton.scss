@@ -8,9 +8,14 @@ $small-button: 98px;
 
 .button {
   height: $button-height;
+
+  a {
+    text-decoration: none;
+    color: $white;
+  }
 };
 
-.button--save, .button--delete {
+.button--save, .button--delete, .button--cancel {
   width: $wide-button;
 };
 

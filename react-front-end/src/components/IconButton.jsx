@@ -2,6 +2,7 @@ import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SaveIcon from '@material-ui/icons/Save';
 import AddIcon from '@material-ui/icons/Add';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 import classnames from 'classnames';
 import './IconButton.scss';
@@ -11,7 +12,8 @@ export default function IconButton(props) {
   const buttonClass = classnames('button', {
     'button--save': props.save,
     'button--delete': props.delete,
-    'button--new': props.new
+    'button--new': props.new,
+    'button--cancel': props.cancel
   });
 
   const icon = props => {
@@ -23,6 +25,9 @@ export default function IconButton(props) {
     }
     if (props.new) {
       return <AddIcon />;
+    }
+    if (props.cancel) {
+      return <CancelIcon />;
     }
   };
 

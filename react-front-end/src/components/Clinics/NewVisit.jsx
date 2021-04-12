@@ -2,7 +2,7 @@ import { useState } from "react";
 import TextInput from "../TextInput";
 import ClinicGroupedButtons from "./ClinicGroupedButtons";
 import DateInput from "../DateInput";
-import TextButton from "../TextButton";
+import IconButton from "../IconButton";
 
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import "./NewVisit.scss";
@@ -33,8 +33,8 @@ export default function NewVisit() {
         <TextInput>Doctor's Diagnosis</TextInput>
       </div>
       <div className="form--user-action">
-        <TextButton onClick={() => onCancel()}>Cancel</TextButton>
-        <TextButton onClick={() => onSave()}>Save</TextButton>
+        <IconButton cancel variant="outlined" color="secondary" onClick={() => onCancel()}>Cancel</IconButton>
+        <IconButton save variant="contained" color="secondary" onClick={() => onSave()}>Save</IconButton>
       </div>
       </div>
       

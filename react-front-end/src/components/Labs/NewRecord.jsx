@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TextInput from "../TextInput";
 import DateInput from "../DateInput";
-import TextButton from "../TextButton";
+import IconButton from "../IconButton";
 import LabRecordType from "./LabsDropdown";
 
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
@@ -29,8 +29,8 @@ export default function NewRecord() {
           <TextInput required>Referral Doctor:</TextInput>
         </div>
         <div className="form--user-action">
-          <TextButton onClick={() => onCancel()}>Cancel</TextButton>
-          <TextButton onClick={() => onSave()}>Save</TextButton>
+          <IconButton cancel variant="outlined" color="secondary" onClick={() => onCancel()}>Cancel</IconButton>
+          <IconButton save variant="contained" color="secondary" onClick={() => onSave()}>Save</IconButton>
         </div>
       </div>
     </section>
