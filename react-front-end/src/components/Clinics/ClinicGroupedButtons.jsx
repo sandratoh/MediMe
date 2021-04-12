@@ -21,6 +21,7 @@ export default function ClinicGroupedButtons(props) {
   const clinicGroup = clinicGroupArray.map((value) => {
     return (
       <TextButtonGroup
+        color="primary"
         key={value.id}
         setState={(event) => props.onChange(value.name)}
         groupButtons

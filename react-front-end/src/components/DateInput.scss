@@ -1,3 +1,10 @@
-.date-input {
-  width: 327px
+.date-input--container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 32px 0;
+}
+
+.date-input--field {
+  min-width: 327px;
+  width: 85vw;
 }
