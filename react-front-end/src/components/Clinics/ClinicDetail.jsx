@@ -37,12 +37,9 @@ export default function ClinicDetail() {
     dataContext
   );
 
-  console.log("clinical visits in card detail", clinicalVisits);
-  console.log("clinics in card detail", clinics);
-  console.log("doctors in card detail", doctors);
-
-  const visitId = clinicalVisitDetail - 1;
-  console.log("visitId", visitId);
+  const visit = clinicalVisits.find(
+    (visit) => visit.id === clinicalVisitDetail
+  );
 
   const onDelete = () => {
     console.log("delete button clicked");
@@ -61,46 +58,31 @@ export default function ClinicDetail() {
       <div className="clinic-detail--container">
         <div className="clinic-detail--data">
           <h5 className="">Date:</h5>
-          <p className="form-body">
-            {clinicalVisits[visitId] && formatDate(clinicalVisits[visitId])}
-          </p>
+          <p className="form-body">{visit && formatDate(visit)}</p>
         </div>
 
         <div className="clinic-detail--data">
           <h5 className="form-label">Clinic:</h5>
           <p className="form-body">
-            {clinics[visitId] &&
-              findClinicById(clinics, clinicalVisits[visitId].clinic_id)}
+            {visit && findClinicById(clinics, visit.clinic_id)}
           </p>
         </div>
 
         <div className="clinic-detail--data">
           <h5 className="form-label">Doctor:</h5>
           <p className="form-body">
-            {clinicalVisits[visitId] &&
-              clinics[visitId] &&
-              doctors[visitId] &&
-              findDoctorById(
-                doctors,
-                clinicalVisits[visitId].referral_doctor_id
-              )}
+            {visit && findDoctorById(doctors, visit.referral_doctor_id)}
           </p>
         </div>
 
         <div className="clinic-detail--data">
           <h5 className="form-label">Reason for visit:</h5>
-          <p className="form-body">
-            {clinicalVisits[visitId] &&
-              clinicalVisits[visitId].reason_for_visit}
-          </p>
+          <p className="form-body">{visit && visit.reason_for_visit}</p>
         </div>
 
         <div className="clinic-detail--data">
           <h5 className="form-label">Doctor's diagnosis:</h5>
-          <p className="form-body">
-            {clinicalVisits[visitId] &&
-              clinicalVisits[visitId].doctor_diagnosis}
-          </p>
+          <p className="form-body">{visit && visit.doctor_diagnosis}</p>
         </div>
       </div>
 
