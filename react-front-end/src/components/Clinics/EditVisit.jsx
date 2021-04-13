@@ -8,24 +8,6 @@ import IconButton from "../IconButton";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import "../../styles/form.scss";
 
-// const clinical_visits = [
-//   {
-//     id: 1,
-//     user_id: 1,
-//     clinic_id: 3,
-//     referral_doctor_id: 2,
-//     date: "2018-09-09T07:00:00.000Z",
-//     type_of_visit: "HOSPITAL",
-//     reason_for_visit: "Stomach pain and vomit",
-//     doctor_diagnosis: "Food poisoning",
-//   },
-// ];
-
-// const clinics = [
-//   {id: 1, name: "Dr. Dodek Wenner Family Practice"},
-//   {id: 2, name: "Dr. Howard Liang S.H. Inc."},
-//   {id: 3, name: "Vancouver General Hospital"},
-// ];
 
 const findClinicById = (clinics, id) => {
     let name;
@@ -37,14 +19,6 @@ const findClinicById = (clinics, id) => {
     return name;
   };
 
-// const doctors = [
-//   {id: 1, name: "Dr. Gale Dodek-Wenner"},
-//   {id: 2, name: "Dr. Howard Liang"},
-//   {id: 3, name: "Dr. Gregory House"},
-//   {id: 4, name: "Dr. Sheldon Cooper"},
-//   {id: 5, name: "Dr. Drake Ramoray"},
-//   {id: 6, name: "Dr. Ross Geller"}
-// ];
 
 const findDoctorById = (doctors, id) => {
   let name;
@@ -56,12 +30,12 @@ const findDoctorById = (doctors, id) => {
   return name;
 };
 
-const formatDate = (visit) => {
-  const dateData = visit.date;
-  const date = new Date(dateData);
+// const formatDate = (visit) => {
+//   const dateData = visit.date;
+//   const date = new Date(dateData);
 
-  return date.toDateString();
-};
+//   return date.toDateString();
+// };
 
 export default function EditVisit() {
   const { clinicalVisits, clinics, doctors, clinicalVisitEdit } = useContext(
@@ -70,7 +44,13 @@ export default function EditVisit() {
   const visit = clinicalVisits.find(
     (visit) => visit.id === clinicalVisitEdit
   );
-  // const [typeOfVisit, setTypeOfVisit] = useState(clinical_visits[0].type_of_visit);
+  const [medicalCenter, setMedicalCenter] = useState(findClinicById(clinics, visit.clinic_id));
+  const [doctor, setDoctor] = useState(findDoctorById(doctors, visit.referral_doctor_id));
+  const [date, setDate] = useState(visit.date);
+  const [visitType, setVisitType] = useState(visit.type_of_visit);
+  const [reasonFor, setReasonFor] = useState(visit.reason_for_visit);
+  const [diagnosis, setDiagnosis] = useState(visit.doctor_diagnosis);
+  
 
   const onCancel = () => {
     console.log("cancel button clicked");
@@ -87,12 +67,12 @@ export default function EditVisit() {
       <h1 className="clinics-list--title">Update Clinical Visit</h1>
       <div className="clinic-form--container">
         <div className="clinic--form--field">
-          <DateInput date={formatDate(visit)}>Date:</DateInput>
-          {/* <ClinicGroupedButtons state={typeOfVisit} onChange={setTypeOfVisit} /> */}
-          <TextInput required defaultValue={ findClinicById(clinics, visit.clinic_id) }>Medical Center:</TextInput>
-          <TextInput required defaultValue={ findDoctorById(doctors, visit.referral_doctor_id) }>Doctor:</TextInput>
-          <TextInput defaultValue={ visit.reason_for_visit }>Reason for Visit:</TextInput>
-          <TextInput defaultValue={ visit.doctor_diagnosis }>Doctor's Diagnosis</TextInput>
+          <DateInput date={date} setInput={setDate}>Date:</DateInput>
+          <ClinicGroupedButtons state={visitType} onChange={setVisitType}  />
+          <TextInput required defaultValue={medicalCenter} value={medicalCenter} setInput={setMedicalCenter}>Medical Center:</TextInput>
+          <TextInput required defaultValue={doctor} value={doctor} setInput={setDoctor}>Doctor:</TextInput>
+          <TextInput defaultValue={reasonFor} value={reasonFor} setInput={setReasonFor}>Reason for Visit:</TextInput>
+          <TextInput defaultValue={diagnosis} value={diagnosis} setInput={setDiagnosis}>Doctor's Diagnosis</TextInput>
         </div>
         <div className="clinic-form--user-action">
           <IconButton
