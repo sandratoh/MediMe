@@ -22,7 +22,8 @@ h4 {
 }
 
 a {
-  @include typography-style($heading-font, 14, $regular-weight)
+  @include typography-style($heading-font, 14, $regular-weight);
+  text-decoration: none;
 }
 
 .form-label {
