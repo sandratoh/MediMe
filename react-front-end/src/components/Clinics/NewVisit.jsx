@@ -20,7 +20,9 @@ export default function NewVisit() {
   // Manage redirect state based on axios call
   const [redirect, setRedirect] = useState(false);
 
-  const handleSave = () => {
+  const onCancel = () => setRedirect(true);
+
+  const onSave = () => {
     const visitDetail = {
       user_id: 1,
       clinic_id: medicalCenter,
@@ -42,15 +44,9 @@ export default function NewVisit() {
       .catch((err) => console.log(err));
   };
 
-  const onCancel = () => setRedirect(true);
-
-  const onSave = () => handleSave();
-
-
   return (
-    
     <section className="clinic-new">
-      {(redirect) && <Redirect to="/clinics" />}
+      {redirect && <Redirect to="/clinics" />}
       <div className="clinics-list--icons">
         <ArrowBackIosIcon />
       </div>

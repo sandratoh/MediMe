@@ -6,13 +6,13 @@ import Select from "@material-ui/core/Select";
 import "./LabsDropdown.scss";
 
 export default function LabDropdown(props) {
-  const [recordType, setRecordType] = useState("");
+  // const [recordType, setRecordType] = useState("");
 
-  const handleChange = (e) => {
-    setRecordType(e.target.value);
-    console.log("target", e.target.value);
-  };
-  console.log("recordType", recordType);
+  // const handleChange = (e) => {
+  //   setRecordType(e.target.value);
+  //   console.log("target", e.target.value);
+  // };
+  // console.log("recordType", recordType);
 
   return (
     <section className="dropdown-container">
@@ -23,9 +23,10 @@ export default function LabDropdown(props) {
         <Select
           labelId="demo-simple-select-outlined-label"
           id="demo-simple-select-outlined"
-          onChange={handleChange}
+          onChange={(event) => props.setInput(event.target.value)}
           label="Type of Record"
-          value={recordType}
+          value={props.value}
+          required
         >
           <MenuItem value={"BLOOD"}>Blood</MenuItem>
           <MenuItem value={"MAMMOGRAM"}>Mammogram</MenuItem>
