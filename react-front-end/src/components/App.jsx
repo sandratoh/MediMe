@@ -43,9 +43,11 @@ function App() {
         <Router>
           <Header />
           <Switch>
-            <Route exact path="/clinics/edit" component={EditVisit} />
-            <Route exact path="/clinics/new" component={NewVisit} />
-            <Route exact path="/clinics/view" component={ClinicDetail} />
+            
+            <Route path="/clinics/edit" component={EditVisit} />
+            <Route path="/clinics/new" component={NewVisit} />
+            <Route path="/clinics/:id" component={ClinicDetail} />
+
             <Route exact path="/clinics" component={ClinicsList} />
 
             <Route exact path="/labs/edit" component={EditRecord} />

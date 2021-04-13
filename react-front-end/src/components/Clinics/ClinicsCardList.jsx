@@ -1,33 +1,52 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { dataContext } from "../hooks/DataProvider";
 import ClinicCard from "./ClinicCard";
+import axios from "axios";
 
 export default function ClinicsCardList() {
-  const { clinicalVisits, clinics, handleClinicCardClick } = useContext(
+  const { clinicalVisits, clinics, setClinicalVisitDetail, setClinicalVisits, fetchAllClinics, clinicalVisitDetail } = useContext(
     dataContext
-  );
+  )
 
+  
   // console.log("clinical visits in card list", clinicalVisits);
-  // console.log("clinics in card list", clinics);
-  // console.log("clinic card:", clinics);
+  // make new state to track???
 
+  // useEffect(() => {
+  //   fetchAllClinics()
+  // }, []);
+  
+  // useEffect(() => {
+  //   axios
+  //     .get("/api/clinics")
+  //     .then(res => setClinicalVisits(res))
+  // }, []);
+
+  const handleClinicCardClick = (id) => setClinicalVisitDetail(id);
+
+  // console.log("cliniical Visits: ", clinicalVisitDetail)
   const visits = clinicalVisits.map((visit) => {
+    
     return (
-      <ClinicCard
-        key={visit.id}
-        className="list-items"
-        date={visit.date}
-        type={visit.type_of_visit}
-        value={visit.clinic_id}
-        clinics={clinics}
-        onClick={() => handleClinicCardClick(visit.id)}
-      />
+      <Link to={`/clinics/${visit.id}`}>
+        <ClinicCard
+          key={visit.id}
+          className="list-items"
+          date={visit.date}
+          type={visit.type_of_visit}
+          value={visit.clinic_id}
+          clinics={clinics}
+          onClick={() => handleClinicCardClick(visit.id)}
+        />
+      </Link>
     );
   });
+
   return (
     <ul>
       <Link to="/clinics/view">{visits}</Link>
     </ul>
-  );
+  )
 }
+

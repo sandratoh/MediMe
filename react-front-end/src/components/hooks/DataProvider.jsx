@@ -14,7 +14,7 @@ export default function DataProvider(props) {
 
   const [doctors, setDoctors] = useState([]);
 
-  const handleClinicCardClick = (id) => setClinicalVisitDetail(id);
+  
   const handleClinicEditClick = (id) => setClinicalVisitEdit(id);
 
   const handleLabCardClick = (id) => setLabRecordsDetail(id);
@@ -24,15 +24,27 @@ export default function DataProvider(props) {
   // console.log("lab record detail state", labRecordsDetail);
   // console.log("labs - data provider", labs);
   // console.log("lab records - data provider", labRecords);
+  const fetchAllClinics = () => {
+    axios
+      .get("/api/clinics")
+      .then(res => setClinicalVisits(res))
+  };
+
+  // useEffect(() => {
+  //   fetchAllClinics()
+  // }, []);
 
   useEffect(() => {
     const apiClinicalVisitsUrl = "/api/clinics";
+    // const apiClinicalVisitEditUrl = {`/api/clinics/${clinicalVisitEdit}`};
+    const apiClinicalVisitDetailUrl = `/api/clinics/3`;
     const apiClinicsUrl = "/api/clinics/list";
     const apiDoctorsUrl = "/api/doctors";
     const apiLabRecordsUrl = "/api/labs";
     const apiLabsUrl = "/api/labs/list";
     Promise.all([
       axios.get(apiClinicalVisitsUrl),
+      axios.get(apiClinicalVisitDetailUrl),
       axios.get(apiClinicsUrl),
       axios.get(apiDoctorsUrl),
       axios.get(apiLabRecordsUrl),
@@ -42,12 +54,14 @@ export default function DataProvider(props) {
       // console.log('clinics-list', res[1].data.clinics);
 
       const visits = res[0].data.clinical_visits;
-      const clinics = res[1].data.clinics;
-      const doctors = res[2].data.doctors;
-      const records = res[3].data.labs;
-      const labs = res[4].data.labs;
+      const visitDetail = res[1].data.clinical_visit;
+      const clinics = res[2].data.clinics;
+      const doctors = res[3].data.doctors;
+      const records = res[4].data.labs;
+      const labs = res[5].data.labs;
 
       setClinicalVisits(visits);
+      setClinicalVisitDetail(visitDetail);
       setClinics(clinics);
       setDoctors(doctors);
       setLabRecords(records);
@@ -59,11 +73,11 @@ export default function DataProvider(props) {
   // need to rename this variable
   const data = {
     clinicalVisitDetail,
+    setClinicalVisitDetail,
     clinicalVisitEdit,
     clinicalVisits,
     clinics,
     doctors,
-    handleClinicCardClick,
     handleClinicEditClick,
     labRecordsDetail,
     labRecordsEdit,
@@ -71,6 +85,7 @@ export default function DataProvider(props) {
     labs,
     handleLabCardClick,
     handleLabEditClick,
+    fetchAllClinics
   };
   // console.log("clinic data in data provider", clinicData);
 
