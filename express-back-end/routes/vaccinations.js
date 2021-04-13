@@ -30,6 +30,18 @@ module.exports = (client) => {
       .catch((err) => res.json({ error: err.message }));
   });
 
+  // delete vaccination record
+  router.delete("/:id", (req, res) => {
+    let query = `DELETE FROM vaccinations WHERE id = $1`;
+
+    client
+      .query(query, [req.params.id])
+      .then(res.status(200).json({ status: "succcessfully deleted" }))
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   // get all doses
   router.get("/dose", (req, res) => {
     let query = `SELECT * FROM vaccination_doses`;
@@ -47,7 +59,7 @@ module.exports = (client) => {
 
   // get one specific vaccination record
   router.get("/:id", (req, res) => {
-    let query = `SELECT * FROM vaccination_doses where id = $1;`;
+    let query = `SELECT * FROM vaccination_doses WHERE id = $1;`;
 
     client
       .query(query, [req.params.id])
@@ -83,6 +95,21 @@ module.exports = (client) => {
       .catch((err) => res.json({ error: err.message }));
   });
 
+  // get specific dose record
+  router.get("/:id/dose/:doseId", (req, res) => {
+    let query = `SELECT * FROM vaccination_doses WHERE vaccination_id = $1 AND id = $2;`;
+
+    client
+      .query(query, [req.params.id, req.params.doseId])
+      .then((data) => {
+        const doses = data.rows;
+        res.status(200).json({ doses });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   // edit an existing dose record
   router.put("/:id/dose/:doseId", (req, res) => {
     const id = req.params.id;
@@ -90,6 +117,18 @@ module.exports = (client) => {
     updateDose({ id, doseId, ...req.body })
       .then((dose) => res.status(200).json(dose))
       .catch((err) => res.json({ error: err.message }));
+  });
+
+  // delete dose record
+  router.delete("/:id/dose/:doseId", (req, res) => {
+    let query = `DELETE FROM vaccination_doses WHERE vaccination_id = $1 AND id = $2`;
+
+    client
+      .query(query, [req.params.id, req.params.doseId])
+      .then(res.status(200).json({ status: "succcessfully deleted" }))
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
   });
 
   return router;

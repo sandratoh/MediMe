@@ -68,5 +68,17 @@ module.exports = (client) => {
       .catch((err) => res.json({ error: err.message }));
   });
 
+  // delete specific clinical record
+  router.delete("/:id", (req, res) => {
+    let query = `DELETE FROM clinical_visits WHERE id = $1`;
+
+    client
+      .query(query, [req.params.id])
+      .then(res.status(200).json({ status: "succcessfully deleted" }))
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   return router;
 };
