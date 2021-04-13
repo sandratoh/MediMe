@@ -2,9 +2,10 @@ import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { dataContext } from "../hooks/DataProvider";
 import ClinicCard from "./ClinicCard";
+import axios from "axios";
 
 export default function ClinicsCardList() {
-  const { clinicalVisits, clinics, setClinicalVisitDetail, fetchAllClinics, clinicalVisitDetail } = useContext(
+  const { clinicalVisits, clinics, setClinicalVisitDetail, setClinicalVisits, fetchAllClinics, clinicalVisitDetail } = useContext(
     dataContext
   )
 
@@ -12,10 +13,16 @@ export default function ClinicsCardList() {
   // console.log("clinical visits in card list", clinicalVisits);
   // make new state to track???
 
-  useEffect(() => {
-    fetchAllClinics()
-  }, []);
+  // useEffect(() => {
+  //   fetchAllClinics()
+  // }, []);
   
+  // useEffect(() => {
+  //   axios
+  //     .get("/api/clinics")
+  //     .then(res => setClinicalVisits(res))
+  // }, []);
+
   const handleClinicCardClick = (id) => setClinicalVisitDetail(id);
 
   // console.log("cliniical Visits: ", clinicalVisitDetail)
