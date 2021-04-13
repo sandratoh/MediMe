@@ -12,6 +12,8 @@ import NewRecord from "./Labs/NewRecord";
 import ClinicDetail from "./Clinics/ClinicDetail";
 import DashboardCard from "./DashboardCard";
 
+import "./App.scss";
+
 
 const theme = createMuiTheme({
   typography: {
@@ -39,18 +41,20 @@ function App() {
       <div className="App">
         <Router>
           <Header />
-          <DashboardCard category="clinics">
-            <Link to="/clinics">Clinics</Link>
-          </DashboardCard>
-          <DashboardCard category="labs">
-            <Link to="/labs">Labs</Link>
-          </DashboardCard>
-          <DashboardCard category="medications">
-            <Link to="/labs">Medications</Link>
-          </DashboardCard>
-          <DashboardCard category="vaccinations">
-            <Link to="/labs">Vaccinations</Link>
-          </DashboardCard>
+          <div className="dashboard-card--container">
+            <DashboardCard category="clinics">
+              <Link to="/clinics">Clinics</Link>
+            </DashboardCard>
+            <DashboardCard category="labs">
+              <Link to="/labs">Labs</Link>
+            </DashboardCard>
+            <DashboardCard category="medications">
+              <Link to="/medications">Medications</Link>
+            </DashboardCard>
+            <DashboardCard category="vaccinations">
+              <Link to="/vaccinations">Vaccinations</Link>
+            </DashboardCard>
+          </div>
           <Switch>
             <Route path="/clinics/edit" component={EditVisit} />
             <Route path="/clinics/new" component={NewVisit} />
