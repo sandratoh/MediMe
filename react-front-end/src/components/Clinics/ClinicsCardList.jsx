@@ -27,7 +27,7 @@ export default function ClinicsCardList() {
   });
   return (
     <ul>
-      <Link to="/clinics/view">{visits}</Link>
+      <Link to="/clinics/views">{visits}</Link>
     </ul>
   );
 }
