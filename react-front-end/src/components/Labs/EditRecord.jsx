@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Redirect } from "react-router";
+import { dataContext } from "../hooks/DataProvider";
 import axios from "axios";
 
 import TextInput from "../TextInput";
@@ -10,7 +11,29 @@ import LabRecordType from "./LabsDropdown";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import "./Record.scss";
 
+const findLabById = (labs, id) => {
+  let name;
+  labs.forEach((lab) => {
+    if (lab.id === id) {
+      name = lab.name;
+    }
+  });
+  return name;
+};
+
+const findDoctorById = (doctors, id) => {
+  let name;
+  doctors.forEach((doctor) => {
+    if (doctor.id === id) {
+      name = doctor.name;
+    }
+  });
+  return name;
+};
+
 export default function NewRecord() {
+  const {};
+
   const [date, setDate] = useState(currentDate());
   const [lab, setLab] = useState("");
   const [recordType, setRecordType] = useState("");
@@ -34,7 +57,7 @@ export default function NewRecord() {
     console.log("labDetail", labDetail);
 
     return axios
-      .post("/api/labs/", labDetail)
+      .put("/api/labs/", labDetail)
       .then((res) => {
         // will only redirect if post goes through and no error is returned
         !res.data.error && setRedirect(true);
