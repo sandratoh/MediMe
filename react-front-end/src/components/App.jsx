@@ -11,6 +11,10 @@ import EditVisit from "./Clinics/EditVisit";
 import NewRecord from "./Labs/NewRecord";
 import EditRecord from "./Labs/EditRecord";
 import ClinicDetail from "./Clinics/ClinicDetail";
+import Dashboard from "./Dashboard";
+
+import "./App.scss";
+
 
 const theme = createMuiTheme({
   typography: {
@@ -38,20 +42,18 @@ function App() {
       <div className="App">
         <Router>
           <Header />
-          <Link to="/clinics">Clinics</Link>
-          <Link to="/labs">Labs</Link>
           <Switch>
-            <Route path="/clinics/edit" component={EditVisit} />
-            <Route path="/clinics/new" component={NewVisit} />
-            <Route path="/clinics/view" component={ClinicDetail} />
-
+            <Route exact path="/clinics/edit" component={EditVisit} />
+            <Route exact path="/clinics/new" component={NewVisit} />
+            <Route exact path="/clinics/view" component={ClinicDetail} />
             <Route exact path="/clinics" component={ClinicsList} />
 
-            <Route path="/labs/edit" component={EditRecord} />
-            <Route path="/labs/new" component={NewRecord} />
-            <Route path="/labs/view" component={LabDetail} />
-
+            <Route exact path="/labs/edit" component={EditRecord} />
+            <Route exact path="/labs/new" component={NewRecord} />
+            <Route exact path="/labs/view" component={LabDetail} />
             <Route exact path="/labs" component={LabsList} />
+
+            <Route exact path="/" component={Dashboard} />
           </Switch>
         </Router>
       </div>

@@ -5,7 +5,7 @@ const { addLab, updateLab } = require("../db/queries/queries-lab_records");
 module.exports = (client) => {
   // get all lab records
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM lab_records;`;
+    let query = `SELECT * FROM lab_records ORDER BY date DESC;`;
 
     client
       .query(query)

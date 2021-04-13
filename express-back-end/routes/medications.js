@@ -8,7 +8,7 @@ const {
 module.exports = (client) => {
   // get all medications
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM medications`;
+    let query = `SELECT * FROM medications ORDER BY prescribed_date DESC;`;
 
     client
       .query(query)

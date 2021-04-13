@@ -1,0 +1,28 @@
+.dashboard-card {
+  display: flex;
+  width: 30vw;
+  min-height: 160px;
+  padding: 16px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(95%);
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+    min-width: 80px;
+    min-height: 80px;
+    margin-bottom: 8px;
+  }
+}
+
+.dashboard-card--detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

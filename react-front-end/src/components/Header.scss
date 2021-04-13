@@ -1,7 +1,10 @@
+@import '../styles/variables.scss';
+
 .nav-bar {
   flex-grow: 1;
-
+  
   a {
+    color: $black;
     text-decoration: none;
   }
 }
