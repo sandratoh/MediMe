@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { dataContext } from "../hooks/DataProvider";
 import TextInput from "../TextInput";
 import ClinicGroupedButtons from "./ClinicGroupedButtons";
 import DateInput from "../DateInput";
@@ -8,8 +9,15 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import "../../styles/form.scss";
 
 export default function NewVisit() {
-  const [typeOfVisit, setTypeOfVisit] = useState(null);
+ const [typeOfVisit, setTypeOfVisit] = useState(null);
 
+  // const addVisit = () => {
+  //   return axios
+  //     .post('/api/clinics', [])
+  //     .then()
+  // };
+  
+  
   const onCancel = () => {
     console.log("cancel button clicked");
   };
@@ -27,7 +35,7 @@ export default function NewVisit() {
         <div className="clinic--form--field">
           <DateInput>Date:</DateInput>
           <ClinicGroupedButtons state={typeOfVisit} onChange={setTypeOfVisit} />
-          <TextInput required>Medical Center:</TextInput>
+          <TextInput required >Medical Center:</TextInput>
           <TextInput required>Doctor:</TextInput>
           <TextInput>Reason for Visit:</TextInput>
           <TextInput>Doctor's Diagnosis</TextInput>
