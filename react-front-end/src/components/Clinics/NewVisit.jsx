@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { dataContext } from "../hooks/DataProvider";
+import axios from 'axios';
 import TextInput from "../TextInput";
 import ClinicGroupedButtons from "./ClinicGroupedButtons";
 import DateInput, { currentDate } from "../DateInput";
@@ -10,35 +11,47 @@ import "../../styles/form.scss";
 
 export default function NewVisit() {
  const [typeOfVisit, setTypeOfVisit] = useState(null);
+ const [medicalCenter, setMedicalCenter] = useState('');
 
-  // const [visitDetail, setVisitDetail] = useState({
-  //   user_id: 1, 
-  //   clinic_id: null,
-  //   referral_doctor_id: null,
-  //   date: currentDate(), 
-  //   type_of_visit: 'CLINIC', 
-  //   reason_for_visit: '', 
-  //   doctor_diagnosis: ''
-  // })
+  const [visitDetail, setVisitDetail] = useState({
+    user_id: 1, 
+    clinic_id: 1,
+    referral_doctor_id: 1,
+    date: '2020-08-19', 
+    type_of_visit: 'CLINIC', 
+    reason_for_visit: '', 
+    doctor_diagnosis: ''
+  })
 
-  // const handleSave = (clinic_id, referral_doctor_id, date, type_of_visit, reason_for_visit, doctor_diagnosis) => {
-  //   const visit = {
-  //     clinic_id: function() {}, // find clinic id by name, if no name, then create a clinic and then return the id 
-  //     referral_doctor_id: function() {}, // find doctor id by name, if no name, then create a doctor and then return the id 
-  //     date: , 
-  //     type_of_visit: 'CLINIC', 
-  //     reason_for_visit: '', 
-  //     doctor_diagnosis: ''
-  //   }
-  // }
+  const handleSave = (clinic_id, referral_doctor_id, date, type_of_visit, reason_for_visit, doctor_diagnosis) => {
+    const visit = {
+      clinic_id: function() {}, // find clinic id by name, if no name, then create a clinic and then return the id 
+      referral_doctor_id: function() {}, // find doctor id by name, if no name, then create a doctor and then return the id 
+      date: 
+      type_of_visit: 'CLINIC', 
+      reason_for_visit: '', 
+      doctor_diagnosis: ''
+      
+    }
+  }
 
   // user_id, clinic_id, referral_doctor_id, date, type_of_visit, reason_for_visit, doctor_diagnosis
+  // axios.post('/user', {
+  //   firstName: 'Fred',
+  //   lastName: 'Flintstone'
+  // })
+  // .then(function (response) {
+  //   console.log(response);
+  // })
+  // .catch(function (error) {
+  //   console.log(error);
+  // });
 
-  // const addVisit = () => {
-  //   return axios
-  //     .post('/api/clinics', [])
-  //     .then()
-  // };
+  const addVisit = () => {
+    return axios
+      .post('/api/clinics', visitDetail)
+      .then()
+  };
   
   
   const onCancel = () => {
@@ -58,7 +71,7 @@ export default function NewVisit() {
         <div className="clinic--form--field">
           <DateInput>Date:</DateInput>
           <ClinicGroupedButtons state={typeOfVisit} onChange={setTypeOfVisit} />
-          <TextInput required >Medical Center:</TextInput>
+          <TextInput value={medicalCenter} setInput={setMedicalCenter} required >Medical Center:</TextInput>
           <TextInput required>Doctor:</TextInput>
           <TextInput>Reason for Visit:</TextInput>
           <TextInput>Doctor's Diagnosis</TextInput>
