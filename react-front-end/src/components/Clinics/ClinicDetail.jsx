@@ -22,6 +22,7 @@ const findDoctorById = (doctors, id) => {
       name = doctor.name;
     }
   });
+
   return name;
 };
 

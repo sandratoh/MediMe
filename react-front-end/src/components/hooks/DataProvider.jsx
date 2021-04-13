@@ -6,6 +6,7 @@ export default function DataProvider(props) {
   const [clinics, setClinics] = useState([]);
   const [doctors, setDoctors] = useState([]);
   const [clinicalVisitDetail, setClinicalVisitDetail] = useState({});
+  
 
   const handleCardClick = (id) => {
     // console.log("handleCardClick from data provider");
