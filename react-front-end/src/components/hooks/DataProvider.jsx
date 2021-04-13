@@ -4,25 +4,33 @@ import axios from "axios";
 export default function DataProvider(props) {
   const [clinicalVisits, setClinicalVisits] = useState([]);
   const [clinics, setClinics] = useState([]);
+  const [labRecords, setLabRecords] = useState([]);
+  const [labs, setLabs] = useState([]);
   const [doctors, setDoctors] = useState([]);
   const [clinicalVisitDetail, setClinicalVisitDetail] = useState({});
+  const [labRecordsDetail, setLabRecordsDetail] = useState({});
 
-  const handleCardClick = (id) => {
-    // console.log("handleCardClick from data provider");
+  const handleClinicCardClick = (id) => setClinicalVisitDetail(id);
 
-    setClinicalVisitDetail(id);
-  };
+  const handleLabCardClick = (id) => setLabRecordsDetail(id);
 
-  console.log("clinical visit detail state", clinicalVisitDetail);
+  // console.log("clinical visit detail state", clinicalVisitDetail);
+  // console.log("lab record detail state", labRecordsDetail);
+  // console.log("labs - data provider", labs);
+  // console.log("lab records - data provider", labRecords);
 
   useEffect(() => {
     const apiClinicalVisitsUrl = "/api/clinics";
     const apiClinicsUrl = "/api/clinics/list";
     const apiDoctorsUrl = "/api/doctors";
+    const apiLabRecordsUrl = "/api/labs";
+    const apiLabsUrl = "/api/labs/list";
     Promise.all([
       axios.get(apiClinicalVisitsUrl),
       axios.get(apiClinicsUrl),
       axios.get(apiDoctorsUrl),
+      axios.get(apiLabRecordsUrl),
+      axios.get(apiLabsUrl),
     ]).then((res) => {
       // console.log('visit', res[0].data.clinical_visits);
       // console.log('clinics-list', res[1].data.clinics);
@@ -30,27 +38,34 @@ export default function DataProvider(props) {
       const visits = res[0].data.clinical_visits;
       const clinics = res[1].data.clinics;
       const doctors = res[2].data.doctors;
+      const records = res[3].data.labs;
+      const labs = res[4].data.labs;
 
       setClinicalVisits(visits);
       setClinics(clinics);
       setDoctors(doctors);
+      setLabRecords(records);
+      setLabs(labs);
       return;
     });
   }, []);
 
-  const clinicData = {
+  // need to rename this variable
+  const data = {
+    clinicalVisitDetail,
     clinicalVisits,
     clinics,
     doctors,
-    handleCardClick,
-    clinicalVisitDetail,
+    handleClinicCardClick,
+    labRecordsDetail,
+    labRecords,
+    labs,
+    handleLabCardClick,
   };
   // console.log("clinic data in data provider", clinicData);
 
   return (
-    <dataContext.Provider value={clinicData}>
-      {props.children}
-    </dataContext.Provider>
+    <dataContext.Provider value={data}>{props.children}</dataContext.Provider>
   );
 }
 

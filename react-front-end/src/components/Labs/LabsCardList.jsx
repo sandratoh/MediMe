@@ -1,36 +1,26 @@
-import React from "react";
-import Card2 from "./LabCard";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { dataContext } from "../hooks/DataProvider";
+import LabCard from "./LabCard";
 
-const lab_records = [
-  {
-    id: 1,
-    user_id: 1,
-    date: "2018-09-15T07:00:00.000Z",
-    referral_doctor_id: 1,
-    lab_id: 3,
-    type_of_test: "XRAY",
-  },
-  {
-    id: 2,
-    user_id: 1,
-    date: "2019-03-30T07:00:00.000Z",
-    referral_doctor_id: 2,
-    lab_id: 1,
-    type_of_test: "BLOOD",
-  },
-];
+export default function LabsCardList() {
+  const { labRecords, labs, handleLabCardClick } = useContext(dataContext);
 
-export default function LabsCardList(props) {
-  const records = lab_records.map((lab_visit) => {
+  const records = labRecords.map((record) => {
     return (
-      <Card2
-        key={lab_visit.id}
+      <LabCard
+        key={record.id}
         className="list-items"
-        date={lab_visit.date}
-        type={lab_visit.type_of_test}
-        value={lab_visit.lab_id}
+        date={record.date}
+        type={record.type_of_test}
+        value={record.lab_id}
+        onClick={() => handleLabCardClick(record.id)}
       />
     );
   });
-  return <ul>{records}</ul>;
+  return (
+    <ul>
+      <Link to="/labs/view">{records}</Link>
+    </ul>
+  );
 }

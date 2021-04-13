@@ -4,6 +4,7 @@ import { dataContext } from "./hooks/DataProvider";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import ClinicsList from "./Clinics/ClinicsList";
 import LabsList from "./Labs/LabsList";
+import LabDetail from "./Labs/LabDetail";
 import Header from "./Header";
 import NewVisit from "./Clinics/NewVisit";
 import EditVisit from "./Clinics/EditVisit";
@@ -29,7 +30,7 @@ const theme = createMuiTheme({
 });
 
 function App() {
-  const { clinicalVisits } = useContext(dataContext);
+  // const { data } = useContext(dataContext);
 
   return (
     <ThemeProvider theme={theme}>
@@ -46,6 +47,7 @@ function App() {
             <Route exact path="/clinics" component={ClinicsList} />
 
             <Route path="/labs/new" component={NewRecord} />
+            <Route path="/labs/view" component={LabDetail} />
 
             <Route exact path="/labs" component={LabsList} />
           </Switch>
