@@ -1,5 +1,4 @@
-import { useState, useContext } from "react";
-import { dataContext } from "../hooks/DataProvider";
+import { useState } from "react";
 import axios from "axios";
 import TextInput from "../TextInput";
 import ClinicGroupedButtons from "./ClinicGroupedButtons";
@@ -8,6 +7,7 @@ import IconButton from "../IconButton";
 
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import "../../styles/form.scss";
+import { Redirect } from "react-router";
 
 export default function NewVisit() {
   const [medicalCenter, setMedicalCenter] = useState("");
@@ -16,6 +16,9 @@ export default function NewVisit() {
   const [visitType, setVisitType] = useState(null);
   const [reasonFor, setReasonFor] = useState("");
   const [diagnosis, setDiagnosis] = useState("");
+
+  // Manage redirect state based on axios call
+  const [redirect, setRedirect] = useState(false);
 
   const handleSave = () => {
     const visitDetail = {
@@ -32,20 +35,22 @@ export default function NewVisit() {
 
     return axios
       .post("/api/clinics/", visitDetail)
-      .then((res) => console.log("axios then from newvisit", res))
+      .then((res) => {
+        // will only redirect if post goes through and no error is returned
+        !res.data.error && setRedirect(true);
+      })
       .catch((err) => console.log(err));
   };
 
-  const onCancel = () => {
-    console.log("cancel button clicked");
-  };
-  const onSave = () => {
-    handleSave();
-    console.log("save button clicked");
-  };
+  const onCancel = () => setRedirect(true);
+
+  const onSave = () => handleSave();
+
 
   return (
+    
     <section className="clinic-new">
+      {(redirect) && <Redirect to="/clinics" />}
       <div className="clinics-list--icons">
         <ArrowBackIosIcon />
       </div>
@@ -74,7 +79,7 @@ export default function NewVisit() {
             cancel
             variant="outlined"
             color="secondary"
-            onClick={() => onCancel()}
+            onClick={onCancel}
           >
             Cancel
           </IconButton>
@@ -82,7 +87,7 @@ export default function NewVisit() {
             save
             variant="contained"
             color="secondary"
-            onClick={() => onSave()}
+            onClick={onSave}
           >
             Save
           </IconButton>
