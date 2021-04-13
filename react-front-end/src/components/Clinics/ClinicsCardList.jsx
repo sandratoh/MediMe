@@ -8,26 +8,26 @@ export default function ClinicsCardList() {
     dataContext
   );
 
-  // console.log("clinical visits in card list", clinicalVisits);
-  // console.log("clinics in card list", clinics);
-  // console.log("clinic card:", clinics);
-
   const visits = clinicalVisits.map((visit) => {
+    
     return (
-      <ClinicCard
-        key={visit.id}
-        className="list-items"
-        date={visit.date}
-        type={visit.type_of_visit}
-        value={visit.clinic_id}
-        clinics={clinics}
-        onClick={() => handleClinicCardClick(visit.id)}
-      />
+      <Link to={`/clinics/${visit.id}`}>
+        <ClinicCard
+          key={visit.id}
+          className="list-items"
+          date={visit.date}
+          type={visit.type_of_visit}
+          value={visit.clinic_id}
+          clinics={clinics}
+          onClick={() => handleClinicCardClick(visit.id)}
+        />
+      </Link>
     );
   });
+
   return (
     <ul>
-      <Link to="/clinics/view">{visits}</Link>
+      {visits}
     </ul>
   );
 }
