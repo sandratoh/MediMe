@@ -6,7 +6,7 @@ import labRecordIcon from '../images/lab-records.png';
 import vaccinationIcon from '../images/vaccination.png';
 import medicationsIcon from '../images/medicine.png';
 
-export default function DashboardIcon(props) {
+export default function DashboardCard(props) {
   const iconByCategory = (props) => {
     switch (props.category) {
       case "clinics":
@@ -28,7 +28,7 @@ export default function DashboardIcon(props) {
     <Card
       className="dashboard-card"
     >
-      <div className="card--details">
+      <div className="dashboard-card--detail">
       <img src={iconByCategory(props)} component="img" alt="card icon"/>
       <Typography variant="h5">{props.children}</Typography>
       </div>
