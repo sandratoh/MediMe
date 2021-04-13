@@ -50,7 +50,9 @@ export default function EditVisit() {
   // Manage redirect state based on axios call
   const [redirect, setRedirect] = useState(false);
 
-  const handleSave = () => {
+  const onCancel = () => setRedirect(true);
+
+  const onSave = () => {
     const visitDetail = {
       user_id: 1,
       clinic_id: medicalCenter,
@@ -60,7 +62,6 @@ export default function EditVisit() {
       reason_for_visit: reasonFor,
       doctor_diagnosis: diagnosis,
     };
-    console.log("visitDetail", visitDetail);
 
     return axios
       .put(`/api/clinics/${visit.id}`, visitDetail)
@@ -70,9 +71,6 @@ export default function EditVisit() {
       })
       .catch((err) => console.log(err));
   };
-
-  const onCancel = () => setRedirect(true);
-  const onSave = () => handleSave();
 
   return (
     <section className="clinic-new">
@@ -89,7 +87,7 @@ export default function EditVisit() {
           <ClinicGroupedButtons state={visitType} onChange={setVisitType} />
           <TextInput
             required
-            defaultValue={medicalCenter}
+            // defaultValue={medicalCenter}
             value={medicalCenter}
             setInput={setMedicalCenter}
           >
@@ -97,21 +95,21 @@ export default function EditVisit() {
           </TextInput>
           <TextInput
             required
-            defaultValue={doctor}
+            // defaultValue={doctor}
             value={doctor}
             setInput={setDoctor}
           >
             Doctor:
           </TextInput>
           <TextInput
-            defaultValue={reasonFor}
+            // defaultValue={reasonFor}
             value={reasonFor}
             setInput={setReasonFor}
           >
             Reason for Visit:
           </TextInput>
           <TextInput
-            defaultValue={diagnosis}
+            // defaultValue={diagnosis}
             value={diagnosis}
             setInput={setDiagnosis}
           >

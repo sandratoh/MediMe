@@ -33,8 +33,6 @@ export default function NewVisit() {
       doctor_diagnosis: diagnosis,
     };
 
-    console.log("visitDetail", visitDetail);
-
     return axios
       .post("/api/clinics/", visitDetail)
       .then((res) => {

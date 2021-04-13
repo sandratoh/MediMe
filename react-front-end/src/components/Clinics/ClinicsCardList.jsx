@@ -4,10 +4,16 @@ import { dataContext } from "../hooks/DataProvider";
 import ClinicCard from "./ClinicCard";
 
 export default function ClinicsCardList() {
-  const { clinicalVisits, clinics, handleClinicCardClick } = useContext(
+  const { clinicalVisits, clinics, handleClinicCardClick, fetchAllClinics, clinicalVisitDetail } = useContext(
     dataContext
   );
 
+  // componentDidMount() {
+  //   fetchAllClinics()
+  // }
+
+
+  // console.log("cliniical Visits: ", clinicalVisitDetail)
   const visits = clinicalVisits.map((visit) => {
     
     return (
@@ -27,7 +33,8 @@ export default function ClinicsCardList() {
 
   return (
     <ul>
-      <Link to="/clinics/views">{visits}</Link>
+      <Link to="/clinics/view">{visits}</Link>
     </ul>
-  );
+  )
+
 }
