@@ -5,9 +5,9 @@ import ClinicCard from "./ClinicCard";
 export default function ClinicsCardList() {
   const { clinicalVisits, clinics } = useContext(dataContext);
 
-  console.log("clinical visits in card list", clinicalVisits);
-  console.log("clinics in card list", clinics);
-
+  // console.log("clinical visits in card list", clinicalVisits);
+  // console.log("clinics in card list", clinics);
+  // console.log("clinic card:", clinics);
   const visits = clinicalVisits.map((visit) => {
     return (
       <ClinicCard
