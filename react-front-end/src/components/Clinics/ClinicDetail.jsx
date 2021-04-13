@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { dataContext } from "../hooks/DataProvider";
 import IconButton from "../IconButton";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
