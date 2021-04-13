@@ -4,7 +4,9 @@ import { dataContext } from "../hooks/DataProvider";
 import ClinicCard from "./ClinicCard";
 
 export default function ClinicsCardList() {
-  const { clinicalVisits, clinics, handleCardClick } = useContext(dataContext);
+  const { clinicalVisits, clinics, handleClinicCardClick } = useContext(
+    dataContext
+  );
 
   // console.log("clinical visits in card list", clinicalVisits);
   // console.log("clinics in card list", clinics);
@@ -19,7 +21,7 @@ export default function ClinicsCardList() {
         type={visit.type_of_visit}
         value={visit.clinic_id}
         clinics={clinics}
-        onClick={() => handleCardClick(visit.id)}
+        onClick={() => handleClinicCardClick(visit.id)}
       />
     );
   });
