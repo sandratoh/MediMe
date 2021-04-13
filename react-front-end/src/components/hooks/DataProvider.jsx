@@ -5,6 +5,15 @@ export default function DataProvider(props) {
   const [clinicalVisits, setClinicalVisits] = useState([]);
   const [clinics, setClinics] = useState([]);
   const [doctors, setDoctors] = useState([]);
+  const [clinicalVisitDetail, setClinicalVisitDetail] = useState({});
+
+  const handleCardClick = (id) => {
+    // console.log("handleCardClick from data provider");
+
+    setClinicalVisitDetail(id);
+  };
+
+  console.log("clinical visit detail state", clinicalVisitDetail);
 
   useEffect(() => {
     const apiClinicalVisitsUrl = "/api/clinics";
@@ -29,8 +38,14 @@ export default function DataProvider(props) {
     });
   }, []);
 
-  const clinicData = { clinicalVisits, clinics, doctors };
-  console.log("clinic data in data provider", clinicData);
+  const clinicData = {
+    clinicalVisits,
+    clinics,
+    doctors,
+    handleCardClick,
+    clinicalVisitDetail,
+  };
+  // console.log("clinic data in data provider", clinicData);
 
   return (
     <dataContext.Provider value={clinicData}>
