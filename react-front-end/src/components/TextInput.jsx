@@ -1,7 +1,10 @@
 import TextField from '@material-ui/core/TextField';
+import { useState } from "react";
 import './TextInput.scss';
 
 export default function BasicTextFields(props) {
+
+  // const [input, setInput] = useState("");
 
   return (
     <form className="text-input--container" noValidate autoComplete="off">
@@ -15,6 +18,8 @@ export default function BasicTextFields(props) {
       className="text-input--field"
       label={props.children}
       defaultValue={props.defaultValue}
+      value={props.value}
+      onChange={event => props.setInput(event.target.value)}
     />
     </form>
   );
