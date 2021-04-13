@@ -27,7 +27,8 @@ export default function DataProvider(props) {
   const fetchAllClinics = () => {
     axios
       .get("/api/clinics")
-      .then(res => setClinicalVisits(res))
+      // .then(res => console.log(res.data.clinical_visits))
+      .then(res => setClinicalVisits(res.data.clinical_visits))
   };
 
   // useEffect(() => {

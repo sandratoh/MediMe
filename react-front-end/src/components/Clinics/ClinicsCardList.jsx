@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { dataContext } from "../hooks/DataProvider";
 import ClinicCard from "./ClinicCard";
@@ -9,7 +9,19 @@ export default function ClinicsCardList() {
     dataContext
   )
 
+  //  const [ reRender, setReRender ] = useState(false); 
+
+  // rerender true or false, default to false, and if save/delete is successful, then we change to true
+
+  // new state here that keeps track of rerender or not
+  // use effect depends on rerender state
+  // pass setRerender function to props => new visit/edit visit/clinic detail
+
+  // onsave, ondelete, if successful, then will do their axios stuff, and also setRerender to true
+
+  // cliniccardlist (parent): useEffect(()=> {get all clinics fetch >> cleanup function, setRerender to false}, [reRender state]), 
   
+
   // console.log("clinical visits in card list", clinicalVisits);
   // make new state to track???
 
@@ -38,6 +50,7 @@ export default function ClinicsCardList() {
           value={visit.clinic_id}
           clinics={clinics}
           onClick={() => handleClinicCardClick(visit.id)}
+
         />
       </Link>
     );

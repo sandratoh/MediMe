@@ -9,7 +9,7 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import "../../styles/form.scss";
 import { Redirect } from "react-router";
 
-export default function NewVisit() {
+export default function NewVisit(props) {
   const [medicalCenter, setMedicalCenter] = useState("");
   const [doctor, setDoctor] = useState("");
   const [date, setDate] = useState(currentDate());
@@ -37,7 +37,7 @@ export default function NewVisit() {
       .post("/api/clinics/", visitDetail)
       .then((res) => {
         // will only redirect if post goes through and no error is returned
-        !res.data.error && setRedirect(true);
+        !res.data.error && setRedirect(true) && props.setReRender(true);
       })
       .catch((err) => console.log(err));
   };
