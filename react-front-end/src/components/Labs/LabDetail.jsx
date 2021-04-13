@@ -1,5 +1,7 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 import { dataContext } from "../hooks/DataProvider";
+import axios from "axios";
 import IconButton from "../IconButton";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import "./LabDetail.scss";
@@ -32,21 +34,31 @@ const formatDate = (record) => {
 };
 
 export default function LabDetail() {
-  const { doctors, labRecordsDetail, labRecords, labs } = useContext(
-    dataContext
-  );
+  const {
+    doctors,
+    labRecordsDetail,
+    labRecords,
+    labs,
+    handleLabEditClick,
+  } = useContext(dataContext);
+
+  // Redirect state
+  const [redirect, setRedirect] = useState(false);
 
   const record = labRecords.find((record) => record.id === labRecordsDetail);
 
   const onDelete = () => {
-    console.log("delete button clicked");
-  };
-  const onEdit = () => {
-    console.log("edit button clicked");
+    axios
+      .delete(`/api/labs/${record.id}`)
+      .then((res) => {
+        !res.data.error && setRedirect(true);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
     <section className="lab-detail">
+      {redirect && <Redirect to="/labs" />}
       <div className="labs-list--icons">
         <ArrowBackIosIcon />
       </div>
@@ -84,18 +96,20 @@ export default function LabDetail() {
           delete
           variant="outlined"
           color="secondary"
-          onClick={() => onDelete()}
+          onClick={onDelete}
         >
           Delete
         </IconButton>
-        <IconButton
-          edit
-          variant="contained"
-          color="secondary"
-          onClick={() => onEdit()}
-        >
-          Edit
-        </IconButton>
+        <Link to="/labs/edit">
+          <IconButton
+            edit
+            variant="contained"
+            color="secondary"
+            onClick={() => handleLabEditClick(record.id)}
+          >
+            Edit
+          </IconButton>
+        </Link>
       </div>
     </section>
   );

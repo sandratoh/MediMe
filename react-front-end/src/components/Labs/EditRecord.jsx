@@ -4,7 +4,7 @@ import { dataContext } from "../hooks/DataProvider";
 import axios from "axios";
 
 import TextInput from "../TextInput";
-import DateInput, { currentDate } from "../DateInput";
+import DateInput from "../DateInput";
 import IconButton from "../IconButton";
 import LabRecordType from "./LabsDropdown";
 
@@ -31,13 +31,16 @@ const findDoctorById = (doctors, id) => {
   return name;
 };
 
-export default function NewRecord() {
-  const {};
+export default function EditRecord() {
+  const { labRecords, labs, doctors, labRecordsEdit } = useContext(dataContext);
+  const record = labRecords.find((record) => record.id === labRecordsEdit);
 
-  const [date, setDate] = useState(currentDate());
-  const [lab, setLab] = useState("");
-  const [recordType, setRecordType] = useState("");
-  const [doctor, setDoctor] = useState("");
+  const [date, setDate] = useState(record.date);
+  const [lab, setLab] = useState(findLabById(labs, record.lab_id));
+  const [recordType, setRecordType] = useState(record.type_of_test);
+  const [doctor, setDoctor] = useState(
+    findDoctorById(doctors, record.referral_doctor_id)
+  );
 
   // Redirect state
   const [redirect, setRedirect] = useState(false);
@@ -45,6 +48,7 @@ export default function NewRecord() {
   const onCancel = () => {
     console.log("cancel button clicked");
   };
+
   const onSave = () => {
     const labDetail = {
       user_id: 1,
@@ -57,7 +61,7 @@ export default function NewRecord() {
     console.log("labDetail", labDetail);
 
     return axios
-      .put("/api/labs/", labDetail)
+      .put(`/api/labs/${record.id}`, labDetail)
       .then((res) => {
         // will only redirect if post goes through and no error is returned
         !res.data.error && setRedirect(true);
@@ -67,14 +71,14 @@ export default function NewRecord() {
 
   return (
     <section className="lab-new">
-      {redirect && <Redirect to="/labs" />}
+      {redirect && <Redirect to="/labs/view" />}
       <div className="labs-list--icons">
         <ArrowBackIosIcon />
       </div>
-      <h1 className="labs-list--title">New Lab Record</h1>
+      <h1 className="labs-list--title">Update Lab Record</h1>
       <div className="lab-form--container">
         <div className="lab-form--field">
-          <DateInput value={date} setInput={setDate}>
+          <DateInput date={date} setInput={setDate}>
             Date:
           </DateInput>
           <TextInput required value={lab} setInput={setLab}>

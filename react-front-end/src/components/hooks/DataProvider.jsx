@@ -9,14 +9,16 @@ export default function DataProvider(props) {
 
   const [labRecords, setLabRecords] = useState([]);
   const [labs, setLabs] = useState([]);
-  const [doctors, setDoctors] = useState([]);
-  
   const [labRecordsDetail, setLabRecordsDetail] = useState({});
+  const [labRecordsEdit, setLabRecordsEdit] = useState({});
+
+  const [doctors, setDoctors] = useState([]);
 
   const handleClinicCardClick = (id) => setClinicalVisitDetail(id);
   const handleClinicEditClick = (id) => setClinicalVisitEdit(id);
 
   const handleLabCardClick = (id) => setLabRecordsDetail(id);
+  const handleLabEditClick = (id) => setLabRecordsEdit(id);
 
   // console.log("clinical visit detail state", clinicalVisitDetail);
   // console.log("lab record detail state", labRecordsDetail);
@@ -64,9 +66,11 @@ export default function DataProvider(props) {
     handleClinicCardClick,
     handleClinicEditClick,
     labRecordsDetail,
+    labRecordsEdit,
     labRecords,
     labs,
     handleLabCardClick,
+    handleLabEditClick,
   };
   // console.log("clinic data in data provider", clinicData);
 
