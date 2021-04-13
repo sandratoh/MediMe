@@ -1,9 +1,12 @@
 import { useState, useContext } from "react";
+import axios from "axios";
 import { dataContext } from "../hooks/DataProvider";
 import TextInput from "../TextInput";
 import ClinicGroupedButtons from "./ClinicGroupedButtons";
 import DateInput from "../DateInput";
 import IconButton from "../IconButton";
+
+import { Redirect } from "react-router";
 
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import "../../styles/form.scss";
@@ -30,12 +33,7 @@ const findDoctorById = (doctors, id) => {
   return name;
 };
 
-// const formatDate = (visit) => {
-//   const dateData = visit.date;
-//   const date = new Date(dateData);
 
-//   return date.toDateString();
-// };
 
 export default function EditVisit() {
   const { clinicalVisits, clinics, doctors, clinicalVisitEdit } = useContext(
@@ -51,16 +49,37 @@ export default function EditVisit() {
   const [reasonFor, setReasonFor] = useState(visit.reason_for_visit);
   const [diagnosis, setDiagnosis] = useState(visit.doctor_diagnosis);
   
+  // Manage redirect state based on axios call
+  const [redirect, setRedirect] = useState(false);
 
-  const onCancel = () => {
-    console.log("cancel button clicked");
+  const handleSave = () => {
+    const visitDetail = {
+      user_id: 1,
+      clinic_id: medicalCenter,
+      referral_doctor_id: doctor,
+      date,
+      type_of_visit: visitType,
+      reason_for_visit: reasonFor,
+      doctor_diagnosis: diagnosis,
+    };
+    console.log("visitDetail", visitDetail);
+
+    return axios
+    .put(`/api/clinics/${visit.id}`, visitDetail)
+    .then((res) => {
+      // will only redirect if post goes through and no error is returned
+      !res.data.error && setRedirect(true);
+    })
+    .catch((err) => console.log(err));
+
   };
-  const onSave = () => {
-    console.log("save button clicked");
-  };
+
+  const onCancel = () => setRedirect(true);
+  const onSave = () => handleSave();
 
   return (
     <section className="clinic-new">
+      {(redirect) && <Redirect to="/clinics/view" />}
       <div className="clinics-list--icons">
         <ArrowBackIosIcon />
       </div>
@@ -79,7 +98,7 @@ export default function EditVisit() {
             cancel
             variant="outlined"
             color="secondary"
-            onClick={() => onCancel()}
+            onClick={onCancel}
           >
             Cancel
           </IconButton>
@@ -87,7 +106,7 @@ export default function EditVisit() {
             save
             variant="contained"
             color="secondary"
-            onClick={() => onSave()}
+            onClick={onSave}
           >
             Save
           </IconButton>
