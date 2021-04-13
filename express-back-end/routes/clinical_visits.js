@@ -8,7 +8,7 @@ const {
 module.exports = (client) => {
   // get all clinical visit records
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM clinical_visits;`;
+    let query = `SELECT * FROM clinical_visits ORDER BY date DESC;`;
 
     client
       .query(query)
