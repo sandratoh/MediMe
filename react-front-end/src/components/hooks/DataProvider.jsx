@@ -14,7 +14,7 @@ export default function DataProvider(props) {
 
   const [doctors, setDoctors] = useState([]);
 
-  const handleClinicCardClick = (id) => setClinicalVisitDetail(id);
+  
   const handleClinicEditClick = (id) => setClinicalVisitEdit(id);
 
   const handleLabCardClick = (id) => setLabRecordsDetail(id);
@@ -30,9 +30,9 @@ export default function DataProvider(props) {
       .then(res => setClinicalVisits(res))
   };
 
-  useEffect(() => {
-    fetchAllClinics()
-  }, []);
+  // useEffect(() => {
+  //   fetchAllClinics()
+  // }, []);
 
   useEffect(() => {
     const apiClinicalVisitsUrl = "/api/clinics";
@@ -73,11 +73,11 @@ export default function DataProvider(props) {
   // need to rename this variable
   const data = {
     clinicalVisitDetail,
+    setClinicalVisitDetail,
     clinicalVisitEdit,
     clinicalVisits,
     clinics,
     doctors,
-    handleClinicCardClick,
     handleClinicEditClick,
     labRecordsDetail,
     labRecordsEdit,
