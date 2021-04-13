@@ -28,7 +28,7 @@ export default function DashboardIcon(props) {
     <Card
       className="dashboard-card"
     >
-      <div className="card--details">
+      <div className="dashboard-card--detail">
       <img src={iconByCategory(props)} component="img" alt="card icon"/>
       <Typography variant="h5">{props.children}</Typography>
       </div>
