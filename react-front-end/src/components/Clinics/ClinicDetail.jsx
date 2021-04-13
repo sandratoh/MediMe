@@ -1,9 +1,10 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 import { dataContext } from "../hooks/DataProvider";
 import IconButton from "../IconButton";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import "./ClinicDetail.scss";
+import axios from "axios";
 
 const findClinicById = (clinics, id) => {
   let name;
@@ -34,23 +35,33 @@ const formatDate = (visit) => {
 };
 
 export default function ClinicDetail() {
-  const { clinicalVisits, clinics, doctors, clinicalVisitDetail } = useContext(
+  const { clinicalVisits, clinics, doctors, clinicalVisitDetail, handleClinicEditClick } = useContext(
     dataContext
   );
+
+  // Manage redirect state based on axios call
+  const [redirect, setRedirect] = useState(false);
 
   const visit = clinicalVisits.find(
     (visit) => visit.id === clinicalVisitDetail
   );
 
   const onDelete = () => {
-    console.log("delete button clicked");
+    axios
+      .delete(`/api/clinics/${visit.id}`)
+      .then(res => {
+        !res.data.error && setRedirect(true);
+      })
+      .catch(err => console.log(err));
   };
+
   const onEdit = () => {
     console.log("edit button clicked");
   };
 
   return (
     <section className="clinic-detail">
+       {(redirect) && <Redirect to="/clinics" />}
       <div className="clinics-list--icons">
         <ArrowBackIosIcon />
       </div>
@@ -92,19 +103,20 @@ export default function ClinicDetail() {
           delete
           variant="outlined"
           color="secondary"
-          onClick={() => onDelete()}
+          onClick={onDelete}
         >
           Delete
         </IconButton>
-        <IconButton
+        <Link to="/clinics/edit"><IconButton
           edit
           variant="contained"
           color="secondary"
-          onClick={() => onEdit()}
+          onClick={() => handleClinicEditClick(visit.id)}
         >
           Edit
-        </IconButton>
+        </IconButton></Link>
       </div>
     </section>
   );
 }
+
