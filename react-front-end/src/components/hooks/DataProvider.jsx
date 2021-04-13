@@ -4,13 +4,17 @@ import axios from "axios";
 export default function DataProvider(props) {
   const [clinicalVisits, setClinicalVisits] = useState([]);
   const [clinics, setClinics] = useState([]);
+  const [clinicalVisitDetail, setClinicalVisitDetail] = useState({});
+  const [clinicalVisitEdit, setClinicalVisitEdit] = useState({});
+
   const [labRecords, setLabRecords] = useState([]);
   const [labs, setLabs] = useState([]);
   const [doctors, setDoctors] = useState([]);
-  const [clinicalVisitDetail, setClinicalVisitDetail] = useState({});
+  
   const [labRecordsDetail, setLabRecordsDetail] = useState({});
 
   const handleClinicCardClick = (id) => setClinicalVisitDetail(id);
+  const handleClinicEditClick = (id) => setClinicalVisitEdit(id);
 
   const handleLabCardClick = (id) => setLabRecordsDetail(id);
 
@@ -53,10 +57,12 @@ export default function DataProvider(props) {
   // need to rename this variable
   const data = {
     clinicalVisitDetail,
+    clinicalVisitEdit,
     clinicalVisits,
     clinics,
     doctors,
     handleClinicCardClick,
+    handleClinicEditClick,
     labRecordsDetail,
     labRecords,
     labs,

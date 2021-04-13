@@ -34,7 +34,7 @@ const formatDate = (visit) => {
 };
 
 export default function ClinicDetail() {
-  const { clinicalVisits, clinics, doctors, clinicalVisitDetail } = useContext(
+  const { clinicalVisits, clinics, doctors, clinicalVisitDetail, handleClinicEditClick } = useContext(
     dataContext
   );
 
@@ -96,15 +96,16 @@ export default function ClinicDetail() {
         >
           Delete
         </IconButton>
-        <IconButton
+        <Link to="/clinics/edit"><IconButton
           edit
           variant="contained"
           color="secondary"
-          onClick={() => onEdit()}
+          onClick={() => handleClinicEditClick(visit.id)}
         >
           Edit
-        </IconButton>
+        </IconButton></Link>
       </div>
     </section>
   );
 }
+
