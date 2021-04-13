@@ -9,6 +9,7 @@ import Header from "./Header";
 import NewVisit from "./Clinics/NewVisit";
 import EditVisit from "./Clinics/EditVisit";
 import NewRecord from "./Labs/NewRecord";
+import EditRecord from "./Labs/EditRecord";
 import ClinicDetail from "./Clinics/ClinicDetail";
 
 const theme = createMuiTheme({
@@ -46,6 +47,7 @@ function App() {
 
             <Route exact path="/clinics" component={ClinicsList} />
 
+            <Route path="/labs/edit" component={EditRecord} />
             <Route path="/labs/new" component={NewRecord} />
             <Route path="/labs/view" component={LabDetail} />
 
