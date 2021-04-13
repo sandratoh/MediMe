@@ -2,7 +2,7 @@ import { useState } from "react";
 import { dataContext } from "../hooks/DataProvider";
 import TextInput from "../TextInput";
 import ClinicGroupedButtons from "./ClinicGroupedButtons";
-import DateInput from "../DateInput";
+import DateInput, { currentDate } from "../DateInput";
 import IconButton from "../IconButton";
 
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
@@ -10,6 +10,29 @@ import "../../styles/form.scss";
 
 export default function NewVisit() {
  const [typeOfVisit, setTypeOfVisit] = useState(null);
+
+  // const [visitDetail, setVisitDetail] = useState({
+  //   user_id: 1, 
+  //   clinic_id: null,
+  //   referral_doctor_id: null,
+  //   date: currentDate(), 
+  //   type_of_visit: 'CLINIC', 
+  //   reason_for_visit: '', 
+  //   doctor_diagnosis: ''
+  // })
+
+  // const handleSave = (clinic_id, referral_doctor_id, date, type_of_visit, reason_for_visit, doctor_diagnosis) => {
+  //   const visit = {
+  //     clinic_id: function() {}, // find clinic id by name, if no name, then create a clinic and then return the id 
+  //     referral_doctor_id: function() {}, // find doctor id by name, if no name, then create a doctor and then return the id 
+  //     date: , 
+  //     type_of_visit: 'CLINIC', 
+  //     reason_for_visit: '', 
+  //     doctor_diagnosis: ''
+  //   }
+  // }
+
+  // user_id, clinic_id, referral_doctor_id, date, type_of_visit, reason_for_visit, doctor_diagnosis
 
   // const addVisit = () => {
   //   return axios
