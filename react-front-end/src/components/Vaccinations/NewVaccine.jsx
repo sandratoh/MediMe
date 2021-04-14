@@ -33,6 +33,8 @@ export default function VaccineNew() {
           <TextInput required value={vaccine} setInput={setVaccine}>
             Vaccine Name
           </TextInput>
+
+          <p className="form-label">Total Number of Doses</p>
           
           <CountButton />
         </div>
