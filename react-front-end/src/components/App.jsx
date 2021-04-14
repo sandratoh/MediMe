@@ -14,6 +14,8 @@ import EditRecord from "./Labs/EditRecord";
 import ClinicDetail from "./Clinics/ClinicDetail";
 import Dashboard from "./Dashboard";
 import DoseDetail from "./Vaccinations/Doses/DoseDetail";
+import Sucess from "./Vaccinations/Success";
+
 
 // Stylesheet import
 import "./App.scss";
@@ -58,6 +60,8 @@ function App() {
             <Route exact path="/labs" component={LabsList} />
 
             <Route exact path="/dose" component={DoseDetail} />
+
+            <Route exact path="/vaccinations/success" component={Sucess} />
 
             <Route exact path="/" component={Dashboard} />
           </Switch>
