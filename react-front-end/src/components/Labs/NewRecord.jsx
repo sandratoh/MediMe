@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Redirect } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import axios from "axios";
 
 import TextInput from "../TextInput";
@@ -19,9 +19,10 @@ export default function NewRecord() {
   // Redirect state
   const [redirect, setRedirect] = useState(false);
 
-  const onCancel = () => {
-    console.log("cancel button clicked");
-  };
+  // Use react router hook to go back to prev history
+  const history = useHistory();
+  const onCancel = () => history.goBack();
+
   const onSave = () => {
     const labDetail = {
       user_id: 1,
@@ -67,7 +68,7 @@ export default function NewRecord() {
             cancel
             variant="outlined"
             color="secondary"
-            onClick={() => onCancel()}
+            onClick={onCancel}
           >
             Cancel
           </IconButton>
