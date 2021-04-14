@@ -1,0 +1,21 @@
+.vaccinations-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.vaccinations-list--icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vaccinations-list--title {
+  margin: 32px 0;
+}
+
+.vaccinations-list--content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 16px 0;
+}

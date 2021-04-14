@@ -7,10 +7,10 @@ export default function DataProvider(props) {
   const [clinics, setClinics] = useState([]);
   const [clinicalVisitDetail, setClinicalVisitDetail] = useState({});
   const [clinicalVisitEdit, setClinicalVisitEdit] = useState({});
-  
+
   // Doctor states
   const [doctors, setDoctors] = useState([]);
-  
+
   // Lab states
   const [labRecords, setLabRecords] = useState([]);
   const [labs, setLabs] = useState([]);
@@ -19,6 +19,7 @@ export default function DataProvider(props) {
 
   // Vaccination states
   const [vaccinations, setVaccinations] = useState([]);
+  const [vaccinationDetail, setVaccinationDetail] = useState([]);
   const [doses, setDoses] = useState([]);
   const [doseDetail, setDoseDetail] = useState({});
   const [doseEdit, setDoseEdit] = useState({});
@@ -104,15 +105,14 @@ export default function DataProvider(props) {
     });
   };
 
-
   useEffect(() => {
     const apiClinicalVisitsUrl = "/api/clinics";
     const apiClinicsUrl = "/api/clinics/list";
     const apiDoctorsUrl = "/api/doctors";
     const apiLabRecordsUrl = "/api/labs";
     const apiLabsUrl = "/api/labs/list";
-    const apiVaccinationsUrl = "/api/vaccinations"
-    const apiVaccinationDosesUrl = "/api/vaccinations/7/dose"
+    const apiVaccinationsUrl = "/api/vaccinations";
+    const apiVaccinationDosesUrl = "/api/vaccinations/7/dose";
 
     Promise.all([
       axios.get(apiClinicalVisitsUrl),
@@ -123,7 +123,7 @@ export default function DataProvider(props) {
       axios.get(apiVaccinationsUrl),
       axios.get(apiVaccinationDosesUrl),
     ]).then((res) => {
-      console.log('res', res);
+      // console.log("res", res);
       const visits = res[0].data.clinical_visits;
       const clinics = res[1].data.clinics;
       const doctors = res[2].data.doctors;
@@ -131,7 +131,7 @@ export default function DataProvider(props) {
       const labs = res[4].data.labs;
       const vaccinations = res[5].data.vaccinations;
       const doses = res[6].data.doses;
-      
+
       setClinicalVisits(visits);
       setClinics(clinics);
       setDoctors(doctors);
@@ -170,6 +170,7 @@ export default function DataProvider(props) {
     labs,
     // Vaccinations exports
     vaccinations,
+    setVaccinationDetail,
     doses,
     doseDetail,
     doseEdit,
@@ -177,12 +178,11 @@ export default function DataProvider(props) {
     setDoseEdit,
   };
 
- 
-  console.log('data', data);
-  
+  // console.log('data', data);
+
   return (
     <dataContext.Provider value={data}>{props.children}</dataContext.Provider>
-    );
-  }
-  
+  );
+}
+
 export const dataContext = createContext();
