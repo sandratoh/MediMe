@@ -20,7 +20,6 @@ module.exports = (client) => {
 
   // add new lab record
   router.post("/", (req, res) => {
-    console.log("req.body", req.body);
     // may need to update user_id later...
     const user_id = 1;
 

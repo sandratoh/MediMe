@@ -30,7 +30,6 @@ const addLab = async (lab) => {
     lab.type_of_test,
   ];
 
-  console.log("values", values);
   return client.query(query, values).then((res) => res.rows);
 };
 
