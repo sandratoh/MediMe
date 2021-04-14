@@ -19,35 +19,17 @@ export default function DataProvider(props) {
   const handleLabCardClick = (id) => setLabRecordsDetail(id);
   const handleLabEditClick = (id) => setLabRecordsEdit(id);
 
-  // console.log("clinical visit detail state", clinicalVisitDetail);
-  // console.log("lab record detail state", labRecordsDetail);
-  // console.log("labs - data provider", labs);
-  // console.log("lab records - data provider", labRecords);
-  // const fetchAllClinics = () => {
-  //   axios
-  //     .get("/api/clinics")
-  //     // .then(res => console.log(res.data.clinical_visits))
-  //     .then(res => setClinicalVisits(res.data.clinical_visits))
-  // };
+  // clinics
   const addClinicVisit = (visitDetail) => {
     return axios
       .post("/api/clinics/", visitDetail)
       .then((res) => {
-        // will only redirect if post goes through and no error is returned
-        // !res.data.error && setRedirect(true) && props.setReRender(true);
-        // refreshAllClinics();
-        console.log("res data from provider", res.data);
-        console.log("res data[0] from provider", res.data[0]);
-        console.log("prev state", clinicalVisits);
         setClinicalVisits([res.data[0], ...clinicalVisits]);
 
         return res;
-        // !res.data.error && setRedirect(true);
       })
       .catch((err) => console.log(err));
   };
-
-  console.log("after state", clinicalVisits);
 
   const editClinicVisit = (visitDetail) => {
     return axios
@@ -65,10 +47,42 @@ export default function DataProvider(props) {
     return axios
       .delete(`/api/clinics/${clinicalVisitDetail}`)
       .then((res) => {
-        console.log("res from deletCLinicVisit", res);
-        // !res.data.error && setClinicalVisits(...clinicalVisits)
-        // setClinicalVisits([...clinicalVisits])
         refreshAllClinics();
+
+        return res;
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // labs
+  const addLabRecord = (labDetail) => {
+    return axios
+      .post("/api/labs/", labDetail)
+      .then((res) => {
+        setLabRecords([res.data[0], ...labRecords]);
+
+        return res;
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const editLabRecord = (labDetail) => {
+    return axios
+      .put(`/api/labs/${labRecordsDetail}`, labDetail)
+      .then((res) => {
+        // will only redirect if put goes through and no error is returned
+        setLabRecords([res.data[0], ...labRecords]);
+
+        return res;
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const deleteLabRecord = () => {
+    return axios
+      .delete(`/api/labs/${labRecordsDetail}`)
+      .then((res) => {
+        refreshAllLabs();
 
         return res;
       })
@@ -77,14 +91,19 @@ export default function DataProvider(props) {
 
   const refreshAllClinics = () => {
     return axios.get("/api/clinics").then((res) => {
-      console.log("refreshing all clinics:", res);
       setClinicalVisits(res.data.clinical_visits);
     });
   };
 
-  useEffect(() => {
-    refreshAllClinics();
-  }, []);
+  const refreshAllLabs = () => {
+    return axios.get("/api/labs").then((res) => {
+      setLabRecords(res.data.labs);
+    });
+  };
+
+  // useEffect(() => {
+  //   refreshAllClinics();
+  // }, []);
 
   useEffect(() => {
     const apiClinicalVisitsUrl = "/api/clinics";
@@ -102,9 +121,6 @@ export default function DataProvider(props) {
       axios.get(apiLabRecordsUrl),
       axios.get(apiLabsUrl),
     ]).then((res) => {
-      // console.log('visit', res[0].data.clinical_visits);
-      // console.log('clinics-list', res[1].data.clinics);
-
       const visits = res[0].data.clinical_visits;
       const visitDetail = res[1].data.clinical_visit;
       const clinics = res[2].data.clinics;
@@ -141,6 +157,9 @@ export default function DataProvider(props) {
     addClinicVisit,
     deleteClinicVisit,
     editClinicVisit,
+    addLabRecord,
+    deleteLabRecord,
+    editLabRecord,
   };
   // console.log("clinic data in data provider", clinicData);
 

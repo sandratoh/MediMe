@@ -1,7 +1,6 @@
 import { useState, useContext } from "react";
 import { Redirect } from "react-router";
 import { dataContext } from "../hooks/DataProvider";
-import axios from "axios";
 
 import TextInput from "../TextInput";
 import DateInput from "../DateInput";
@@ -32,7 +31,13 @@ const findDoctorById = (doctors, id) => {
 };
 
 export default function EditRecord() {
-  const { labRecords, labs, doctors, labRecordsEdit } = useContext(dataContext);
+  const {
+    labRecords,
+    labs,
+    doctors,
+    labRecordsEdit,
+    editLabRecord,
+  } = useContext(dataContext);
   const record = labRecords.find((record) => record.id === labRecordsEdit);
 
   const [date, setDate] = useState(record.date);
@@ -45,9 +50,7 @@ export default function EditRecord() {
   // Redirect state
   const [redirect, setRedirect] = useState(false);
 
-  const onCancel = () => {
-    console.log("cancel button clicked");
-  };
+  const onCancel = () => setRedirect(true);
 
   const onSave = () => {
     const labDetail = {
@@ -58,15 +61,9 @@ export default function EditRecord() {
       type_of_test: recordType,
     };
 
-    console.log("labDetail", labDetail);
-
-    return axios
-      .put(`/api/labs/${record.id}`, labDetail)
-      .then((res) => {
-        // will only redirect if post goes through and no error is returned
-        !res.data.error && setRedirect(true);
-      })
-      .catch((err) => console.log(err));
+    editLabRecord(labDetail).then((res) => {
+      !res.data.error && setRedirect(true);
+    });
   };
 
   return (
@@ -94,7 +91,7 @@ export default function EditRecord() {
             cancel
             variant="outlined"
             color="secondary"
-            onClick={() => onCancel()}
+            onClick={onCancel}
           >
             Cancel
           </IconButton>

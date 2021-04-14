@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { dataContext } from "../hooks/DataProvider";
-import axios from "axios";
+
 import IconButton from "../IconButton";
 import BackButton from "../BackButton";
 import "./LabDetail.scss";
@@ -40,6 +40,7 @@ export default function LabDetail() {
     labRecords,
     labs,
     handleLabEditClick,
+    deleteLabRecord,
   } = useContext(dataContext);
 
   // Redirect state
@@ -48,12 +49,9 @@ export default function LabDetail() {
   const record = labRecords.find((record) => record.id === labRecordsDetail);
 
   const onDelete = () => {
-    axios
-      .delete(`/api/labs/${record.id}`)
-      .then((res) => {
-        !res.data.error && setRedirect(true);
-      })
-      .catch((err) => console.log(err));
+    deleteLabRecord().then((res) => {
+      !res.data.error && setRedirect(true);
+    });
   };
 
   return (

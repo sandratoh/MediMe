@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Redirect, useHistory } from "react-router";
-import axios from "axios";
 
 import TextInput from "../TextInput";
 import DateInput, { currentDate } from "../DateInput";
 import IconButton from "../IconButton";
 import LabRecordType from "./LabsDropdown";
+import { dataContext } from "../hooks/DataProvider";
 
 import BackButton from "../BackButton";
 import "./Record.scss";
 
 export default function NewRecord() {
+  const { addLabRecord } = useContext(dataContext);
+
   const [date, setDate] = useState(currentDate());
   const [lab, setLab] = useState("");
   const [recordType, setRecordType] = useState("");
@@ -32,15 +34,9 @@ export default function NewRecord() {
       type_of_test: recordType,
     };
 
-    console.log("labDetail", labDetail);
-
-    return axios
-      .post("/api/labs/", labDetail)
-      .then((res) => {
-        // will only redirect if post goes through and no error is returned
-        !res.data.error && setRedirect(true);
-      })
-      .catch((err) => console.log(err));
+    addLabRecord(labDetail).then((res) => {
+      !res.data.error && setRedirect(true);
+    });
   };
 
   return (

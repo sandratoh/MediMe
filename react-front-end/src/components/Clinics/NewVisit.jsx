@@ -36,10 +36,9 @@ export default function NewVisit(props) {
       doctor_diagnosis: diagnosis,
     };
 
-    addClinicVisit(visitDetail)
-      .then(res => {
-        !res.data.error && setRedirect(true);
-      })
+    addClinicVisit(visitDetail).then((res) => {
+      !res.data.error && setRedirect(true);
+    });
 
     // return axios
     //   .post("/api/clinics/", visitDetail)
