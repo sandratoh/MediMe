@@ -13,6 +13,9 @@ export default function VaccineNew() {
 
   const [redirect, setRedirect] = useState('');
 
+  const [vaccine, setVaccine] = useState('');
+  const [doseNum, setDoseNum] = useState(null);
+
   const onCancel = () => setRedirect(true);
   const onSave = () => console.log("saved button clikced");
 
@@ -28,10 +31,10 @@ export default function VaccineNew() {
           
           
           
-          <TextInput >
+          <TextInput required value={vaccine} setInput={setVaccine}>
             Vaccine Name
           </TextInput>
-          <TextInput >
+          <TextInput required value={doseNum} setInput={setDoseNum}>
             Total # of doses
           </TextInput>
         </div>
