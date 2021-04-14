@@ -28,7 +28,7 @@ export default function CountButton2() {
       </IconButton>
       {count}
       <IconButton onClick={() => {
-              setCount(count + 1);
+              setCount(count + 1, 5);
             }}>
         < AddCircleIcon/>
       </IconButton>
