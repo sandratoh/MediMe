@@ -12,6 +12,8 @@ import { formatDate } from "../../../helpers/dateHelpers";
 // Stylesheet
 import "./DoseDetail.scss";
 
+// ** Need to refactor to use data from /api/vaccinations/:id/dose
+
 const vaccinations = [
   {
   id: 1,
