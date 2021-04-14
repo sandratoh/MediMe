@@ -1,6 +1,14 @@
+// Libraries
 import { Link } from "react-router-dom";
+
+// Components
 import BackButton from "../../BackButton";
 import IconButton from "../../IconButton";
+
+// Helpers
+import { findNameById } from "../../../helpers/selectors";
+
+// Stylesheet
 import "./DoseDetail.scss";
 
 const vaccinations = [
@@ -48,7 +56,6 @@ const doses = [
 
 export default function DoseDetail() {
   const vaccinationDetail = 2; //change this with useContext data
-  const vaccination = vaccinations.find(v => v.id === vaccinationDetail);
 
   const doseDetail = 3; //change this with useContext data
   const dose = doses.find(d => d.id === doseDetail);
@@ -79,20 +86,20 @@ export default function DoseDetail() {
         <div className="dose-detail--data">
           <h5 className="form-label">Vaccination Name:</h5>
           <p className="form-body">
-            {vaccination && vaccination.name}
+            {findNameById(vaccinations, vaccinationDetail)}
           </p>
         </div>
         <div className="dose-detail--data">
           <h5 className="">Date:</h5>
-          <p className="form-body">{dose && formatDate(dose.date_taken)}</p>
+          <p className="form-body">{formatDate(dose.date_taken)}</p>
         </div>
         <div className="dose-detail--data">
           <h5 className="">Administration Site:</h5>
-          <p className="form-body">{dose && dose.administration_site}</p>
+          <p className="form-body">{dose.administration_site}</p>
         </div>
         <div className="dose-detail--data">
           <h5 className="">{dose.next_scheduled_dose ? 'Next Scheduled Dose:' : 'No Future Dose Scheduled.'}</h5>
-          <p className="form-body">{dose && formatDate(dose.next_scheduled_dose)}</p>
+          <p className="form-body">{formatDate(dose.next_scheduled_dose)}</p>
         </div>
       </div>
 

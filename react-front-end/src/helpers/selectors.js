@@ -9,4 +9,4 @@
 export function findNameById(arr, id) {
   const dataObj = arr.find(elem => elem.id === id);
   return dataObj ? dataObj.name : null;
-}
+};
