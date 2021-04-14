@@ -4,7 +4,7 @@ import LabsCardList from "./LabsCardList";
 import IconButton from "../IconButton";
 import "./LabsList.scss";
 
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import BackButton from "../BackButton";
 
 // const labs = [
 //   {
@@ -54,7 +54,7 @@ export default function LabsList(props) {
     <section className="labs-list">
       <Header />
       <div className="labs-list--icons">
-        <ArrowBackIosIcon />
+        <BackButton />
         <IconButton new color="secondary" variant="contained">
           <Link to="/labs/new">New</Link>
         </IconButton>

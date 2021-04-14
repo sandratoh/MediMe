@@ -8,7 +8,7 @@ import DateInput from "../DateInput";
 import IconButton from "../IconButton";
 import LabRecordType from "./LabsDropdown";
 
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import BackButton from "../BackButton";
 import "./Record.scss";
 
 const findLabById = (labs, id) => {
@@ -73,7 +73,7 @@ export default function EditRecord() {
     <section className="lab-new">
       {redirect && <Redirect to="/labs/view" />}
       <div className="labs-list--icons">
-        <ArrowBackIosIcon />
+        <BackButton />
       </div>
       <h1 className="labs-list--title">Update Lab Record</h1>
       <div className="lab-form--container">

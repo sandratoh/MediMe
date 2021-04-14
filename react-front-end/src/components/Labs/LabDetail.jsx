@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { dataContext } from "../hooks/DataProvider";
 import axios from "axios";
 import IconButton from "../IconButton";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import BackButton from "../BackButton";
 import "./LabDetail.scss";
 
 const findLabById = (labs, id) => {
@@ -60,7 +60,7 @@ export default function LabDetail() {
     <section className="lab-detail">
       {redirect && <Redirect to="/labs" />}
       <div className="labs-list--icons">
-        <ArrowBackIosIcon />
+        <BackButton />
       </div>
       <h1 className="labs-list--title">Lab Record Detail</h1>
 

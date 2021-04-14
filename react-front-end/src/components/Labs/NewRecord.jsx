@@ -7,7 +7,7 @@ import DateInput, { currentDate } from "../DateInput";
 import IconButton from "../IconButton";
 import LabRecordType from "./LabsDropdown";
 
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import BackButton from "../BackButton";
 import "./Record.scss";
 
 export default function NewRecord() {
@@ -46,7 +46,7 @@ export default function NewRecord() {
     <section className="lab-new">
       {redirect && <Redirect to="/labs" />}
       <div className="labs-list--icons">
-        <ArrowBackIosIcon />
+        <BackButton />
       </div>
       <h1 className="labs-list--title">New Lab Record</h1>
       <div className="lab-form--container">
