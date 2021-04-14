@@ -1,5 +1,4 @@
-import { formatDate, currentDate, formatDateToISO } from './dateHelpers';
-import { beforeEach } from '@testing-library/react';
+import { formatDate } from './dateHelpers';
 
 describe('formatDate', () => {
   const dateStr = "2021-04-22T07:00:00.000Z";

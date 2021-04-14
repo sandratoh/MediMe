@@ -1,11 +1,16 @@
+// Libraries
 import { useContext, useState } from "react";
 import { Redirect } from "react-router";
-import BackButton from "../BackButton";
 
-import TextInput from "../TextInput";
+// Components
+import BackButton from "../BackButton";
 import ClinicGroupedButtons from "./ClinicGroupedButtons";
-import DateInput, { currentDate } from "../DateInput";
+import DateInput from "../DateInput";
 import IconButton from "../IconButton";
+import TextInput from "../TextInput";
+
+// Helpers
+import { currentDate } from "../../helpers/dateHelpers";
 import { dataContext } from "../hooks/DataProvider";
 
 import "../../styles/form.scss";

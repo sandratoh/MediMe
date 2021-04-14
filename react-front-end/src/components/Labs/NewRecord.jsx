@@ -1,13 +1,19 @@
+// Libraries
 import { useState, useContext } from "react";
 import { Redirect } from "react-router";
 
-import TextInput from "../TextInput";
-import DateInput, { currentDate } from "../DateInput";
+// Components
+import BackButton from "../BackButton";
+import DateInput from "../DateInput";
 import IconButton from "../IconButton";
 import LabRecordType from "./LabsDropdown";
-import BackButton from "../BackButton";
+import TextInput from "../TextInput";
+
+// Helpers
+import { currentDate } from "../../helpers/dateHelpers";
 import { dataContext } from "../hooks/DataProvider";
 
+// Stylesheet
 import "../../styles/form.scss";
 
 export default function NewRecord() {
