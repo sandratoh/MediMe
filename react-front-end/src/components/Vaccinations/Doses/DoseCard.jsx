@@ -3,7 +3,7 @@ import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 
 // Helpers
-import { formatDate } from "../../../helpers/formatters";
+import { formatDate } from "../../../helpers/dateHelpers";
 
 // Stylesheet
 import "../../../styles/card.scss";

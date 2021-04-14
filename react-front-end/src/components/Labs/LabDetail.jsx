@@ -9,7 +9,7 @@ import BackButton from "../BackButton";
 // Helpers
 import { dataContext } from "../hooks/DataProvider";
 import { findNameById } from "../../helpers/selectors";
-import { formatDate } from "../../helpers/formatters";
+import { formatDate } from "../../helpers/dateHelpers";
 
 // Stylesheet
 import "./LabDetail.scss";

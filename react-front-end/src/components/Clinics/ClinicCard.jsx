@@ -6,7 +6,7 @@ import clinicIcon from "../../images/clinic.png";
 
 // Helpers
 import { findNameById } from "../../helpers/selectors";
-import { formatDate } from "../../helpers/formatters";
+import { formatDate } from "../../helpers/dateHelpers";
 
 // Stylesheet
 import "../../styles/card.scss";

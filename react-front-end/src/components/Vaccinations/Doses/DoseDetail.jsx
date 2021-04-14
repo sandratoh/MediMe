@@ -7,7 +7,7 @@ import IconButton from "../../IconButton";
 
 // Helpers
 import { findNameById } from "../../../helpers/selectors";
-import { formatDate } from "../../../helpers/formatters";
+import { formatDate } from "../../../helpers/dateHelpers";
 
 // Stylesheet
 import "./DoseDetail.scss";

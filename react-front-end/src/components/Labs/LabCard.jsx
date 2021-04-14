@@ -12,7 +12,7 @@ import xrayIcon from "../../images/x-ray.png";
 
 // Helpers
 import { findNameById } from "../../helpers/selectors";
-import { formatDate } from "../../helpers/formatters";
+import { formatDate } from "../../helpers/dateHelpers";
 
 // Stylesheet
 import "../../styles/card.scss";
