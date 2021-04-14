@@ -4,7 +4,7 @@ import { dataContext } from "../hooks/DataProvider";
 import LabCard from "./LabCard";
 
 export default function LabsCardList() {
-  const { labRecords, labs, handleLabCardClick } = useContext(dataContext);
+  const { labRecords, labs, setLabRecordsDetail } = useContext(dataContext);
 
   const records = labRecords.map((record) => {
     return (
@@ -14,7 +14,7 @@ export default function LabsCardList() {
         date={record.date}
         type={record.type_of_test}
         value={record.lab_id}
-        onClick={() => handleLabCardClick(record.id)}
+        onClick={() => setLabRecordsDetail(record.id)}
       />
     );
   });

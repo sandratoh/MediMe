@@ -47,7 +47,7 @@ export default function ClinicsCardList() {
   //     .then(res => setClinicalVisits(res))
   // }, []);
 
-  const handleClinicCardClick = (id) => setClinicalVisitDetail(id);
+  
 
   // console.log("cliniical Visits: ", clinicalVisitDetail)
   const visits = clinicalVisits.map((visit) => {
@@ -61,7 +61,7 @@ export default function ClinicsCardList() {
           type={visit.type_of_visit}
           value={visit.clinic_id}
           clinics={clinics}
-          onClick={() => handleClinicCardClick(visit.id)}
+          onClick={() => setClinicalVisitDetail(visit.id)}
 
         />
       </Link>

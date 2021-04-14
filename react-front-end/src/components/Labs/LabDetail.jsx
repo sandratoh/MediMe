@@ -20,8 +20,8 @@ export default function LabDetail() {
     labRecordsDetail,
     labRecords,
     labs,
-    handleLabEditClick,
     deleteLabRecord,
+    setLabRecordsEdit,
   } = useContext(dataContext);
 
   // Redirect state
@@ -84,7 +84,7 @@ export default function LabDetail() {
             edit
             variant="contained"
             color="secondary"
-            onClick={() => handleLabEditClick(record.id)}
+            onClick={() => setLabRecordsEdit(record.id)}
           >
             Edit
           </IconButton>

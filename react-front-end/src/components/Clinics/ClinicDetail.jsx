@@ -15,7 +15,7 @@ import { formatDate } from "../../helpers/dateHelpers";
 import "./ClinicDetail.scss";
 
 export default function ClinicDetail() {
-  const { clinicalVisits, clinics, doctors, clinicalVisitDetail, handleClinicEditClick, deleteClinicVisit } = useContext(
+  const { clinicalVisits, clinics, doctors, clinicalVisitDetail, setClinicalVisitEdit, deleteClinicVisit } = useContext(
     dataContext
   );
 
@@ -32,10 +32,6 @@ export default function ClinicDetail() {
         !res.data.error && setRedirect(true);
     });
   }
-
-  const onEdit = () => {
-    console.log("edit button clicked");
-  };
 
   return (
     <section className="clinic-detail">
@@ -89,7 +85,7 @@ export default function ClinicDetail() {
           edit
           variant="contained"
           color="secondary"
-          onClick={() => handleClinicEditClick(visit.id)}
+          onClick={() => setClinicalVisitEdit(visit.id)}
         >
           Edit
         </IconButton></Link>

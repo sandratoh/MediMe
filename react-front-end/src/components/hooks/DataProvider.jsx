@@ -14,11 +14,6 @@ export default function DataProvider(props) {
 
   const [doctors, setDoctors] = useState([]);
 
-  const handleClinicEditClick = (id) => setClinicalVisitEdit(id);
-
-  const handleLabCardClick = (id) => setLabRecordsDetail(id);
-  const handleLabEditClick = (id) => setLabRecordsEdit(id);
-
   // clinics
   const addClinicVisit = (visitDetail) => {
     return axios
@@ -145,13 +140,11 @@ export default function DataProvider(props) {
     clinicalVisits,
     clinics,
     doctors,
-    handleClinicEditClick,
+    setClinicalVisitEdit,
     labRecordsDetail,
     labRecordsEdit,
     labRecords,
     labs,
-    handleLabCardClick,
-    handleLabEditClick,
     refreshAllClinics,
     addClinicVisit,
     deleteClinicVisit,
@@ -159,6 +152,8 @@ export default function DataProvider(props) {
     addLabRecord,
     deleteLabRecord,
     editLabRecord,
+    setLabRecordsEdit,
+    setLabRecordsDetail
   };
   // console.log("clinic data in data provider", clinicData);
 
