@@ -3,6 +3,7 @@ import { Redirect } from "react-router";
 import BackButton from "../BackButton";
 
 import TextInput from "../TextInput";
+import CountButton from "../CountButton"
 
 import IconButton from "../IconButton";
 // import { dataContext } from "../hooks/DataProvider";
@@ -29,14 +30,11 @@ export default function VaccineNew() {
       <div className="clinics-form--container">
         <div className="clinics--form--field">
           
-          
-          
           <TextInput required value={vaccine} setInput={setVaccine}>
             Vaccine Name
           </TextInput>
-          <TextInput required value={doseNum} setInput={setDoseNum}>
-            Total # of doses
-          </TextInput>
+          
+          <CountButton />
         </div>
         <div className="clinics-form--user-action">
           <IconButton
