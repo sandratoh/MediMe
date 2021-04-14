@@ -1,7 +1,8 @@
+// Libraries import
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { useContext } from "react";
-import { dataContext } from "./hooks/DataProvider";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+// Components import
 import ClinicsList from "./Clinics/ClinicsList";
 import LabsList from "./Labs/LabsList";
 import LabDetail from "./Labs/LabDetail";
@@ -12,7 +13,9 @@ import NewRecord from "./Labs/NewRecord";
 import EditRecord from "./Labs/EditRecord";
 import ClinicDetail from "./Clinics/ClinicDetail";
 import Dashboard from "./Dashboard";
+import DoseDetail from "./Vaccinations/Doses/DoseDetail";
 
+// Stylesheet import
 import "./App.scss";
 
 
@@ -35,7 +38,6 @@ const theme = createMuiTheme({
 });
 
 function App() {
-  // const { data } = useContext(dataContext);
 
   return (
     <ThemeProvider theme={theme}>
@@ -54,6 +56,8 @@ function App() {
             <Route exact path="/labs/new" component={NewRecord} />
             <Route exact path="/labs/view" component={LabDetail} />
             <Route exact path="/labs" component={LabsList} />
+
+            <Route exact path="/dose" component={DoseDetail} />
 
             <Route exact path="/" component={Dashboard} />
           </Switch>
