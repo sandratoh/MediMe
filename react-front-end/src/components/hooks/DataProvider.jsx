@@ -18,11 +18,17 @@ export default function DataProvider(props) {
   const [labRecordsEdit, setLabRecordsEdit] = useState({});
 
   // Vaccination states
+  // all vaccinations
   const [vaccinations, setVaccinations] = useState([]);
+  // vaccination id
   const [vaccinationDetail, setVaccinationDetail] = useState([]);
-  const [doses, setDoses] = useState([]);
+  // // vaccinations/:id/dose
+  // const [vaccinationDoses, setVaccinationDoses] = useState([]);
+  // dose id  for vaccine/:id/dose:id <<
   const [doseDetail, setDoseDetail] = useState({});
+  // edit dose id
   const [doseEdit, setDoseEdit] = useState({});
+  // all doses
   const [allDoses, setAllDoses] = useState([]);
 
   // Clinics database calls
@@ -106,6 +112,75 @@ export default function DataProvider(props) {
     });
   };
 
+  // Vaccinations & Doses database calls
+
+  // add vaccine record
+  const addVaccinationRecord = (vaccinationDetail) => {
+    return axios
+      .post("/api/vaccinations/", vaccinationDetail)
+      .then((res) => {
+        setVaccinations([res.data[0], ...vaccinationDetail]);
+
+        return res;
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // add dose record
+  // vaccine_id needs to set it from onClick
+  const addDoseRecord = (doseDetail, vaccinationDetail) => {
+    return axios
+      .post(`/api/vaccinations/${vaccinationDetail}/dose`, doseDetail)
+      .then((res) => {
+        setAllDoses([res.data[0], ...doseDetail]);
+
+        return res;
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // edit dose record
+  const editDoseRecord = (doseDetail, vaccinationDetail) => {
+    return axios
+      .put(
+        `/api/vaccinations/${vaccinationDetail}/dose/${doseDetail}`,
+        doseDetail
+      )
+      .then((res) => {
+        setAllDoses([res.data[0], ...doseDetail]);
+
+        return res;
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // delete dose record
+  const deleteDoseRecord = () => {
+    return axios
+      .delete(`/api/vaccinations/${vaccinationDetail}/dose/${doseDetail}`)
+      .then((res) => {
+        refreshAllDoses();
+        refreshAllVaccinations();
+
+        return res;
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // refresh all vaccines
+  const refreshAllVaccinations = () => {
+    return axios.get("/api/vaccinations").then((res) => {
+      setVaccinations(res.data.vaccinations);
+    });
+  };
+
+  // refresh all dose
+  const refreshAllDoses = () => {
+    return axios.get("/api/vaccinations/dose").then((res) => {
+      setAllDoses(res.data.doses);
+    });
+  };
+
   useEffect(() => {
     const apiClinicalVisitsUrl = "/api/clinics";
     const apiClinicsUrl = "/api/clinics/list";
@@ -172,12 +247,15 @@ export default function DataProvider(props) {
     // Vaccinations exports
     vaccinations,
     setVaccinationDetail,
-    doses,
     doseDetail,
     doseEdit,
     setDoseDetail,
     setDoseEdit,
     allDoses,
+    addVaccinationRecord,
+    addDoseRecord,
+    editDoseRecord,
+    deleteDoseRecord,
   };
 
   // console.log("data", data);
