@@ -1,30 +1,15 @@
 import { action } from "@storybook/addon-actions";
-import CountButton from "../components/CountButton";
+import CountButton2 from "../components/CountButton";
 import "../index.scss";
 
 export default {
   title: "Count",
-  component: CountButton,
+  component: CountButton2,
 };
 
 export const Initial = () => (
-  <CountButton
+  <CountButton2
   // clinical_visits={clinical_visits}
   // onChange={action("onChange")}
-  ></CountButton>
+  ></CountButton2>
 );
-
-// export const Preselected = () => (
-//   <ClinicGroupedButtons
-//     // clinical_visits={clinical_visits}
-//     // onChange={action("onChange")}
-
-//     value={"CLINIC"}
-//   ></ClinicGroupedButtons>
-// );
-
-// export const Clickable = () => (
-//   <ClinicGroupedButtons
-//     onClick={action("Button clicked")}
-//   ></ClinicGroupedButtons>
-// );
