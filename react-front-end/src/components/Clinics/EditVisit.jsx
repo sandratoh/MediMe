@@ -73,7 +73,7 @@ export default function EditVisit() {
   };
 
   return (
-    <section className="clinic-new">
+    <section className="clinic-edit">
       {redirect && <Redirect to="/clinics/view" />}
       <div className="clinics-list--icons">
         <ArrowBackIosIcon />

@@ -8,7 +8,7 @@ import LabRecordType from "./LabsDropdown";
 import { dataContext } from "../hooks/DataProvider";
 
 import BackButton from "../BackButton";
-import "./Record.scss";
+import "../../styles/form.scss";
 
 export default function NewRecord() {
   const { addLabRecord } = useContext(dataContext);
@@ -40,14 +40,14 @@ export default function NewRecord() {
   };
 
   return (
-    <section className="lab-new">
+    <section className="labs-new">
       {redirect && <Redirect to="/labs" />}
       <div className="labs-list--icons">
         <BackButton />
       </div>
       <h1 className="labs-list--title">New Lab Record</h1>
-      <div className="lab-form--container">
-        <div className="lab-form--field">
+      <div className="labs-form--container">
+        <div className="labs-form--field">
           <DateInput value={date} setInput={setDate}>
             Date:
           </DateInput>
@@ -59,7 +59,7 @@ export default function NewRecord() {
             Referral Doctor:
           </TextInput>
         </div>
-        <div className="lab-form--user-action">
+        <div className="labs-form--user-action">
           <IconButton
             cancel
             variant="outlined"

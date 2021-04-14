@@ -8,7 +8,7 @@ import IconButton from "../IconButton";
 import LabRecordType from "./LabsDropdown";
 
 import BackButton from "../BackButton";
-import "./Record.scss";
+import "../../styles/form.scss";
 
 const findLabById = (labs, id) => {
   let name;
@@ -67,14 +67,14 @@ export default function EditRecord() {
   };
 
   return (
-    <section className="lab-new">
+    <section className="labs-edit">
       {redirect && <Redirect to="/labs/view" />}
       <div className="labs-list--icons">
         <BackButton />
       </div>
       <h1 className="labs-list--title">Update Lab Record</h1>
-      <div className="lab-form--container">
-        <div className="lab-form--field">
+      <div className="labs-form--container">
+        <div className="labs-form--field">
           <DateInput date={date} setInput={setDate}>
             Date:
           </DateInput>
@@ -86,7 +86,7 @@ export default function EditRecord() {
             Referral Doctor:
           </TextInput>
         </div>
-        <div className="lab-form--user-action">
+        <div className="labs-form--user-action">
           <IconButton
             cancel
             variant="outlined"

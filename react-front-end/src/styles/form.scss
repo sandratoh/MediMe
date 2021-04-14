@@ -1,22 +1,28 @@
-.clinic-new {
+.clinic-new,
+.clinic-edit,
+.labs-new,
+.labs-edit {
   display: flex;
   flex-direction: column;
 }
 
-.clinic-form--container {
+.clinic-form--container,
+.labs-form--container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.clinic-form--field {
+.clinic-form--field,
+.labs-form--field {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.clinic-form--user-action {
+.clinic-form--user-action,
+.labs-form--user-action {
   display: flex;
   justify-content: space-between;
   width: 95%;
