@@ -8,7 +8,7 @@ export default function Dashboard() {
     <section className="dashboard-card--container">
       <Link to="/clinics">
         <DashboardCard category="clinics">
-          Clinical Records
+          Clinical Visits
         </DashboardCard>
         </Link>
       <Link to="/labs">

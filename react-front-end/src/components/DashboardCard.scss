@@ -21,7 +21,7 @@
   .dashboard-card--icon {
     display: flex;
     height: 100%;
-    margin: 4px 0;
+    margin-bottom: 12px;
     min-height: 80px;
     min-width: 80px;
     width: 100%;
@@ -31,8 +31,6 @@
     display: flex;
     text-align: center;
     align-items: center;
-    min-height: 56px;
-    margin-top: 8px;
     font-weight: bold;
   };
 };
