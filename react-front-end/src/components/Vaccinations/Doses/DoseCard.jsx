@@ -45,7 +45,7 @@ export default function DoseCard(props) {
     <Card className="card--dose" variant="outlined">
       <div className="card--details">
         <Typography variant="subtitle2" color="textSecondary">
-          {`Dose #/${props.total}`}
+          {`Dose ${props.current}/${props.total}`}
         </Typography>
       </div>
       <div className="card--details">

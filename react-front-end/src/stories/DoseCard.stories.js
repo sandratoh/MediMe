@@ -5,4 +5,6 @@ export default {
   component: DoseCard,
 };
 
-export const Dose1 = () => <DoseCard></DoseCard>;
+export const Dose1 = () => (
+  <DoseCard current="1" total="3" date_taken="Sun Apr 12 2012"></DoseCard>
+);

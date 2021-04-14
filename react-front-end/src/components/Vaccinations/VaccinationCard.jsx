@@ -47,17 +47,13 @@ export default function VaccinationCard() {
           <Typography variant="subtitle1">{vaccinations[0].name}</Typography>
         </AccordionSummary>
         <AccordionDetails className="card--vaccination--doses">
-          {dosesForHappyShot.map}
-          <DoseCard
-            // current={}
-            total={dosesForHappyShot.length}
-            date_taken={dosesForHappyShot[0].date_taken}
-          ></DoseCard>
-          <DoseCard
-            // current={}
-            total={dosesForHappyShot.length}
-            date_taken={dosesForHappyShot[1].date_taken}
-          ></DoseCard>
+          {dosesForHappyShot.map((dose, index) => (
+            <DoseCard
+              current={index + 1}
+              total={dosesForHappyShot.length}
+              date_taken={dose.date_taken}
+            ></DoseCard>
+          ))}
         </AccordionDetails>
       </Accordion>
     </div>
