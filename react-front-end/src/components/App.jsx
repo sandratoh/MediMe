@@ -13,15 +13,12 @@ import NewRecord from "./Labs/NewRecord";
 import EditRecord from "./Labs/EditRecord";
 import ClinicDetail from "./Clinics/ClinicDetail";
 import Dashboard from "./Dashboard";
-<<<<<<< HEAD
 import VaccineNew from "./Vaccinations/NewVaccine";
 import DoseNew from "./Vaccinations/Doses/NewDose";
-// import DoseEdit from "./Vaccinations/Doses/EditDose";
-=======
+import DoseEdit from "./Vaccinations/Doses/EditDose";
 import DoseDetail from "./Vaccinations/Doses/DoseDetail";
 import Sucess from "./Vaccinations/Success";
 
->>>>>>> f2aae61dbc577b9e06e6bb77e8159761942953a4
 
 // Stylesheet import
 import "./App.scss";
@@ -66,8 +63,8 @@ function App() {
             <Route exact path="/labs" component={LabsList} />
 
             <Route exact path="/vaccinations/new" component={VaccineNew} />
-            <Route exact path="/vaccinations/:id/dose/:id" component={DoseNew} />
-            {/* <Route exact path="/vaccinations/:id/dose/edit" component={DoseEdit} /> */}
+            <Route exact path="/vaccinations/:id/dose/new" component={DoseNew} />
+            <Route exact path="/vaccinations/:id/dose/edit" component={DoseEdit} />
             <Route exact path="/dose" component={DoseDetail} />
 
             <Route exact path="/vaccinations/success" component={Sucess} />
