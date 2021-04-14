@@ -1,5 +1,6 @@
 // Libraries
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 // Material UI Components
 import Accordion from "@material-ui/core/Accordion";
@@ -41,9 +42,11 @@ export default function VaccinationCard(props) {
             ></DoseCard>
           ))}
         </AccordionDetails>
-        <IconButton newDose variant="contained" color="primary">
-          New Dose
-        </IconButton>
+        <Link to="/vaccinations/dose/new">
+          <IconButton newDose variant="contained" color="primary">
+            New Dose
+          </IconButton>
+        </Link>
       </Accordion>
     </div>
   );
