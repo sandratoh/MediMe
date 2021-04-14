@@ -1,14 +1,15 @@
 import { useContext } from "react"
 import { dataContext } from "../hooks/DataProvider"
+import VaccinationCard from "./VaccinationCard";
 
 export default function VaccinationsList() {
   const { vaccinations } = useContext(dataContext)
   
-  console.log("vaccinations:", vaccinations);
   return (
     <div>
 
-      <h1>Vaccinations List Page</h1>
+      <h1>Vaccinations</h1>
+      <VaccinationCard />
     </div>
   )
 }
