@@ -24,10 +24,20 @@
   flex-direction: column;
 }
 
+.card--vaccination {
+  width: 100%;
+
+  &--doses {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+}
+
 .card--dose {
   display: flex;
-  min-width: 327px;
-  width: 72vw;
+  width: 80%;
   height: 32px;
   padding: 16px;
   justify-content: space-between;
@@ -40,11 +50,8 @@
   }
 }
 
-.card--vaccination {
-  width: 80vw;
-
-  &--doses {
-    display: flex;
-    flex-direction: column;
-  }
+#panel1a-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
