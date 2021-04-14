@@ -1,5 +1,8 @@
+// Material UI Components
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
+
+// Icons
 import bloodIcon from "../../images/blood.png";
 import mammogramIcon from "../../images/mammogram.png";
 import mriIcon from "../../images/mri.png";
@@ -7,6 +10,10 @@ import ultrasoundIcon from "../../images/ultrasound.png";
 import urineIcon from "../../images/urine.png";
 import xrayIcon from "../../images/x-ray.png";
 
+// Helpers
+import { findNameById } from "../../helpers/selectors";
+
+// Stylesheet
 import "../../styles/card.scss";
 
 const labs = [
@@ -51,26 +58,13 @@ export default function CardListItem(props) {
     return date.toDateString();
   };
 
-  const findLabById = (props) => {
-    let name;
-    labs.forEach((lab) => {
-      if (lab.id === props.value) {
-        // console.log("lab", lab);
-        // console.log("lab name", lab.name);
-
-        name = lab.name;
-      }
-    });
-    return name;
-  };
-
   return (
     <Card className="card" variant="outlined" onClick={props.onClick}>
       <div className="card--details">
         <Typography variant="subtitle1" color="textSecondary">
           {formatDate(props)}
         </Typography>
-        <Typography variant="subtitle1">{findLabById(props)}</Typography>
+        <Typography variant="subtitle1">{findNameById(labs, props.value)}</Typography>
       </div>
       <div className="card--icon">
         <img src={iconByType(props)} component="img" alt="card icon" />
