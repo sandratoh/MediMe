@@ -3,7 +3,8 @@ import { Redirect } from "react-router";
 import BackButton from "../../BackButton";
 
 import TextInput from "../../TextInput";
-import DateInput, { currentDate } from "../../DateInput";
+import DateInput from "../../DateInput";
+import { currentDate } from "../../../helpers/dateHelpers";
 import IconButton from "../../IconButton";
 import { dataContext } from "../../hooks/DataProvider";
 
