@@ -49,16 +49,11 @@ const doses = [
 export default function DoseDetail() {
   const vaccinationDetail = 2;
 
-  const dose = doses.find(dose => dose.id === vaccinationDetail);
+  const doseDetail = 3;
 
-  const findVaccinationById = (vaccinations, id) => {
-    let name;
-    vaccinations.forEach(vaccination => {
-      vaccination.id === id && (name = vaccination.name);
-    })
-    console.log(name);
-    return name;
-  };
+  const dose = doses.find(dose => dose.id === doseDetail);
+
+  const vaccination = vaccinations.find(v => v.id === vaccinationDetail);
 
   const onDelete = () => {
     console.log('Delete button pressed');
@@ -79,7 +74,7 @@ export default function DoseDetail() {
         <div className="dose-detail--data">
           <h5 className="form-label">Vaccination Name:</h5>
           <p className="form-body">
-            {dose && findVaccinationById(vaccinations, vaccinationDetail)}
+            {vaccination && vaccination.name}
           </p>
         </div>
         <div className="dose-detail--data">
