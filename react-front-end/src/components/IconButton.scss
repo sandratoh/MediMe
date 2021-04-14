@@ -4,6 +4,7 @@
 
 $button-height: 36px;
 $wide-button: 40vw;
+$med-button: 136px;
 $small-button: 98px;
 
 .button {
@@ -12,12 +13,19 @@ $small-button: 98px;
   a {
     color: $white;
   }
-};
+}
 
-.button--save, .button--delete, .button--cancel, .button--edit {
+.button--save,
+.button--delete,
+.button--cancel,
+.button--edit {
   width: $wide-button;
-};
+}
 
 .button--new {
   width: $small-button;
-};
+}
+
+.button--new-dose {
+  width: $med-button;
+}

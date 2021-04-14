@@ -23,6 +23,7 @@ export default function DataProvider(props) {
   const [doses, setDoses] = useState([]);
   const [doseDetail, setDoseDetail] = useState({});
   const [doseEdit, setDoseEdit] = useState({});
+  const [allDoses, setAllDoses] = useState([]);
 
   // Clinics database calls
   const addClinicVisit = (visitDetail) => {
@@ -112,7 +113,8 @@ export default function DataProvider(props) {
     const apiLabRecordsUrl = "/api/labs";
     const apiLabsUrl = "/api/labs/list";
     const apiVaccinationsUrl = "/api/vaccinations";
-    const apiVaccinationDosesUrl = "/api/vaccinations/7/dose";
+    // const apiVaccinationDosesUrl = "/api/vaccinations/7/dose";
+    const apiAllDoseUrl = "/api/vaccinations/dose";
 
     Promise.all([
       axios.get(apiClinicalVisitsUrl),
@@ -121,7 +123,8 @@ export default function DataProvider(props) {
       axios.get(apiLabRecordsUrl),
       axios.get(apiLabsUrl),
       axios.get(apiVaccinationsUrl),
-      axios.get(apiVaccinationDosesUrl),
+      // axios.get(apiVaccinationDosesUrl),
+      axios.get(apiAllDoseUrl),
     ]).then((res) => {
       // console.log("res", res);
       const visits = res[0].data.clinical_visits;
@@ -130,7 +133,8 @@ export default function DataProvider(props) {
       const records = res[3].data.labs;
       const labs = res[4].data.labs;
       const vaccinations = res[5].data.vaccinations;
-      const doses = res[6].data.doses;
+      const allDoses = res[6].data.doses;
+      // const doses = res[6].data.doses;
 
       setClinicalVisits(visits);
       setClinics(clinics);
@@ -138,8 +142,8 @@ export default function DataProvider(props) {
       setLabRecords(records);
       setLabs(labs);
       setVaccinations(vaccinations);
-      setDoses(doses);
-
+      setAllDoses(allDoses);
+      // setDoses(doses);
       return;
     });
   }, []);
@@ -176,9 +180,10 @@ export default function DataProvider(props) {
     doseEdit,
     setDoseDetail,
     setDoseEdit,
+    allDoses,
   };
 
-  // console.log('data', data);
+  console.log("data", data);
 
   return (
     <dataContext.Provider value={data}>{props.children}</dataContext.Provider>

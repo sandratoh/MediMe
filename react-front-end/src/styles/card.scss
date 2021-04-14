@@ -26,6 +26,7 @@
 
 .card--vaccination {
   width: 100%;
+  margin-bottom: 16px;
 
   &--doses {
     display: flex;
@@ -38,7 +39,7 @@
 .card--dose {
   display: flex;
   width: 80%;
-  height: 32px;
+  height: 24px;
   padding: 16px;
   justify-content: space-between;
   align-items: center;
@@ -54,4 +55,5 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 24px;
 }
