@@ -32,9 +32,13 @@ const findDoctorById = (doctors, id) => {
 };
 
 export default function EditVisit() {
-  const { clinicalVisits, clinics, doctors, clinicalVisitEdit } = useContext(
-    dataContext
-  );
+  const {
+    clinicalVisits,
+    clinics,
+    doctors,
+    clinicalVisitEdit,
+    editClinicVisit,
+  } = useContext(dataContext);
   const visit = clinicalVisits.find((visit) => visit.id === clinicalVisitEdit);
   const [medicalCenter, setMedicalCenter] = useState(
     findClinicById(clinics, visit.clinic_id)
@@ -63,13 +67,9 @@ export default function EditVisit() {
       doctor_diagnosis: diagnosis,
     };
 
-    return axios
-      .put(`/api/clinics/${visit.id}`, visitDetail)
-      .then((res) => {
-        // will only redirect if post goes through and no error is returned
-        !res.data.error && setRedirect(true);
-      })
-      .catch((err) => console.log(err));
+    editClinicVisit(visitDetail).then((res) => {
+      !res.data.error && setRedirect(true);
+    });
   };
 
   return (

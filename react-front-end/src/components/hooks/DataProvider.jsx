@@ -14,7 +14,6 @@ export default function DataProvider(props) {
 
   const [doctors, setDoctors] = useState([]);
 
-  
   const handleClinicEditClick = (id) => setClinicalVisitEdit(id);
 
   const handleLabCardClick = (id) => setLabRecordsDetail(id);
@@ -30,51 +29,61 @@ export default function DataProvider(props) {
   //     // .then(res => console.log(res.data.clinical_visits))
   //     .then(res => setClinicalVisits(res.data.clinical_visits))
   // };
-  const addClinicVisit =(visitDetail) => {
+  const addClinicVisit = (visitDetail) => {
     return axios
       .post("/api/clinics/", visitDetail)
       .then((res) => {
         // will only redirect if post goes through and no error is returned
         // !res.data.error && setRedirect(true) && props.setReRender(true);
         // refreshAllClinics();
-        console.log('res data from provider', res.data);
-        console.log('res data[0] from provider', res.data[0]);
-        console.log('prev state', clinicalVisits);
-        setClinicalVisits([res.data[0], ...clinicalVisits])
+        console.log("res data from provider", res.data);
+        console.log("res data[0] from provider", res.data[0]);
+        console.log("prev state", clinicalVisits);
+        setClinicalVisits([res.data[0], ...clinicalVisits]);
 
         return res;
         // !res.data.error && setRedirect(true);
       })
       .catch((err) => console.log(err));
-    };
-    
-    console.log('after state', clinicalVisits);
-    
+  };
+
+  console.log("after state", clinicalVisits);
+
+  const editClinicVisit = (visitDetail) => {
+    return axios
+      .put(`/api/clinics/${clinicalVisitDetail}`, visitDetail)
+      .then((res) => {
+        // will only redirect if put goes through and no error is returned
+        setClinicalVisits([res.data[0], ...clinicalVisits]);
+
+        return res;
+      })
+      .catch((err) => console.log(err));
+  };
+
   const deleteClinicVisit = () => {
     return axios
       .delete(`/api/clinics/${clinicalVisitDetail}`)
       .then((res) => {
-        console.log('res from deletCLinicVisit', res);
+        console.log("res from deletCLinicVisit", res);
         // !res.data.error && setClinicalVisits(...clinicalVisits)
         // setClinicalVisits([...clinicalVisits])
         refreshAllClinics();
-        
+
         return res;
-      }).catch((err) => console.log(err))
+      })
+      .catch((err) => console.log(err));
   };
 
   const refreshAllClinics = () => {
-    return axios
-      .get("/api/clinics")
-      .then(res => {
-        console.log('refreshing all clinics:', res);
-        setClinicalVisits(res.data.clinical_visits)}
-      )
+    return axios.get("/api/clinics").then((res) => {
+      console.log("refreshing all clinics:", res);
+      setClinicalVisits(res.data.clinical_visits);
+    });
   };
 
-
   useEffect(() => {
-    refreshAllClinics()
+    refreshAllClinics();
   }, []);
 
   useEffect(() => {
@@ -130,7 +139,8 @@ export default function DataProvider(props) {
     handleLabEditClick,
     refreshAllClinics,
     addClinicVisit,
-    deleteClinicVisit
+    deleteClinicVisit,
+    editClinicVisit,
   };
   // console.log("clinic data in data provider", clinicData);
 
