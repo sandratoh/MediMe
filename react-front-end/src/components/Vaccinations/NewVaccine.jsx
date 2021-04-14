@@ -18,7 +18,7 @@ export default function VaccineNew() {
 
   return (
     <section className="clinics-new">
-      {redirect && <Redirect to="/clinics" />}
+      {redirect && <Redirect to="/vaccinations" />}
       <div className="clinics-list--icons">
         <BackButton />
       </div>

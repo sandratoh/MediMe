@@ -13,7 +13,7 @@ import EditRecord from "./Labs/EditRecord";
 import ClinicDetail from "./Clinics/ClinicDetail";
 import Dashboard from "./Dashboard";
 import VaccineNew from "./Vaccinations/NewVaccine";
-// import DoseNew from "./Vaccinations/Doses/NewDose";
+import DoseNew from "./Vaccinations/Doses/NewDose";
 // import DoseEdit from "./Vaccinations/Doses/EditDose";
 
 import "./App.scss";
@@ -59,7 +59,7 @@ function App() {
             <Route exact path="/labs" component={LabsList} />
 
             <Route exact path="/vaccinations/new" component={VaccineNew} />
-            {/* <Route exact path="/vaccinations/:id/dose/:id" component={DoseNew} /> */}
+            <Route exact path="/vaccinations/:id/dose/:id" component={DoseNew} />
             {/* <Route exact path="/vaccinations/:id/dose/edit" component={DoseEdit} /> */}
 
             <Route exact path="/" component={Dashboard} />
