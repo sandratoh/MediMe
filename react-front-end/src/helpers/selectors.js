@@ -37,3 +37,9 @@ export function findVaccinationById(vaccinations, id) {
   const vaccination = vaccinations.find(v => v.id === id);
   return vaccination.name;
 }
+
+// Refactor and combine all selectors to one
+export function findNameById(arr, id) {
+  const dataObj = arr.find(elem => elem.id === id);
+  return dataObj.name;
+}
