@@ -17,13 +17,11 @@ import VaccineNew from "./Vaccinations/NewVaccine";
 import DoseNew from "./Vaccinations/Doses/NewDose";
 import DoseEdit from "./Vaccinations/Doses/EditDose";
 import DoseDetail from "./Vaccinations/Doses/DoseDetail";
-import Sucess from "./Vaccinations/Success";
-
+import Success from "./Vaccinations/Success";
 
 // Stylesheet import
 import "./App.scss";
 import VaccinationsList from "./Vaccinations/VaccinationsList";
-
 
 const theme = createMuiTheme({
   typography: {
@@ -44,14 +42,12 @@ const theme = createMuiTheme({
 });
 
 function App() {
-
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
         <Router>
           <Header />
           <Switch>
-            
             <Route path="/clinics/edit" component={EditVisit} />
             <Route path="/clinics/new" component={NewVisit} />
             <Route path="/clinics/view" component={ClinicDetail} />
@@ -64,12 +60,16 @@ function App() {
             <Route exact path="/labs" component={LabsList} />
 
             <Route exact path="/vaccinations/new" component={VaccineNew} />
-            <Route exact path="/vaccinations/:id/dose/new" component={DoseNew} />
-            <Route exact path="/vaccinations/:id/dose/edit" component={DoseEdit} />
-            <Route exact path="/dose" component={DoseDetail} />
+            <Route exact path="/vaccinations/dose/new" component={DoseNew} />
+            <Route exact path="/vaccinations/dose/edit" component={DoseEdit} />
+            <Route
+              exact
+              path="/vaccinations/dose/view"
+              component={DoseDetail}
+            />
 
             <Route exact path="/vaccinations" component={VaccinationsList} />
-            <Route exact path="/vaccinations/success" component={Sucess} />
+            <Route exact path="/vaccinations/success" component={Success} />
 
             <Route exact path="/" component={Dashboard} />
           </Switch>
