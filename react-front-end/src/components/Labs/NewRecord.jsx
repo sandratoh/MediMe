@@ -5,9 +5,9 @@ import TextInput from "../TextInput";
 import DateInput, { currentDate } from "../DateInput";
 import IconButton from "../IconButton";
 import LabRecordType from "./LabsDropdown";
+import BackButton from "../BackButton";
 import { dataContext } from "../hooks/DataProvider";
 
-import BackButton from "../BackButton";
 import "../../styles/form.scss";
 
 export default function NewRecord() {

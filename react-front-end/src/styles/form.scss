@@ -1,12 +1,12 @@
-.clinic-new,
-.clinic-edit,
+.clinics-new,
+.clinics-edit,
 .labs-new,
 .labs-edit {
   display: flex;
   flex-direction: column;
 }
 
-.clinic-form--container,
+.clinics-form--container,
 .labs-form--container {
   display: flex;
   flex-direction: column;
@@ -14,14 +14,14 @@
   align-items: center;
 }
 
-.clinic-form--field,
+.clinics-form--field,
 .labs-form--field {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.clinic-form--user-action,
+.clinics-form--user-action,
 .labs-form--user-action {
   display: flex;
   justify-content: space-between;

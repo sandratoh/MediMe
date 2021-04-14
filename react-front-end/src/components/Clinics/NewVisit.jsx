@@ -1,14 +1,14 @@
 import { useContext, useState } from "react";
-import axios from "axios";
+import { Redirect } from "react-router";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+
 import TextInput from "../TextInput";
 import ClinicGroupedButtons from "./ClinicGroupedButtons";
 import DateInput, { currentDate } from "../DateInput";
 import IconButton from "../IconButton";
-
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import "../../styles/form.scss";
-import { Redirect } from "react-router";
 import { dataContext } from "../hooks/DataProvider";
+
+import "../../styles/form.scss";
 
 export default function NewVisit(props) {
   const { addClinicVisit } = useContext(dataContext);
@@ -39,27 +39,17 @@ export default function NewVisit(props) {
     addClinicVisit(visitDetail).then((res) => {
       !res.data.error && setRedirect(true);
     });
-
-    // return axios
-    //   .post("/api/clinics/", visitDetail)
-    //   .then((res) => {
-    //     // will only redirect if post goes through and no error is returned
-    //     // !res.data.error && setRedirect(true) && props.setReRender(true);
-    //     refreshAllClinics();
-    //     !res.data.error && setRedirect(true);
-    //   })
-    //   .catch((err) => console.log(err));
   };
 
   return (
-    <section className="clinic-new">
+    <section className="clinics-new">
       {redirect && <Redirect to="/clinics" />}
       <div className="clinics-list--icons">
         <ArrowBackIosIcon />
       </div>
       <h1 className="clinics-list--title">New Clinical Visit</h1>
-      <div className="clinic-form--container">
-        <div className="clinic--form--field">
+      <div className="clinics-form--container">
+        <div className="clinics--form--field">
           <DateInput value={date} setInput={setDate}>
             Date:
           </DateInput>
@@ -77,7 +67,7 @@ export default function NewVisit(props) {
             Doctor's Diagnosis
           </TextInput>
         </div>
-        <div className="clinic-form--user-action">
+        <div className="clinics-form--user-action">
           <IconButton
             cancel
             variant="outlined"

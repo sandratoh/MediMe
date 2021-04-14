@@ -1,13 +1,13 @@
 import { useState, useContext } from "react";
 import { Redirect } from "react-router";
-import { dataContext } from "../hooks/DataProvider";
 
 import TextInput from "../TextInput";
 import DateInput from "../DateInput";
 import IconButton from "../IconButton";
 import LabRecordType from "./LabsDropdown";
-
 import BackButton from "../BackButton";
+import { dataContext } from "../hooks/DataProvider";
+
 import "../../styles/form.scss";
 
 const findLabById = (labs, id) => {

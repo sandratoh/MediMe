@@ -1,14 +1,13 @@
 import { useState, useContext } from "react";
-import axios from "axios";
-import { dataContext } from "../hooks/DataProvider";
+import { Redirect } from "react-router";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+
 import TextInput from "../TextInput";
 import ClinicGroupedButtons from "./ClinicGroupedButtons";
 import DateInput from "../DateInput";
 import IconButton from "../IconButton";
+import { dataContext } from "../hooks/DataProvider";
 
-import { Redirect } from "react-router";
-
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import "../../styles/form.scss";
 
 const findClinicById = (clinics, id) => {
@@ -73,14 +72,14 @@ export default function EditVisit() {
   };
 
   return (
-    <section className="clinic-edit">
+    <section className="clinics-edit">
       {redirect && <Redirect to="/clinics/view" />}
       <div className="clinics-list--icons">
         <ArrowBackIosIcon />
       </div>
       <h1 className="clinics-list--title">Update Clinical Visit</h1>
-      <div className="clinic-form--container">
-        <div className="clinic--form--field">
+      <div className="clinics-form--container">
+        <div className="clinics--form--field">
           <DateInput date={date} setInput={setDate}>
             Date:
           </DateInput>
@@ -116,7 +115,7 @@ export default function EditVisit() {
             Doctor's Diagnosis
           </TextInput>
         </div>
-        <div className="clinic-form--user-action">
+        <div className="clinics-form--user-action">
           <IconButton
             cancel
             variant="outlined"
