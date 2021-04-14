@@ -5,10 +5,9 @@ import IconButton from "../IconButton";
 import "./ClinicsList.scss";
 import { useContext, useEffect, useState } from "react";
 
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import axios from "axios";
 import { dataContext } from "../hooks/DataProvider";
-
+import BackButton from "../BackButton";
 
 export default function ClinicsList(props) {
   // const { fetchAllClinics } = useContext(dataContext)
@@ -30,7 +29,7 @@ export default function ClinicsList(props) {
     <section className="clinics-list">
       <Header />
       <div className="clinics-list--icons">
-        <ArrowBackIosIcon />
+        <BackButton />
         <IconButton new color="secondary" variant="contained">
           <Link to="/clinics/new">New</Link>
         </IconButton>
