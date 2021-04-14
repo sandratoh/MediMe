@@ -36,7 +36,7 @@ export default function DataProvider(props) {
       .put(`/api/clinics/${clinicalVisitDetail}`, visitDetail)
       .then((res) => {
         // will only redirect if put goes through and no error is returned
-        setClinicalVisits([res.data[0], ...clinicalVisits]);
+        refreshAllClinics();
 
         return res;
       })
@@ -70,8 +70,7 @@ export default function DataProvider(props) {
     return axios
       .put(`/api/labs/${labRecordsDetail}`, labDetail)
       .then((res) => {
-        // will only redirect if put goes through and no error is returned
-        setLabRecords([res.data[0], ...labRecords]);
+        refreshAllLabs();
 
         return res;
       })
