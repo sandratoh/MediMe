@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { dataContext } from "../hooks/DataProvider";
 import IconButton from "../IconButton";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import BackButton from "../BackButton";
 import "./ClinicDetail.scss";
 import axios from "axios";
 
@@ -61,7 +61,7 @@ export default function ClinicDetail() {
     <section className="clinic-detail">
        {(redirect) && <Redirect to="/clinics" />}
       <div className="clinics-list--icons">
-        <ArrowBackIosIcon />
+        <BackButton />
       </div>
       <h1 className="clinics-list--title">Clinical Visit Detail</h1>
 

@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { Redirect } from "react-router";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import BackButton from "../BackButton";
 
 import TextInput from "../TextInput";
 import ClinicGroupedButtons from "./ClinicGroupedButtons";
@@ -75,7 +75,7 @@ export default function EditVisit() {
     <section className="clinics-edit">
       {redirect && <Redirect to="/clinics/view" />}
       <div className="clinics-list--icons">
-        <ArrowBackIosIcon />
+        <BackButton />
       </div>
       <h1 className="clinics-list--title">Update Clinical Visit</h1>
       <div className="clinics-form--container">
