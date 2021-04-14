@@ -11,8 +11,7 @@ import { dataContext } from "../../hooks/DataProvider";
 import "../../../styles/form.scss";
 
 export default function DoseNew() {
-
-  const [redirect, setRedirect] = useState('');
+  const [redirect, setRedirect] = useState("");
 
   const onCancel = () => setRedirect(true);
   const onSave = () => console.log("saved button clikced");
@@ -26,20 +25,12 @@ export default function DoseNew() {
       <h1 className="clinics-list--title">New Vaccination Dose</h1>
       <div className="clinics-form--container">
         <div className="clinics--form--field">
-          <DateInput >
-            Date:
-          </DateInput>
-          
-          <TextInput>
-            Serial Number:
-          </TextInput>
-          <TextInput >
-            Administration Site:
-          </TextInput>
-          
-          <DateInput >
-            Next Scheduled Date:
-          </DateInput>
+          <DateInput>Date:</DateInput>
+
+          <TextInput>Serial Number:</TextInput>
+          <TextInput>Administration Site:</TextInput>
+
+          <DateInput notRequired>Next Scheduled Date:</DateInput>
         </div>
         <div className="clinics-form--user-action">
           <IconButton
@@ -62,5 +53,4 @@ export default function DoseNew() {
       </div>
     </section>
   );
-
 }

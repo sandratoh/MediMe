@@ -2,24 +2,24 @@
 import { useState } from "react";
 
 // Material UI Components
-import TextField from '@material-ui/core/TextField';
+import TextField from "@material-ui/core/TextField";
 
 // Helpers
 import { currentDate, formatDateToISO } from "../helpers/dateHelpers";
 
 // Stylesheet
-import './DateInput.scss'
+import "./DateInput.scss";
 
 export default function DateInput(props) {
-
   // const [dateInput, setDateInput] = useState(currentDate);
 
   return (
     <form className="date-input--container" noValidate>
       <TextField
+        required={!props.notRequired}
         id={props.id}
         value={props.value}
-        onChange={event => props.setInput(event.target.value)}
+        onChange={(event) => props.setInput(event.target.value)}
         className="date-input--field"
         error={props.error}
         label={props.children}
