@@ -1,34 +1,20 @@
+// Libraries
 import { useState, useContext } from "react";
 import { Redirect } from "react-router";
-import BackButton from "../BackButton";
 
+// Components
+import BackButton from "../BackButton";
 import TextInput from "../TextInput";
 import ClinicGroupedButtons from "./ClinicGroupedButtons";
 import DateInput from "../DateInput";
 import IconButton from "../IconButton";
+
+// Helpers
 import { dataContext } from "../hooks/DataProvider";
+import { findNameById } from "../../helpers/selectors";
 
+// Stylesheet
 import "../../styles/form.scss";
-
-const findClinicById = (clinics, id) => {
-  let name;
-  clinics.forEach((clinic) => {
-    if (clinic.id === id) {
-      name = clinic.name;
-    }
-  });
-  return name;
-};
-
-const findDoctorById = (doctors, id) => {
-  let name;
-  doctors.forEach((doctor) => {
-    if (doctor.id === id) {
-      name = doctor.name;
-    }
-  });
-  return name;
-};
 
 export default function EditVisit() {
   const {
@@ -40,10 +26,10 @@ export default function EditVisit() {
   } = useContext(dataContext);
   const visit = clinicalVisits.find((visit) => visit.id === clinicalVisitEdit);
   const [medicalCenter, setMedicalCenter] = useState(
-    findClinicById(clinics, visit.clinic_id)
+    findNameById(clinics, visit.clinic_id)
   );
   const [doctor, setDoctor] = useState(
-    findDoctorById(doctors, visit.referral_doctor_id)
+    findNameById(doctors, visit.referral_doctor_id)
   );
   const [date, setDate] = useState(visit.date);
   const [visitType, setVisitType] = useState(visit.type_of_visit);
