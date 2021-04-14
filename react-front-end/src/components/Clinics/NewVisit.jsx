@@ -11,7 +11,7 @@ import { Redirect } from "react-router";
 import { dataContext } from "../hooks/DataProvider";
 
 export default function NewVisit(props) {
-  const { refreshAllClinics } = useContext(dataContext);
+  const { addClinicVisit } = useContext(dataContext);
 
   const [medicalCenter, setMedicalCenter] = useState("");
   const [doctor, setDoctor] = useState("");
@@ -36,15 +36,20 @@ export default function NewVisit(props) {
       doctor_diagnosis: diagnosis,
     };
 
-    return axios
-      .post("/api/clinics/", visitDetail)
-      .then((res) => {
-        // will only redirect if post goes through and no error is returned
-        // !res.data.error && setRedirect(true) && props.setReRender(true);
-        refreshAllClinics();
+    addClinicVisit(visitDetail)
+      .then(res => {
         !res.data.error && setRedirect(true);
       })
-      .catch((err) => console.log(err));
+
+    // return axios
+    //   .post("/api/clinics/", visitDetail)
+    //   .then((res) => {
+    //     // will only redirect if post goes through and no error is returned
+    //     // !res.data.error && setRedirect(true) && props.setReRender(true);
+    //     refreshAllClinics();
+    //     !res.data.error && setRedirect(true);
+    //   })
+    //   .catch((err) => console.log(err));
   };
 
   return (

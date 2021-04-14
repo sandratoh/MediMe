@@ -30,6 +30,26 @@ export default function DataProvider(props) {
   //     // .then(res => console.log(res.data.clinical_visits))
   //     .then(res => setClinicalVisits(res.data.clinical_visits))
   // };
+  const addClinicVisit =(visitDetail) => {
+    return axios
+      .post("/api/clinics/", visitDetail)
+      .then((res) => {
+        // will only redirect if post goes through and no error is returned
+        // !res.data.error && setRedirect(true) && props.setReRender(true);
+        // refreshAllClinics();
+        console.log('res data from provider', res.data);
+        console.log('res data[0] from provider', res.data[0]);
+        console.log('prev state', clinicalVisits);
+        setClinicalVisits([res.data[0], ...clinicalVisits])
+
+        return res;
+        // !res.data.error && setRedirect(true);
+      })
+      .catch((err) => console.log(err));
+    };
+    
+    console.log('after state', clinicalVisits);
+
 
   const refreshAllClinics = () => {
     axios
@@ -97,7 +117,8 @@ export default function DataProvider(props) {
     labs,
     handleLabCardClick,
     handleLabEditClick,
-    refreshAllClinics
+    refreshAllClinics,
+    addClinicVisit
   };
   // console.log("clinic data in data provider", clinicData);
 
