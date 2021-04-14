@@ -3,8 +3,63 @@ import BackButton from "../../BackButton";
 import IconButton from "../../IconButton";
 import "./DoseDetail.scss";
 
+const vaccinations = [
+  {
+  id: 1,
+  user_id: 1,
+  name: "Pfizer-BioNTech COVID-19",
+  total_num_doses: 2
+  },
+  {
+  id: 2,
+  user_id: 1,
+  name: "MMR Priorix",
+  total_num_doses: 2
+  }
+]
+
+const doses = [
+  {
+  id: 1,
+  vaccination_id: 1,
+  serial_number: "SB22S987NOW",
+  date_taken: "2021-03-15T07:00:00.000Z",
+  administration_site: "Sunset Community Centre",
+  next_scheduled_dose: "2021-09-01T07:00:00.000Z"
+  },
+  {
+  id: 2,
+  vaccination_id: 2,
+  serial_number: "AS8D7XX2LZK",
+  date_taken: "2020-05-29T07:00:00.000Z",
+  administration_site: "Cross Walk-In Clinic",
+  next_scheduled_dose: null
+  },
+  {
+  id: 3,
+  vaccination_id: 2,
+  serial_number: "KS3K9XZLZLK",
+  date_taken: "2019-12-18T08:00:00.000Z",
+  administration_site: "Safeway Pharmacy at Granville",
+  next_scheduled_dose: "2020-05-29T07:00:00.000Z"
+  }
+];
+
 
 export default function DoseDetail() {
+  const vaccinationDetail = 2;
+
+  const dose = doses.find(dose => dose.id === vaccinationDetail);
+
+  const findVaccinationById = (vaccinations, id) => {
+    let name;
+    vaccinations.forEach(vaccination => {
+      vaccination.id === id && (name = vaccination.name);
+    })
+    console.log(name);
+    return name;
+  };
+
   const onDelete = () => {
     console.log('Delete button pressed');
   };
@@ -24,7 +79,7 @@ export default function DoseDetail() {
         <div className="dose-detail--data">
           <h5 className="form-label">Vaccination Name:</h5>
           <p className="form-body">
-            Pfizer-BioNTech COVID-19
+            {dose && findVaccinationById(vaccinations, vaccinationDetail)}
           </p>
         </div>
         <div className="dose-detail--data">
