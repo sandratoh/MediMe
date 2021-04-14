@@ -1,0 +1,27 @@
+.dose-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.dose-detail--title {
+  margin: 32px 0;
+}
+
+.dose-detail--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dose-detail--data {
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0;
+}
+
+.dose-detail--user-action {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: 32px 0;
+}
