@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Redirect, useHistory } from "react-router";
+import { Redirect } from "react-router";
 
 import TextInput from "../TextInput";
 import DateInput, { currentDate } from "../DateInput";
@@ -21,9 +21,7 @@ export default function NewRecord() {
   // Redirect state
   const [redirect, setRedirect] = useState(false);
 
-  // Use react router hook to go back to prev history
-  const history = useHistory();
-  const onCancel = () => history.goBack();
+  const onCancel = () => setRedirect(true);
 
   const onSave = () => {
     const labDetail = {
