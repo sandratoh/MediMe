@@ -41,5 +41,5 @@ export function findVaccinationById(vaccinations, id) {
 // Refactor and combine all selectors to one
 export function findNameById(arr, id) {
   const dataObj = arr.find(elem => elem.id === id);
-  return dataObj.name;
+  return dataObj ? dataObj.name : null;
 }
