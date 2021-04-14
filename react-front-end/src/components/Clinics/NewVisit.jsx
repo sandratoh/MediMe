@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Redirect } from "react-router";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import BackButton from "../BackButton";
 
 import TextInput from "../TextInput";
 import ClinicGroupedButtons from "./ClinicGroupedButtons";
@@ -45,7 +45,7 @@ export default function NewVisit(props) {
     <section className="clinics-new">
       {redirect && <Redirect to="/clinics" />}
       <div className="clinics-list--icons">
-        <ArrowBackIosIcon />
+        <BackButton />
       </div>
       <h1 className="clinics-list--title">New Clinical Visit</h1>
       <div className="clinics-form--container">
