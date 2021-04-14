@@ -9,16 +9,10 @@ import BackButton from "../BackButton";
 // Helpers
 import { dataContext } from "../hooks/DataProvider";
 import { findNameById } from "../../helpers/selectors";
+import { formatDate } from "../../helpers/formatters";
 
 // Stylesheet
 import "./LabDetail.scss";
-
-const formatDate = (record) => {
-  const dateData = record.date;
-  const date = new Date(dateData);
-
-  return date.toDateString();
-};
 
 export default function LabDetail() {
   const {
@@ -52,7 +46,7 @@ export default function LabDetail() {
       <div className="lab-detail--container">
         <div className="lab-detail--data">
           <h5 className="">Date:</h5>
-          <p className="form-body">{formatDate(record)}</p>
+          <p className="form-body">{formatDate(record.date)}</p>
         </div>
 
         <div className="lab-detail--data">

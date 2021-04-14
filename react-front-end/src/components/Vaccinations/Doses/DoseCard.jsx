@@ -1,14 +1,14 @@
+// Material UI Components
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 
+// Helpers
+import { formatDate } from "../../../helpers/formatters";
+
+// Stylesheet
 import "../../../styles/card.scss";
 
 export default function DoseCard(props) {
-  const formatDate = (props) => {
-    const date = new Date(props.date_taken);
-
-    return date.toDateString();
-  };
 
   return (
     <Card className="card--dose" variant="outlined">
@@ -19,7 +19,7 @@ export default function DoseCard(props) {
       </div>
       <div className="card--details">
         <Typography variant="subtitle2" color="textSecondary">
-          {formatDate(props)}
+          {formatDate(props.date_taken)}
         </Typography>
       </div>
     </Card>

@@ -12,6 +12,7 @@ import xrayIcon from "../../images/x-ray.png";
 
 // Helpers
 import { findNameById } from "../../helpers/selectors";
+import { formatDate } from "../../helpers/formatters";
 
 // Stylesheet
 import "../../styles/card.scss";
@@ -52,17 +53,11 @@ export default function CardListItem(props) {
     if (labType === "XRAY") return xrayIcon;
   };
 
-  const formatDate = (props) => {
-    const date = new Date(props.date);
-
-    return date.toDateString();
-  };
-
   return (
     <Card className="card" variant="outlined" onClick={props.onClick}>
       <div className="card--details">
         <Typography variant="subtitle1" color="textSecondary">
-          {formatDate(props)}
+          {formatDate(props.date)}
         </Typography>
         <Typography variant="subtitle1">{findNameById(labs, props.value)}</Typography>
       </div>

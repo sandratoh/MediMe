@@ -7,6 +7,7 @@ import IconButton from "../../IconButton";
 
 // Helpers
 import { findNameById } from "../../../helpers/selectors";
+import { formatDate } from "../../../helpers/formatters";
 
 // Stylesheet
 import "./DoseDetail.scss";
@@ -60,13 +61,6 @@ export default function DoseDetail() {
   const doseDetail = 3; //change this with useContext data
   const dose = doses.find(d => d.id === doseDetail);
   
-  const formatDate = (dateStr) => {
-    const date = new Date(dateStr);
-  
-    return date.toDateString();
-  };
-  
-
   const onDelete = () => {
     console.log('Delete button pressed');
   };

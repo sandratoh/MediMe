@@ -9,16 +9,10 @@ import BackButton from "../BackButton";
 // Helpers
 import { dataContext } from "../hooks/DataProvider";
 import { findNameById } from "../../helpers/selectors";
+import { formatDate } from "../../helpers/formatters";
 
 // Stylesheet
 import "./ClinicDetail.scss";
-
-const formatDate = (visit) => {
-  const dateData = visit.date;
-  const date = new Date(dateData);
-
-  return date.toDateString();
-};
 
 export default function ClinicDetail() {
   const { clinicalVisits, clinics, doctors, clinicalVisitDetail, handleClinicEditClick, deleteClinicVisit } = useContext(
@@ -54,7 +48,7 @@ export default function ClinicDetail() {
       <div className="clinic-detail--container">
         <div className="clinic-detail--data">
           <h5 className="">Date:</h5>
-          <p className="form-body">{formatDate(visit)}</p>
+          <p className="form-body">{formatDate(visit.date)}</p>
         </div>
 
         <div className="clinic-detail--data">
