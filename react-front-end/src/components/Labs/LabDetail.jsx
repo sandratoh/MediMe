@@ -35,6 +35,8 @@ export default function LabDetail() {
     });
   };
 
+  const onEdit = () => setLabRecordsEdit(record.id);
+
   return (
     <section className="lab-detail">
       {redirect && <Redirect to="/labs" />}
@@ -51,9 +53,7 @@ export default function LabDetail() {
 
         <div className="lab-detail--data">
           <h5 className="form-label">Lab:</h5>
-          <p className="form-body">
-            {findNameById(labs, record.lab_id)}
-          </p>
+          <p className="form-body">{findNameById(labs, record.lab_id)}</p>
         </div>
 
         {/* need to pull from drop down */}
@@ -84,7 +84,7 @@ export default function LabDetail() {
             edit
             variant="contained"
             color="secondary"
-            onClick={() => setLabRecordsEdit(record.id)}
+            onClick={onEdit}
           >
             Edit
           </IconButton>

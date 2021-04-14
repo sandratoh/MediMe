@@ -15,9 +15,14 @@ import { formatDate } from "../../helpers/dateHelpers";
 import "./ClinicDetail.scss";
 
 export default function ClinicDetail() {
-  const { clinicalVisits, clinics, doctors, clinicalVisitDetail, setClinicalVisitEdit, deleteClinicVisit } = useContext(
-    dataContext
-  );
+  const {
+    clinicalVisits,
+    clinics,
+    doctors,
+    clinicalVisitDetail,
+    setClinicalVisitEdit,
+    deleteClinicVisit,
+  } = useContext(dataContext);
 
   // Manage redirect state based on axios call
   const [redirect, setRedirect] = useState(false);
@@ -27,15 +32,16 @@ export default function ClinicDetail() {
   );
 
   const onDelete = () => {
-    deleteClinicVisit()
-    .then(res => {
-        !res.data.error && setRedirect(true);
+    deleteClinicVisit().then((res) => {
+      !res.data.error && setRedirect(true);
     });
-  }
+  };
+
+  const onEdit = () => setClinicalVisitEdit(visit.id);
 
   return (
     <section className="clinic-detail">
-       {(redirect) && <Redirect to="/clinics" />}
+      {redirect && <Redirect to="/clinics" />}
       <div className="clinics-list--icons">
         <BackButton />
       </div>
@@ -49,9 +55,7 @@ export default function ClinicDetail() {
 
         <div className="clinic-detail--data">
           <h5 className="form-label">Clinic:</h5>
-          <p className="form-body">
-            {findNameById(clinics, visit.clinic_id)}
-          </p>
+          <p className="form-body">{findNameById(clinics, visit.clinic_id)}</p>
         </div>
 
         <div className="clinic-detail--data">
@@ -81,14 +85,16 @@ export default function ClinicDetail() {
         >
           Delete
         </IconButton>
-        <Link to="/clinics/edit"><IconButton
-          edit
-          variant="contained"
-          color="secondary"
-          onClick={() => setClinicalVisitEdit(visit.id)}
-        >
-          Edit
-        </IconButton></Link>
+        <Link to="/clinics/edit">
+          <IconButton
+            edit
+            variant="contained"
+            color="secondary"
+            onClick={onEdit}
+          >
+            Edit
+          </IconButton>
+        </Link>
       </div>
     </section>
   );

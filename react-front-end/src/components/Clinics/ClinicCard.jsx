@@ -24,7 +24,9 @@ export default function CardListItem(props) {
         <Typography variant="subtitle1" color="textSecondary">
           {formatDate(props.date)}
         </Typography>
-        <Typography variant="subtitle1">{findNameById(props.clinics, props.value)}</Typography>
+        <Typography variant="subtitle1">
+          {findNameById(props.clinics, props.value)}
+        </Typography>
       </div>
       <div className="card--icon">
         <img src={iconByType(props)} component="img" alt="card icon" />

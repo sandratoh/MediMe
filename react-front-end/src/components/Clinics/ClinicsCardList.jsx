@@ -1,16 +1,20 @@
+// Libraries
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+
+// Helpers
 import { dataContext } from "../hooks/DataProvider";
+
+// Components
 import ClinicCard from "./ClinicCard";
 
 export default function ClinicsCardList() {
   const { clinicalVisits, clinics, setClinicalVisitDetail } = useContext(
     dataContext
-  )
+  );
 
-  // console.log("cliniical Visits: ", clinicalVisitDetail)
   const visits = clinicalVisits.map((visit) => {
-    
+    const onSelect = () => setClinicalVisitDetail(visit.id);
     return (
       <Link to="/clinics/view">
         <ClinicCard
@@ -20,8 +24,7 @@ export default function ClinicsCardList() {
           type={visit.type_of_visit}
           value={visit.clinic_id}
           clinics={clinics}
-          onClick={() => setClinicalVisitDetail(visit.id)}
-
+          onClick={onSelect}
         />
       </Link>
     );
@@ -31,6 +34,5 @@ export default function ClinicsCardList() {
     <ul>
       <Link to="/clinics/view">{visits}</Link>
     </ul>
-  )
+  );
 }
-
