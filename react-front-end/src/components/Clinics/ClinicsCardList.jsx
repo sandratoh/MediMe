@@ -9,6 +9,18 @@ export default function ClinicsCardList() {
     dataContext
   )
 
+  // const [ reRender, setReRender ] = useState(false); 
+
+  // useEffect(() => {
+  //  fetchAllClinics();
+
+  //  // clean up function setReRender(false);
+  // //  return () => setReRender(false);
+
+  // }, [reRender, fetchAllClinics]);
+
+  // console.log('ClinicsList ReRender state', reRender);
+
   //  const [ reRender, setReRender ] = useState(false); 
 
   // rerender true or false, default to false, and if save/delete is successful, then we change to true

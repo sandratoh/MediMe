@@ -24,16 +24,27 @@ export default function DataProvider(props) {
   // console.log("lab record detail state", labRecordsDetail);
   // console.log("labs - data provider", labs);
   // console.log("lab records - data provider", labRecords);
-  const fetchAllClinics = () => {
+  // const fetchAllClinics = () => {
+  //   axios
+  //     .get("/api/clinics")
+  //     // .then(res => console.log(res.data.clinical_visits))
+  //     .then(res => setClinicalVisits(res.data.clinical_visits))
+  // };
+
+  const refreshAllClinics = () => {
     axios
       .get("/api/clinics")
       // .then(res => console.log(res.data.clinical_visits))
-      .then(res => setClinicalVisits(res.data.clinical_visits))
+      .then(res => {
+        console.log('refreshing all clinics:', res);
+        setClinicalVisits(res.data.clinical_visits)}
+      )
   };
 
-  // useEffect(() => {
-  //   fetchAllClinics()
-  // }, []);
+
+  useEffect(() => {
+    refreshAllClinics()
+  }, []);
 
   useEffect(() => {
     const apiClinicalVisitsUrl = "/api/clinics";
@@ -86,7 +97,7 @@ export default function DataProvider(props) {
     labs,
     handleLabCardClick,
     handleLabEditClick,
-    fetchAllClinics
+    refreshAllClinics
   };
   // console.log("clinic data in data provider", clinicData);
 

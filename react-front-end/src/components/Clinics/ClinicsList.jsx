@@ -11,20 +11,20 @@ import { dataContext } from "../hooks/DataProvider";
 
 
 export default function ClinicsList(props) {
-  const { fetchAllClinics } = useContext(dataContext)
+  // const { fetchAllClinics } = useContext(dataContext)
 
 
-  const [ reRender, setReRender ] = useState(false); 
+  // const [ reRender, setReRender ] = useState(false); 
 
-  useEffect(() => {
-   fetchAllClinics();
+  // useEffect(() => {
+  //  fetchAllClinics();
 
-   // clean up function setReRender(false);
-  //  return () => setReRender(false);
+  //  // clean up function setReRender(false);
+  // //  return () => setReRender(false);
 
-  }, [reRender, fetchAllClinics]);
+  // }, [reRender, fetchAllClinics]);
 
-  console.log('ClinicsList ReRender state', reRender);
+  // console.log('ClinicsList ReRender state', reRender);
 
   return (
     <section className="clinics-list">
@@ -37,7 +37,8 @@ export default function ClinicsList(props) {
       </div>
       <h1 className="clinics-list--title">Clinical Visits</h1>
       <div className="clinics-list--content">
-        <ClinicsCardList reRender={setReRender}/>
+        {/* <ClinicsCardList reRender={setReRender}/> */}
+        <ClinicsCardList />
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import TextInput from "../TextInput";
 import ClinicGroupedButtons from "./ClinicGroupedButtons";
@@ -8,8 +8,11 @@ import IconButton from "../IconButton";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import "../../styles/form.scss";
 import { Redirect } from "react-router";
+import { dataContext } from "../hooks/DataProvider";
 
 export default function NewVisit(props) {
+  const { refreshAllClinics } = useContext(dataContext);
+
   const [medicalCenter, setMedicalCenter] = useState("");
   const [doctor, setDoctor] = useState("");
   const [date, setDate] = useState(currentDate());
@@ -37,7 +40,9 @@ export default function NewVisit(props) {
       .post("/api/clinics/", visitDetail)
       .then((res) => {
         // will only redirect if post goes through and no error is returned
-        !res.data.error && setRedirect(true) && props.setReRender(true);
+        // !res.data.error && setRedirect(true) && props.setReRender(true);
+        refreshAllClinics();
+        !res.data.error && setRedirect(true);
       })
       .catch((err) => console.log(err));
   };
