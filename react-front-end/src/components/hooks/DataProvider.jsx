@@ -49,12 +49,23 @@ export default function DataProvider(props) {
     };
     
     console.log('after state', clinicalVisits);
-
+    
+  const deleteClinicVisit = () => {
+    return axios
+      .delete(`/api/clinics/${clinicalVisitDetail}`)
+      .then((res) => {
+        console.log('res from deletCLinicVisit', res);
+        // !res.data.error && setClinicalVisits(...clinicalVisits)
+        // setClinicalVisits([...clinicalVisits])
+        refreshAllClinics();
+        
+        return res;
+      }).catch((err) => console.log(err))
+  };
 
   const refreshAllClinics = () => {
-    axios
+    return axios
       .get("/api/clinics")
-      // .then(res => console.log(res.data.clinical_visits))
       .then(res => {
         console.log('refreshing all clinics:', res);
         setClinicalVisits(res.data.clinical_visits)}
@@ -118,7 +129,8 @@ export default function DataProvider(props) {
     handleLabCardClick,
     handleLabEditClick,
     refreshAllClinics,
-    addClinicVisit
+    addClinicVisit,
+    deleteClinicVisit
   };
   // console.log("clinic data in data provider", clinicData);
 

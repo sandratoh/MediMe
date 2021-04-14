@@ -35,7 +35,7 @@ const formatDate = (visit) => {
 };
 
 export default function ClinicDetail() {
-  const { clinicalVisits, clinics, doctors, clinicalVisitDetail, handleClinicEditClick } = useContext(
+  const { clinicalVisits, clinics, doctors, clinicalVisitDetail, handleClinicEditClick, deleteClinicVisit } = useContext(
     dataContext
   );
 
@@ -47,13 +47,11 @@ export default function ClinicDetail() {
   );
 
   const onDelete = () => {
-    axios
-      .delete(`/api/clinics/${visit.id}`)
-      .then(res => {
+    deleteClinicVisit()
+    .then(res => {
         !res.data.error && setRedirect(true);
-      })
-      .catch(err => console.log(err));
-  };
+    });
+  }
 
   const onEdit = () => {
     console.log("edit button clicked");
@@ -119,4 +117,3 @@ export default function ClinicDetail() {
     </section>
   );
 }
-
