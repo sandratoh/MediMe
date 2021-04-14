@@ -54,7 +54,7 @@ function App() {
             
             <Route path="/clinics/edit" component={EditVisit} />
             <Route path="/clinics/new" component={NewVisit} />
-            <Route path="/clinics/:id" component={ClinicDetail} />
+            <Route path="/clinics/view" component={ClinicDetail} />
 
             <Route exact path="/clinics" component={ClinicsList} />
 
