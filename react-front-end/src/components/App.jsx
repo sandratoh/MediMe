@@ -22,6 +22,7 @@ import Sucess from "./Vaccinations/Success";
 
 // Stylesheet import
 import "./App.scss";
+import VaccinationsList from "./Vaccinations/VaccinationsList";
 
 
 const theme = createMuiTheme({
@@ -67,6 +68,7 @@ function App() {
             <Route exact path="/vaccinations/:id/dose/edit" component={DoseEdit} />
             <Route exact path="/dose" component={DoseDetail} />
 
+            <Route exact path="/vaccinations" component={VaccinationsList} />
             <Route exact path="/vaccinations/success" component={Sucess} />
 
             <Route exact path="/" component={Dashboard} />
