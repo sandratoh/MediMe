@@ -47,13 +47,18 @@ const doses = [
 
 
 export default function DoseDetail() {
-  const vaccinationDetail = 2;
-
-  const doseDetail = 3;
-
-  const dose = doses.find(dose => dose.id === doseDetail);
-
+  const vaccinationDetail = 2; //change this with useContext data
   const vaccination = vaccinations.find(v => v.id === vaccinationDetail);
+
+  const doseDetail = 3; //change this with useContext data
+  const dose = doses.find(d => d.id === doseDetail);
+  
+  const formatDate = (dateStr) => {
+    const date = new Date(dateStr);
+  
+    return date.toDateString();
+  };
+  
 
   const onDelete = () => {
     console.log('Delete button pressed');
@@ -79,15 +84,15 @@ export default function DoseDetail() {
         </div>
         <div className="dose-detail--data">
           <h5 className="">Date:</h5>
-          <p className="form-body">March 4, 2021</p>
+          <p className="form-body">{dose && formatDate(dose.date_taken)}</p>
         </div>
         <div className="dose-detail--data">
           <h5 className="">Administration Site:</h5>
-          <p className="form-body">Olympic Village Green Clinic</p>
+          <p className="form-body">{dose && dose.administration_site}</p>
         </div>
         <div className="dose-detail--data">
-          <h5 className="">Next Scheduled Dose:</h5>
-          <p className="form-body">June 4, 2021</p>
+          <h5 className="">{dose.next_scheduled_dose ? 'Next Scheduled Dose:' : 'No Future Dose Scheduled.'}</h5>
+          <p className="form-body">{dose && formatDate(dose.next_scheduled_dose)}</p>
         </div>
       </div>
 
