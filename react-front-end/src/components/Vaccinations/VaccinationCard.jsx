@@ -21,8 +21,6 @@ import "../../styles/card.scss";
 export default function VaccinationCard(props) {
   const { setDoseDetail } = useContext(dataContext);
 
-  console.log("props doses:", props.doses);
-
   return (
     <div className="card--vaccination">
       <Accordion>

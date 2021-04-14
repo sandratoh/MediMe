@@ -123,7 +123,6 @@ export default function DataProvider(props) {
       axios.get(apiLabRecordsUrl),
       axios.get(apiLabsUrl),
       axios.get(apiVaccinationsUrl),
-      // axios.get(apiVaccinationDosesUrl),
       axios.get(apiAllDoseUrl),
     ]).then((res) => {
       // console.log("res", res);
@@ -134,7 +133,6 @@ export default function DataProvider(props) {
       const labs = res[4].data.labs;
       const vaccinations = res[5].data.vaccinations;
       const allDoses = res[6].data.doses;
-      // const doses = res[6].data.doses;
 
       setClinicalVisits(visits);
       setClinics(clinics);
@@ -143,7 +141,6 @@ export default function DataProvider(props) {
       setLabs(labs);
       setVaccinations(vaccinations);
       setAllDoses(allDoses);
-      // setDoses(doses);
       return;
     });
   }, []);
@@ -183,7 +180,7 @@ export default function DataProvider(props) {
     allDoses,
   };
 
-  console.log("data", data);
+  // console.log("data", data);
 
   return (
     <dataContext.Provider value={data}>{props.children}</dataContext.Provider>
