@@ -1,20 +1,18 @@
-import './DateInput.scss'
+// Libraries
 import { useState } from "react";
+
+// Material UI Components
 import TextField from '@material-ui/core/TextField';
 
-export const currentDate = () => {
-  return new Date().toISOString().substring(0, 10)
-};
+// Helpers
+import { currentDate, formatDateToISO } from "../helpers/dateHelpers";
+
+// Stylesheet
+import './DateInput.scss'
 
 export default function DateInput(props) {
 
   // const [dateInput, setDateInput] = useState(currentDate);
-
-  const parsePropsDate = props => {
-    const date = new Date(props.date);
-    
-    return date.toISOString().substring(0, 10);
-  };
 
   return (
     <form className="date-input--container" noValidate>
@@ -26,7 +24,7 @@ export default function DateInput(props) {
         error={props.error}
         label={props.children}
         type="date"
-        defaultValue={props.date ? parsePropsDate(props) : currentDate()}
+        defaultValue={props.date ? formatDateToISO(props.date) : currentDate()}
         size="large"
         InputLabelProps={{
           shrink: true,

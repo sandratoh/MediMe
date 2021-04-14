@@ -1,37 +1,18 @@
+// Libraries
 import { useContext, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { dataContext } from "../hooks/DataProvider";
 
+// Components
 import IconButton from "../IconButton";
 import BackButton from "../BackButton";
+
+// Helpers
+import { dataContext } from "../hooks/DataProvider";
+import { findNameById } from "../../helpers/selectors";
+import { formatDate } from "../../helpers/dateHelpers";
+
+// Stylesheet
 import "./LabDetail.scss";
-
-const findLabById = (labs, id) => {
-  let name;
-  labs.forEach((lab) => {
-    if (lab.id === id) {
-      name = lab.name;
-    }
-  });
-  return name;
-};
-
-const findDoctorById = (doctors, id) => {
-  let name;
-  doctors.forEach((doctor) => {
-    if (doctor.id === id) {
-      name = doctor.name;
-    }
-  });
-  return name;
-};
-
-const formatDate = (record) => {
-  const dateData = record.date;
-  const date = new Date(dateData);
-
-  return date.toDateString();
-};
 
 export default function LabDetail() {
   const {
@@ -65,26 +46,26 @@ export default function LabDetail() {
       <div className="lab-detail--container">
         <div className="lab-detail--data">
           <h5 className="">Date:</h5>
-          <p className="form-body">{record && formatDate(record)}</p>
+          <p className="form-body">{formatDate(record.date)}</p>
         </div>
 
         <div className="lab-detail--data">
           <h5 className="form-label">Lab:</h5>
           <p className="form-body">
-            {record && findLabById(labs, record.lab_id)}
+            {findNameById(labs, record.lab_id)}
           </p>
         </div>
 
         {/* need to pull from drop down */}
         <div className="lab-detail--data">
           <h5 className="form-label">Type of test:</h5>
-          <p className="form-body">{record && record.type_of_test}</p>
+          <p className="form-body">{record.type_of_test}</p>
         </div>
 
         <div className="lab-detail--data">
           <h5 className="form-label">Doctor:</h5>
           <p className="form-body">
-            {record && findDoctorById(doctors, record.referral_doctor_id)}
+            {findNameById(doctors, record.referral_doctor_id)}
           </p>
         </div>
       </div>

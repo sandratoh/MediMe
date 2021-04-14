@@ -1,0 +1,26 @@
+.vaccination-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vaccination-success--title {
+  margin: 32px 0;
+  text-align: center;
+}
+
+.vaccination-success--icon {
+
+  img {
+    height: 50vw;
+    width: auto;
+  }
+}
+
+.vaccination-success--user-action {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 40vw;
+  justify-content: space-evenly;
+}

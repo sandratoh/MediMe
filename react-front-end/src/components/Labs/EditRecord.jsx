@@ -1,34 +1,20 @@
+// Libraries
 import { useState, useContext } from "react";
 import { Redirect } from "react-router";
 
+// Components
 import TextInput from "../TextInput";
 import DateInput from "../DateInput";
 import IconButton from "../IconButton";
 import LabRecordType from "./LabsDropdown";
 import BackButton from "../BackButton";
+
+// Helpers
 import { dataContext } from "../hooks/DataProvider";
+import { findNameById } from "../../helpers/selectors";
 
+// Stylesheet
 import "../../styles/form.scss";
-
-const findLabById = (labs, id) => {
-  let name;
-  labs.forEach((lab) => {
-    if (lab.id === id) {
-      name = lab.name;
-    }
-  });
-  return name;
-};
-
-const findDoctorById = (doctors, id) => {
-  let name;
-  doctors.forEach((doctor) => {
-    if (doctor.id === id) {
-      name = doctor.name;
-    }
-  });
-  return name;
-};
 
 export default function EditRecord() {
   const {
@@ -41,10 +27,10 @@ export default function EditRecord() {
   const record = labRecords.find((record) => record.id === labRecordsEdit);
 
   const [date, setDate] = useState(record.date);
-  const [lab, setLab] = useState(findLabById(labs, record.lab_id));
+  const [lab, setLab] = useState(findNameById(labs, record.lab_id));
   const [recordType, setRecordType] = useState(record.type_of_test);
   const [doctor, setDoctor] = useState(
-    findDoctorById(doctors, record.referral_doctor_id)
+    findNameById(doctors, record.referral_doctor_id)
   );
 
   // Redirect state

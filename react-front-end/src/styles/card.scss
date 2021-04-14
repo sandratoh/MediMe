@@ -23,3 +23,28 @@
   display: flex;
   flex-direction: column;
 }
+
+.card--dose {
+  display: flex;
+  min-width: 327px;
+  width: 72vw;
+  height: 32px;
+  padding: 16px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(95%);
+  }
+}
+
+.card--vaccination {
+  width: 80vw;
+
+  &--doses {
+    display: flex;
+    flex-direction: column;
+  }
+}

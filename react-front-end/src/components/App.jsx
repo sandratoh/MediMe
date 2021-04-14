@@ -1,7 +1,8 @@
+// Libraries import
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
-import { useContext } from "react";
-import { dataContext } from "./hooks/DataProvider";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+// Components import
 import ClinicsList from "./Clinics/ClinicsList";
 import LabsList from "./Labs/LabsList";
 import LabDetail from "./Labs/LabDetail";
@@ -12,10 +13,17 @@ import NewRecord from "./Labs/NewRecord";
 import EditRecord from "./Labs/EditRecord";
 import ClinicDetail from "./Clinics/ClinicDetail";
 import Dashboard from "./Dashboard";
+<<<<<<< HEAD
 import VaccineNew from "./Vaccinations/NewVaccine";
 import DoseNew from "./Vaccinations/Doses/NewDose";
 // import DoseEdit from "./Vaccinations/Doses/EditDose";
+=======
+import DoseDetail from "./Vaccinations/Doses/DoseDetail";
+import Sucess from "./Vaccinations/Success";
 
+>>>>>>> f2aae61dbc577b9e06e6bb77e8159761942953a4
+
+// Stylesheet import
 import "./App.scss";
 
 
@@ -38,7 +46,6 @@ const theme = createMuiTheme({
 });
 
 function App() {
-  // const { data } = useContext(dataContext);
 
   return (
     <ThemeProvider theme={theme}>
@@ -61,6 +68,9 @@ function App() {
             <Route exact path="/vaccinations/new" component={VaccineNew} />
             <Route exact path="/vaccinations/:id/dose/:id" component={DoseNew} />
             {/* <Route exact path="/vaccinations/:id/dose/edit" component={DoseEdit} /> */}
+            <Route exact path="/dose" component={DoseDetail} />
+
+            <Route exact path="/vaccinations/success" component={Sucess} />
 
             <Route exact path="/" component={Dashboard} />
           </Switch>
