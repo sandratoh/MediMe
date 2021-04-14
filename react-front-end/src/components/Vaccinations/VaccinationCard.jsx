@@ -36,7 +36,7 @@ export default function VaccinationCard(props) {
           {props.doses.map((dose, index) => (
             <DoseCard
               current={index + 1}
-              total={props.doses.length}
+              total={props.total}
               date_taken={dose.date_taken}
               onClick={() => setDoseDetail(dose.id)}
             ></DoseCard>

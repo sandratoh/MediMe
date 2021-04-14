@@ -27,6 +27,7 @@ export default function VaccinationsCardList() {
           (dose) => dose.vaccination_id === vaccination.id
         )}
         vaccineId={vaccinationDetail}
+        total={vaccination.total_num_doses}
         onClick={() => setVaccinationDetail(vaccination.id)}
       />
     );

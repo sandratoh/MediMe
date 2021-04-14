@@ -9,7 +9,6 @@ import { formatDate } from "../../../helpers/dateHelpers";
 import "../../../styles/card.scss";
 
 export default function DoseCard(props) {
-
   return (
     <Card className="card--dose" variant="outlined">
       <div className="card--details">
