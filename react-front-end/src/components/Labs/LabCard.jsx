@@ -42,15 +42,13 @@ const labs = [
 ];
 
 export default function CardListItem(props) {
-  const iconByType = (props) => {
-    const labType = props.type.toUpperCase();
-
-    if (labType === "BLOOD") return bloodIcon;
-    if (labType === "MAMMOGRAM") return mammogramIcon;
-    if (labType === "MRI") return mriIcon;
-    if (labType === "ULTRASOUND") return ultrasoundIcon;
-    if (labType === "URINE") return urineIcon;
-    if (labType === "XRAY") return xrayIcon;
+  const iconByType = type => {
+      if (type === "BLOOD") return bloodIcon;
+      if (type === "MAMMOGRAM") return mammogramIcon;
+      if (type === "MRI") return mriIcon;
+      if (type === "ULTRASOUND") return ultrasoundIcon;
+      if (type === "URINE") return urineIcon;
+      if (type === "XRAY") return xrayIcon;
   };
 
   return (
@@ -62,7 +60,7 @@ export default function CardListItem(props) {
         <Typography variant="subtitle1">{findNameById(labs, props.value)}</Typography>
       </div>
       <div className="card--icon">
-        <img src={iconByType(props)} component="img" alt="card icon" />
+        <img src={iconByType(props.type)} component="img" alt="card icon" />
       </div>
     </Card>
   );

@@ -7,8 +7,8 @@ import vaccinationIcon from '../images/vaccination.png';
 import medicationsIcon from '../images/medicine.png';
 
 export default function DashboardCard(props) {
-  const iconByCategory = (props) => {
-    switch (props.category) {
+  const iconByCategory = (category) => {
+    switch (category) {
       case "clinics":
         return clinicRecordIcon;
         break;
@@ -29,7 +29,7 @@ export default function DashboardCard(props) {
       className="dashboard-card"
     >
       <div className="dashboard-card--detail">
-      <img className="dashboard-card--icon" src={iconByCategory(props)} component="img" alt="card icon"/>
+      <img className="dashboard-card--icon" src={iconByCategory(props.category)} component="img" alt="card icon"/>
       <Typography className="dashboard-card--category" variant="p">{props.children}</Typography>
       </div>
     </Card>
