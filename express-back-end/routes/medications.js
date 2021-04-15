@@ -13,8 +13,8 @@ module.exports = (client) => {
     client
       .query(query)
       .then((data) => {
-        const medication = data.rows;
-        res.status(200).json({ medication });
+        const medications = data.rows;
+        res.status(200).json({ medications });
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
