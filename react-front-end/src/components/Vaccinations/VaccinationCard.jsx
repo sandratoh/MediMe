@@ -25,16 +25,6 @@ export default function VaccinationCard(props) {
     dataContext
   );
 
-  console.log(
-    "props from vaccination card, passed from vaccinations card list",
-    props
-  );
-
-  console.log("props.onClick function", props.onClick);
-
-  console.log("props.total", props.total);
-  console.log("props.doses", props.doses);
-
   return (
     <div className="card--vaccination">
       <Accordion>
@@ -58,14 +48,16 @@ export default function VaccinationCard(props) {
             </h4>
           )}
         </AccordionSummary>
-        <AccordionDetails className="card--vaccination--doses">
+        <AccordionDetails className="card--vaccination--doses" onClick={props.onClick}>
           {props.doses.map((dose, index) => (
+            <Link to="/vaccinations/dose/view">
             <DoseCard
               current={index + 1}
               total={props.total}
               date_taken={dose.date_taken}
               onClick={() => setDoseDetail(dose.id)}
-            ></DoseCard>
+            />
+            </Link>
           ))}
         </AccordionDetails>
         <Link to="/vaccinations/dose/new">

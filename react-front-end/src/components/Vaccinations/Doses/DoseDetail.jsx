@@ -1,4 +1,5 @@
 // Libraries
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 // Components
@@ -13,57 +14,14 @@ import { formatDate } from "../../../helpers/dateHelpers";
 
 // Stylesheet
 import "./DoseDetail.scss";
+import { dataContext } from "../../hooks/DataProvider";
 
-// ** Need to refactor to use data from /api/vaccinations/:id/dose
-
-const vaccinations = [
-  {
-  id: 1,
-  user_id: 1,
-  name: "Pfizer-BioNTech COVID-19",
-  total_num_doses: 2
-  },
-  {
-  id: 2,
-  user_id: 1,
-  name: "MMR Priorix",
-  total_num_doses: 2
-  }
-]
-
-const doses = [
-  {
-  id: 1,
-  vaccination_id: 1,
-  serial_number: "SB22S987NOW",
-  date_taken: "2021-03-15T07:00:00.000Z",
-  administration_site: "Sunset Community Centre",
-  next_scheduled_dose: "2021-09-01T07:00:00.000Z"
-  },
-  {
-  id: 2,
-  vaccination_id: 2,
-  serial_number: "AS8D7XX2LZK",
-  date_taken: "2020-05-29T07:00:00.000Z",
-  administration_site: "Cross Walk-In Clinic",
-  next_scheduled_dose: null
-  },
-  {
-  id: 3,
-  vaccination_id: 2,
-  serial_number: "KS3K9XZLZLK",
-  date_taken: "2019-12-18T08:00:00.000Z",
-  administration_site: "Safeway Pharmacy at Granville",
-  next_scheduled_dose: "2020-05-29T07:00:00.000Z"
-  }
-];
 
 
 export default function DoseDetail() {
-  const vaccinationDetail = 2; //change this with useContext data
-
-  const doseDetail = 3; //change this with useContext data
-  const dose = doses.find(d => d.id === doseDetail);
+  const { allDoses, vaccinationDetail, doseDetail, vaccinations } = useContext(dataContext)
+ 
+  const dose = allDoses.find(d => d.id === doseDetail);
   
   const onDelete = () => {
     console.log('Delete button pressed');
