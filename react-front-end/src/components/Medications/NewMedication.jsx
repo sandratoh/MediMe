@@ -26,7 +26,7 @@ export default function NewMedication() {
   const { addMedication } = useContext(dataContext);
 
   const [date, setDate] = useState(currentDate());
-  const [medication, setMedication] = useState("");
+  const [medicationName, setMedicationName] = useState("");
   const [nickname, setNickname] = useState("");
   const [pharmacy, setPharmacy] = useState("");
   const [doctor, setDoctor] = useState("");
@@ -52,7 +52,7 @@ export default function NewMedication() {
   const onSave = () => {
     const medicationData = {
       user_id: 1,
-      name: medication,
+      name: medicationName,
       nickname: nickname,
       prescribed_date: date,
       pharmacy_id: pharmacy,
@@ -76,8 +76,8 @@ export default function NewMedication() {
         <div className="medications-form--field">
           <TextInput
             required
-            value={medication}
-            setInput={setMedication}
+            value={medicationName}
+            setInput={setMedicationName}
             validate={validate}
           >
             Medication Name:
