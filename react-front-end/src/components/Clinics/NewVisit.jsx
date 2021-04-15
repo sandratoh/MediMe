@@ -27,6 +27,22 @@ export default function NewVisit(props) {
   // Manage redirect state based on axios call
   const [redirect, setRedirect] = useState(false);
 
+  // Manage error state on validate
+  const [error, setError] = useState(false);
+
+  const validate = () => {
+    if (medicalCenter === "") {
+      setError(true);
+    }
+    if (doctor === "") {
+      setError(true);
+    }
+    if (!date) {
+      setError(true);
+    }
+  };
+
+
   const onCancel = () => setRedirect(true);
 
   const onSave = () => {
