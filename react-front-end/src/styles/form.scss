@@ -1,13 +1,15 @@
 .clinics-new,
 .clinics-edit,
 .labs-new,
-.labs-edit {
+.labs-edit,
+.medications-new {
   display: flex;
   flex-direction: column;
 }
 
 .clinics-form--container,
-.labs-form--container {
+.labs-form--container,
+.medications-form--container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,14 +17,16 @@
 }
 
 .clinics-form--field,
-.labs-form--field {
+.labs-form--field,
+.medications-form--field {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .clinics-form--user-action,
-.labs-form--user-action {
+.labs-form--user-action,
+.medications-form--user-action {
   display: flex;
   justify-content: space-between;
   width: 95%;
