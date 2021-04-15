@@ -17,7 +17,9 @@ import { dataContext } from "../hooks/DataProvider";
 import "../../styles/form.scss";
 
 export default function VaccineNew() {
-  const { addVaccinationRecord } = useContext(dataContext);
+  const { addVaccinationRecord, setVaccinationDetailId } = useContext(
+    dataContext
+  );
 
   const [vaccine, setVaccine] = useState("");
   const [totalDose, setTotalDose] = useState(1);
@@ -37,9 +39,14 @@ export default function VaccineNew() {
       total_num_doses: totalDose,
     };
 
-    addVaccinationRecord(vaccinationData).then((res) => {
-      vaccinationData.name ? setRedirectSuccess(true) : setValidate(true);
-    });
+    addVaccinationRecord(vaccinationData)
+      .then((res) => {
+        vaccinationData.name ? setRedirectSuccess(true) : setValidate(true);
+        return res;
+      })
+      .then((res) => {
+        setVaccinationDetailId(res.data[0].id);
+      });
   };
 
   return (
@@ -49,7 +56,12 @@ export default function VaccineNew() {
       <h1 className="clinics-list--title">New Vaccination</h1>
       <div className="clinics-form--container">
         <div className="clinics--form--field">
-          <TextInput required value={vaccine} setInput={setVaccine} validate={validate}>
+          <TextInput
+            required
+            value={vaccine}
+            setInput={setVaccine}
+            validate={validate}
+          >
             Vaccine Name:
           </TextInput>
 

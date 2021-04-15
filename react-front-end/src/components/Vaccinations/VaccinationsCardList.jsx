@@ -9,26 +9,23 @@ import { dataContext } from "../hooks/DataProvider";
 
 export default function VaccinationsCardList() {
   const {
-    allDoses,
+    doses,
     vaccinations,
-    setVaccinationDetail,
-    vaccinationDetail,
+    setVaccinationDetailId,
+    vaccinationDetailId,
   } = useContext(dataContext);
 
   const vaccines = vaccinations.map((vaccination) => {
-
     // To find dose array: filter doses to return only ones that vaccination_id = vaccine id
     return (
       <VaccinationCard
         key={vaccination.id}
         className="list-items"
         name={vaccination.name}
-        doses={allDoses.filter(
-          (dose) => dose.vaccination_id === vaccination.id
-        )}
-        vaccineId={vaccinationDetail}
+        doses={doses.filter((dose) => dose.vaccination_id === vaccination.id)}
+        vaccineId={vaccinationDetailId}
         total={vaccination.total_num_doses}
-        onClick={() => setVaccinationDetail(vaccination.id)}
+        onClick={() => setVaccinationDetailId(vaccination.id)}
       />
     );
   });

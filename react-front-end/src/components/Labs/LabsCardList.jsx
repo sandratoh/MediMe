@@ -9,10 +9,10 @@ import { dataContext } from "../hooks/DataProvider";
 import LabCard from "./LabCard";
 
 export default function LabsCardList() {
-  const { labRecords, labs, setLabRecordsDetail } = useContext(dataContext);
+  const { labRecords, labs, setLabRecordDetailId } = useContext(dataContext);
 
   const records = labRecords.map((record) => {
-    const onSelect = () => setLabRecordsDetail(record.id);
+    const onSelect = () => setLabRecordDetailId(record.id);
 
     return (
       <LabCard

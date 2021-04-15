@@ -19,17 +19,17 @@ import "./LabDetail.scss";
 export default function LabDetail() {
   const {
     doctors,
-    labRecordsDetail,
+    labRecordDetailId,
     labRecords,
     labs,
     deleteLabRecord,
-    setLabRecordsEdit,
+    setLabRecordEditId,
   } = useContext(dataContext);
 
   // Redirect state
   const [redirect, setRedirect] = useState(false);
 
-  const record = labRecords.find((record) => record.id === labRecordsDetail);
+  const record = labRecords.find((record) => record.id === labRecordDetailId);
 
   const onDelete = () => {
     deleteLabRecord().then((res) => {
@@ -37,7 +37,7 @@ export default function LabDetail() {
     });
   };
 
-  const onEdit = () => setLabRecordsEdit(record.id);
+  const onEdit = () => setLabRecordEditId(record.id);
 
   return (
     <section className="lab-detail">

@@ -21,9 +21,11 @@ import { dataContext } from "../hooks/DataProvider";
 import "../../styles/card.scss";
 
 export default function VaccinationCard(props) {
-  const { setDoseDetail, setVaccinationDetail, vaccinationDetail } = useContext(
-    dataContext
-  );
+  const {
+    setDoseDetailId,
+    setVaccinationDetailId,
+    vaccinationDetailId,
+  } = useContext(dataContext);
 
   return (
     <div className="card--vaccination">
@@ -48,15 +50,18 @@ export default function VaccinationCard(props) {
             </h4>
           )}
         </AccordionSummary>
-        <AccordionDetails className="card--vaccination--doses" onClick={props.onClick}>
+        <AccordionDetails
+          className="card--vaccination--doses"
+          onClick={props.onClick}
+        >
           {props.doses.map((dose, index) => (
             <Link to="/vaccinations/dose/view">
-            <DoseCard
-              current={index + 1}
-              total={props.total}
-              date_taken={dose.date_taken}
-              onClick={() => setDoseDetail(dose.id)}
-            />
+              <DoseCard
+                current={index + 1}
+                total={props.total}
+                date_taken={dose.date_taken}
+                onClick={() => setDoseDetailId(dose.id)}
+              />
             </Link>
           ))}
         </AccordionDetails>
