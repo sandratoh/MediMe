@@ -45,7 +45,7 @@ export default function MedicationDetail() {
     <section className="clinic-detail">
       {redirect && <Redirect to="/medications" />}
       <div className="clinics-list--icons">
-        <Link to="/clinics">
+        <Link to="/medications">
           <ArrowBackIosIcon />
         </Link>
       </div>
