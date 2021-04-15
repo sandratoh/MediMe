@@ -8,6 +8,7 @@ import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 
 // Components
 import DoseCard from "./Doses/DoseCard";
@@ -31,6 +32,9 @@ export default function VaccinationCard(props) {
 
   console.log("props.onClick function", props.onClick);
 
+  console.log("props.total", props.total);
+  console.log("props.doses", props.doses);
+
   return (
     <div className="card--vaccination">
       <Accordion>
@@ -38,9 +42,21 @@ export default function VaccinationCard(props) {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
-          // onClick={props.onClick}
         >
-          <Typography variant="subtitle1">{props.name}</Typography>
+          {props.total > props.doses.length ? (
+            <h4 variant="subtitle1">
+              <ErrorOutlineIcon
+                className="card--vaccination--icon"
+                color="error"
+                fontSize="default"
+              />
+              {props.name}
+            </h4>
+          ) : (
+            <h4 className="card--vaccination--name" variant="subtitle1">
+              {props.name}
+            </h4>
+          )}
         </AccordionSummary>
         <AccordionDetails className="card--vaccination--doses">
           {props.doses.map((dose, index) => (
@@ -66,10 +82,3 @@ export default function VaccinationCard(props) {
     </div>
   );
 }
-
-//   () => setVaccinationDetail(props.vaccineId),
-//   console.log(
-//     "vaccination detail from newdose button",
-//     vaccinationDetail
-//   )
-// )}
