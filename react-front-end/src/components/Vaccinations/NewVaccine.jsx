@@ -1,24 +1,42 @@
+// Libraries
 import { useContext, useState } from "react";
 import { Redirect } from "react-router";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
+
+// Components
 import BackButton from "../BackButton";
-
 import TextInput from "../TextInput";
-import CountButton from "../CountButton"
-
+import CountButton2 from "../CountButton";
 import IconButton from "../IconButton";
-// import { dataContext } from "../hooks/DataProvider";
 
+// Helpers
+import { dataContext } from "../hooks/DataProvider";
+
+// Stylesheet
 import "../../styles/form.scss";
 
 export default function VaccineNew() {
+  const { addVaccinationRecord } = useContext(dataContext);
 
-  const [redirect, setRedirect] = useState('');
+  const [vaccine, setVaccine] = useState("");
+  const [totalDose, setTotalDose] = useState(1);
 
-  const [vaccine, setVaccine] = useState('');
-  const [doseNum, setDoseNum] = useState(null);
+  // Redirect state
+  const [redirect, setRedirect] = useState("");
 
   const onCancel = () => setRedirect(true);
-  const onSave = () => console.log("saved button clikced");
+
+  const onSave = () => {
+    const vaccinationData = {
+      name: vaccine,
+      total_num_doses: totalDose,
+    };
+
+    addVaccinationRecord(vaccinationData).then((res) => {
+      !res.data.error && setRedirect(true);
+    });
+  };
 
   return (
     <section className="clinics-new">
@@ -29,14 +47,28 @@ export default function VaccineNew() {
       <h1 className="clinics-list--title">New Vaccination</h1>
       <div className="clinics-form--container">
         <div className="clinics--form--field">
-          
           <TextInput required value={vaccine} setInput={setVaccine}>
-            Vaccine Name
+            Vaccine Name:
           </TextInput>
 
           <p className="form-label">Total Number of Doses</p>
-          
-          <CountButton />
+          <div>
+            <IconButton
+              onClick={() => {
+                setTotalDose(Math.max(totalDose - 1, 0));
+              }}
+            >
+              <RemoveCircleIcon />
+            </IconButton>
+            {totalDose}
+            <IconButton
+              onClick={() => {
+                setTotalDose(totalDose + 1, 5);
+              }}
+            >
+              <AddCircleIcon />
+            </IconButton>
+          </div>
         </div>
         <div className="clinics-form--user-action">
           <IconButton
