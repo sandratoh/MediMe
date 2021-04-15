@@ -132,7 +132,8 @@ export default function DataProvider(props) {
     return axios
       .post(`/api/vaccinations/${vaccinationDetail}/dose`, doseDetail)
       .then((res) => {
-        setAllDoses([res.data[0], ...doseDetail]);
+        // setAllDoses([res.data[0], ...doseDetail]);
+        refreshAllDoses();
 
         return res;
       })
