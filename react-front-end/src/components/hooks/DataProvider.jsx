@@ -130,16 +130,18 @@ export default function DataProvider(props) {
 
   // add dose record
   // vaccine_id needs to set it from onClick
-  const addDoseRecord = (doseDetail, vaccinationDetail) => {
-    return axios
-      .post(`/api/vaccinations/${vaccinationDetail}/dose`, doseDetail)
-      .then((res) => {
-        // setAllDoses([res.data[0], ...doseDetail]);
-        refreshAllDoses();
+  const addDoseRecord = (doseData) => {
+    return (
+      axios
+        // vaccination detail is not being set anyhwere
+        .post(`/api/vaccinations/${vaccinationDetail}/dose`, doseData)
+        .then((res) => {
+          setAllDoses([res.data[0], ...allDoses]);
 
-        return res;
-      })
-      .catch((err) => console.log(err));
+          return res;
+        })
+        .catch((err) => console.log(err))
+    );
   };
 
   // edit dose record
@@ -262,7 +264,7 @@ export default function DataProvider(props) {
     deleteDoseRecord,
   };
 
-  console.log("data", data);
+  // console.log("data", data);
 
   return (
     <dataContext.Provider value={data}>{props.children}</dataContext.Provider>
