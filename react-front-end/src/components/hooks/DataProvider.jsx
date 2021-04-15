@@ -50,7 +50,6 @@ export default function DataProvider(props) {
     return axios
       .put(`/api/clinics/${clinicalVisitDetail}`, visitDetail)
       .then((res) => {
-        // will only redirect if put goes through and no error is returned
         refreshAllClinics();
 
         return res;
@@ -81,8 +80,6 @@ export default function DataProvider(props) {
       .post("/api/labs/", labDetail)
       .then((res) => {
         refreshAllLabs();
-
-        // setLabRecords([res.data[0], ...labRecords]);
 
         return res;
       })
@@ -123,11 +120,33 @@ export default function DataProvider(props) {
       .post("/api/medications", medDetail)
       .then((res) => {
         refreshAllMedications();
+        
         return res;
       })
       .catch((err) => console.log(err));
   }
 
+  const editMedication = (medDetail) => {
+    return axios
+      .put(`/api/medications/${medRecordsDetail}`, medDetail)
+      .then((res) => {
+        refreshAllMedications();
+
+        return res;
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const deleteMedication = () => {
+    return axios
+      .delete(`/api/medications/${medRecordsDetail}`)
+      .then((res) => {
+        refreshAllMedications();
+
+        return res;
+      })
+      .catch((err) => console.log(err));
+  };
 
   const refreshAllMedications = () => {
     return axios.get("/api/medications").then((res) => {
@@ -282,13 +301,14 @@ export default function DataProvider(props) {
     labs,
     // Medication exports
     medRecords,
-    setMedRecords,
     medications,
-    setMedications,
     medRecordsDetail,
     setMedRecordsDetail,
     medRecordsEdit,
     setMedRecordsEdit,
+    addMedication,
+    editMedication,
+    deleteMedication,
     // Vaccinations exports
     vaccinations,
     setVaccinationDetail,
@@ -304,7 +324,7 @@ export default function DataProvider(props) {
     deleteDoseRecord,
   };
 
-  // console.log("data", data);
+  console.log("data", data);
 
   return (
     <dataContext.Provider value={data}>{props.children}</dataContext.Provider>
