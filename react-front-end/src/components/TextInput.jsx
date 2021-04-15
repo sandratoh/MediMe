@@ -11,7 +11,7 @@ export default function BasicTextFields(props) {
       <TextField 
       required={props.required}
       error={props.required && props.validate && props.value === ""}
-      helperText={props.helperText}
+      helperText={!props.value && props.validate && "This field cannot be blank."}
       id="outlined-basic"
       variant="outlined"
       multiline

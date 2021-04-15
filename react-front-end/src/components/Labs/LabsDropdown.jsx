@@ -4,6 +4,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import "./LabsDropdown.scss";
+import { FormHelperText } from "@material-ui/core";
 
 export default function LabDropdown(props) {
   // const [recordType, setRecordType] = useState("");
@@ -37,6 +38,7 @@ export default function LabDropdown(props) {
           <MenuItem value={"XRAY"}>X-ray</MenuItem>
         </Select>
       </FormControl>
+      <FormHelperText>{!props.value && props.validate && "This field cannot be blank."}</FormHelperText>
     </section>
   );
 }

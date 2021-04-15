@@ -16,6 +16,7 @@ export default function DateInput(props) {
     <form className="date-input--container" noValidate>
       <TextField
         required={!props.notRequired}
+        helperText={!props.value && props.validate && "This field cannot be blank."}
         id={props.id}
         value={props.value}
         onChange={(event) => props.setInput(event.target.value)}
