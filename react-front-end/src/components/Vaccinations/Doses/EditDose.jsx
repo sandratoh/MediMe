@@ -29,16 +29,21 @@ export default function DoseEdit() {
   
   const [redirect, setRedirect] = useState('');
   
-  const { vaccinationDetail, setVaccinationDetail, vaccinations, doseEdit, setDoseEdit } = useContext(dataContext);
+  const { vaccinationDetail, setVaccinationDetail, vaccinations, doseDetail, doseEdit, setDoseEdit, allDoses } = useContext(dataContext);
   
-  // Mock vaccinationDetail until merged with GET dose branch (replace with vaccinationDetail)
+  // Mock id until merged with GET dose branch
   const mockVaccinationDetail = 7;
+  const mockDoseDetail = 8;
 
-  const dose = vaccinations.find((vaccination) => vaccination.id === mockVaccinationDetail);
+  // Find vaccine from vaccine id
+  const vaccination = vaccinations.find((vaccination) => vaccination.id === mockVaccinationDetail);
 
+  // Filter all dose to find ones that are in our vaccination id
+  const dose = allDoses.find((dose) => dose.id === mockDoseDetail);
+
+  console.log('vaccination', vaccination);
   console.log('dose', dose);
 
-  // const [vaccinationId, setVaccinationId] = useState();
   const [serialNum, setSerialNum] = useState(doses[0].serial_number);
   const [dateTaken, setDateTaken] = useState(doses[0].date_taken);
   const [administrationSite, setAdministrationSite] = useState(doses[0].administration_site);
