@@ -22,7 +22,7 @@ import { findNameById } from "../../helpers/selectors";
 import "../../styles/form.scss";
 import "./MedicationsList.scss";
 
-export default function NewMedication() {
+export default function EditMedication() {
   const {
     doctors,
     editMedication,
@@ -50,6 +50,8 @@ export default function NewMedication() {
     food: medication.is_take_with_food,
     water: medication.is_take_with_water,
   });
+
+  console.log("date", medication.prescribed_date);
 
   // Redirect state
   const [redirect, setRedirect] = useState(false);
@@ -83,7 +85,7 @@ export default function NewMedication() {
   };
 
   return (
-    <section className="medications-new">
+    <section className="medications-edit">
       {redirect && <Redirect to="/medications/view" />}
       <h1 className="medications-list--title">Update Medication</h1>
       <div className="medications-form--container">
@@ -100,7 +102,12 @@ export default function NewMedication() {
             Nickname:
           </TextInput>
           <div className="medications-form--date">
-            <DateInput value={date} setInput={setDate} validate={validate}>
+            <DateInput
+              required
+              value={date}
+              setInput={setDate}
+              validate={validate}
+            >
               Date:
             </DateInput>
           </div>
