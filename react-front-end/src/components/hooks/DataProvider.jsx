@@ -36,7 +36,9 @@ export default function DataProvider(props) {
     return axios
       .post("/api/clinics/", visitDetail)
       .then((res) => {
-        setClinicalVisits([res.data[0], ...clinicalVisits]);
+        refreshAllClinics();
+
+        // setClinicalVisits([res.data[0], ...clinicalVisits]);
 
         return res;
       })
@@ -77,7 +79,9 @@ export default function DataProvider(props) {
     return axios
       .post("/api/labs/", labDetail)
       .then((res) => {
-        setLabRecords([res.data[0], ...labRecords]);
+        refreshAllLabs();
+
+        // setLabRecords([res.data[0], ...labRecords]);
 
         return res;
       })

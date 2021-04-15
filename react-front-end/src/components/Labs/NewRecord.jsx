@@ -26,6 +26,9 @@ export default function NewRecord() {
   // Redirect state
   const [redirect, setRedirect] = useState(false);
 
+  // Validate form error state
+  const [validate, setValidate] = useState(false);
+
   const onCancel = () => setRedirect(true);
 
   const onSave = () => {
@@ -38,7 +41,7 @@ export default function NewRecord() {
     };
 
     addLabRecord(labDetail).then((res) => {
-      !res.data.error && setRedirect(true);
+      res.data.error ? setValidate(true) : setRedirect(true);
     });
   };
 
@@ -48,14 +51,14 @@ export default function NewRecord() {
       <h1 className="labs-list--title">New Lab Record</h1>
       <div className="labs-form--container">
         <div className="labs-form--field">
-          <DateInput value={date} setInput={setDate}>
+          <DateInput value={date} setInput={setDate} validate={validate}>
             Date:
           </DateInput>
-          <TextInput required value={lab} setInput={setLab}>
+          <TextInput required value={lab} setInput={setLab} validate={validate}>
             Lab:
           </TextInput>
-          <LabRecordType required value={recordType} setInput={setRecordType} />
-          <TextInput required value={doctor} setInput={setDoctor}>
+          <LabRecordType required value={recordType} setInput={setRecordType} validate={validate}/>
+          <TextInput required value={doctor} setInput={setDoctor} validate={validate}>
             Referral Doctor:
           </TextInput>
         </div>

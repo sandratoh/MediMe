@@ -26,6 +26,9 @@ export default function VaccineNew() {
   const [redirectBack, setRedirectBack] = useState(false);
   const [redirectSuccess, setRedirectSuccess] = useState(false);
 
+  // Validate form error state
+  const [validate, setValidate] = useState(false);
+
   const onCancel = () => setRedirectBack(true);
 
   const onSave = () => {
@@ -35,7 +38,7 @@ export default function VaccineNew() {
     };
 
     addVaccinationRecord(vaccinationData).then((res) => {
-      !res.data.error && setRedirectSuccess(true);
+      vaccinationData.name ? setRedirectSuccess(true) : setValidate(true);
     });
   };
 
@@ -46,7 +49,7 @@ export default function VaccineNew() {
       <h1 className="clinics-list--title">New Vaccination</h1>
       <div className="clinics-form--container">
         <div className="clinics--form--field">
-          <TextInput required value={vaccine} setInput={setVaccine}>
+          <TextInput required value={vaccine} setInput={setVaccine} validate={validate}>
             Vaccine Name:
           </TextInput>
 

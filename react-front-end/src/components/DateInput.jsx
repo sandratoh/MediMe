@@ -11,7 +11,6 @@ import { currentDate, formatDateToISO } from "../helpers/dateHelpers";
 import "./DateInput.scss";
 
 export default function DateInput(props) {
-  // const [dateInput, setDateInput] = useState(currentDate);
 
   return (
     <form className="date-input--container" noValidate>
@@ -21,7 +20,7 @@ export default function DateInput(props) {
         value={props.value}
         onChange={(event) => props.setInput(event.target.value)}
         className="date-input--field"
-        error={props.error}
+        error={!props.value && props.validate}
         label={props.children}
         type="date"
         defaultValue={props.date ? formatDateToISO(props.date) : currentDate()}
