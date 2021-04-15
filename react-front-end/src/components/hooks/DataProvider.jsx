@@ -18,10 +18,9 @@ export default function DataProvider(props) {
   const [labRecordsEdit, setLabRecordsEdit] = useState({});
 
   // Medication states
-  const [medRecords, setMedRecords] = useState([]);
   const [medications, setMedications] = useState([]);
-  const [medRecordsDetail, setMedRecordsDetail] = useState({});
-  const [medRecordsEdit, setMedRecordsEdit] = useState({});
+  const [medDetail, setMedDetail] = useState({});
+  const [medEdit, setMedEdit] = useState({});
   const [pharmacies, setPharmacies] = useState([]);
 
   // Vaccination states
@@ -116,9 +115,9 @@ export default function DataProvider(props) {
   };
 
   // Medications database calls
-  const addMedication = (medDetail) => {
+  const addMedication = (medInput) => {
     return axios
-      .post("/api/medications", medDetail)
+      .post("/api/medications", medInput)
       .then((res) => {
         refreshAllMedications();
         
@@ -127,9 +126,9 @@ export default function DataProvider(props) {
       .catch((err) => console.log(err));
   }
 
-  const editMedication = (medDetail) => {
+  const editMedication = (medInput) => {
     return axios
-      .put(`/api/medications/${medRecordsDetail}`, medDetail)
+      .put(`/api/medications/${medDetail}`, medInput)
       .then((res) => {
         refreshAllMedications();
 
@@ -140,7 +139,7 @@ export default function DataProvider(props) {
 
   const deleteMedication = () => {
     return axios
-      .delete(`/api/medications/${medRecordsDetail}`)
+      .delete(`/api/medications/${medDetail}`)
       .then((res) => {
         refreshAllMedications();
 
@@ -304,12 +303,11 @@ export default function DataProvider(props) {
     editLabRecord,
     labs,
     // Medication exports
-    medRecords,
     medications,
-    medRecordsDetail,
-    setMedRecordsDetail,
-    medRecordsEdit,
-    setMedRecordsEdit,
+    medDetail,
+    setMedDetail,
+    medEdit,
+    setMedEdit,
     addMedication,
     editMedication,
     deleteMedication,
