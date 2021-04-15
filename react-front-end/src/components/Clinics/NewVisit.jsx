@@ -27,6 +27,8 @@ export default function NewVisit(props) {
   // Manage redirect state based on axios call
   const [redirect, setRedirect] = useState(false);
 
+  const [validate, setValidate] = useState(false);
+
   const onCancel = () => setRedirect(true);
 
   const onSave = () => {
@@ -41,7 +43,10 @@ export default function NewVisit(props) {
     };
 
     addClinicVisit(visitDetail).then((res) => {
-      !res.data.error && setRedirect(true);
+      console.log(res);
+      return res.data.error ? setValidate(true) : alert('this works');
+      // return res.data.error ? setValidate(true) : setRedirect(true);
+      // !res.data.error && setRedirect(true);
     });
   };
 
@@ -51,14 +56,14 @@ export default function NewVisit(props) {
       <h1 className="clinics-list--title">New Clinical Visit</h1>
       <div className="clinics-form--container">
         <div className="clinics--form--field">
-          <DateInput value={date} setInput={setDate}>
+          <DateInput value={date} setInput={setDate} validate={validate}>
             Date:
           </DateInput>
           <ClinicGroupedButtons state={visitType} onChange={setVisitType} />
-          <TextInput required value={medicalCenter} setInput={setMedicalCenter}>
+          <TextInput required value={medicalCenter} setInput={setMedicalCenter} validate={validate}>
             Medical Center:
           </TextInput>
-          <TextInput required value={doctor} setInput={setDoctor}>
+          <TextInput required value={doctor} setInput={setDoctor} validate={validate}>
             Doctor:
           </TextInput>
           <TextInput value={reasonFor} setInput={setReasonFor}>

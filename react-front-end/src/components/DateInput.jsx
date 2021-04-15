@@ -20,7 +20,7 @@ export default function DateInput(props) {
         value={props.value}
         onChange={(event) => props.setInput(event.target.value)}
         className="date-input--field"
-        error={!props.value}
+        error={!props.value && props.validate}
         label={props.children}
         type="date"
         defaultValue={props.date ? formatDateToISO(props.date) : currentDate()}
