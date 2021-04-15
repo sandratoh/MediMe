@@ -38,6 +38,8 @@ export default function EditVisit() {
   // Manage redirect state based on axios call
   const [redirect, setRedirect] = useState(false);
 
+  const [validate, setValidate] = useState(false);
+
   const onCancel = () => setRedirect(true);
 
   const onSave = () => {
@@ -52,7 +54,7 @@ export default function EditVisit() {
     };
 
     editClinicVisit(visitDetail).then((res) => {
-      !res.data.error && setRedirect(true);
+      res.data.error ? setValidate(true) : setRedirect(true);
     });
   };
 
@@ -62,7 +64,7 @@ export default function EditVisit() {
       <h1 className="clinics-list--title">Update Clinical Visit</h1>
       <div className="clinics-form--container">
         <div className="clinics--form--field">
-          <DateInput date={date} setInput={setDate}>
+          <DateInput date={date} setInput={setDate} validate={validate}>
             Date:
           </DateInput>
           <ClinicGroupedButtons state={visitType} onChange={setVisitType} />
@@ -71,6 +73,7 @@ export default function EditVisit() {
             // defaultValue={medicalCenter}
             value={medicalCenter}
             setInput={setMedicalCenter}
+            validate={validate}
           >
             Medical Center:
           </TextInput>
@@ -79,6 +82,7 @@ export default function EditVisit() {
             // defaultValue={doctor}
             value={doctor}
             setInput={setDoctor}
+            validate={validate}
           >
             Doctor:
           </TextInput>
