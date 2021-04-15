@@ -84,9 +84,11 @@ export default function NewMedication() {
           <TextInput value={nickname} setInput={setNickname}>
             Nickname:
           </TextInput>
-          <DateInput required value={date} setInput={setDate}>
-            Date:
-          </DateInput>
+          <div className="medications-form--date">
+            <DateInput required value={date} setInput={setDate}>
+              Date:
+            </DateInput>
+          </div>
           <TextInput required value={pharmacy} setInput={setPharmacy}>
             Pharmacy:
           </TextInput>
