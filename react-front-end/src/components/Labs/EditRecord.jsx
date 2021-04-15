@@ -35,6 +35,9 @@ export default function EditRecord() {
   // Redirect state
   const [redirect, setRedirect] = useState(false);
 
+  // Validate form error state
+  const [validate, setValidate] = useState(false);
+
   const onCancel = () => setRedirect(true);
 
   const onSave = () => {
@@ -47,7 +50,7 @@ export default function EditRecord() {
     };
 
     editLabRecord(labDetail).then((res) => {
-      !res.data.error && setRedirect(true);
+      res.data.error ? setValidate(true) : setRedirect(true);
     });
   };
 
@@ -57,14 +60,14 @@ export default function EditRecord() {
       <h1 className="labs-list--title">Update Lab Record</h1>
       <div className="labs-form--container">
         <div className="labs-form--field">
-          <DateInput date={date} setInput={setDate}>
+          <DateInput date={date} setInput={setDate} validate={validate}>
             Date:
           </DateInput>
-          <TextInput required value={lab} setInput={setLab}>
+          <TextInput required value={lab} setInput={setLab} validate={validate}>
             Lab:
           </TextInput>
-          <LabRecordType required value={recordType} setInput={setRecordType} />
-          <TextInput required value={doctor} setInput={setDoctor}>
+          <LabRecordType required value={recordType} setInput={setRecordType} validate={validate}/>
+          <TextInput required value={doctor} setInput={setDoctor} validate={validate}>
             Referral Doctor:
           </TextInput>
         </div>
