@@ -37,7 +37,6 @@ const addMedication = async (med) => {
     med.is_take_with_food,
   ];
 
-  console.log("values", values);
   return client.query(query, values).then((res) => res.rows);
 };
 

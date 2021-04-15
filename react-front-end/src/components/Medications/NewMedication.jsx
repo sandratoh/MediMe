@@ -1,6 +1,6 @@
 // Libraries
 import { useState, useContext } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 // Components
 import DateInput from "../DateInput";
@@ -8,7 +8,6 @@ import IconButton from "../IconButton";
 import TextInput from "../TextInput";
 
 // Material UI Components
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 import FormGroup from "@material-ui/core/FormGroup";
@@ -24,10 +23,10 @@ import "../../styles/form.scss";
 import "./MedicationsList.scss";
 
 export default function NewMedication() {
-  // const { addMedication } = useContext(dataContext);
+  const { addMedication } = useContext(dataContext);
 
   const [date, setDate] = useState(currentDate());
-  const [medication, setMedication] = useState("");
+  const [medicationName, setMedicationName] = useState("");
   const [nickname, setNickname] = useState("");
   const [pharmacy, setPharmacy] = useState("");
   const [doctor, setDoctor] = useState("");
@@ -50,25 +49,24 @@ export default function NewMedication() {
 
   const onCancel = () => setRedirect(true);
 
-  const onSave = () => console.log("Save is clicked");
-  // const onSave = () => {
-  //   const MedicationData = {
-  //     user_id: 1,
-  //     name: medication,
-  //     nickname: nickname,
-  //     prescribed_date: date,
-  //     pharmacy_id: pharmacy,
-  //     prescribed_doctor_id: doctor,
-  //     refills_remaining: refills,
-  //     instructions: instructions,
-  //     is_take_with_food: checkbox.food
-  //     is_take_with_water: checkbox.water,
-  //   };
+  const onSave = () => {
+    const medicationData = {
+      user_id: 1,
+      name: medicationName,
+      nickname: nickname,
+      prescribed_date: date,
+      pharmacy_id: pharmacy,
+      prescribed_doctor_id: doctor,
+      refills_remaining: refills,
+      instructions: instructions,
+      is_take_with_food: checkbox.food,
+      is_take_with_water: checkbox.water,
+    };
 
-  //   addMedication(medicationData).then((res) => {
-  //     res.data.error ? setValidate(true) : setRedirect(true);
-  //   });
-  // };
+    addMedication(medicationData).then((res) => {
+      res.data.error ? setValidate(true) : setRedirect(true);
+    });
+  };
 
   return (
     <section className="medications-new">
@@ -78,8 +76,8 @@ export default function NewMedication() {
         <div className="medications-form--field">
           <TextInput
             required
-            value={medication}
-            setInput={setMedication}
+            value={medicationName}
+            setInput={setMedicationName}
             validate={validate}
           >
             Medication Name:

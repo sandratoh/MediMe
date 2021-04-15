@@ -1,7 +1,10 @@
-// Components
+// Material UI Components
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 
+// Icons
+import emptyIcon from "../../images/empty-meds.png";
+import fullIcon from "../../images/full-meds.png";
 
 // Helpers
 //might not need this one?
@@ -12,12 +15,8 @@ import { formatDate } from "../../helpers/dateHelpers";
 import "../../styles/card.scss";
 
 export default function MedicationCard(props) {
-  // icon shows when refills > 0 ??? 
-  // const iconByType = (props) => {
-  //   const visitType = props.type.toUpperCase();
+  const iconByRefills = (refills) => refills >= 1 ? fullIcon : emptyIcon;
 
-  //   return visitType === "HOSPITAL" ? hospitalIcon : clinicIcon;
-  // };
   return (
     <Card className="card" variant="outlined" onClick={props.onClick}>
       <div className="card--details">
@@ -32,7 +31,7 @@ export default function MedicationCard(props) {
         </Typography>
       </div>
       <div className="card--icon">
-        {/* <img src={iconByType(props)} component="img" alt="card icon" /> */}
+        <img src={iconByRefills(props.refills)} component="img" alt="card icon" />
       </div>
     </Card>
   );

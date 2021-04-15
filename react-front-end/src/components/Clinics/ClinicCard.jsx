@@ -12,11 +12,7 @@ import { formatDate } from "../../helpers/dateHelpers";
 import "../../styles/card.scss";
 
 export default function CardListItem(props) {
-  const iconByType = (props) => {
-    const visitType = props.type.toUpperCase();
-
-    return visitType === "HOSPITAL" ? hospitalIcon : clinicIcon;
-  };
+  const iconByType = type => type === "HOSPITAL" ? hospitalIcon : clinicIcon;
 
   return (
     <Card className="card" variant="outlined" onClick={props.onClick}>
@@ -29,7 +25,7 @@ export default function CardListItem(props) {
         </Typography>
       </div>
       <div className="card--icon">
-        <img src={iconByType(props)} component="img" alt="card icon" />
+        <img src={iconByType(props.type)} component="img" alt="card icon" />
       </div>
     </Card>
   );

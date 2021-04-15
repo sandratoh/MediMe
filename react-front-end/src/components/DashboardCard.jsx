@@ -7,20 +7,13 @@ import vaccinationIcon from '../images/vaccination.png';
 import medicationsIcon from '../images/medicine.png';
 
 export default function DashboardCard(props) {
-  const iconByCategory = (props) => {
-    switch (props.category) {
-      case "clinics":
-        return clinicRecordIcon;
-        break;
-      case "labs":
-        return labRecordIcon;
-        break;
-      case "vaccinations":
-        return vaccinationIcon;
-        break;
-      case "medications":
-        return medicationsIcon;
-        break;
+  const iconByCategory = (category) => {
+    switch (category) {
+      case "clinics": return clinicRecordIcon;
+      case "labs": return labRecordIcon;
+      case "vaccinations": return vaccinationIcon;
+      case "medications": return medicationsIcon;
+      default: console.log("Category not supported.")
     };
   };
 
@@ -29,7 +22,7 @@ export default function DashboardCard(props) {
       className="dashboard-card"
     >
       <div className="dashboard-card--detail">
-      <img className="dashboard-card--icon" src={iconByCategory(props)} component="img" alt="card icon"/>
+      <img className="dashboard-card--icon" src={iconByCategory(props.category)} component="img" alt="card icon"/>
       <Typography className="dashboard-card--category" variant="p">{props.children}</Typography>
       </div>
     </Card>
