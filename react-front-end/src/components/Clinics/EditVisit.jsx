@@ -3,7 +3,6 @@ import { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 
 // Components
-import BackButton from "../BackButton";
 import TextInput from "../TextInput";
 import ClinicGroupedButtons from "./ClinicGroupedButtons";
 import DateInput from "../DateInput";
@@ -60,9 +59,6 @@ export default function EditVisit() {
   return (
     <section className="clinics-edit">
       {redirect && <Redirect to="/clinics/view" />}
-      <div className="clinics-list--icons">
-        <BackButton />
-      </div>
       <h1 className="clinics-list--title">Update Clinical Visit</h1>
       <div className="clinics-form--container">
         <div className="clinics--form--field">

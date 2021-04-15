@@ -7,7 +7,6 @@ import TextInput from "../TextInput";
 import DateInput from "../DateInput";
 import IconButton from "../IconButton";
 import LabRecordType from "./LabsDropdown";
-import BackButton from "../BackButton";
 
 // Helpers
 import { dataContext } from "../hooks/DataProvider";
@@ -55,9 +54,6 @@ export default function EditRecord() {
   return (
     <section className="labs-edit">
       {redirect && <Redirect to="/labs/view" />}
-      <div className="labs-list--icons">
-        <BackButton />
-      </div>
       <h1 className="labs-list--title">Update Lab Record</h1>
       <div className="labs-form--container">
         <div className="labs-form--field">

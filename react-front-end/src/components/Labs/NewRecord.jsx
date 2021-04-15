@@ -1,15 +1,12 @@
 // Libraries
 import { useState, useContext } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 // Components
 import DateInput from "../DateInput";
 import IconButton from "../IconButton";
 import LabRecordType from "./LabsDropdown";
 import TextInput from "../TextInput";
-
-// Material UI Components
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 // Helpers
 import { currentDate } from "../../helpers/dateHelpers";
@@ -48,11 +45,6 @@ export default function NewRecord() {
   return (
     <section className="labs-new">
       {redirect && <Redirect to="/labs" />}
-      <div className="labs-list--icons">
-        <Link to="/labs">
-          <ArrowBackIosIcon />
-        </Link>
-      </div>
       <h1 className="labs-list--title">New Lab Record</h1>
       <div className="labs-form--container">
         <div className="labs-form--field">

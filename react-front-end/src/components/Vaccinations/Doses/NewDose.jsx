@@ -1,14 +1,11 @@
 // Libraries
 import { useContext, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 // Components
 import TextInput from "../../TextInput";
 import DateInput from "../../DateInput";
 import IconButton from "../../IconButton";
-
-// Material UI Components
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 // Helpers
 import { currentDate } from "../../../helpers/dateHelpers";
@@ -49,11 +46,6 @@ export default function DoseNew() {
   return (
     <section className="clinics-new">
       {redirect && <Redirect to="/vaccinations" />}
-      <div className="clinics-list--icons">
-        <Link to="/vaccinations">
-          <ArrowBackIosIcon />
-        </Link>
-      </div>
       <h1 className="clinics-list--title">New Vaccination Dose</h1>
       <div className="clinics-form--container">
         <div className="clinics--form--field">

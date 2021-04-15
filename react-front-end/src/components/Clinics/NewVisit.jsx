@@ -1,15 +1,12 @@
 // Libraries
 import { useContext, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 // Components
 import ClinicGroupedButtons from "./ClinicGroupedButtons";
 import DateInput from "../DateInput";
 import IconButton from "../IconButton";
 import TextInput from "../TextInput";
-
-// Material UI Components
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 // Helpers
 import { currentDate } from "../../helpers/dateHelpers";
@@ -51,11 +48,6 @@ export default function NewVisit(props) {
   return (
     <section className="clinics-new">
       {redirect && <Redirect to="/clinics" />}
-      <div className="clinics-list--icons">
-        <Link to="/clinics">
-          <ArrowBackIosIcon />
-        </Link>
-      </div>
       <h1 className="clinics-list--title">New Clinical Visit</h1>
       <div className="clinics-form--container">
         <div className="clinics--form--field">

@@ -3,7 +3,6 @@ import { useContext, useState } from "react";
 import { Redirect } from "react-router";
 
 // Components
-import BackButton from "../../BackButton";
 import TextInput from "../../TextInput";
 import DateInput from "../../DateInput";
 import IconButton from "../../IconButton";
@@ -74,9 +73,6 @@ export default function DoseEdit() {
   return (
     <section className="clinics-new">
       {redirect && <Redirect to="/vaccinations" />}
-      <div className="clinics-list--icons">
-        <BackButton />
-      </div>
       <h1 className="clinics-list--title">Update Vaccination Dose</h1>
       <div className="clinics-form--container">
         <div className="clinics--form--field">
