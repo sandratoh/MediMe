@@ -66,7 +66,7 @@ export default function DoseEdit() {
 
   return (
     <section className="clinics-new">
-      {redirect && <Redirect to="/vaccinations" />}
+      {redirect && <Redirect to="/vaccinations/dose/view" />}
       <h1 className="clinics-list--title">Update Vaccination Dose</h1>
       <div className="clinics-form--container">
         <div className="clinics--form--field">
