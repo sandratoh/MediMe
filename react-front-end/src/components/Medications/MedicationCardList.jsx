@@ -49,7 +49,7 @@ export default function MedicationCardList() {
           className="list-items"
           date={medication.prescribed_date}
           nickName={medication.nickname}
-          // type={visit.type_of_visit}
+          refills={medication.refills_remaining}
           value={medication.name}
           medications={medications}
           onClick={onSelect}
