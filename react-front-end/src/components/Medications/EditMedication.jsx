@@ -1,6 +1,6 @@
 // Libraries
 import { useState, useContext } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 // Components
 import DateInput from "../DateInput";
@@ -8,7 +8,6 @@ import IconButton from "../IconButton";
 import TextInput from "../TextInput";
 
 // Material UI Components
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 import FormGroup from "@material-ui/core/FormGroup";
@@ -16,44 +15,44 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
 // Helpers
-import { currentDate } from "../../helpers/dateHelpers";
 import { dataContext } from "../hooks/DataProvider";
+import { currentDate } from "../../helpers/dateHelpers";
+import { findNameById } from "../../helpers/selectors";
 
 // Stylesheet
 import "../../styles/form.scss";
 import "./MedicationsList.scss";
 
-// Hardcoded Data
-const medications = [
-  {
-    id: 4,
-    name: "Happy Drug",
-    nickname: "Smile All Day Drug",
-    user_id: 1,
-    prescribed_date: "2021-03-04T08:00:00.000Z",
-    pharmacy_id: 3,
-    prescribed_doctor_id: 4,
-    refills_remaining: 2,
-    instructions: "Ten times a day",
-    is_take_with_water: true,
-    is_take_with_food: false,
-  },
-];
+export default function EditMedication() {
+  const {
+    doctors,
+    editMedication,
+    medications,
+    medicationEditId,
+    pharmacies,
+  } = useContext(dataContext);
 
-export default function NewMedication() {
-  // const { addMedication } = useContext(dataContext);
+  const medication = medications.find(
+    (medication) => medication.id === medicationEditId
+  );
 
-  const [date, setDate] = useState(currentDate());
-  const [medication, setMedication] = useState("");
-  const [nickname, setNickname] = useState("");
-  const [pharmacy, setPharmacy] = useState("");
-  const [doctor, setDoctor] = useState("");
-  const [refills, setRefills] = useState(0);
-  const [instructions, setInstructions] = useState("");
+  const [date, setDate] = useState(medication.prescribed_date);
+  const [medicationName, setMedicationName] = useState(medication.name);
+  const [nickname, setNickname] = useState(medication.nickname);
+  const [pharmacy, setPharmacy] = useState(
+    findNameById(pharmacies, medication.pharmacy_id)
+  );
+  const [doctor, setDoctor] = useState(
+    findNameById(doctors, medication.prescribed_doctor_id)
+  );
+  const [refills, setRefills] = useState(medication.refills_remaining);
+  const [instructions, setInstructions] = useState(medication.instructions);
   const [checkbox, setCheckbox] = useState({
-    food: false,
-    water: false,
+    food: medication.is_take_with_food,
+    water: medication.is_take_with_water,
   });
+
+  console.log("date", date);
 
   // Redirect state
   const [redirect, setRedirect] = useState(false);
@@ -67,29 +66,46 @@ export default function NewMedication() {
 
   const onCancel = () => setRedirect(true);
 
-  const onSave = () => console.log("Save is clicked");
+  const onSave = () => {
+    const medicationData = {
+      user_id: 1,
+      name: medicationName,
+      nickname: nickname,
+      prescribed_date: date,
+      pharmacy_id: pharmacy,
+      prescribed_doctor_id: doctor,
+      refills_remaining: refills,
+      instructions: instructions,
+      is_take_with_food: checkbox.food,
+      is_take_with_water: checkbox.water,
+    };
+
+    editMedication(medicationData).then((res) => {
+      res.data.error ? setValidate(true) : setRedirect(true);
+    });
+  };
 
   return (
-    <section className="medications-new">
+    <section className="medications-edit">
       {redirect && <Redirect to="/medications/view" />}
       <h1 className="medications-list--title">Update Medication</h1>
       <div className="medications-form--container">
         <div className="medications-form--field">
           <TextInput
             required
-            value={medications[0].name}
-            setInput={setMedication}
+            value={medicationName}
+            setInput={setMedicationName}
             validate={validate}
           >
             Medication Name:
           </TextInput>
-          <TextInput value={medications[0].nickname} setInput={setNickname}>
+          <TextInput value={nickname} setInput={setNickname}>
             Nickname:
           </TextInput>
           <div className="medications-form--date">
             <DateInput
               required
-              value={medications[0].prescribed_date}
+              date={date}
               setInput={setDate}
               validate={validate}
             >
@@ -98,7 +114,7 @@ export default function NewMedication() {
           </div>
           <TextInput
             required
-            value={medications[0].pharmacy_id}
+            value={pharmacy}
             setInput={setPharmacy}
             validate={validate}
           >
@@ -106,7 +122,7 @@ export default function NewMedication() {
           </TextInput>
           <TextInput
             required
-            value={medications[0].prescribed_doctor_id}
+            value={doctor}
             setInput={setDoctor}
             validate={validate}
           >
@@ -121,7 +137,7 @@ export default function NewMedication() {
             >
               <RemoveCircleIcon />
             </IconButton>
-            {medications[0].refills_remaining}
+            {refills}
             <IconButton
               onClick={() => {
                 setRefills(refills + 1, 5);
@@ -130,10 +146,7 @@ export default function NewMedication() {
               <AddCircleIcon />
             </IconButton>
           </div>
-          <TextInput
-            value={medications[0].instructions}
-            setInput={setInstructions}
-          >
+          <TextInput value={instructions} setInput={setInstructions}>
             Instructions:
           </TextInput>
         </div>
@@ -142,7 +155,7 @@ export default function NewMedication() {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={medications[0].is_take_with_food}
+                  checked={checkbox.food}
                   onChange={handleChange}
                   name="food"
                   color="default"
@@ -153,7 +166,7 @@ export default function NewMedication() {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={medications[0].is_take_with_water}
+                  checked={checkbox.water}
                   onChange={handleChange}
                   name="water"
                   color="default"
