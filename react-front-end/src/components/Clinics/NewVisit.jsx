@@ -43,10 +43,7 @@ export default function NewVisit(props) {
     };
 
     addClinicVisit(visitDetail).then((res) => {
-      console.log(res);
-      return res.data.error ? setValidate(true) : alert('this works');
-      // return res.data.error ? setValidate(true) : setRedirect(true);
-      // !res.data.error && setRedirect(true);
+      res.data.error ? setValidate(true) : setRedirect(true);
     });
   };
 
