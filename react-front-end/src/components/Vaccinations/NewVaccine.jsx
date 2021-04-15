@@ -25,9 +25,10 @@ export default function VaccineNew() {
   const [totalDose, setTotalDose] = useState(1);
 
   // Redirect state
-  const [redirect, setRedirect] = useState("");
+  const [redirectBack, setRedirectBack] = useState(false);
+  const [redirectSuccess, setRedirectSuccess] = useState(false);
 
-  const onCancel = () => setRedirect(true);
+  const onCancel = () => setRedirectBack(true);
 
   const onSave = () => {
     const vaccinationData = {
@@ -36,13 +37,14 @@ export default function VaccineNew() {
     };
 
     addVaccinationRecord(vaccinationData).then((res) => {
-      !res.data.error && setRedirect(true);
+      !res.data.error && setRedirectSuccess(true);
     });
   };
 
   return (
     <section className="clinics-new">
-      {redirect && <Redirect to="/vaccinations" />}
+      {redirectBack && <Redirect to="/vaccinations" />}
+      {redirectSuccess && <Redirect to="/vaccinations/success" />}
       <div className="clinics-list--icons">
         <Link to="/vaccinations">
           <ArrowBackIosIcon />

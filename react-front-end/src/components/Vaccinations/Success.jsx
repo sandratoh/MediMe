@@ -12,7 +12,7 @@ export default function Success() {
         <img src={checkIcon} component="img" alt="card icon" />
       </div>
       <div className="vaccination-success--user-action">
-        <Link to="/dose/new">
+        <Link to="vaccinations/dose/new">
           <TextButton userAction color="secondary">
             Enter Dosage Info
           </TextButton>
