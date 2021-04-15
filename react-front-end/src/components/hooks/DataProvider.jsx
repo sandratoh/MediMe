@@ -140,7 +140,9 @@ export default function DataProvider(props) {
         // vaccination detail is not being set anyhwere
         .post(`/api/vaccinations/${vaccinationDetail}/dose`, doseData)
         .then((res) => {
-          setAllDoses([res.data[0], ...allDoses]);
+          
+          refreshAllDoses();
+          refreshAllVaccinations();
 
           return res;
         })
@@ -156,7 +158,7 @@ export default function DataProvider(props) {
         doseDetail
       )
       .then((res) => {
-        // setAllDoses([res.data[0], ...doseDetail]);
+        
         refreshAllDoses();
         refreshAllVaccinations();
 
