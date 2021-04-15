@@ -21,7 +21,7 @@ export default function DataProvider(props) {
   // all vaccinations
   const [vaccinations, setVaccinations] = useState([]);
   // vaccination id
-  const [vaccinationDetail, setVaccinationDetail] = useState([]);
+  const [vaccinationDetail, setVaccinationDetail] = useState({});
   // // vaccinations/:id/dose
   // const [vaccinationDoses, setVaccinationDoses] = useState([]);
   // dose id  for vaccine/:id/dose:id <<

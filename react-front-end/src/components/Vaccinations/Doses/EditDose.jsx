@@ -1,13 +1,17 @@
+// Libraries
 import { useContext, useState } from "react";
 import { Redirect } from "react-router";
-import BackButton from "../../BackButton";
 
+// Components
+import BackButton from "../../BackButton";
 import TextInput from "../../TextInput";
 import DateInput from "../../DateInput";
-import { currentDate } from "../../../helpers/dateHelpers";
 import IconButton from "../../IconButton";
-// import { dataContext } from "../../hooks/DataProvider";
 
+// Helpers
+import { dataContext } from "../../hooks/DataProvider";
+
+// Stylesheet
 import "../../../styles/form.scss";
 
 const doses = [
@@ -22,8 +26,17 @@ const doses = [
 ];
 
 export default function DoseEdit() {
-
+  
   const [redirect, setRedirect] = useState('');
+  
+  const { vaccinationDetail, setVaccinationDetail, vaccinations, doseEdit, setDoseEdit } = useContext(dataContext);
+  
+  // Mock vaccinationDetail until merged with GET dose branch (replace with vaccinationDetail)
+  const mockVaccinationDetail = 7;
+
+  const dose = vaccinations.find((vaccination) => vaccination.id === mockVaccinationDetail);
+
+  console.log('dose', dose);
 
   // const [vaccinationId, setVaccinationId] = useState();
   const [serialNum, setSerialNum] = useState(doses[0].serial_number);
@@ -54,7 +67,7 @@ export default function DoseEdit() {
             Administration Site:
           </TextInput>
 
-          <DateInput date={nextDose} onChange={setNextDose} >
+          <DateInput notRequired date={nextDose} onChange={setNextDose} >
             Next Scheduled Date:
           </DateInput>
         </div>
