@@ -13,16 +13,6 @@ import { dataContext } from "../../hooks/DataProvider";
 // Stylesheet
 import "../../../styles/form.scss";
 
-const doses = [
-  {
-    id: 1,
-    vaccination_id: 1,
-    serial_number: "SB22S987NOW",
-    date_taken: "2021-03-15",
-    administration_site: "Sunset Community Centre",
-    next_scheduled_dose: "2021-09-01"
-  }
-];
 
 export default function DoseEdit() {
   // Redirect state
@@ -32,11 +22,7 @@ export default function DoseEdit() {
   const [validate, setValidate] = useState(false);
   
   // Uncomment vaccinationDetail and doseDetail after merge
-  const { /* vaccinationDetail , */ vaccinations, /* doseDetail, */ allDoses, editDoseRecord } = useContext(dataContext);
-  
-  // Mock id until merged with GET dose branch
-  const vaccinationDetail = 7;
-  const doseDetail = 8;
+  const {  vaccinationDetail ,  vaccinations, doseDetail, allDoses, editDoseRecord } = useContext(dataContext);
 
   // Find vaccine from vaccine id
   const vaccination = vaccinations.find((vaccination) => vaccination.id === vaccinationDetail);
@@ -44,13 +30,11 @@ export default function DoseEdit() {
   // Fnd dose from dose id
   const dose = allDoses.find((dose) => dose.id === doseDetail);
 
-  console.log('vaccination', vaccination);
-  console.log('dose', dose);
 
-  const [serialNum, setSerialNum] = useState(doses[0].serial_number);
-  const [dateTaken, setDateTaken] = useState(doses[0].date_taken);
-  const [administrationSite, setAdministrationSite] = useState(doses[0].administration_site);
-  const [nextDose, setNextDose] = useState(doses[0].next_scheduled_dose);
+  const [serialNum, setSerialNum] = useState(dose.serial_number);
+  const [dateTaken, setDateTaken] = useState(dose.date_taken);
+  const [administrationSite, setAdministrationSite] = useState(dose.administration_site);
+  const [nextDose, setNextDose] = useState(dose.next_scheduled_dose);
 
   const onCancel = () => setRedirect(true);
 
@@ -63,12 +47,8 @@ export default function DoseEdit() {
       next_scheduled_dose: nextDose,
       doseId: doseDetail
     }
-    console.log('doseDetail before save:', doseDetail);
 
     editDoseRecord(doseInput).then((res) => {
-      console.log('updated doseDetail:', doseDetail);
-      console.log('res', res);
-      // to test after merge
       (doseInput.date_taken && doseInput.serial_number && doseInput.administration_site) 
         ? setRedirect(true) 
         : setValidate(true);

@@ -19,7 +19,7 @@ import { dataContext } from "../../hooks/DataProvider";
   
 
 export default function DoseDetail() {
-  const { allDoses, vaccinationDetail, doseDetail, vaccinations, deleteDoseRecord } = useContext(dataContext)
+  const { allDoses, vaccinationDetail, doseDetail, vaccinations, deleteDoseRecord, setDoseEdit } = useContext(dataContext)
   const [redirect, setRedirect] = useState(false);
  
   const dose = allDoses.find(d => d.id === doseDetail);
@@ -30,9 +30,7 @@ export default function DoseDetail() {
     });
   };
 
-  const onEdit = () => {
-    console.log('Edit button pressed');
-  };
+  const onEdit = () => setDoseEdit(dose.id)
 
   return (
     <section className="dose-detail">
@@ -74,17 +72,16 @@ export default function DoseDetail() {
         >
           Delete
         </IconButton>
-        {/* <Link to="/dose/edit"> */}
+        <Link to="/vaccinations/dose/edit">
           <IconButton
           edit
           variant="contained"
           color="secondary"
           onClick={onEdit}
-          // onClick={() => handleDoseEditClick(dose.id)}
           >
           Edit
         </IconButton>
-      {/* </Link> */}
+      </Link>
       </div>
     </section>
   );
