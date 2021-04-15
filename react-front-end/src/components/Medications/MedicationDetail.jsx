@@ -16,6 +16,12 @@ import { formatDate } from "../../helpers/dateHelpers";
 // Stylesheet
 import "../Clinics/ClinicDetail.scss";
 
+// Icons
+import takeWithFood from "../../images/takeWithFood.png";
+import takeWithWater from "../../images/takeWithWater.png";
+
+
+
 export default function MedicationDetail() {
   const {
     pharmacies,
@@ -30,6 +36,20 @@ export default function MedicationDetail() {
   const [redirect, setRedirect] = useState(false);
 
   const medication = medications.find((med) => med.id === medicationDetailId);
+
+  const isTakeWithFood = (med) => {
+    const food = med.is_take_with_food
+    return food ? takeWithFood : null
+  };
+
+  const icon = () => {
+    if (isTakeWithFood) {
+      return (
+        <img src={isTakeWithFood(medication)} component="img" alt="card icon"/>
+      )
+    }
+    return null
+  }
 
   const onDelete = () => {
     deleteMedication().then((res) => {
@@ -87,6 +107,10 @@ export default function MedicationDetail() {
         <div className="clinic-detail--data">
           <h5 className="form-label">Instructions:</h5>
           <p className="form-body">{medication.instructions}</p>
+        </div>
+
+        <div className="clinic-detail--data">
+          {icon}
         </div>
       </div>
 
