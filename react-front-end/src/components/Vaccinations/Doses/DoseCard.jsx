@@ -10,7 +10,7 @@ import "../../../styles/card.scss";
 
 export default function DoseCard(props) {
   return (
-    <Card className="card--dose" variant="outlined">
+    <Card className="card--dose" variant="outlined" onClick={props.onClick}>
       <div className="card--details">
         <Typography variant="subtitle2" color="textSecondary">
           {`Dose ${props.current}/${props.total}`}

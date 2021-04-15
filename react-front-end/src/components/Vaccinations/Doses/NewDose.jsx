@@ -16,7 +16,7 @@ import { dataContext } from "../../hooks/DataProvider";
 import "../../../styles/form.scss";
 
 export default function DoseNew() {
-  const { addDoseRecord } = useContext(dataContext);
+  const { addDoseRecord, vaccinationDetail } = useContext(dataContext);
 
   const [date, setDate] = useState(currentDate());
   const [serialNumber, setSerialNumber] = useState("");
@@ -36,6 +36,8 @@ export default function DoseNew() {
       administration_site: adminSite,
       next_scheduled_dose: nextDoseDate,
     };
+
+    console.log("vaccinationDetail fron newdose", vaccinationDetail);
 
     addDoseRecord(doseData).then((res) => {
       !res.data.error && setRedirect(true);

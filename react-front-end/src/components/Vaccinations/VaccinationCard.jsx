@@ -20,7 +20,16 @@ import { dataContext } from "../hooks/DataProvider";
 import "../../styles/card.scss";
 
 export default function VaccinationCard(props) {
-  const { setDoseDetail } = useContext(dataContext);
+  const { setDoseDetail, setVaccinationDetail, vaccinationDetail } = useContext(
+    dataContext
+  );
+
+  console.log(
+    "props from vaccination card, passed from vaccinations card list",
+    props
+  );
+
+  console.log("props.onClick function", props.onClick);
 
   return (
     <div className="card--vaccination">
@@ -29,6 +38,7 @@ export default function VaccinationCard(props) {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
+          // onClick={props.onClick}
         >
           <Typography variant="subtitle1">{props.name}</Typography>
         </AccordionSummary>
@@ -43,7 +53,12 @@ export default function VaccinationCard(props) {
           ))}
         </AccordionDetails>
         <Link to="/vaccinations/dose/new">
-          <IconButton newDose variant="contained" color="primary">
+          <IconButton
+            newDose
+            variant="contained"
+            color="primary"
+            onClick={props.onClick}
+          >
             New Dose
           </IconButton>
         </Link>
@@ -51,3 +66,10 @@ export default function VaccinationCard(props) {
     </div>
   );
 }
+
+//   () => setVaccinationDetail(props.vaccineId),
+//   console.log(
+//     "vaccination detail from newdose button",
+//     vaccinationDetail
+//   )
+// )}

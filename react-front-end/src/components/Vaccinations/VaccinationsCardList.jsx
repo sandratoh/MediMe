@@ -15,9 +15,13 @@ export default function VaccinationsCardList() {
     vaccinationDetail,
   } = useContext(dataContext);
 
-  // To find dose array: filter doses to return only ones that vaccination_id = vaccine id
-
   const vaccines = vaccinations.map((vaccination) => {
+    // console.log("prev vaccination detail:", vaccinationDetail);
+    // console.log("vaccination from vacc card list", vaccination);
+    // console.log("vaccination id from vacc card list", vaccination.id);
+    // setVaccinationDetail(9302);
+
+    // To find dose array: filter doses to return only ones that vaccination_id = vaccine id
     return (
       <VaccinationCard
         key={vaccination.id}
@@ -32,6 +36,8 @@ export default function VaccinationsCardList() {
       />
     );
   });
+
+  console.log("after vaccination detail:", vaccinationDetail);
 
   return <ul>{vaccines}</ul>;
 }
