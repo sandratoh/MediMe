@@ -16,7 +16,7 @@ import { formatDate } from "../../../helpers/dateHelpers";
 import "./DoseDetail.scss";
 import { dataContext } from "../../hooks/DataProvider";
 
-
+  
 
 export default function DoseDetail() {
   const { allDoses, vaccinationDetail, doseDetail, vaccinations, deleteDoseRecord } = useContext(dataContext)
