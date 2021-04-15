@@ -18,11 +18,11 @@ import "../Clinics/ClinicDetail.scss";
 
 export default function MedicationDetail() {
   const {
-    
+    pharmacies,
     medications,
     doctors,
-    medRecordsDetail,
-    setMedRecordsEdit,
+    medDetail,
+    setMedEdit,
     deleteMedication,
   } = useContext(dataContext);
 
@@ -30,7 +30,7 @@ export default function MedicationDetail() {
   const [redirect, setRedirect] = useState(false);
 
   const medication = medications.find(
-    (med) => med.id === medRecordsDetail
+    (med) => med.id === medDetail
   );
 
   const onDelete = () => {
@@ -39,44 +39,52 @@ export default function MedicationDetail() {
     });
   };
 
-  const onEdit = () => setMedRecordsEdit(visit.id);
+  const onEdit = () => setMedEdit(medication.id);
 
   return (
     <section className="clinic-detail">
-      {redirect && <Redirect to="/clinics" />}
+      {redirect && <Redirect to="/medications" />}
       <div className="clinics-list--icons">
         <Link to="/clinics">
           <ArrowBackIosIcon />
         </Link>
       </div>
-      <h1 className="clinics-list--title">Clinical Visit Detail</h1>
+      <h1 className="clinics-list--title">Medication Detail</h1>
 
       <div className="clinic-detail--container">
         <div className="clinic-detail--data">
-          <h5 className="">Date:</h5>
-          <p className="form-body">{formatDate(visit.date)}</p>
+          <h5 className="">Medication Name:</h5>
+          <p className="form-body">{medication.name}</p>
         </div>
 
         <div className="clinic-detail--data">
-          <h5 className="form-label">Clinic:</h5>
-          <p className="form-body">{findNameById(clinics, visit.clinic_id)}</p>
+          <h5 className="form-label">Nickname:</h5>
+          <p className="form-body">{medication.nickname}</p>
         </div>
 
         <div className="clinic-detail--data">
-          <h5 className="form-label">Doctor:</h5>
-          <p className="form-body">
-            {findNameById(doctors, visit.referral_doctor_id)}
-          </p>
+          <h5 className="form-label">Date:</h5>
+          <p className="form-body">{formatDate(medication.prescribed_date)}</p>
         </div>
 
         <div className="clinic-detail--data">
-          <h5 className="form-label">Reason for visit:</h5>
-          <p className="form-body">{visit.reason_for_visit}</p>
+          <h5 className="form-label">Pharmacy:</h5>
+          <p className="form-body">{findNameById(pharmacies, medication.pharmacy_id)}</p>
         </div>
 
         <div className="clinic-detail--data">
-          <h5 className="form-label">Doctor's diagnosis:</h5>
-          <p className="form-body">{visit.doctor_diagnosis}</p>
+          <h5 className="form-label">Prescibed Doctor:</h5>
+          <p className="form-body">{findNameById(doctors, medication.prescribed_doctor_id)}</p>
+        </div>
+
+        <div className="clinic-detail--data">
+          <h5 className="form-label">Refills Remaining:</h5>
+          <p className="form-body">{medication.refills_remaining}</p>
+        </div>
+
+        <div className="clinic-detail--data">
+          <h5 className="form-label">Instructions:</h5>
+          <p className="form-body">{medication.instructions}</p>
         </div>
       </div>
 
@@ -89,7 +97,7 @@ export default function MedicationDetail() {
         >
           Delete
         </IconButton>
-        <Link to="/clinics/edit">
+        <Link to="/medications/edit">
           <IconButton
             edit
             variant="contained"

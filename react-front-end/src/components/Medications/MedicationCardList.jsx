@@ -40,12 +40,12 @@ import MedicationCard from "./MedicationCard";
 
 export default function MedicationCardList() {
 
-  const { medications, setMedRecordDetail } = useContext(
+  const { medications, setMedDetail } = useContext(
     dataContext
   );
 
   const meds = medications.map((medication) => {
-    const onSelect = () => setMedRecordDetail(medication.id);
+    const onSelect = () => setMedDetail(medication.id);
     return (
       <Link to="/medications/view">
         <MedicationCard
