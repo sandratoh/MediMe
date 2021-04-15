@@ -43,12 +43,15 @@ const labs = [
 
 export default function CardListItem(props) {
   const iconByType = type => {
-      if (type === "BLOOD") return bloodIcon;
-      if (type === "MAMMOGRAM") return mammogramIcon;
-      if (type === "MRI") return mriIcon;
-      if (type === "ULTRASOUND") return ultrasoundIcon;
-      if (type === "URINE") return urineIcon;
-      if (type === "XRAY") return xrayIcon;
+    switch (type) {
+      case "BLOOD": return bloodIcon
+      case "MAMMOGRAM": return mammogramIcon;
+      case "MRI": return mriIcon;
+      case "ULTRASOUND": return ultrasoundIcon;
+      case "URINE": return urineIcon;
+      case "XRAY": return xrayIcon;
+      default: console.log("Lab type not supported.")
+    }
   };
 
   return (

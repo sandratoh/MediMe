@@ -9,18 +9,11 @@ import medicationsIcon from '../images/medicine.png';
 export default function DashboardCard(props) {
   const iconByCategory = (category) => {
     switch (category) {
-      case "clinics":
-        return clinicRecordIcon;
-        break;
-      case "labs":
-        return labRecordIcon;
-        break;
-      case "vaccinations":
-        return vaccinationIcon;
-        break;
-      case "medications":
-        return medicationsIcon;
-        break;
+      case "clinics": return clinicRecordIcon;
+      case "labs": return labRecordIcon;
+      case "vaccinations": return vaccinationIcon;
+      case "medications": return medicationsIcon;
+      default: console.log("Category not supported.")
     };
   };
 
