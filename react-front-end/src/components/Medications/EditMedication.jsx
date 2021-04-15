@@ -16,6 +16,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 
 // Helpers
 import { dataContext } from "../hooks/DataProvider";
+import { currentDate } from "../../helpers/dateHelpers";
 import { findNameById } from "../../helpers/selectors";
 
 // Stylesheet
@@ -51,7 +52,7 @@ export default function EditMedication() {
     water: medication.is_take_with_water,
   });
 
-  console.log("date", medication.prescribed_date);
+  console.log("date", date);
 
   // Redirect state
   const [redirect, setRedirect] = useState(false);
@@ -104,7 +105,7 @@ export default function EditMedication() {
           <div className="medications-form--date">
             <DateInput
               required
-              value={date}
+              date={date}
               setInput={setDate}
               validate={validate}
             >
