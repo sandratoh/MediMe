@@ -20,10 +20,10 @@ export default function EditRecord() {
     labRecords,
     labs,
     doctors,
-    labRecordsEdit,
+    labRecordEditId,
     editLabRecord,
   } = useContext(dataContext);
-  const record = labRecords.find((record) => record.id === labRecordsEdit);
+  const record = labRecords.find((record) => record.id === labRecordEditId);
 
   const [date, setDate] = useState(record.date);
   const [lab, setLab] = useState(findNameById(labs, record.lab_id));

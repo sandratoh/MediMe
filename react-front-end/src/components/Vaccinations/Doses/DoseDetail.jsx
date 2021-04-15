@@ -16,21 +16,26 @@ import { formatDate } from "../../../helpers/dateHelpers";
 import "./DoseDetail.scss";
 import { dataContext } from "../../hooks/DataProvider";
 
-  
-
 export default function DoseDetail() {
-  const { allDoses, vaccinationDetail, doseDetail, vaccinations, deleteDoseRecord, setDoseEdit } = useContext(dataContext)
+  const {
+    doses,
+    vaccinationDetailId,
+    doseDetailId,
+    vaccinations,
+    deleteDoseRecord,
+    setDoseEditId,
+  } = useContext(dataContext);
   const [redirect, setRedirect] = useState(false);
- 
-  const dose = allDoses.find(d => d.id === doseDetail);
-  
+
+  const dose = doses.find((d) => d.id === doseDetailId);
+
   const onDelete = () => {
     deleteDoseRecord().then((res) => {
       !res.data.error && setRedirect(true);
     });
   };
 
-  const onEdit = () => setDoseEdit(dose.id)
+  const onEdit = () => setDoseEditId(dose.id);
 
   return (
     <section className="dose-detail">
@@ -46,7 +51,7 @@ export default function DoseDetail() {
         <div className="dose-detail--data">
           <h5 className="form-label">Vaccination Name:</h5>
           <p className="form-body">
-            {findNameById(vaccinations, vaccinationDetail)}
+            {findNameById(vaccinations, vaccinationDetailId)}
           </p>
         </div>
         <div className="dose-detail--data">
@@ -58,7 +63,11 @@ export default function DoseDetail() {
           <p className="form-body">{dose.administration_site}</p>
         </div>
         <div className="dose-detail--data">
-          <h5 className="">{dose.next_scheduled_dose ? 'Next Scheduled Dose:' : 'No Future Dose Scheduled.'}</h5>
+          <h5 className="">
+            {dose.next_scheduled_dose
+              ? "Next Scheduled Dose:"
+              : "No Future Dose Scheduled."}
+          </h5>
           <p className="form-body">{formatDate(dose.next_scheduled_dose)}</p>
         </div>
       </div>
@@ -74,15 +83,15 @@ export default function DoseDetail() {
         </IconButton>
         <Link to="/vaccinations/dose/edit">
           <IconButton
-          edit
-          variant="contained"
-          color="secondary"
-          onClick={onEdit}
+            edit
+            variant="contained"
+            color="secondary"
+            onClick={onEdit}
           >
-          Edit
-        </IconButton>
-      </Link>
+            Edit
+          </IconButton>
+        </Link>
       </div>
     </section>
   );
-};
+}

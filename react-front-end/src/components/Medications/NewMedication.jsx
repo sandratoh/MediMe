@@ -73,11 +73,6 @@ export default function NewMedication() {
   return (
     <section className="medications-new">
       {redirect && <Redirect to="/medications" />}
-      <div className="medications-list--icons">
-        <Link to="/medications">
-          <ArrowBackIosIcon />
-        </Link>
-      </div>
       <h1 className="medications-list--title">New Medication</h1>
       <div className="medications-form--container">
         <div className="medications-form--field">

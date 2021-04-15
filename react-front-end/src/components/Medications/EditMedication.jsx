@@ -68,33 +68,10 @@ export default function NewMedication() {
   const onCancel = () => setRedirect(true);
 
   const onSave = () => console.log("Save is clicked");
-  // const onSave = () => {
-  //   const MedicationData = {
-  //     user_id: 1,
-  //     name: medication,
-  //     nickname: nickname,
-  //     prescribed_date: date,
-  //     pharmacy_id: pharmacy,
-  //     prescribed_doctor_id: doctor,
-  //     refills_remaining: refills,
-  //     instructions: instructions,
-  //     is_take_with_food: checkbox.food
-  //     is_take_with_water: checkbox.water,
-  //   };
-
-  //   addMedication(medicationData).then((res) => {
-  //     res.data.error ? setValidate(true) : setRedirect(true);
-  //   });
-  // };
 
   return (
     <section className="medications-new">
-      {redirect && <Redirect to="/medications" />}
-      <div className="medications-list--icons">
-        <Link to="/medications">
-          <ArrowBackIosIcon />
-        </Link>
-      </div>
+      {redirect && <Redirect to="/medications/view" />}
       <h1 className="medications-list--title">Update Medication</h1>
       <div className="medications-form--container">
         <div className="medications-form--field">

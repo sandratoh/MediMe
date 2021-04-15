@@ -21,8 +21,8 @@ export default function ClinicDetail() {
     clinicalVisits,
     clinics,
     doctors,
-    clinicalVisitDetail,
-    setClinicalVisitEdit,
+    clinicalVisitDetailId,
+    setClinicalVisitEditId,
     deleteClinicVisit,
   } = useContext(dataContext);
 
@@ -30,7 +30,7 @@ export default function ClinicDetail() {
   const [redirect, setRedirect] = useState(false);
 
   const visit = clinicalVisits.find(
-    (visit) => visit.id === clinicalVisitDetail
+    (visit) => visit.id === clinicalVisitDetailId
   );
 
   const onDelete = () => {
@@ -39,7 +39,7 @@ export default function ClinicDetail() {
     });
   };
 
-  const onEdit = () => setClinicalVisitEdit(visit.id);
+  const onEdit = () => setClinicalVisitEditId(visit.id);
 
   return (
     <section className="clinic-detail">
@@ -102,4 +102,4 @@ export default function ClinicDetail() {
       </div>
     </section>
   );
-};
+}

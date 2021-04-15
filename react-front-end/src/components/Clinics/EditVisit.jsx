@@ -20,10 +20,12 @@ export default function EditVisit() {
     clinicalVisits,
     clinics,
     doctors,
-    clinicalVisitEdit,
+    clinicalVisitEditId,
     editClinicVisit,
   } = useContext(dataContext);
-  const visit = clinicalVisits.find((visit) => visit.id === clinicalVisitEdit);
+  const visit = clinicalVisits.find(
+    (visit) => visit.id === clinicalVisitEditId
+  );
   const [medicalCenter, setMedicalCenter] = useState(
     findNameById(clinics, visit.clinic_id)
   );

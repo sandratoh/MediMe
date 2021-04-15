@@ -8,7 +8,6 @@ import { dataContext } from "../hooks/DataProvider";
 // Components
 import MedicationCard from "./MedicationCard";
 
-
 // const medications = [
 //   {
 //   id: 4,
@@ -39,13 +38,10 @@ import MedicationCard from "./MedicationCard";
 //   ];
 
 export default function MedicationCardList() {
-
-  const { medications, setMedDetail } = useContext(
-    dataContext
-  );
+  const { medications, setMedicationDetailId } = useContext(dataContext);
 
   const meds = medications.map((medication) => {
-    const onSelect = () => setMedDetail(medication.id);
+    const onSelect = () => setMedicationDetailId(medication.id);
     return (
       <Link to="/medications/view">
         <MedicationCard

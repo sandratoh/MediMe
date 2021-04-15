@@ -21,17 +21,15 @@ export default function MedicationDetail() {
     pharmacies,
     medications,
     doctors,
-    medDetail,
-    setMedEdit,
+    medicationDetailId,
+    setMedicationEditId,
     deleteMedication,
   } = useContext(dataContext);
 
   // Manage redirect state based on axios call
   const [redirect, setRedirect] = useState(false);
 
-  const medication = medications.find(
-    (med) => med.id === medDetail
-  );
+  const medication = medications.find((med) => med.id === medicationDetailId);
 
   const onDelete = () => {
     deleteMedication().then((res) => {
@@ -39,7 +37,7 @@ export default function MedicationDetail() {
     });
   };
 
-  const onEdit = () => setMedEdit(medication.id);
+  const onEdit = () => setMedicationEditId(medication.id);
 
   return (
     <section className="clinic-detail">
@@ -69,12 +67,16 @@ export default function MedicationDetail() {
 
         <div className="clinic-detail--data">
           <h5 className="form-label">Pharmacy:</h5>
-          <p className="form-body">{findNameById(pharmacies, medication.pharmacy_id)}</p>
+          <p className="form-body">
+            {findNameById(pharmacies, medication.pharmacy_id)}
+          </p>
         </div>
 
         <div className="clinic-detail--data">
           <h5 className="form-label">Prescibed Doctor:</h5>
-          <p className="form-body">{findNameById(doctors, medication.prescribed_doctor_id)}</p>
+          <p className="form-body">
+            {findNameById(doctors, medication.prescribed_doctor_id)}
+          </p>
         </div>
 
         <div className="clinic-detail--data">
@@ -110,4 +112,4 @@ export default function MedicationDetail() {
       </div>
     </section>
   );
-};
+}

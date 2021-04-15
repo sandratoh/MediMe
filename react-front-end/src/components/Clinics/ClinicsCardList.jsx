@@ -9,12 +9,12 @@ import { dataContext } from "../hooks/DataProvider";
 import ClinicCard from "./ClinicCard";
 
 export default function ClinicsCardList() {
-  const { clinicalVisits, clinics, setClinicalVisitDetail } = useContext(
+  const { clinicalVisits, clinics, setClinicalVisitDetailId } = useContext(
     dataContext
   );
 
   const visits = clinicalVisits.map((visit) => {
-    const onSelect = () => setClinicalVisitDetail(visit.id);
+    const onSelect = () => setClinicalVisitDetailId(visit.id);
     return (
       <Link to="/clinics/view">
         <ClinicCard
