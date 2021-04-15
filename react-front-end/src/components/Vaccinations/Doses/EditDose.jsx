@@ -61,7 +61,7 @@ export default function DoseEdit() {
       <h1 className="clinics-list--title">Update Vaccination Dose</h1>
       <div className="clinics-form--container">
         <div className="clinics--form--field">
-          <DateInput date={dateTaken} onChange={setDateTaken} validate={validate}>
+          <DateInput date={dateTaken} setInput={setDateTaken} validate={validate}>
             Date Taken:
           </DateInput>
           
@@ -72,7 +72,7 @@ export default function DoseEdit() {
             Administration Site:
           </TextInput>
 
-          <DateInput notRequired date={nextDose} onChange={setNextDose} >
+          <DateInput notRequired date={nextDose} setInput={setNextDose} >
             Next Scheduled Date:
           </DateInput>
         </div>
