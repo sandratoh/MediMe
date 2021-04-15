@@ -118,9 +118,22 @@ export default function DataProvider(props) {
   };
 
   // Medications database calls
+  const addMedication = (medDetail) => {
+    return axios
+      .post("/api/medications", medDetail)
+      .then((res) => {
+        refreshAllMedications();
+        return res;
+      })
+      .catch((err) => console.log(err));
+  }
 
 
-
+  const refreshAllMedications = () => {
+    return axios.get("/api/medications").then((res) => {
+      setMedications(res.data.medications);
+    });
+  };
 
   // Vaccinations & Doses database calls
 
@@ -229,7 +242,7 @@ export default function DataProvider(props) {
       const labs = res[4].data.labs;
       const vaccinations = res[5].data.vaccinations;
       const allDoses = res[6].data.doses;
-      const medications = res[7].data.medication;
+      const medications = res[7].data.medications;
 
       setClinicalVisits(visits);
       setClinics(clinics);
@@ -275,7 +288,7 @@ export default function DataProvider(props) {
     medRecordsDetail,
     setMedRecordsDetail,
     medRecordsEdit,
-    setMedRecordsEdit
+    setMedRecordsEdit,
     // Vaccinations exports
     vaccinations,
     setVaccinationDetail,
