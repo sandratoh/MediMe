@@ -11,6 +11,9 @@ import TextInput from "../TextInput";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 // Helpers
 import { currentDate } from "../../helpers/dateHelpers";
@@ -20,8 +23,8 @@ import { dataContext } from "../hooks/DataProvider";
 import "../../styles/form.scss";
 import "./MedicationsList.scss";
 
-export default function NewRecord() {
-  // const { addLabRecord } = useContext(dataContext);
+export default function NewMedication() {
+  // const { addMedication } = useContext(dataContext);
 
   const [date, setDate] = useState(currentDate());
   const [medication, setMedication] = useState("");
@@ -30,23 +33,36 @@ export default function NewRecord() {
   const [doctor, setDoctor] = useState("");
   const [refills, setRefills] = useState(0);
   const [instructions, setInstructions] = useState("");
+  const [checkbox, setCheckbox] = useState({
+    checkedMeal: false,
+    checkedWater: false,
+  });
 
   // Redirect state
   const [redirect, setRedirect] = useState(false);
+
+  const handleChange = (event) => {
+    setCheckbox({ ...checkbox, [event.target.name]: event.target.checked });
+  };
 
   const onCancel = () => setRedirect(true);
 
   const onSave = () => console.log("Save is clicked");
   // const onSave = () => {
-  //   const labDetail = {
+  //   const MedicationData = {
   //     user_id: 1,
-  //     date,
-  //     referral_doctor_id: doctor,
-  //     lab_id: lab,
-  //     type_of_test: recordType,
+  //     name: medication,
+  //     nickname: nickename,
+  //     prescribed_date: date,
+  //     pharmacy_id: pharmacy,
+  //     prescribed_doctor_id: doctor,
+  //     refills_remaining: refills,
+  //     instructions: instructions,
+  //     is_take_with_food: checkbox.checkedMeal
+  //     is_take_with_water: checkbox.checkedWater,
   //   };
 
-  //   addLabRecord(labDetail).then((res) => {
+  //   addMedication(medicationData).then((res) => {
   //     !res.data.error && setRedirect(true);
   //   });
   // };
@@ -98,6 +114,32 @@ export default function NewRecord() {
           <TextInput required value={instructions} setInput={setInstructions}>
             Instructions:
           </TextInput>
+        </div>
+        <div>
+          <FormGroup row>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={checkbox.checkedMeal}
+                  onChange={handleChange}
+                  name="checkedMeal"
+                  color="default"
+                />
+              }
+              label="Take with meal"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={checkbox.checkedWater}
+                  onChange={handleChange}
+                  name="checkedWater"
+                  color="default"
+                />
+              }
+              label="Take with water"
+            />
+          </FormGroup>
         </div>
         <div className="medications-form--user-action">
           <IconButton
