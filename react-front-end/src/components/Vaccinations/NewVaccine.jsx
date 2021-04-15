@@ -1,16 +1,15 @@
 // Libraries
 import { useContext, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import AddCircleIcon from "@material-ui/icons/AddCircle";
-import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 // Components
 import TextInput from "../TextInput";
-import CountButton2 from "../CountButton";
 import IconButton from "../IconButton";
 
 // Material UI Components
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 // Helpers
 import { dataContext } from "../hooks/DataProvider";
