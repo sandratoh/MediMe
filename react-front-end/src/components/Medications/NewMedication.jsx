@@ -11,6 +11,9 @@ import TextInput from "../TextInput";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
 // Helpers
 import { currentDate } from "../../helpers/dateHelpers";
@@ -20,8 +23,8 @@ import { dataContext } from "../hooks/DataProvider";
 import "../../styles/form.scss";
 import "./MedicationsList.scss";
 
-export default function NewRecord() {
-  // const { addLabRecord } = useContext(dataContext);
+export default function NewMedication() {
+  // const { addMedication } = useContext(dataContext);
 
   const [date, setDate] = useState(currentDate());
   const [medication, setMedication] = useState("");
@@ -30,24 +33,40 @@ export default function NewRecord() {
   const [doctor, setDoctor] = useState("");
   const [refills, setRefills] = useState(0);
   const [instructions, setInstructions] = useState("");
+  const [checkbox, setCheckbox] = useState({
+    food: false,
+    water: false,
+  });
 
   // Redirect state
   const [redirect, setRedirect] = useState(false);
+
+  // Validate form error state
+  const [validate, setValidate] = useState(false);
+
+  const handleChange = (event) => {
+    setCheckbox({ ...checkbox, [event.target.name]: event.target.checked });
+  };
 
   const onCancel = () => setRedirect(true);
 
   const onSave = () => console.log("Save is clicked");
   // const onSave = () => {
-  //   const labDetail = {
+  //   const MedicationData = {
   //     user_id: 1,
-  //     date,
-  //     referral_doctor_id: doctor,
-  //     lab_id: lab,
-  //     type_of_test: recordType,
+  //     name: medication,
+  //     nickname: nickname,
+  //     prescribed_date: date,
+  //     pharmacy_id: pharmacy,
+  //     prescribed_doctor_id: doctor,
+  //     refills_remaining: refills,
+  //     instructions: instructions,
+  //     is_take_with_food: checkbox.food
+  //     is_take_with_water: checkbox.water,
   //   };
 
-  //   addLabRecord(labDetail).then((res) => {
-  //     !res.data.error && setRedirect(true);
+  //   addMedication(medicationData).then((res) => {
+  //     res.data.error ? setValidate(true) : setRedirect(true);
   //   });
   // };
 
@@ -62,23 +81,45 @@ export default function NewRecord() {
       <h1 className="medications-list--title">New Medication</h1>
       <div className="medications-form--container">
         <div className="medications-form--field">
-          <TextInput required value={medication} setInput={setMedication}>
+          <TextInput
+            required
+            value={medication}
+            setInput={setMedication}
+            validate={validate}
+          >
             Medication Name:
           </TextInput>
           <TextInput value={nickname} setInput={setNickname}>
             Nickname:
           </TextInput>
-          <DateInput required value={date} setInput={setDate}>
-            Date:
-          </DateInput>
-          <TextInput required value={pharmacy} setInput={setPharmacy}>
+          <div className="medications-form--date">
+            <DateInput
+              required
+              value={date}
+              setInput={setDate}
+              validate={validate}
+            >
+              Date:
+            </DateInput>
+          </div>
+          <TextInput
+            required
+            value={pharmacy}
+            setInput={setPharmacy}
+            validate={validate}
+          >
             Pharmacy:
           </TextInput>
-          <TextInput required value={doctor} setInput={setDoctor}>
+          <TextInput
+            required
+            value={doctor}
+            setInput={setDoctor}
+            validate={validate}
+          >
             Prescribed Doctor:
           </TextInput>
-          <p className="form-label">Refills Remaining:</p>
-          <div>
+          <div className="medications-form--refills">
+            <p className="form-label">Refills Remaining:</p>
             <IconButton
               onClick={() => {
                 setRefills(Math.max(refills - 1, 0));
@@ -95,9 +136,35 @@ export default function NewRecord() {
               <AddCircleIcon />
             </IconButton>
           </div>
-          <TextInput required value={instructions} setInput={setInstructions}>
+          <TextInput value={instructions} setInput={setInstructions}>
             Instructions:
           </TextInput>
+        </div>
+        <div className="medications-form--checkbox">
+          <FormGroup row>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={checkbox.food}
+                  onChange={handleChange}
+                  name="food"
+                  color="default"
+                />
+              }
+              label="Take with food"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={checkbox.water}
+                  onChange={handleChange}
+                  name="water"
+                  color="default"
+                />
+              }
+              label="Take with water"
+            />
+          </FormGroup>
         </div>
         <div className="medications-form--user-action">
           <IconButton
