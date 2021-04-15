@@ -93,8 +93,8 @@ export default function NewMedication() {
           <TextInput required value={doctor} setInput={setDoctor}>
             Prescribed Doctor:
           </TextInput>
-          <p className="form-label">Refills Remaining:</p>
-          <div>
+          <div className="medications-form--refills">
+            <p className="form-label">Refills Remaining:</p>
             <IconButton
               onClick={() => {
                 setRefills(Math.max(refills - 1, 0));
@@ -111,11 +111,11 @@ export default function NewMedication() {
               <AddCircleIcon />
             </IconButton>
           </div>
-          <TextInput required value={instructions} setInput={setInstructions}>
+          <TextInput value={instructions} setInput={setInstructions}>
             Instructions:
           </TextInput>
         </div>
-        <div>
+        <div className="medications-form--checkbox">
           <FormGroup row>
             <FormControlLabel
               control={
@@ -131,7 +131,7 @@ export default function NewMedication() {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={checkbox.waterater}
+                  checked={checkbox.water}
                   onChange={handleChange}
                   name="water"
                   color="default"
