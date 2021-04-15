@@ -44,7 +44,7 @@ module.exports = (client) => {
 
   // get all doses
   router.get("/dose", (req, res) => {
-    let query = `SELECT * FROM vaccination_doses ORDER BY date_taken DESC`;
+    let query = `SELECT * FROM vaccination_doses ORDER BY date_taken ASC`;
 
     client
       .query(query)
