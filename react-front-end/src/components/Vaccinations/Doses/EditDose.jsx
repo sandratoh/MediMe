@@ -1,13 +1,17 @@
+// Libraries
 import { useContext, useState } from "react";
 import { Redirect } from "react-router";
-import BackButton from "../../BackButton";
 
+// Components
+import BackButton from "../../BackButton";
 import TextInput from "../../TextInput";
 import DateInput from "../../DateInput";
-import { currentDate } from "../../../helpers/dateHelpers";
 import IconButton from "../../IconButton";
-// import { dataContext } from "../../hooks/DataProvider";
 
+// Helpers
+import { dataContext } from "../../hooks/DataProvider";
+
+// Stylesheet
 import "../../../styles/form.scss";
 
 const doses = [
@@ -22,17 +26,50 @@ const doses = [
 ];
 
 export default function DoseEdit() {
-
+  
   const [redirect, setRedirect] = useState('');
+  
+  // Uncomment vaccinationDetail and doseDetail after merge
+  const { /* vaccinationDetail , */ vaccinations, /* doseDetail, */ allDoses, editDoseRecord } = useContext(dataContext);
+  
+  // Mock id until merged with GET dose branch
+  const vaccinationDetail = 7;
+  const doseDetail = 8;
 
-  // const [vaccinationId, setVaccinationId] = useState();
+  // Find vaccine from vaccine id
+  const vaccination = vaccinations.find((vaccination) => vaccination.id === vaccinationDetail);
+
+  // Fnd dose from dose id
+  const dose = allDoses.find((dose) => dose.id === doseDetail);
+
+  console.log('vaccination', vaccination);
+  console.log('dose', dose);
+
   const [serialNum, setSerialNum] = useState(doses[0].serial_number);
   const [dateTaken, setDateTaken] = useState(doses[0].date_taken);
   const [administrationSite, setAdministrationSite] = useState(doses[0].administration_site);
   const [nextDose, setNextDose] = useState(doses[0].next_scheduled_dose);
 
   const onCancel = () => setRedirect(true);
-  const onSave = () => console.log("saved button clikced");
+
+  const onSave = () => {
+    const doseInput = {
+      id: vaccinationDetail,
+      serial_number: serialNum,
+      date_taken: dateTaken,
+      administration_site: administrationSite,
+      next_scheduled_dose: nextDose,
+      doseId: doseDetail
+    }
+    console.log('doseDetail before save:', doseDetail);
+
+    editDoseRecord(doseInput).then((res) => {
+      console.log('updated doseDetail:', doseDetail);
+      console.log('res', res);
+      // to uncomment after merging
+      // !res.data.error && setRedirect(true);
+    });
+  };
 
   return (
     <section className="clinics-new">
@@ -54,7 +91,7 @@ export default function DoseEdit() {
             Administration Site:
           </TextInput>
 
-          <DateInput date={nextDose} onChange={setNextDose} >
+          <DateInput notRequired date={nextDose} onChange={setNextDose} >
             Next Scheduled Date:
           </DateInput>
         </div>
