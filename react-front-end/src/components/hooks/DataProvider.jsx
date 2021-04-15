@@ -21,7 +21,7 @@ export default function DataProvider(props) {
   // all vaccinations
   const [vaccinations, setVaccinations] = useState([]);
   // vaccination id
-  const [vaccinationDetail, setVaccinationDetail] = useState([]);
+  const [vaccinationDetail, setVaccinationDetail] = useState({});
   // // vaccinations/:id/dose
   // const [vaccinationDoses, setVaccinationDoses] = useState([]);
   // dose id  for vaccine/:id/dose:id <<
@@ -134,7 +134,7 @@ export default function DataProvider(props) {
     return (
       axios
         // vaccination detail is not being set anyhwere
-        .post(`/api/vaccinations/7/dose`, doseData)
+        .post(`/api/vaccinations/${vaccinationDetail}/dose`, doseData)
         .then((res) => {
           console.log("res from data provider - dose", res);
           console.log("res.data from data provider", res);
@@ -254,6 +254,7 @@ export default function DataProvider(props) {
     // Vaccinations exports
     vaccinations,
     setVaccinationDetail,
+    vaccinationDetail,
     doseDetail,
     doseEdit,
     setDoseDetail,
@@ -265,7 +266,7 @@ export default function DataProvider(props) {
     deleteDoseRecord,
   };
 
-  // console.log("data", data);
+  console.log("data", data);
 
   return (
     <dataContext.Provider value={data}>{props.children}</dataContext.Provider>
