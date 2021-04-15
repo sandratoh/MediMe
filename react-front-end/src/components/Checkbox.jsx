@@ -5,8 +5,8 @@ import Checkbox from "@material-ui/core/Checkbox";
 
 export default function CheckboxLabels() {
   const [checkbox, setCheckbox] = React.useState({
-    checkedMeal: false,
-    checkedWater: false,
+    food: false,
+    water: false,
   });
 
   const handleChange = (event) => {
@@ -18,20 +18,20 @@ export default function CheckboxLabels() {
       <FormControlLabel
         control={
           <Checkbox
-            checked={checkbox.checkedMeal}
+            checked={checkbox.food}
             onChange={handleChange}
-            name="checkedMeal"
+            name="food"
             color="default"
           />
         }
-        label="Take with meal"
+        label="Take with food"
       />
       <FormControlLabel
         control={
           <Checkbox
-            checked={checkbox.checkedWater}
+            checked={checkbox.waterater}
             onChange={handleChange}
-            name="checkedWater"
+            name="water"
             color="default"
           />
         }

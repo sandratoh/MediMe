@@ -34,8 +34,8 @@ export default function NewMedication() {
   const [refills, setRefills] = useState(0);
   const [instructions, setInstructions] = useState("");
   const [checkbox, setCheckbox] = useState({
-    checkedMeal: false,
-    checkedWater: false,
+    food: false,
+    water: false,
   });
 
   // Redirect state
@@ -52,14 +52,14 @@ export default function NewMedication() {
   //   const MedicationData = {
   //     user_id: 1,
   //     name: medication,
-  //     nickname: nickename,
+  //     nickname: nickname,
   //     prescribed_date: date,
   //     pharmacy_id: pharmacy,
   //     prescribed_doctor_id: doctor,
   //     refills_remaining: refills,
   //     instructions: instructions,
-  //     is_take_with_food: checkbox.checkedMeal
-  //     is_take_with_water: checkbox.checkedWater,
+  //     is_take_with_food: checkbox.food
+  //     is_take_with_water: checkbox.water,
   //   };
 
   //   addMedication(medicationData).then((res) => {
@@ -120,20 +120,20 @@ export default function NewMedication() {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={checkbox.checkedMeal}
+                  checked={checkbox.food}
                   onChange={handleChange}
-                  name="checkedMeal"
+                  name="food"
                   color="default"
                 />
               }
-              label="Take with meal"
+              label="Take with food"
             />
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={checkbox.checkedWater}
+                  checked={checkbox.waterater}
                   onChange={handleChange}
-                  name="checkedWater"
+                  name="water"
                   color="default"
                 />
               }
