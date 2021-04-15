@@ -79,7 +79,9 @@ export default function DataProvider(props) {
     return axios
       .post("/api/labs/", labDetail)
       .then((res) => {
-        setLabRecords([res.data[0], ...labRecords]);
+        refreshAllLabs();
+
+        // setLabRecords([res.data[0], ...labRecords]);
 
         return res;
       })

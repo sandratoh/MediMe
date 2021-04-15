@@ -27,6 +27,7 @@ export default function NewVisit(props) {
   // Manage redirect state based on axios call
   const [redirect, setRedirect] = useState(false);
 
+  // Validate form error state
   const [validate, setValidate] = useState(false);
 
   const onCancel = () => setRedirect(true);

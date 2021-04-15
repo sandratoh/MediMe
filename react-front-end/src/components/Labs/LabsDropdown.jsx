@@ -27,7 +27,7 @@ export default function LabDropdown(props) {
           label="Type of Record"
           value={props.value}
           required
-          error={!props.value}
+          error={!props.value && props.validate}
         >
           <MenuItem value={"BLOOD"}>Blood</MenuItem>
           <MenuItem value={"MAMMOGRAM"}>Mammogram</MenuItem>
