@@ -18,6 +18,7 @@ const medicationsRoutes = require("./routes/medications");
 const labRecordsRoutes = require("./routes/lab_records");
 const usersRoutes = require("./routes/users");
 const doctorsRoutes = require("./routes/doctors");
+const pharmaciesRoutes = require("./routes/pharmacies");
 
 //Mount Resources
 app.use("/api/clinics", clinicVisitsRoutes(client));
@@ -26,6 +27,7 @@ app.use("/api/medications", medicationsRoutes(client));
 app.use("/api/labs", labRecordsRoutes(client));
 app.use("/api/users", usersRoutes(client));
 app.use("/api/doctors", doctorsRoutes(client));
+app.use("/api/pharmacies", pharmaciesRoutes(client));
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
