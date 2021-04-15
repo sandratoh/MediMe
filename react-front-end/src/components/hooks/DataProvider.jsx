@@ -115,11 +115,13 @@ export default function DataProvider(props) {
   // Vaccinations & Doses database calls
 
   // add vaccine record
-  const addVaccinationRecord = (vaccinationDetail) => {
+  const addVaccinationRecord = (vaccinationData) => {
     return axios
-      .post("/api/vaccinations/", vaccinationDetail)
+      .post("/api/vaccinations", vaccinationData)
       .then((res) => {
-        setVaccinations([res.data[0], ...vaccinationDetail]);
+        console.log("res from data provider", res);
+        console.log("res.data from data provider", res.data);
+        setVaccinations([res.data[0], ...vaccinations]);
 
         return res;
       })
@@ -128,15 +130,20 @@ export default function DataProvider(props) {
 
   // add dose record
   // vaccine_id needs to set it from onClick
-  const addDoseRecord = (doseDetail, vaccinationDetail) => {
-    return axios
-      .post(`/api/vaccinations/${vaccinationDetail}/dose`, doseDetail)
-      .then((res) => {
-        setAllDoses([res.data[0], ...doseDetail]);
+  const addDoseRecord = (doseData) => {
+    return (
+      axios
+        // vaccination detail is not being set anyhwere
+        .post(`/api/vaccinations/7/dose`, doseData)
+        .then((res) => {
+          console.log("res from data provider - dose", res);
+          console.log("res.data from data provider", res);
+          setAllDoses([res.data[0], ...allDoses]);
 
-        return res;
-      })
-      .catch((err) => console.log(err));
+          return res;
+        })
+        .catch((err) => console.log(err))
+    );
   };
 
   // edit dose record
