@@ -1,6 +1,6 @@
 // Libraries
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 
 // Components
 import IconButton from "../../IconButton";
@@ -19,12 +19,15 @@ import { dataContext } from "../../hooks/DataProvider";
 
 
 export default function DoseDetail() {
-  const { allDoses, vaccinationDetail, doseDetail, vaccinations } = useContext(dataContext)
+  const { allDoses, vaccinationDetail, doseDetail, vaccinations, deleteDoseRecord } = useContext(dataContext)
+  const [redirect, setRedirect] = useState(false);
  
   const dose = allDoses.find(d => d.id === doseDetail);
   
   const onDelete = () => {
-    console.log('Delete button pressed');
+    deleteDoseRecord().then((res) => {
+      !res.data.error && setRedirect(true);
+    });
   };
 
   const onEdit = () => {
@@ -33,6 +36,7 @@ export default function DoseDetail() {
 
   return (
     <section className="dose-detail">
+      {redirect && <Redirect to="/vaccinations" />}
       <div className="dose-detail--icons">
         <Link to="/vaccinations">
           <ArrowBackIosIcon />
