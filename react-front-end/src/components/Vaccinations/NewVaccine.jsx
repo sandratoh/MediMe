@@ -37,7 +37,7 @@ export default function VaccineNew() {
     };
 
     addVaccinationRecord(vaccinationData).then((res) => {
-      !vaccinationData.name ? setValidate(true) : setRedirectSuccess(true);
+      vaccinationData.name ? setRedirectSuccess(true) : setValidate(true);
     });
   };
 

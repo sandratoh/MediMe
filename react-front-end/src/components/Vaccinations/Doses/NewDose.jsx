@@ -24,7 +24,10 @@ export default function DoseNew() {
   const [nextDoseDate, setNextDoseDate] = useState(currentDate());
 
   // Redirect state
-  const [redirect, setRedirect] = useState("");
+  const [redirect, setRedirect] = useState(false);
+
+  // Validate form error state
+  const [validate, setValidate] = useState(false);
 
   const onCancel = () => setRedirect(true);
 
@@ -36,10 +39,12 @@ export default function DoseNew() {
       next_scheduled_dose: nextDoseDate,
     };
 
-    console.log("vaccinationDetail fron newdose", vaccinationDetail);
+    // console.log("vaccinationDetail fron newdose", vaccinationDetail);
 
     addDoseRecord(doseData).then((res) => {
-      !res.data.error && setRedirect(true);
+      (doseData.date_taken && doseData.serial_number && doseData.administration_site) 
+        ? setRedirect(true) 
+        : setValidate(true);
     });
   };
 
@@ -49,13 +54,13 @@ export default function DoseNew() {
       <h1 className="clinics-list--title">New Vaccination Dose</h1>
       <div className="clinics-form--container">
         <div className="clinics--form--field">
-          <DateInput value={date} setInput={setDate}>
+          <DateInput value={date} setInput={setDate} validate={validate}>
             Date:
           </DateInput>
-          <TextInput required value={serialNumber} setInput={setSerialNumber}>
+          <TextInput required value={serialNumber} setInput={setSerialNumber} validate={validate}>
             Serial Number:
           </TextInput>
-          <TextInput required value={adminSite} setInput={setAdminSite}>
+          <TextInput required value={adminSite} setInput={setAdminSite} validate={validate}>
             Administration Site:
           </TextInput>
           <DateInput

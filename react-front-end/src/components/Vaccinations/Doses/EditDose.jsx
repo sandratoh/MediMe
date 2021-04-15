@@ -25,8 +25,11 @@ const doses = [
 ];
 
 export default function DoseEdit() {
-  
+  // Redirect state
   const [redirect, setRedirect] = useState('');
+
+  // Validate form error state
+  const [validate, setValidate] = useState(false);
   
   // Uncomment vaccinationDetail and doseDetail after merge
   const { /* vaccinationDetail , */ vaccinations, /* doseDetail, */ allDoses, editDoseRecord } = useContext(dataContext);
@@ -65,8 +68,10 @@ export default function DoseEdit() {
     editDoseRecord(doseInput).then((res) => {
       console.log('updated doseDetail:', doseDetail);
       console.log('res', res);
-      // to uncomment after merging
-      // !res.data.error && setRedirect(true);
+      // to test after merge
+      (doseInput.date_taken && doseInput.serial_number && doseInput.administration_site) 
+        ? setRedirect(true) 
+        : setValidate(true);
     });
   };
 
@@ -76,14 +81,14 @@ export default function DoseEdit() {
       <h1 className="clinics-list--title">Update Vaccination Dose</h1>
       <div className="clinics-form--container">
         <div className="clinics--form--field">
-          <DateInput date={dateTaken} onChange={setDateTaken}>
+          <DateInput date={dateTaken} onChange={setDateTaken} validate={validate}>
             Date Taken:
           </DateInput>
           
-          <TextInput required value={serialNum} setInput={setSerialNum}>
+          <TextInput required value={serialNum} setInput={setSerialNum} validate={validate}>
             Serial Number:
           </TextInput>
-          <TextInput value={administrationSite} setInput={setAdministrationSite} >
+          <TextInput required value={administrationSite} setInput={setAdministrationSite} validate={validate}>
             Administration Site:
           </TextInput>
 
