@@ -1,14 +1,16 @@
 // Libraries
 import { useContext, useState } from "react";
-import { Redirect } from "react-router";
+import { Link, Redirect } from "react-router-dom";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 // Components
-import BackButton from "../BackButton";
 import TextInput from "../TextInput";
 import CountButton2 from "../CountButton";
 import IconButton from "../IconButton";
+
+// Material UI Components
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 // Helpers
 import { dataContext } from "../hooks/DataProvider";
@@ -42,7 +44,9 @@ export default function VaccineNew() {
     <section className="clinics-new">
       {redirect && <Redirect to="/vaccinations" />}
       <div className="clinics-list--icons">
-        <BackButton />
+        <Link to="/vaccinations">
+          <ArrowBackIosIcon />
+        </Link>
       </div>
       <h1 className="clinics-list--title">New Vaccination</h1>
       <div className="clinics-form--container">

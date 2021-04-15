@@ -2,8 +2,10 @@
 import { Link } from "react-router-dom";
 
 // Components
-import BackButton from "../../BackButton";
 import IconButton from "../../IconButton";
+
+// Material UI Components
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 // Helpers
 import { findNameById } from "../../../helpers/selectors";
@@ -74,7 +76,9 @@ export default function DoseDetail() {
   return (
     <section className="dose-detail">
       <div className="dose-detail--icons">
-        <BackButton />
+        <Link to="/vaccinations">
+          <ArrowBackIosIcon />
+        </Link>
       </div>
       <h1 className="dose-detail--title">Vaccination Dose Detail</h1>
 

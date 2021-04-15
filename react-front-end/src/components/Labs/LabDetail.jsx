@@ -4,7 +4,9 @@ import { Link, Redirect } from "react-router-dom";
 
 // Components
 import IconButton from "../IconButton";
-import BackButton from "../BackButton";
+
+// Material UI Components
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 // Helpers
 import { dataContext } from "../hooks/DataProvider";
@@ -41,7 +43,9 @@ export default function LabDetail() {
     <section className="lab-detail">
       {redirect && <Redirect to="/labs" />}
       <div className="labs-list--icons">
-        <BackButton />
+        <Link to="/labs">
+          <ArrowBackIosIcon />
+        </Link>
       </div>
       <h1 className="labs-list--title">Lab Record Detail</h1>
 

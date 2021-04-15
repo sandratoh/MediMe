@@ -1,15 +1,23 @@
+// Libraries
 import { Link } from "react-router-dom";
+
+// Components
 import LabsCardList from "./LabsCardList";
 import IconButton from "../IconButton";
-import BackButton from "../BackButton";
 
+// Material UI Components
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+
+// Stylesheet
 import "./LabsList.scss";
 
 export default function LabsList(props) {
   return (
     <section className="labs-list">
       <div className="labs-list--icons">
-        <BackButton />
+        <Link to="/">
+          <ArrowBackIosIcon />
+        </Link>
         <IconButton new color="secondary" variant="contained">
           <Link to="/labs/new">New</Link>
         </IconButton>
@@ -20,4 +28,4 @@ export default function LabsList(props) {
       </div>
     </section>
   );
-}
+};

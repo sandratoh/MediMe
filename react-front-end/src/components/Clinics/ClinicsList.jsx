@@ -1,15 +1,23 @@
+// Libraries
 import { Link } from "react-router-dom";
+
+// Components
 import ClinicsCardList from "./ClinicsCardList";
 import IconButton from "../IconButton";
-import BackButton from "../BackButton";
 
+// Material components
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+
+// Stylesheet
 import "./ClinicsList.scss";
 
 export default function ClinicsList() {
   return (
     <section className="clinics-list">
       <div className="clinics-list--icons">
-        <BackButton />
+        <Link to="/">
+          <ArrowBackIosIcon />
+        </Link>
         <IconButton new color="secondary" variant="contained">
           <Link to="/clinics/new">New</Link>
         </IconButton>

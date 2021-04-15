@@ -1,6 +1,6 @@
 // Libraries
 import { useState, useContext } from "react";
-import { Redirect } from "react-router";
+import { Redirect } from "react-router-dom";
 
 // Components
 import BackButton from "../BackButton";

@@ -1,15 +1,15 @@
-import { useContext } from "react";
+// Libraries
 import { Link } from "react-router-dom";
-import { dataContext } from "../hooks/DataProvider";
-import VaccinationCard from "./VaccinationCard";
+
+// Components
 import VaccinationsCardList from "./VaccinationsCardList";
 import IconButton from "../IconButton";
 import BackButton from "../BackButton";
 
+// Stylesheet
 import "./VaccinationsList.scss";
 
 export default function VaccinationsList() {
-  const { vaccinations } = useContext(dataContext);
 
   return (
     <section className="vaccinations-list">
@@ -21,9 +21,8 @@ export default function VaccinationsList() {
       </div>
       <h1 className="vaccinations-list--title">Vaccinations</h1>
       <div className="vaccinations-list--content">
-        {/* <VaccinationCard /> */}
       </div>
       <VaccinationsCardList />
     </section>
   );
-}
+};
