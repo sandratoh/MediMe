@@ -10,7 +10,7 @@ export default function BasicTextFields(props) {
     <form className="text-input--container" noValidate autoComplete="off">
       <TextField 
       required={props.required}
-      error={props.error}
+      error={props.required && props.value === ""}
       helperText={props.helperText}
       id="outlined-basic"
       variant="outlined"
