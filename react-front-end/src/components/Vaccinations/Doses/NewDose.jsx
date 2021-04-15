@@ -1,20 +1,46 @@
+// Libraries
 import { useContext, useState } from "react";
 import { Redirect } from "react-router";
-import BackButton from "../../BackButton";
 
+// Components
+import BackButton from "../../BackButton";
 import TextInput from "../../TextInput";
 import DateInput from "../../DateInput";
-import { currentDate } from "../../../helpers/dateHelpers";
 import IconButton from "../../IconButton";
+
+// Helpers
+import { currentDate } from "../../../helpers/dateHelpers";
 import { dataContext } from "../../hooks/DataProvider";
 
+// Stylesheet
 import "../../../styles/form.scss";
 
 export default function DoseNew() {
+  const { addDoseRecord } = useContext(dataContext);
+
+  const [date, setDate] = useState(currentDate());
+  const [serialNumber, setSerialNumber] = useState("");
+  const [adminSite, setAdminSite] = useState("");
+  // may need to change logic for if users don't have a next scheduled date
+  const [nextDoseDate, setNextDoseDate] = useState(currentDate());
+
+  // Redirect state
   const [redirect, setRedirect] = useState("");
 
   const onCancel = () => setRedirect(true);
-  const onSave = () => console.log("saved button clikced");
+
+  const onSave = () => {
+    const doseData = {
+      date_taken: date,
+      serial_number: serialNumber,
+      administration_site: adminSite,
+      next_scheduled_dose: nextDoseDate,
+    };
+
+    addDoseRecord(doseData).then((res) => {
+      !res.data.error && setRedirect(true);
+    });
+  };
 
   return (
     <section className="clinics-new">
@@ -25,12 +51,22 @@ export default function DoseNew() {
       <h1 className="clinics-list--title">New Vaccination Dose</h1>
       <div className="clinics-form--container">
         <div className="clinics--form--field">
-          <DateInput>Date:</DateInput>
-
-          <TextInput>Serial Number:</TextInput>
-          <TextInput>Administration Site:</TextInput>
-
-          <DateInput notRequired>Next Scheduled Date:</DateInput>
+          <DateInput value={date} setInput={setDate}>
+            Date:
+          </DateInput>
+          <TextInput required value={serialNumber} setInput={setSerialNumber}>
+            Serial Number:
+          </TextInput>
+          <TextInput required value={adminSite} setInput={setAdminSite}>
+            Administration Site:
+          </TextInput>
+          <DateInput
+            notRequired
+            value={nextDoseDate}
+            setInput={setNextDoseDate}
+          >
+            Next Scheduled Date:
+          </DateInput>
         </div>
         <div className="clinics-form--user-action">
           <IconButton
