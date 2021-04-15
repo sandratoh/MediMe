@@ -29,17 +29,18 @@ export default function DoseEdit() {
   
   const [redirect, setRedirect] = useState('');
   
-  const { vaccinationDetail, vaccinations, doseDetail, allDoses, editDoseRecord } = useContext(dataContext);
+  // Uncomment vaccinationDetail and doseDetail after merge
+  const { /* vaccinationDetail , */ vaccinations, /* doseDetail, */ allDoses, editDoseRecord } = useContext(dataContext);
   
   // Mock id until merged with GET dose branch
-  const mockVaccinationDetail = 7;
-  const mockDoseDetail = 8;
+  const vaccinationDetail = 7;
+  const doseDetail = 8;
 
   // Find vaccine from vaccine id
-  const vaccination = vaccinations.find((vaccination) => vaccination.id === mockVaccinationDetail);
+  const vaccination = vaccinations.find((vaccination) => vaccination.id === vaccinationDetail);
 
   // Fnd dose from dose id
-  const dose = allDoses.find((dose) => dose.id === mockDoseDetail);
+  const dose = allDoses.find((dose) => dose.id === doseDetail);
 
   console.log('vaccination', vaccination);
   console.log('dose', dose);
@@ -52,17 +53,17 @@ export default function DoseEdit() {
   const onCancel = () => setRedirect(true);
 
   const onSave = () => {
-    const doseDetail = {
-      id: mockVaccinationDetail,
+    const doseInput = {
+      id: vaccinationDetail,
       serial_number: serialNum,
       date_taken: dateTaken,
       administration_site: administrationSite,
       next_scheduled_dose: nextDose,
-      doseId: mockDoseDetail
+      doseId: doseDetail
     }
     console.log('doseDetail before save:', doseDetail);
 
-    editDoseRecord(doseDetail).then((res) => {
+    editDoseRecord(doseInput).then((res) => {
       console.log('updated doseDetail:', doseDetail);
       console.log('res', res);
       // to uncomment after merging
