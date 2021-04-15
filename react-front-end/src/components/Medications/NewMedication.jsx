@@ -41,6 +41,9 @@ export default function NewMedication() {
   // Redirect state
   const [redirect, setRedirect] = useState(false);
 
+  // Validate form error state
+  const [validate, setValidate] = useState(false);
+
   const handleChange = (event) => {
     setCheckbox({ ...checkbox, [event.target.name]: event.target.checked });
   };
@@ -63,7 +66,7 @@ export default function NewMedication() {
   //   };
 
   //   addMedication(medicationData).then((res) => {
-  //     !res.data.error && setRedirect(true);
+  //     res.data.error ? setValidate(true) : setRedirect(true);
   //   });
   // };
 
@@ -78,21 +81,41 @@ export default function NewMedication() {
       <h1 className="medications-list--title">New Medication</h1>
       <div className="medications-form--container">
         <div className="medications-form--field">
-          <TextInput required value={medication} setInput={setMedication}>
+          <TextInput
+            required
+            value={medication}
+            setInput={setMedication}
+            validate={validate}
+          >
             Medication Name:
           </TextInput>
           <TextInput value={nickname} setInput={setNickname}>
             Nickname:
           </TextInput>
           <div className="medications-form--date">
-            <DateInput required value={date} setInput={setDate}>
+            <DateInput
+              required
+              value={date}
+              setInput={setDate}
+              validate={validate}
+            >
               Date:
             </DateInput>
           </div>
-          <TextInput required value={pharmacy} setInput={setPharmacy}>
+          <TextInput
+            required
+            value={pharmacy}
+            setInput={setPharmacy}
+            validate={validate}
+          >
             Pharmacy:
           </TextInput>
-          <TextInput required value={doctor} setInput={setDoctor}>
+          <TextInput
+            required
+            value={doctor}
+            setInput={setDoctor}
+            validate={validate}
+          >
             Prescribed Doctor:
           </TextInput>
           <div className="medications-form--refills">
