@@ -23,7 +23,6 @@ module.exports = (client) => {
 
   // add new medication
   router.post("/", (req, res) => {
-    console.log("req.body", req.body);
     // may need to update user_id later...
     const user_id = 1;
 
