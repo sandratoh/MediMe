@@ -42,10 +42,20 @@ export default function MedicationDetail() {
     return food ? takeWithFood : null
   };
 
+  const isTakeWithWater = (med) => {
+    const water = med.is_take_with_water
+    return water ? takeWithWater : null
+  }
+
   const icon = () => {
-    if (isTakeWithFood) {
+    if (isTakeWithFood(medication)) {
       return (
-        <img src={isTakeWithFood(medication)} component="img" alt="card icon"/>
+        <img src={isTakeWithFood(medication)} component="img" alt="food icon"/>
+      )
+    }
+    if (isTakeWithWater(medication)) {
+      return (
+        <img src={isTakeWithWater(medication)} component="img" alt="water icon"/>
       )
     }
     return null
@@ -110,7 +120,7 @@ export default function MedicationDetail() {
         </div>
 
         <div className="clinic-detail--data">
-          {icon}
+          {icon()}
         </div>
       </div>
 
