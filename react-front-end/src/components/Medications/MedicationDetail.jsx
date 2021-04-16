@@ -15,6 +15,7 @@ import { formatDate } from "../../helpers/dateHelpers";
 
 // Stylesheet
 import "../Clinics/ClinicDetail.scss";
+import './MedicationDetail.scss'
 
 // Icons
 import takeWithFood from "../../images/takeWithFood.png";
@@ -37,28 +38,12 @@ export default function MedicationDetail() {
 
   const medication = medications.find((med) => med.id === medicationDetailId);
 
-  const isTakeWithFood = (med) => {
-    const food = med.is_take_with_food
-    return food ? takeWithFood : null
-  };
-
-  const isTakeWithWater = (med) => {
-    const water = med.is_take_with_water
-    return water ? takeWithWater : null
+  const iconWater = (water) => {
+    return water ? <img className='medication--icon--water' src={takeWithWater} component="img" alt="water icon"/> : null
   }
 
-  const icon = () => {
-    if (isTakeWithFood(medication)) {
-      return (
-        <img src={isTakeWithFood(medication)} component="img" alt="food icon"/>
-      )
-    }
-    if (isTakeWithWater(medication)) {
-      return (
-        <img src={isTakeWithWater(medication)} component="img" alt="water icon"/>
-      )
-    }
-    return null
+  const iconFood = (food) => {
+    return food ? <img className='medication--icon--food' src={takeWithFood} component="img" alt="food icon"/> : null
   }
 
   const onDelete = () => {
@@ -119,9 +104,11 @@ export default function MedicationDetail() {
           <p className="form-body">{medication.instructions}</p>
         </div>
 
-        <div className="clinic-detail--data">
-          {icon()}
+        <div className="medication--icon">
+          {iconWater(medication.is_take_with_water)}
+          {iconFood(medication.is_take_with_food)}
         </div>
+
       </div>
 
       <div className="clinic-detail--user-action">
