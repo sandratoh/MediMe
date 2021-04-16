@@ -21,13 +21,13 @@ export default function TextButton(props) {
   return (
     <Button
       className={buttonClass}
-      variant={props.groupButtons ? variantStateGroup() : "contained"}
+      variant={props.variant || (props.groupButtons ? variantStateGroup() : "contained")}
       color={props.color}
       onChange={props.onChange}
       onClick={props.onClick}
       disabled={props.disabled}
       selected={props.selected}
-      // error={props.error}
+      style={props.style}
     >
       {props.children}
     </Button>
