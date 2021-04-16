@@ -15,7 +15,7 @@ import { dataContext } from "../../hooks/DataProvider";
 import "../../../styles/form.scss";
 
 export default function DoseNew() {
-  const { addDoseRecord, vaccinationDetailId } = useContext(dataContext);
+  const { addDoseRecord } = useContext(dataContext);
 
   const [date, setDate] = useState(currentDate());
   const [serialNumber, setSerialNumber] = useState("");
@@ -40,25 +40,37 @@ export default function DoseNew() {
     };
 
     addDoseRecord(doseData).then((res) => {
-      (doseData.date_taken && doseData.serial_number && doseData.administration_site) 
-        ? setRedirect(true) 
+      doseData.date_taken &&
+      doseData.serial_number &&
+      doseData.administration_site
+        ? setRedirect(true)
         : setValidate(true);
     });
   };
 
   return (
-    <section className="clinics-new">
+    <section className="doses-new">
       {redirect && <Redirect to="/vaccinations" />}
-      <h1 className="clinics-list--title">New Vaccination Dose</h1>
-      <div className="clinics-form--container">
-        <div className="clinics--form--field">
+      <h1 className="doses-list--title">New Vaccination Dose</h1>
+      <div className="doses-form--container">
+        <div className="doses--form--field">
           <DateInput value={date} setInput={setDate} validate={validate}>
             Date:
           </DateInput>
-          <TextInput required value={serialNumber} setInput={setSerialNumber} validate={validate}>
+          <TextInput
+            required
+            value={serialNumber}
+            setInput={setSerialNumber}
+            validate={validate}
+          >
             Serial Number:
           </TextInput>
-          <TextInput required value={adminSite} setInput={setAdminSite} validate={validate}>
+          <TextInput
+            required
+            value={adminSite}
+            setInput={setAdminSite}
+            validate={validate}
+          >
             Administration Site:
           </TextInput>
           <DateInput
@@ -69,7 +81,7 @@ export default function DoseNew() {
             Next Scheduled Date:
           </DateInput>
         </div>
-        <div className="clinics-form--user-action">
+        <div className="doses-form--user-action">
           <IconButton
             cancel
             variant="outlined"

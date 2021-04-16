@@ -3,14 +3,18 @@
 .labs-new,
 .labs-edit,
 .medications-new,
-.medications-edit {
+.medications-edit,
+.vaccinations-new,
+.doses-new .doses-edit {
   display: flex;
   flex-direction: column;
 }
 
 .clinics-form--container,
 .labs-form--container,
-.medications-form--container {
+.medications-form--container,
+.vaccinations-form--container,
+.doses-form--container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +23,9 @@
 
 .clinics-form--field,
 .labs-form--field,
-.medications-form--field {
+.medications-form--field,
+.vaccinations--form--field,
+.doses--form--field {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +33,9 @@
 
 .clinics-form--user-action,
 .labs-form--user-action,
-.medications-form--user-action {
+.medications-form--user-action,
+.vaccinations-form--user-action,
+.doses-form--user-action {
   display: flex;
   justify-content: space-between;
   width: 95%;

@@ -50,12 +50,12 @@ export default function VaccineNew() {
   };
 
   return (
-    <section className="clinics-new">
+    <section className="vaccinations-new">
       {redirectBack && <Redirect to="/vaccinations" />}
       {redirectSuccess && <Redirect to="/vaccinations/success" />}
-      <h1 className="clinics-list--title">New Vaccination</h1>
-      <div className="clinics-form--container">
-        <div className="clinics--form--field">
+      <h1 className="vaccinations-list--title">New Vaccination</h1>
+      <div className="vaccinations-form--container">
+        <div className="vaccinations--form--field">
           <TextInput
             required
             value={vaccine}
@@ -84,7 +84,7 @@ export default function VaccineNew() {
             </IconButton>
           </div>
         </div>
-        <div className="clinics-form--user-action">
+        <div className="vaccinations-form--user-action">
           <IconButton
             cancel
             variant="outlined"

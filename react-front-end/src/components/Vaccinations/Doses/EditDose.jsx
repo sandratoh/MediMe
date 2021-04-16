@@ -65,11 +65,11 @@ export default function DoseEdit() {
   };
 
   return (
-    <section className="clinics-new">
+    <section className="doses-edit">
       {redirect && <Redirect to="/vaccinations/dose/view" />}
-      <h1 className="clinics-list--title">Update Vaccination Dose</h1>
-      <div className="clinics-form--container">
-        <div className="clinics--form--field">
+      <h1 className="doses-list--title">Update Vaccination Dose</h1>
+      <div className="doses-form--container">
+        <div className="doses--form--field">
           <DateInput
             date={dateTaken}
             setInput={setDateTaken}
@@ -99,7 +99,7 @@ export default function DoseEdit() {
             Next Scheduled Date:
           </DateInput>
         </div>
-        <div className="clinics-form--user-action">
+        <div className="doses-form--user-action">
           <IconButton
             cancel
             variant="outlined"
