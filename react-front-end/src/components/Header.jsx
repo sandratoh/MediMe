@@ -16,7 +16,10 @@ import { dataContext } from "./hooks/DataProvider";
 // Stylesheet
 import './Header.scss';
 export default function Header(props) {
-  const { menu, setMenu } = useContext(dataContext);
+  const { menu, setMenu, users, /* userDetailId */ } = useContext(dataContext);
+
+  //change 1 to userDetailId after log in route complete
+  const user = users.find(user => user.id === 1);
 
   const history = useHistory();
 
@@ -53,7 +56,7 @@ export default function Header(props) {
             onClick={() => setMenu(false)}>
             <Link to="/">MediMe</Link>
           </Typography>
-          {iconByState(menu)}
+          {user && iconByState(menu)} {/* no menu access if not logged in*/}
         </Toolbar>
     </AppBar>
   );
