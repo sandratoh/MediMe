@@ -91,6 +91,14 @@ export default function EditMedication() {
       <h1 className="medications-list--title">Update Medication</h1>
       <div className="medications-form--container">
         <div className="medications-form--field">
+          <DateInput
+            required
+            date={date}
+            setInput={setDate}
+            validate={validate}
+          >
+            Date:
+          </DateInput>
           <TextInput
             required
             value={medicationName}
@@ -102,16 +110,6 @@ export default function EditMedication() {
           <TextInput value={nickname} setInput={setNickname}>
             Nickname:
           </TextInput>
-          <div className="medications-form--date">
-            <DateInput
-              required
-              date={date}
-              setInput={setDate}
-              validate={validate}
-            >
-              Date:
-            </DateInput>
-          </div>
           <TextInput
             required
             value={pharmacy}
@@ -130,21 +128,23 @@ export default function EditMedication() {
           </TextInput>
           <div className="medications-form--refills">
             <p className="form-label">Refills Remaining:</p>
-            <IconButton
-              onClick={() => {
-                setRefills(Math.max(refills - 1, 0));
-              }}
-            >
-              <RemoveCircleIcon />
-            </IconButton>
-            {refills}
-            <IconButton
-              onClick={() => {
-                setRefills(refills + 1, 5);
-              }}
-            >
-              <AddCircleIcon />
-            </IconButton>
+            <div>
+              <IconButton
+                onClick={() => {
+                  setRefills(Math.max(refills - 1, 0));
+                }}
+              >
+                <RemoveCircleIcon />
+              </IconButton>
+              {refills}
+              <IconButton
+                onClick={() => {
+                  setRefills(refills + 1, 5);
+                }}
+              >
+                <AddCircleIcon />
+              </IconButton>
+            </div>
           </div>
           <TextInput value={instructions} setInput={setInstructions}>
             Instructions:
