@@ -21,7 +21,7 @@ module.exports = (client) => {
   // add new user
   router.post("/", (req, res) => {
     addUser({ ...req.body })
-      .then((cv) => res.json(cv))
+      .then((data) => res.json(data))
       .catch((err) => res.json({ error: err.message }));
   });
 
@@ -44,7 +44,7 @@ module.exports = (client) => {
   router.put("/:id", (req, res) => {
     const id = req.params.id;
     updateUser({ id, ...req.body })
-      .then((med) => res.status(200).json(med))
+      .then((data) => res.status(200).json(data))
       .catch((err) => res.json({ error: err.message }));
   });
 
