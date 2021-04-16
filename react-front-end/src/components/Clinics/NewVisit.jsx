@@ -36,7 +36,7 @@ export default function NewVisit(props) {
     const visitDetail = {
       user_id: 1,
       clinic_id: medicalCenter,
-      referral_doctor_id: doctor,
+      doctor_id: doctor,
       date,
       type_of_visit: visitType,
       reason_for_visit: reasonFor,
@@ -58,10 +58,20 @@ export default function NewVisit(props) {
             Date:
           </DateInput>
           <ClinicGroupedButtons state={visitType} onChange={setVisitType} />
-          <TextInput required value={medicalCenter} setInput={setMedicalCenter} validate={validate}>
+          <TextInput
+            required
+            value={medicalCenter}
+            setInput={setMedicalCenter}
+            validate={validate}
+          >
             Medical Center:
           </TextInput>
-          <TextInput required value={doctor} setInput={setDoctor} validate={validate}>
+          <TextInput
+            required
+            value={doctor}
+            setInput={setDoctor}
+            validate={validate}
+          >
             Doctor:
           </TextInput>
           <TextInput value={reasonFor} setInput={setReasonFor}>
