@@ -51,9 +51,9 @@ export default function DoseNew() {
   return (
     <section className="doses-new">
       {redirect && <Redirect to="/vaccinations" />}
-      <h1 className="doses-list--title">New Vaccination Dose</h1>
+      <h1 className="doses-form--title">New Vaccination Dose</h1>
       <div className="doses-form--container">
-        <div className="doses--form--field">
+        <div className="doses-form--field">
           <DateInput value={date} setInput={setDate} validate={validate}>
             Date:
           </DateInput>
@@ -73,13 +73,15 @@ export default function DoseNew() {
           >
             Administration Site:
           </TextInput>
-          <DateInput
-            notRequired
-            value={nextDoseDate}
-            setInput={setNextDoseDate}
-          >
-            Next Scheduled Date:
-          </DateInput>
+          <div className="doses-form--next">
+            <DateInput
+              notRequired
+              value={nextDoseDate}
+              setInput={setNextDoseDate}
+            >
+              Next Scheduled Date:
+            </DateInput>
+          </div>
         </div>
         <div className="doses-form--user-action">
           <IconButton
