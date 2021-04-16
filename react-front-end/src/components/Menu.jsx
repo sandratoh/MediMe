@@ -30,7 +30,7 @@ export default function Menu() {
         </Link>
       </div>
       <div className="nav-menu--button">
-        <TextButton color="secondary" userAction>Log In</TextButton>
+        <TextButton color="secondary" userAction>Log Out</TextButton>
       </div>
     </section>
   )
