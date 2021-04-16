@@ -64,9 +64,7 @@ export default function ClinicDetail() {
 
         <div className="clinic-detail--data">
           <h5 className="form-label">Doctor:</h5>
-          <p className="form-body">
-            {findNameById(doctors, visit.referral_doctor_id)}
-          </p>
+          <p className="form-body">{findNameById(doctors, visit.doctor_id)}</p>
         </div>
 
         <div className="clinic-detail--data">

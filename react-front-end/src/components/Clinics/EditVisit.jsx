@@ -29,9 +29,7 @@ export default function EditVisit() {
   const [medicalCenter, setMedicalCenter] = useState(
     findNameById(clinics, visit.clinic_id)
   );
-  const [doctor, setDoctor] = useState(
-    findNameById(doctors, visit.referral_doctor_id)
-  );
+  const [doctor, setDoctor] = useState(findNameById(doctors, visit.doctor_id));
   const [date, setDate] = useState(visit.date);
   const [visitType, setVisitType] = useState(visit.type_of_visit);
   const [reasonFor, setReasonFor] = useState(visit.reason_for_visit);
@@ -48,7 +46,7 @@ export default function EditVisit() {
     const visitDetail = {
       user_id: 1,
       clinic_id: medicalCenter,
-      referral_doctor_id: doctor,
+      doctor_id: doctor,
       date,
       type_of_visit: visitType,
       reason_for_visit: reasonFor,
