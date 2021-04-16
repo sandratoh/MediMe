@@ -51,7 +51,7 @@ export default function Login() {
             login
             variant="contained"
             color="secondary"
-            onClick={onSave}
+            onClick={onLogin}
           >
             Login
           </IconButton>
