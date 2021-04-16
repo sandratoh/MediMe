@@ -17,14 +17,16 @@ export default function Header(props) {
             onClick={props.onLogo}>
             <Link to="/">MediMe</Link>
           </Typography>
-          <IconButton 
-            edge="end" 
-            color="inherit" 
-            aria-label="menu" 
-            onClick={props.onMenu}
-          >
-            <MenuIcon />
-          </IconButton>
+          <Link to="/menu">
+            <IconButton 
+              edge="end" 
+              color="inherit" 
+              aria-label="menu" 
+              onClick={props.onMenu}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Link>
         </Toolbar>
       
     </AppBar>

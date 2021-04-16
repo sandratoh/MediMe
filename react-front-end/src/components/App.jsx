@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // Components import
 import Header from "./Header";
 import Dashboard from "./Dashboard";
+import Menu from "./Menu";
 
 // Clinic Components
 import ClinicDetail from "./Clinics/ClinicDetail";
@@ -76,25 +77,18 @@ function App() {
 
             <Route exact path="/medications/edit" component={EditMedication} />
             <Route exact path="/medications/new" component={NewMedication} />
-            <Route
-              exact
-              path="/medications/view"
-              component={MedicationDetail}
-            />
+            <Route exact path="/medications/view" component={MedicationDetail} />
             <Route exact path="/medications" component={MedicationsList} />
 
             <Route exact path="/vaccinations/new" component={VaccineNew} />
             <Route exact path="/vaccinations/dose/new" component={DoseNew} />
             <Route exact path="/vaccinations/dose/edit" component={DoseEdit} />
-            <Route
-              exact
-              path="/vaccinations/dose/view"
-              component={DoseDetail}
-            />
+            <Route exact path="/vaccinations/dose/view" component={DoseDetail} />
 
             <Route exact path="/vaccinations" component={VaccinationsList} />
             <Route exact path="/vaccinations/success" component={Success} />
 
+            <Route exact path="/menu" component={Menu} />
             <Route exact path="/" component={Dashboard} />
           </Switch>
         </Router>
