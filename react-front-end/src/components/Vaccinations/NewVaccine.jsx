@@ -21,7 +21,7 @@ export default function VaccineNew() {
     dataContext
   );
 
-  const [vaccine, setVaccine] = useState("");
+  const [vaccine, setVaccine] = useState(null);
   const [totalDose, setTotalDose] = useState(1);
 
   // Redirect state
@@ -39,14 +39,11 @@ export default function VaccineNew() {
       total_num_doses: totalDose,
     };
 
-    addVaccinationRecord(vaccinationData)
-      .then((res) => {
-        vaccinationData.name ? setRedirectSuccess(true) : setValidate(true);
-        return res;
-      })
-      .then((res) => {
-        setVaccinationDetailId(res.data[0].id);
-      });
+    addVaccinationRecord(vaccinationData).then((res) => {
+      res.data.error
+        ? setValidate(true)
+        : setVaccinationDetailId(res.data[0].id) && setRedirectSuccess(true);
+    });
   };
 
   return (
