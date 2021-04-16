@@ -6,15 +6,10 @@ import { Redirect } from "react-router-dom";
 import TextInput from "../TextInput";
 import IconButton from "../IconButton";
 
-// Helpers
-// import { dataContext } from "../../hooks/DataProvider";
-
 // Stylesheet
 import "../../styles/form.scss";
 
 export default function Login() {
-  // const { addDoseRecord } = useContext(dataContext);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,27 +19,9 @@ export default function Login() {
   // Validate form error state
   const [validate, setValidate] = useState(false);
 
-  const onCancel = () => setRedirect(true);
-  const onSave = () => {
-    console.log("Save button clicked");
+  const onLogin = () => {
+    console.log("Login button clicked");
   };
-
-  // const onSave = () => {
-  //   const doseData = {
-  //     date_taken: date,
-  //     serial_number: serialNumber,
-  //     administration_site: adminSite,
-  //     next_scheduled_dose: nextDoseDate,
-  //   };
-
-  //   addDoseRecord(doseData).then((res) => {
-  //     doseData.date_taken &&
-  //     doseData.serial_number &&
-  //     doseData.administration_site
-  //       ? setRedirect(true)
-  //       : setValidate(true);
-  //   });
-  // };
 
   return (
     <section className="login">
