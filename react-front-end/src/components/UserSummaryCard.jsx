@@ -18,31 +18,13 @@ import rh from '../images/blood-rh-positive.png'
 import blood from '../images/blood-type-ab.png'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-  },
-  secondaryHeading: {
-    fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary,
-  },
-  icon: {
-    verticalAlign: 'bottom',
-    height: 20,
-    width: 20,
-  },
-  details: {
-    alignItems: 'center',
-    
-  },
+
   column: {
     flexBasis: '33.33%',
   },
   helper: {
     borderLeft: `2px solid ${theme.palette.divider}`,
-    padding: theme.spacing(1, 2),
+    padding: theme.spacing(.0, 2),
   },
   link: {
     color: theme.palette.primary.main,
@@ -73,66 +55,59 @@ export default function UserSummary() {
 
 
   return (
-    <div className={classes.root}>
+    <div className="summary--root" >
       <Accordion defaultExpanded>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1c-content"
           id="panel1c-header"
         >
-          <div className={classes.column}>
-            <Typography className={classes.heading}>{users[0].first_name} {users[0].last_name}</Typography>
-          </div>
-          <div className={classes.column}>
-          </div>
-        </AccordionSummary>
-        <AccordionDetails className='accord--detail--head'>
-          {/* <div className={classes.column} /> */}
-          <div className={clsx(classes.column)}>
-            <div className="section--height">
-              <Typography variant="caption">
-                Height:
-                <br />
-                {users[0].height_in_cm}cm
+          
+        <Typography id="summary--title">{users[0].first_name} {users[0].last_name}</Typography>
+         
+      </AccordionSummary>
+      <AccordionDetails >
+        <div className={clsx(classes.column)}>
+           
+          <Typography id="summary--w-h-b-r" variant="caption">
+            Height:
+            <br />
+          </Typography>
+          <Typography>
+            {users[0].height_in_cm}cm
+          </Typography>
+        
+          <Typography id="summary--w-h-b-r" variant="caption">
+            Weight:
+            <br />
+          </Typography>
+          <Typography>
+            {users[0].weight_in_lb}lbs
+          </Typography>
 
-              </Typography>
-            </div>
-            <div className="section--weight" >
-              <Typography variant="caption">
-                Weight:
-                <br />
-                {users[0].weight_in_lb}lbs
+        </div>
+        <div className={clsx(classes.column)}>
+          <Typography id="summary--w-h-b-r" variant="caption">
+            Blood Type:
+            <br />
+            <img className='sum--icon' src={blood} />
+          </Typography>
+        </div>
 
-              </Typography>
-            </div>
-          </div>
-          <div className={clsx(classes.column, classes.helper)}>
-          <div className="section--blood">
-            <Typography variant="caption">
-              Blood Type:
-              <br />
+        <Divider/>
 
-              <img className='sum--icon' src={blood} />
-            </Typography>
-          </div>
-          </div>
-          <Divider/>
-          <div className={clsx(classes.column, classes.helper)}>
-          <div className="section--rh">
-            <Typography variant="caption">
-              Rh Group:
-              <br />
-
-              <img className='sum--icon' src={rh} />
-            </Typography>
-          </div>
-          </div>
+        <div className={clsx(classes.column)}>
+          <Typography id='summary--w-h-b-r' variant="caption">
+            Rh Group:
+            <br />
+            <img className='sum--icon' src={rh} />
+          </Typography>
+        </div>
 
         </AccordionDetails>
         <Divider />
-        <AccordionActions>
-          
-          <Button size="small" color="primary">
+        <AccordionActions >
+          <Button  size="small" color="primary">
             Edit
           </Button>
         </AccordionActions>
