@@ -7,10 +7,15 @@ import TextInput from "../TextInput";
 import PasswordInput from "./PasswordInput";
 import TextButton from "../TextButton";
 
+// Helpers
+import { dataContext } from "../hooks/DataProvider";
+
 // Stylesheet
 import "../../styles/form.scss";
 
-export default function Signup1() {
+export default function Signup() {
+  const { addUser } = useContext(dataContext);
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,12 +28,21 @@ export default function Signup1() {
   const [validate, setValidate] = useState(false);
 
   const onSubmit = () => {
-    console.log("Submit button clicked");
+    const userData = {
+      first_name: firstName,
+      last_name: lastName,
+      email,
+      password: password.password,
+    };
+
+    addUser(userData).then((res) => {
+      res.data.error ? setValidate(true) : setRedirect(true);
+    });
   };
 
   return (
     <section className="signup">
-      {/* {redirect && <Redirect to="/" />} */}
+      {redirect && <Redirect to="/" />}
       <h1 className="signup-form--title">Create Account</h1>
 
       <div className="signup-form--container">
