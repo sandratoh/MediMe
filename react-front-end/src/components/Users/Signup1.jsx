@@ -4,7 +4,12 @@ import { Link, Redirect } from "react-router-dom";
 
 // Components
 import TextInput from "../TextInput";
+import PasswordInput from "./PasswordInput";
 import TextButton from "../TextButton";
+
+// Material UI Components
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 // Stylesheet
 import "../../styles/form.scss";
@@ -12,6 +17,8 @@ import "../../styles/form.scss";
 export default function Signup1() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   // Redirect state
   const [redirect, setRedirect] = useState(false);
@@ -19,8 +26,8 @@ export default function Signup1() {
   // Validate form error state
   const [validate, setValidate] = useState(false);
 
-  const onNext = () => {
-    console.log("Next button clicked");
+  const onSubmit = () => {
+    console.log("Submit button clicked");
   };
 
   return (
@@ -49,18 +56,27 @@ export default function Signup1() {
           >
             Last Name:
           </TextInput>
+          <TextInput
+            required
+            value={email}
+            setInput={setEmail}
+            validate={validate}
+          >
+            Email:
+          </TextInput>
+          <PasswordInput
+            required
+            value={password}
+            setInput={setPassword}
+            validate={validate}
+          >
+            Password:
+          </PasswordInput>
         </div>
         <div className="signup-form--user-action">
-          <Link to="/signup/2">
-            <TextButton
-              next
-              variant="contained"
-              color="secondary"
-              onClick={onNext}
-            >
-              Next
-            </TextButton>
-          </Link>
+          <TextButton variant="contained" color="secondary" onClick={onSubmit}>
+            Submit
+          </TextButton>
         </div>
         <div className="signup-form--redirect">
           <p>

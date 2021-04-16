@@ -42,6 +42,7 @@ export default function Signup2() {
             Email:
           </TextInput>
           <TextInput
+            type="password"
             required
             value={password}
             setInput={setPassword}
