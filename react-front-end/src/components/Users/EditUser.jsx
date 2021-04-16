@@ -2,11 +2,15 @@
 import { useState, useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 
+
 // Components
 import TextInput from "../TextInput";
 import ClinicGroupedButtons from "../Clinics/ClinicGroupedButtons";
 import DateInput from "../DateInput";
 import IconButton from "../IconButton";
+import InputAdornment from '@material-ui/core/InputAdornment';
+import RhGroupedButtons from "./RhGroupButtons";
+import BloodGroupButtons from "./BloodGroupButtons"
 
 // Helpers
 import { dataContext } from "../hooks/DataProvider";
@@ -33,10 +37,10 @@ export default function EditUser() {
 
 // need to be blank so a new user can fiill out
 // needs to be filled so a logged in user can edit
-  const [height, setHeight] = useState(user.height_in_cm)
-  const [weight, setWeight] = useState(user.weight_in_lb)
-  const [bloodType, setBloodType] = useState(null)
-  const [rhGroup, setRhGroup] = useState(null)
+  const [height, setHeight] = useState(user ? user.height_in_cm : '')
+  const [weight, setWeight] = useState(user ? user.weight_in_lb : '')
+  const [bloodType, setBloodType] = useState(user ? user.blood_type : null)
+  const [rhGroup, setRhGroup] = useState(user ? user.rh_group : null)
 
   // Manage redirect state based on axios call
   const [redirect, setRedirect] = useState(false);
@@ -62,7 +66,7 @@ export default function EditUser() {
 
   return (
     <section className="clinics-edit">
-      {redirect && <Redirect to="/clinics/view" />}
+      {redirect && <Redirect to="/edit" />}
       <h1 className="clinics-form--title">Your MEdi-info</h1>
       <div className="clinics-form--container">
         <div className="clinics-form--field">
@@ -77,14 +81,17 @@ export default function EditUser() {
             Height(cm):
           </TextInput>
           <TextInput
-            
+            endAdornment={<InputAdornment position="end">Lb</InputAdornment>}
             value={weight}
             setInput={setWeight}
             validate={validate}
           >
-            Weight(cm):
+            Weight:
           </TextInput>
-          
+          <br />
+          < BloodGroupButtons state={bloodType} onChange={setBloodType} />
+          <br />
+          <RhGroupedButtons state={rhGroup} onChange={setRhGroup}/>
         </div>
         <div className="clinics-form--user-action">
           <IconButton

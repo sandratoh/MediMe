@@ -18,10 +18,15 @@ export default function RhGroupedButtons(props) {
     { id: 3, name: "UNKNOWN" },
   ];
 
+  const colorByStates = (validation, valueSelected) => {
+    return validation && !valueSelected ? "secondary" : "primary"
+  };
+
   const rhGroup = rhGroupArray.map((value) => {
     return (
       <TextButton
         key={value.id}
+        color={colorByStates(props.validate, props.state)}
         setState={(event) => props.onChange(value.name)}
         groupButtons
         selected={value.name === props.value}
