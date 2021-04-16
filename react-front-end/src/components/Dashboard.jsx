@@ -5,7 +5,7 @@ import "./Dashboard.scss";
 
 export default function Dashboard() {
 
-  return (
+  const dashboard = (
     <section className="dashboard-card--container">
       <SummaryCard/>
       <Link to="/clinics">
@@ -28,6 +28,19 @@ export default function Dashboard() {
           Vaccinations
         </DashboardCard>
       </Link>
-    </section>
+  </section>
   );
+
+  const welcome = (
+    <p>Welcome</p>
+  )
+
+  const viewByUser = (userId) => {
+    return userId
+      ? dashboard
+      : welcome
+  };
+
+
+  return viewByUser(1);
 };
