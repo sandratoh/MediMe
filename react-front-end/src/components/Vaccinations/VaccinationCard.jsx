@@ -61,7 +61,7 @@ export default function VaccinationCard(props) {
               />
             </Link>
             ))
-            : <p>No data entered yet.</p>
+            : <p className="empty-data">No data entered yet ✏️</p>
           }
         </AccordionDetails>
         <Link to="/vaccinations/dose/new">

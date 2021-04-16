@@ -64,7 +64,10 @@ export default function DoseDetail() {
         </div>
         <div className="dose-detail--data">
           <h5 className="">Next Scheduled Dose:</h5>
-          <p className="form-body">{(dose.next_scheduled_dose && formatDate(dose.next_scheduled_dose))|| "No data entered yet."}</p>
+          {dose.next_scheduled_dose
+            ? <p className="form-body">{formatDate(dose.next_scheduled_dose)}</p>
+            : <p className="form-body empty-data">{"No data entered yet"}</p>
+          }
         </div>
       </div>
 

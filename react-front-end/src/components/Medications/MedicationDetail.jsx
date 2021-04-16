@@ -54,7 +54,7 @@ export default function MedicationDetail() {
 
   const onEdit = () => setMedicationEditId(medication.id);
 
-  const emptyDataPrompt = "No data entered yet."
+  const emptyDataPrompt = "No data entered yet"
 
   return (
     <section className="clinic-detail">
@@ -68,18 +68,21 @@ export default function MedicationDetail() {
 
       <div className="clinic-detail--container">
         <div className="clinic-detail--data">
+          <h5 className="form-label">Date:</h5>
+          <p className="form-body">{formatDate(medication.prescribed_date)}</p>
+        </div>
+
+        <div className="clinic-detail--data">
           <h5 className="">Medication Name:</h5>
           <p className="form-body">{medication.name}</p>
         </div>
 
         <div className="clinic-detail--data">
           <h5 className="form-label">Nickname:</h5>
-          <p className="form-body">{medication.nickname || emptyDataPrompt}</p>
-        </div>
-
-        <div className="clinic-detail--data">
-          <h5 className="form-label">Date:</h5>
-          <p className="form-body">{formatDate(medication.prescribed_date)}</p>
+          {medication.nickname
+            ? <p className="form-body">{medication.nickname}</p>
+            : <p className="form-body empty-data">{emptyDataPrompt}</p>
+          }
         </div>
 
         <div className="clinic-detail--data">
@@ -103,7 +106,10 @@ export default function MedicationDetail() {
 
         <div className="clinic-detail--data">
           <h5 className="form-label">Instructions:</h5>
-          <p className="form-body">{medication.instructions || emptyDataPrompt}</p>
+          {medication.instructions
+          ? <p className="form-body">{medication.instructions}</p>
+          : <p className="form-body empty-data">{emptyDataPrompt}</p>
+          }
         </div>
 
         <div className="medication--icon">

@@ -41,3 +41,6 @@ body, p, .form-body {
   @include typography-style($body-font, 13, $regular-weight)
 }
 
+.empty-data{
+  color: grey
+}
