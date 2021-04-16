@@ -1,4 +1,5 @@
 // Libraries
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 // Components
@@ -6,10 +7,14 @@ import DashboardCard from "./DashboardCard";
 import SummaryCard from "./UserSummaryCard";
 import TextButton from "./TextButton";
 
+// Helpers
+import { dataContext } from "./hooks/DataProvider";
+
 // Stylesheet
 import "./Dashboard.scss";
 
 export default function Dashboard() {
+  const { users, userDetailId } = useContext(dataContext);
 
   const dashboard = (
     <section className="dashboard-card--container">
@@ -42,17 +47,24 @@ export default function Dashboard() {
       <h1 className="welcome--title">Welcome to MediMe</h1>
       <h2 className="welcome--text">Keep track of your health whenever and wherever!</h2>
       <div className="welcome--user-action">
-        <TextButton userAction color="secondary">Get started</TextButton>
-        <TextButton userAction variant="outlined" color="secondary" style={{ border: '1.5px solid'}}>Log In</TextButton>
+        <Link to="/signup">
+          <TextButton userAction color="secondary">Get started</TextButton>
+        </Link>
+        <Link to="/login">
+          <TextButton userAction variant="outlined" color="secondary" style={{ border: '1.5px solid'}}>Log In</TextButton>
+        </Link>
       </div>
     </section>
   )
 
-  const viewByUser = (userId) => {
-    return userId
+  const viewByUser = (user) => {
+    return user
       ? dashboard
       : welcome
   };
 
-  return viewByUser(0);
+   //change 1 to userDetailId after log in route complete
+  const user = users.find(user => user.id === 1);
+
+  return viewByUser(user);
 };
