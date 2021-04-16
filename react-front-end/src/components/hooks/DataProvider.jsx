@@ -181,14 +181,14 @@ export default function DataProvider(props) {
     .then((res) => {
       refreshAllUsers();
 
-      return resizeBy;
+      return res;
     })
     .catch((err) => console.log(err));
   };
 
   const refreshAllUsers = () => {
     return axios.get("/api/users").then((res) => {
-      setUsers(res.d;ata.users);
+      setUsers(res.data.users);
     });
   
   }
