@@ -23,16 +23,10 @@ export default function DoseEdit() {
 
   const {
     vaccinationDetailId,
-    vaccinations,
     doseDetailId,
     doses,
     editDoseRecord,
   } = useContext(dataContext);
-
-  // Find vaccine from vaccine id
-  const vaccination = vaccinations.find(
-    (vaccination) => vaccination.id === vaccinationDetailId
-  );
 
   // Fnd dose from dose id
   const dose = doses.find((dose) => dose.id === doseDetailId);
