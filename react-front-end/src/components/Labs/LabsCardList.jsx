@@ -21,6 +21,7 @@ export default function LabsCardList() {
         date={record.date}
         type={record.type_of_test}
         value={record.lab_id}
+        labs={labs}
         onClick={onSelect}
       />
     );

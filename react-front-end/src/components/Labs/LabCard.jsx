@@ -17,30 +17,6 @@ import { formatDate } from "../../helpers/dateHelpers";
 // Stylesheet
 import "../../styles/card.scss";
 
-const labs = [
-  {
-    id: 1,
-    name: "LifeLabs Medical Laboratory Services - Kingsway",
-  },
-  {
-    id: 2,
-    name:
-      "Greig Associates X-Ray, Ultrasound & Mammography Inc. - Victoria Drive",
-  },
-  {
-    id: 3,
-    name: "West Coast Medical Imaging - New Westminster",
-  },
-  {
-    id: 4,
-    name: "Downtown Radiology - Keefer Imaging",
-  },
-  {
-    id: 5,
-    name: "AIM Medical Imaging - West Broadway",
-  },
-];
-
 export default function CardListItem(props) {
   const iconByType = type => {
     switch (type) {
@@ -60,7 +36,7 @@ export default function CardListItem(props) {
         <Typography variant="subtitle1" color="textSecondary">
           {formatDate(props.date)}
         </Typography>
-        <Typography variant="subtitle1">{findNameById(labs, props.value)}</Typography>
+        <Typography variant="subtitle1">{findNameById(props.labs, props.value)}</Typography>
       </div>
       <div className="card--icon">
         <img src={iconByType(props.type)} component="img" alt="card icon" />
