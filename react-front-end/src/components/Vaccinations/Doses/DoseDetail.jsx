@@ -55,8 +55,12 @@ export default function DoseDetail() {
           </p>
         </div>
         <div className="dose-detail--data">
-          <h5 className="">Date:</h5>
+          <h5 className="">Date Taken:</h5>
           <p className="form-body">{formatDate(dose.date_taken)}</p>
+        </div>
+        <div className="dose-detail--data">
+          <h5 className="">Serial Number</h5>
+          <p className="form-body">{dose.serial_number}</p>
         </div>
         <div className="dose-detail--data">
           <h5 className="">Administration Site:</h5>
