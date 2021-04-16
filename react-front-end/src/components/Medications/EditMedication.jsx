@@ -16,7 +16,6 @@ import Checkbox from "@material-ui/core/Checkbox";
 
 // Helpers
 import { dataContext } from "../hooks/DataProvider";
-import { currentDate } from "../../helpers/dateHelpers";
 import { findNameById } from "../../helpers/selectors";
 
 // Stylesheet
@@ -51,8 +50,6 @@ export default function EditMedication() {
     food: medication.is_take_with_food,
     water: medication.is_take_with_water,
   });
-
-  console.log("date", date);
 
   // Redirect state
   const [redirect, setRedirect] = useState(false);

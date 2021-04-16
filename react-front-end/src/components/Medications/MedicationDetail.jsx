@@ -54,6 +54,8 @@ export default function MedicationDetail() {
 
   const onEdit = () => setMedicationEditId(medication.id);
 
+  const emptyDataPrompt = "No data entered yet."
+
   return (
     <section className="clinic-detail">
       {redirect && <Redirect to="/medications" />}
@@ -72,7 +74,7 @@ export default function MedicationDetail() {
 
         <div className="clinic-detail--data">
           <h5 className="form-label">Nickname:</h5>
-          <p className="form-body">{medication.nickname}</p>
+          <p className="form-body">{medication.nickname || emptyDataPrompt}</p>
         </div>
 
         <div className="clinic-detail--data">
@@ -101,7 +103,7 @@ export default function MedicationDetail() {
 
         <div className="clinic-detail--data">
           <h5 className="form-label">Instructions:</h5>
-          <p className="form-body">{medication.instructions}</p>
+          <p className="form-body">{medication.instructions || emptyDataPrompt}</p>
         </div>
 
         <div className="medication--icon">

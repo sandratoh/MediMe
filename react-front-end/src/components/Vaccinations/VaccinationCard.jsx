@@ -21,11 +21,7 @@ import { dataContext } from "../hooks/DataProvider";
 import "../../styles/card.scss";
 
 export default function VaccinationCard(props) {
-  const {
-    setDoseDetailId,
-    setVaccinationDetailId,
-    vaccinationDetailId,
-  } = useContext(dataContext);
+  const { setDoseDetailId } = useContext(dataContext);
 
   return (
     <div className="card--vaccination">
@@ -54,7 +50,8 @@ export default function VaccinationCard(props) {
           className="card--vaccination--doses"
           onClick={props.onClick}
         >
-          {props.doses.map((dose, index) => (
+          {props.doses.length > 0
+            ? props.doses.map((dose, index) => (
             <Link to="/vaccinations/dose/view">
               <DoseCard
                 current={index + 1}
@@ -63,7 +60,9 @@ export default function VaccinationCard(props) {
                 onClick={() => setDoseDetailId(dose.id)}
               />
             </Link>
-          ))}
+            ))
+            : <p>No data entered yet.</p>
+          }
         </AccordionDetails>
         <Link to="/vaccinations/dose/new">
           <IconButton
