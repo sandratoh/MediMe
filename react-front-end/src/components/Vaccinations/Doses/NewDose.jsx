@@ -77,7 +77,7 @@ export default function DoseNew() {
           <div className="doses-form--next">
             <DateInput2
               notRequired
-              value={nextDoseDate}
+              date={nextDoseDate}
               setInput={setNextDoseDate}
             >
               Next Scheduled Date:

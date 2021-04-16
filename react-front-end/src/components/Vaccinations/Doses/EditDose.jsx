@@ -5,6 +5,7 @@ import { Redirect } from "react-router";
 // Components
 import TextInput from "../../TextInput";
 import DateInput from "../../DateInput";
+import DateInput2 from "../../DateInput2";
 import IconButton from "../../IconButton";
 
 // Helpers
@@ -95,9 +96,9 @@ export default function DoseEdit() {
             Administration Site:
           </TextInput>
           <div className="doses-form--next">
-            <DateInput notRequired date={nextDose} setInput={setNextDose}>
+            <DateInput2 notRequired date={nextDose} setInput={setNextDose}>
               Next Scheduled Date:
-            </DateInput>
+            </DateInput2>
           </div>
         </div>
         <div className="doses-form--user-action">
