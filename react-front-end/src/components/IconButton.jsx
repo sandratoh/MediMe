@@ -4,6 +4,7 @@ import SaveIcon from "@material-ui/icons/Save";
 import AddIcon from "@material-ui/icons/Add";
 import CancelIcon from "@material-ui/icons/Cancel";
 import EditIcon from "@material-ui/icons/Edit";
+import VpnKeyIcon from "@material-ui/icons/VpnKey";
 
 import classnames from "classnames";
 import "./IconButton.scss";
@@ -36,6 +37,9 @@ export default function IconButton(props) {
     }
     if (props.edit) {
       return <EditIcon />;
+    }
+    if (props.login) {
+      return <VpnKeyIcon />;
     }
   };
 

@@ -6,7 +6,8 @@
 .labs-new,
 .medications-edit,
 .medications-new,
-.vaccinations-new {
+.vaccinations-new,
+.login {
   display: flex;
   flex-direction: column;
 }
@@ -23,7 +24,8 @@
 .doses-form--container,
 .labs-form--container,
 .medications-form--container,
-.vaccinations-form--container {
+.vaccinations-form--container,
+.login-form--container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -34,7 +36,8 @@
 .doses-form--field,
 .labs-form--field,
 .medications-form--field,
-.vaccinations-form--field {
+.vaccinations-form--field,
+.login-form--field {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,4 +68,17 @@
   .form-label {
     margin-bottom: 8px;
   }
+}
+
+.login-form--title {
+  text-align: center;
+  margin: 32px 0;
+}
+
+.login-form--user-action {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 95%;
+  margin: 32px 0;
 }
