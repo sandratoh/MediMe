@@ -274,6 +274,7 @@ export default function DataProvider(props) {
     const apiVaccinationsUrl = "/api/vaccinations";
     const apiAllDoseUrl = "/api/vaccinations/dose";
     const apiAllUsersUrl = "api/users";
+    
 
     Promise.all([
       axios.get(apiClinicalVisitsUrl),
@@ -286,6 +287,7 @@ export default function DataProvider(props) {
       axios.get(apiMedRecordsUrl),
       axios.get(apiPharmaciesUrl),
       axios.get(apiAllUsersUrl),
+      
     ]).then((res) => {
       // console.log("res", res);
       const visits = res[0].data.clinical_visits;
@@ -298,6 +300,7 @@ export default function DataProvider(props) {
       const medications = res[7].data.medications;
       const pharmacies = res[8].data.pharmacies;
       const users = res[9].data.users;
+      
 
       setClinicalVisits(visits);
       setClinics(clinics);
@@ -309,6 +312,7 @@ export default function DataProvider(props) {
       setMedications(medications);
       setPharmacies(pharmacies);
       setUsers(users);
+      
       return;
     });
   }, []);

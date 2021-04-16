@@ -1,5 +1,6 @@
 // import React from 'react';
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from 'react-router-dom'
 import clsx from "clsx";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
@@ -94,9 +95,11 @@ export default function UserSummary() {
         </AccordionDetails>
         <Divider />
         <AccordionActions>
+          <Link to="/edit" >
           <Button size="small" color="primary">
             Edit
           </Button>
+          </Link>
         </AccordionActions>
       </Accordion>
     </div>
