@@ -26,12 +26,8 @@ export default function ClinicGroupedButtons(props) {
     
   ];
 
-  const colorByStates = (validate, state) => {
-    if (validate && !state) {
-      return "secondary"
-    } else {
-      return "primary"
-    }
+  const colorByStates = (validation, valueSelected) => {
+    return validation && !valueSelected ? "secondary" : "primary"
   }
 
   const clinicGroup = clinicGroupArray.map((value) => {
