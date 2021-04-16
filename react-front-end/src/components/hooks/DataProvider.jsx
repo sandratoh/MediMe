@@ -2,6 +2,10 @@ import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 export default function DataProvider(props) {
+  // User and App states
+  const [menu, setMenu] = useState(false);
+
+
   // Clinic states
   const [clinics, setClinics] = useState([]);
   const [clinicalVisits, setClinicalVisits] = useState([]);
@@ -272,6 +276,9 @@ export default function DataProvider(props) {
 
   // need to rename this variable
   const data = {
+    // User and App exports
+    menu,
+    setMenu,
     // Clinics exports
     clinics,
     clinicalVisits,
