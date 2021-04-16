@@ -55,7 +55,6 @@ export default function Header(props) {
           </Typography>
           {iconByState(menu)}
         </Toolbar>
-      
     </AppBar>
   );
 };
