@@ -87,46 +87,47 @@ export default function UserSummary() {
           </div>
         </AccordionSummary>
         <AccordionDetails className='accord--detail--head'>
-          <div className={classes.column} />
+          {/* <div className={classes.column} /> */}
           <div className={clsx(classes.column)}>
-            <div >
+            <div className="section--height">
               <Typography variant="caption">
                 Height:
                 <br />
-                {users[0].height_in_cm}
-                <img className='sum--icon' src={ruler} />
+                {users[0].height_in_cm}cm
+
               </Typography>
             </div>
-            <Divider/>
-            <div >
+            <div className="section--weight" >
               <Typography variant="caption">
                 Weight:
                 <br />
-                {users[0].weight_in_lb}
-                <img className='sum--icon' src={scale} />
+                {users[0].weight_in_lb}lbs
+
               </Typography>
             </div>
           </div>
           <div className={clsx(classes.column, classes.helper)}>
-          <div >
+          <div className="section--blood">
             <Typography variant="caption">
               Blood Type:
               <br />
-              {users[0].blood_type}
+
               <img className='sum--icon' src={blood} />
             </Typography>
           </div>
+          </div>
           <Divider/>
-          <div >
+          <div className={clsx(classes.column, classes.helper)}>
+          <div className="section--rh">
             <Typography variant="caption">
               Rh Group:
               <br />
-              {users[0].rh_group}
+
               <img className='sum--icon' src={rh} />
             </Typography>
           </div>
           </div>
-          <div className={classes.column} />
+
         </AccordionDetails>
         <Divider />
         <AccordionActions>
