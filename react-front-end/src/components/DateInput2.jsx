@@ -23,6 +23,9 @@ export default function BasicTextFields(props) {
         InputLabelProps={{
           shrink: true,
         }}
+        onKeyDown={(event) => {
+          event.preventDefault();
+        }}
       />
     </form>
   );
