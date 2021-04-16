@@ -14,7 +14,7 @@ export default function BasicTextFields(props) {
         className="date-input--field"
         error={!props.value && props.validate}
         label={props.children}
-        defaultValue={new Date().toISOString().substring(0, 10)}
+        defaultValue={null}
         inputProps={{
           min: new Date().toISOString().substring(0, 10),
         }}

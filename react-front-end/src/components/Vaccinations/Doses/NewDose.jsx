@@ -22,7 +22,7 @@ export default function DoseNew() {
   const [serialNumber, setSerialNumber] = useState("");
   const [adminSite, setAdminSite] = useState("");
   // may need to change logic for if users don't have a next scheduled date
-  const [nextDoseDate, setNextDoseDate] = useState(currentDate());
+  const [nextDoseDate, setNextDoseDate] = useState(null);
 
   // Redirect state
   const [redirect, setRedirect] = useState(false);
