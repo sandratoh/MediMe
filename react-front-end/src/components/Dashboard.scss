@@ -1,5 +1,27 @@
-.dashboard-card--container{
+.dashboard-card--container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.welcome--container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.welcome--title {
+  font-size: 56px;
+}
+
+.welcome--text {
+  margin: 24px 0;
+}
+
+.welcome--user-action {
+  display: flex;
+  flex-direction: column;
+  height: 120px;
+  justify-content: space-between;
+  margin: 32px;
 }
