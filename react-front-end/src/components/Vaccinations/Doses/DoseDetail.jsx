@@ -68,7 +68,7 @@ export default function DoseDetail() {
               ? "Next Scheduled Dose:"
               : "No Future Dose Scheduled."}
           </h5>
-          <p className="form-body">{formatDate(dose.next_scheduled_dose)}</p>
+          <p className="form-body">{dose.next_scheduled_dose && formatDate(dose.next_scheduled_dose)}</p>
         </div>
       </div>
 
