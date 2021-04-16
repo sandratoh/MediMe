@@ -48,7 +48,7 @@ export default function NewRecord() {
   return (
     <section className="labs-new">
       {redirect && <Redirect to="/labs" />}
-      <h1 className="labs-list--title">New Lab Record</h1>
+      <h1 className="labs-form--title">New Lab Record</h1>
       <div className="labs-form--container">
         <div className="labs-form--field">
           <DateInput value={date} setInput={setDate} validate={validate}>
@@ -57,8 +57,18 @@ export default function NewRecord() {
           <TextInput required value={lab} setInput={setLab} validate={validate}>
             Lab:
           </TextInput>
-          <LabRecordType required value={recordType} setInput={setRecordType} validate={validate}/>
-          <TextInput required value={doctor} setInput={setDoctor} validate={validate}>
+          <LabRecordType
+            required
+            value={recordType}
+            setInput={setRecordType}
+            validate={validate}
+          />
+          <TextInput
+            required
+            value={doctor}
+            setInput={setDoctor}
+            validate={validate}
+          >
             Referral Doctor:
           </TextInput>
         </div>

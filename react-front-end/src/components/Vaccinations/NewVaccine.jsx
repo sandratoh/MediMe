@@ -53,9 +53,9 @@ export default function VaccineNew() {
     <section className="vaccinations-new">
       {redirectBack && <Redirect to="/vaccinations" />}
       {redirectSuccess && <Redirect to="/vaccinations/success" />}
-      <h1 className="vaccinations-list--title">New Vaccination</h1>
+      <h1 className="vaccinations-form--title">New Vaccination</h1>
       <div className="vaccinations-form--container">
-        <div className="vaccinations--form--field">
+        <div className="vaccinations-form--field">
           <TextInput
             required
             value={vaccine}
@@ -64,24 +64,25 @@ export default function VaccineNew() {
           >
             Vaccine Name:
           </TextInput>
-
-          <p className="form-label">Total Number of Doses</p>
-          <div>
-            <IconButton
-              onClick={() => {
-                setTotalDose(Math.max(totalDose - 1, 0));
-              }}
-            >
-              <RemoveCircleIcon />
-            </IconButton>
-            {totalDose}
-            <IconButton
-              onClick={() => {
-                setTotalDose(totalDose + 1, 5);
-              }}
-            >
-              <AddCircleIcon />
-            </IconButton>
+          <div className="vaccinations-form--doses">
+            <p className="form-label">Total Number of Doses</p>
+            <div>
+              <IconButton
+                onClick={() => {
+                  setTotalDose(Math.max(totalDose - 1, 0));
+                }}
+              >
+                <RemoveCircleIcon />
+              </IconButton>
+              {totalDose}
+              <IconButton
+                onClick={() => {
+                  setTotalDose(totalDose + 1, 5);
+                }}
+              >
+                <AddCircleIcon />
+              </IconButton>
+            </div>
           </div>
         </div>
         <div className="vaccinations-form--user-action">

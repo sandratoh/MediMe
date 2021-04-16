@@ -1,20 +1,29 @@
-.clinics-new,
 .clinics-edit,
-.labs-new,
+.clinics-new,
+.doses-edit,
+.doses-new,
 .labs-edit,
-.medications-new,
+.labs-new,
 .medications-edit,
-.vaccinations-new,
-.doses-new .doses-edit {
+.medications-new,
+.vaccinations-new {
   display: flex;
   flex-direction: column;
 }
 
+.clinics-form--title,
+.doses-form--title,
+.labs-form--title,
+.medications-form--title,
+.vaccinations-form--title {
+  margin: 32px 0;
+}
+
 .clinics-form--container,
+.doses-form--container,
 .labs-form--container,
 .medications-form--container,
-.vaccinations-form--container,
-.doses-form--container {
+.vaccinations-form--container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,22 +31,38 @@
 }
 
 .clinics-form--field,
+.doses-form--field,
 .labs-form--field,
 .medications-form--field,
-.vaccinations--form--field,
-.doses--form--field {
+.vaccinations-form--field {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .clinics-form--user-action,
+.doses-form--user-action,
 .labs-form--user-action,
 .medications-form--user-action,
-.vaccinations-form--user-action,
-.doses-form--user-action {
+.vaccinations-form--user-action {
   display: flex;
   justify-content: space-between;
   width: 95%;
   margin: 32px 0;
+}
+
+.doses-form--next {
+  margin-top: 24px;
+}
+
+.medications-form--refills,
+.vaccinations-form--doses {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 12px 0;
+
+  .form-label {
+    margin-bottom: 8px;
+  }
 }

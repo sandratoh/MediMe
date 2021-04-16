@@ -61,9 +61,9 @@ export default function EditVisit() {
   return (
     <section className="clinics-edit">
       {redirect && <Redirect to="/clinics/view" />}
-      <h1 className="clinics-list--title">Update Clinical Visit</h1>
+      <h1 className="clinics-form--title">Update Clinical Visit</h1>
       <div className="clinics-form--container">
-        <div className="clinics--form--field">
+        <div className="clinics-form--field">
           <DateInput date={date} setInput={setDate} validate={validate}>
             Date:
           </DateInput>

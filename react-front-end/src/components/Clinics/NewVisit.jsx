@@ -51,13 +51,15 @@ export default function NewVisit(props) {
   return (
     <section className="clinics-new">
       {redirect && <Redirect to="/clinics" />}
-      <h1 className="clinics-list--title">New Clinical Visit</h1>
+      <h1 className="clinics-form--title">New Clinical Visit</h1>
       <div className="clinics-form--container">
-        <div className="clinics--form--field">
+        <div className="clinics-form--field">
           <DateInput value={date} setInput={setDate} validate={validate}>
             Date:
           </DateInput>
+
           <ClinicGroupedButtons state={visitType} onChange={setVisitType} />
+
           <TextInput
             required
             value={medicalCenter}

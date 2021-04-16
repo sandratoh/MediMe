@@ -57,7 +57,7 @@ export default function EditRecord() {
   return (
     <section className="labs-edit">
       {redirect && <Redirect to="/labs/view" />}
-      <h1 className="labs-list--title">Update Lab Record</h1>
+      <h1 className="labs-form--title">Update Lab Record</h1>
       <div className="labs-form--container">
         <div className="labs-form--field">
           <DateInput date={date} setInput={setDate} validate={validate}>
@@ -66,8 +66,18 @@ export default function EditRecord() {
           <TextInput required value={lab} setInput={setLab} validate={validate}>
             Lab:
           </TextInput>
-          <LabRecordType required value={recordType} setInput={setRecordType} validate={validate}/>
-          <TextInput required value={doctor} setInput={setDoctor} validate={validate}>
+          <LabRecordType
+            required
+            value={recordType}
+            setInput={setRecordType}
+            validate={validate}
+          />
+          <TextInput
+            required
+            value={doctor}
+            setInput={setDoctor}
+            validate={validate}
+          >
             Referral Doctor:
           </TextInput>
         </div>

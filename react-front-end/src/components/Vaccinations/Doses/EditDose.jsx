@@ -67,9 +67,9 @@ export default function DoseEdit() {
   return (
     <section className="doses-edit">
       {redirect && <Redirect to="/vaccinations/dose/view" />}
-      <h1 className="doses-list--title">Update Vaccination Dose</h1>
+      <h1 className="doses-form--title">Update Vaccination Dose</h1>
       <div className="doses-form--container">
-        <div className="doses--form--field">
+        <div className="doses-form--field">
           <DateInput
             date={dateTaken}
             setInput={setDateTaken}
