@@ -19,17 +19,28 @@ import LabsList from "./Labs/LabsList";
 import EditRecord from "./Labs/EditRecord";
 import NewRecord from "./Labs/NewRecord";
 
+// Login Components
+import Login from "./Users/Login";
+
 // Medication Components
 import MedicationDetail from "./Medications/MedicationDetail";
 import MedicationsList from "./Medications/MedicationsList";
 import EditMedication from "./Medications/EditMedication";
 import NewMedication from "./Medications/NewMedication";
 
+// Signup Components
+import Signup1 from "./Users/Signup1";
+import Signup2 from "./Users/Signup2";
+import SignupSuccess from "./Users/SignupSuccess";
+
+// User Components
+import EditUser from "./Users/EditUser";
+
 // Vaccination & Dose Components
 import DoseDetail from "./Vaccinations/Doses/DoseDetail";
-import DoseEdit from "./Vaccinations/Doses/EditDose";
-import DoseNew from "./Vaccinations/Doses/NewDose";
-import VaccineNew from "./Vaccinations/NewVaccine";
+import EditDose from "./Vaccinations/Doses/EditDose";
+import NewDose from "./Vaccinations/Doses/NewDose";
+import NewVaccine from "./Vaccinations/NewVaccine";
 import VaccinationsList from "./Vaccinations/VaccinationsList";
 import Success from "./Vaccinations/Success";
 
@@ -47,7 +58,7 @@ const theme = createMuiTheme({
     primary: {
       light: "#D3F5A3",
       main: "#AED6B5",
-      contrastText: "#fff"
+      contrastText: "#fff",
     },
     secondary: {
       main: "#6F8695",
@@ -65,9 +76,9 @@ function App() {
         <Router>
           <Header />
           <Switch>
-            <Route path="/clinics/edit" component={EditVisit} />
-            <Route path="/clinics/new" component={NewVisit} />
-            <Route path="/clinics/view" component={ClinicDetail} />
+            <Route exact path="/clinics/edit" component={EditVisit} />
+            <Route exact path="/clinics/new" component={NewVisit} />
+            <Route exact path="/clinics/view" component={ClinicDetail} />
             <Route exact path="/clinics" component={ClinicsList} />
 
             <Route exact path="/labs/edit" component={EditRecord} />
@@ -77,16 +88,32 @@ function App() {
 
             <Route exact path="/medications/edit" component={EditMedication} />
             <Route exact path="/medications/new" component={NewMedication} />
-            <Route exact path="/medications/view" component={MedicationDetail} />
+            <Route
+              exact
+              path="/medications/view"
+              component={MedicationDetail}
+            />
             <Route exact path="/medications" component={MedicationsList} />
 
-            <Route exact path="/vaccinations/new" component={VaccineNew} />
-            <Route exact path="/vaccinations/dose/new" component={DoseNew} />
-            <Route exact path="/vaccinations/dose/edit" component={DoseEdit} />
-            <Route exact path="/vaccinations/dose/view" component={DoseDetail} />
+            <Route exact path="/vaccinations/new" component={NewVaccine} />
+            <Route exact path="/vaccinations/dose/new" component={NewDose} />
+            <Route exact path="/vaccinations/dose/edit" component={EditDose} />
+            <Route
+              exact
+              path="/vaccinations/dose/view"
+              component={DoseDetail}
+            />
 
             <Route exact path="/vaccinations" component={VaccinationsList} />
             <Route exact path="/vaccinations/success" component={Success} />
+
+            <Route exact path="/signup/1" component={Signup1} />
+            <Route exact path="/signup/2" component={Signup2} />
+            <Route exact path="/signup/success" component={SignupSuccess} />
+
+            <Route exact path="/login" component={Login} />
+
+            <Route exact path="/edit" component={EditUser} />
 
             <Route exact path="/menu" component={Menu} />
             <Route exact path="/" component={Dashboard} />
