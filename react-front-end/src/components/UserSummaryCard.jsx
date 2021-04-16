@@ -12,10 +12,9 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 
 import "./UserSummaryCard.scss";
-import ruler from '../images/ruler.png'
-import scale from '../images/body-scale.png'
-import rh from '../images/blood-rh-positive.png'
-import blood from '../images/blood-type-ab.png'
+import rhType from '../images/blood-type.png'
+import bloodO from '../images/blood-type-o-1.png'
+
 
 const useStyles = makeStyles((theme) => ({
 
@@ -90,7 +89,7 @@ export default function UserSummary() {
           <Typography id="summary--w-h-b-r" variant="caption">
             Blood Type:
             <br />
-            <img className='sum--icon' src={blood} />
+            <img className='sum--icon' src={bloodO} />
           </Typography>
         </div>
 
@@ -100,7 +99,7 @@ export default function UserSummary() {
           <Typography id='summary--w-h-b-r' variant="caption">
             Rh Group:
             <br />
-            <img className='sum--icon' src={rh} />
+            <img className='sum--icon' src={rhType} />
           </Typography>
         </div>
 
