@@ -41,6 +41,8 @@ export default function ClinicDetail() {
 
   const onEdit = () => setClinicalVisitEditId(visit.id);
 
+  const emptyDataPrompt = "No data entered yet."
+
   return (
     <section className="clinic-detail">
       {redirect && <Redirect to="/clinics" />}
@@ -69,12 +71,12 @@ export default function ClinicDetail() {
 
         <div className="clinic-detail--data">
           <h5 className="form-label">Reason for visit:</h5>
-          <p className="form-body">{visit.reason_for_visit}</p>
+          <p className="form-body">{visit.reason_for_visit || emptyDataPrompt}</p>
         </div>
 
         <div className="clinic-detail--data">
           <h5 className="form-label">Doctor's diagnosis:</h5>
-          <p className="form-body">{visit.doctor_diagnosis}</p>
+          <p className="form-body">{visit.doctor_diagnosis || emptyDataPrompt}</p>
         </div>
       </div>
 
