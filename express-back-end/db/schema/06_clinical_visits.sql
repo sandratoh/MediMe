@@ -5,7 +5,7 @@ CREATE TABLE clinical_visits (
   clinic_id INT NOT NULL REFERENCES clinics(id) ON DELETE CASCADE,
   doctor_id INT NOT NULL REFERENCES doctors(id) ON DELETE CASCADE,
   date DATE DEFAULT CURRENT_DATE,
-  type_of_visit VARCHAR(10) CHECK (type_of_visit IN ('CLINIC', 'HOSPITAL')),
+  type_of_visit VARCHAR(10) NOT NULL CHECK (type_of_visit IN ('CLINIC', 'HOSPITAL')),
   reason_for_visit VARCHAR(255),
   doctor_diagnosis VARCHAR(255)
  );
