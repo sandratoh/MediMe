@@ -50,7 +50,7 @@ export default function Header(props) {
           <Typography 
             variant="h6" 
             className='nav-bar--logo'
-            onClick={props.onLogo}>
+            onClick={() => setMenu(false)}>
             <Link to="/">MediMe</Link>
           </Typography>
           {iconByState(menu)}
