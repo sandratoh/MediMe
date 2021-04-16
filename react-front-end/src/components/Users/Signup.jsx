@@ -4,12 +4,20 @@ import { Link, Redirect } from "react-router-dom";
 
 // Components
 import TextInput from "../TextInput";
+import PasswordInput from "./PasswordInput";
 import TextButton from "../TextButton";
+
+// Helpers
+import { dataContext } from "../hooks/DataProvider";
 
 // Stylesheet
 import "../../styles/form.scss";
 
-export default function Signup2() {
+export default function Signup() {
+  const { addUser } = useContext(dataContext);
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,19 +28,41 @@ export default function Signup2() {
   const [validate, setValidate] = useState(false);
 
   const onSubmit = () => {
-    console.log("Submit button clicked");
+    const userData = {
+      first_name: firstName,
+      last_name: lastName,
+      email,
+      password: password.password,
+    };
+
+    addUser(userData).then((res) => {
+      res.data.error ? setValidate(true) : setRedirect(true);
+    });
   };
 
   return (
     <section className="signup">
-      {/* {redirect && <Redirect to="/" />} */}
-      <div className="signup-form--title">
-        <h1>Create Account</h1>
-        <h4 className="signup-form--subtitle">Step 2 of 2 : Your Account</h4>
-      </div>
+      {redirect && <Redirect to="/" />}
+      <h1 className="signup-form--title">Create Account</h1>
 
       <div className="signup-form--container">
         <div className="signup-form--field">
+          <TextInput
+            required
+            value={firstName}
+            setInput={setFirstName}
+            validate={validate}
+          >
+            First Name:
+          </TextInput>
+          <TextInput
+            required
+            value={lastName}
+            setInput={setLastName}
+            validate={validate}
+          >
+            Last Name:
+          </TextInput>
           <TextInput
             required
             value={email}
@@ -41,17 +71,22 @@ export default function Signup2() {
           >
             Email:
           </TextInput>
-          <TextInput
+          <PasswordInput
             required
             value={password}
             setInput={setPassword}
             validate={validate}
           >
             Password:
-          </TextInput>
+          </PasswordInput>
         </div>
         <div className="signup-form--user-action">
-          <TextButton variant="contained" color="secondary" onClick={onSubmit}>
+          <TextButton
+            userAction
+            variant="contained"
+            color="secondary"
+            onClick={onSubmit}
+          >
             Submit
           </TextButton>
         </div>

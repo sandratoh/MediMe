@@ -17,6 +17,7 @@ export default function IconButton(props) {
     "button--new-dose": props.newDose,
     "button--cancel": props.cancel,
     "button--edit": props.edit,
+    "button--login": props.login,
   });
 
   const icon = (props) => {

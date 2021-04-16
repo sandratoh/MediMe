@@ -1,11 +1,11 @@
 @import "../styles/mixins.scss";
 @import "../styles/variables.scss";
 @import "../styles/typography.scss";
+@import "./TextButton.scss";
 
 $button-height: 36px;
 $wide-button: 40vw;
 $med-button: 136px;
-$small-button: 98px;
 
 .button {
   height: $button-height;
@@ -28,4 +28,9 @@ $small-button: 98px;
 
 .button--new-dose {
   width: $med-button;
+}
+
+.button--login {
+  height: $tall-button;
+  width: $wide-button;
 }

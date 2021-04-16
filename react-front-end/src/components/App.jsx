@@ -29,8 +29,7 @@ import EditMedication from "./Medications/EditMedication";
 import NewMedication from "./Medications/NewMedication";
 
 // Signup Components
-import Signup1 from "./Users/Signup1";
-import Signup2 from "./Users/Signup2";
+import Signup from "./Users/Signup";
 import SignupSuccess from "./Users/SignupSuccess";
 
 // User Components
@@ -107,8 +106,7 @@ function App() {
             <Route exact path="/vaccinations" component={VaccinationsList} />
             <Route exact path="/vaccinations/success" component={Success} />
 
-            <Route exact path="/signup/1" component={Signup1} />
-            <Route exact path="/signup/2" component={Signup2} />
+            <Route exact path="/signup" component={Signup} />
             <Route exact path="/signup/success" component={SignupSuccess} />
 
             <Route exact path="/login" component={Login} />

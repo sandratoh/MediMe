@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 
 // Components
 import TextInput from "../TextInput";
+import PasswordInput from "./PasswordInput";
 import IconButton from "../IconButton";
 
 // Stylesheet
@@ -37,14 +38,14 @@ export default function Login() {
           >
             Email:
           </TextInput>
-          <TextInput
+          <PasswordInput
             required
             value={password}
             setInput={setPassword}
             validate={validate}
           >
             Password:
-          </TextInput>
+          </PasswordInput>
         </div>
         <div className="login-form--user-action">
           <IconButton
