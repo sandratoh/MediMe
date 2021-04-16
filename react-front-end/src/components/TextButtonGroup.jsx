@@ -1,12 +1,10 @@
 import Button from '@material-ui/core/Button';
-
 import classnames from 'classnames';
 import './TextButton.scss';
 
 export default function TextButtonGroup(props) {
   const buttonClass = classnames({
-    'button--user-action': props.userAction,
-    'button--group': props.groupButtons
+    'button--group': props.groupButtons,
   });
 
   const variantStateGroup = () => {
@@ -27,6 +25,8 @@ export default function TextButtonGroup(props) {
       onClick={props.setState}
       disabled={props.disabled}
       selected={props.selected}
+      error={props.error}
+      style={{ border: '1.5px solid' }}
     >
       {props.children}
     </Button>
