@@ -6,9 +6,6 @@ import { Link } from "react-router-dom";
 import TextButton from "../TextButton";
 import checkIcon from "../../images/check-mark.png";
 
-// Helpers
-import { dataContext } from "../hooks/DataProvider";
-
 // Stylesheet
 import "./Success.scss";
 
