@@ -376,6 +376,7 @@ export default function DataProvider(props) {
   };
 
   // console.log("data", data);
+  
 
   return (
     <dataContext.Provider value={data}>{props.children}</dataContext.Provider>
