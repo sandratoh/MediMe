@@ -94,10 +94,11 @@ export default function DoseEdit() {
           >
             Administration Site:
           </TextInput>
-
-          <DateInput notRequired date={nextDose} setInput={setNextDose}>
-            Next Scheduled Date:
-          </DateInput>
+          <div className="doses-form--next">
+            <DateInput notRequired date={nextDose} setInput={setNextDose}>
+              Next Scheduled Date:
+            </DateInput>
+          </div>
         </div>
         <div className="doses-form--user-action">
           <IconButton
