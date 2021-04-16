@@ -6,9 +6,6 @@ import { Link } from "react-router-dom";
 import TextButton from "../TextButton";
 import checkIcon from "../../images/check-mark.png";
 
-// Helpers
-import { dataContext } from "../hooks/DataProvider";
-
 // Stylesheet
 import "./Success.scss";
 
@@ -17,7 +14,7 @@ export default function Success() {
     <section className="vaccination-success">
       <h1 className="vaccination-success--title">Vaccination Record Saved!</h1>
       <div className="vaccination-success--icon">
-        <img src={checkIcon} component="img" alt="card icon" />
+        <img src={checkIcon} component="img" alt="check icon" />
       </div>
       <div className="vaccination-success--user-action">
         <Link to="/vaccinations/dose/new">
