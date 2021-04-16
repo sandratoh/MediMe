@@ -12,6 +12,10 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 
 import "./UserSummaryCard.scss";
+import ruler from '../images/ruler'
+import scale from '../images/body-scale'
+import rh from '../images/blood-rh-positive'
+import blood from '../images/blood-type-ab'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -82,14 +86,14 @@ export default function UserSummary() {
           <div className={classes.column}>
           </div>
         </AccordionSummary>
-        <AccordionDetails className={classes.details}>
+        <AccordionDetails className='accord--detail--head'>
           <div className={classes.column} />
           <div className={clsx(classes.column)}>
             <div >
               <Typography variant="caption">
                 Height:
                 <br />
-                {users[0].height_in_cm}
+                {users[0].height_in_cm} {ruler}
               </Typography>
             </div>
             <Divider/>
