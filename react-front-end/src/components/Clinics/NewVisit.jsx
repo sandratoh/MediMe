@@ -58,7 +58,7 @@ export default function NewVisit(props) {
             Date:
           </DateInput>
 
-          <ClinicGroupedButtons state={visitType} onChange={setVisitType} />
+          <ClinicGroupedButtons state={visitType} onChange={setVisitType} validate={validate}/>
 
           <TextInput
             required

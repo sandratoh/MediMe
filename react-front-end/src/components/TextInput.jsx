@@ -1,10 +1,8 @@
 import TextField from '@material-ui/core/TextField';
-import { useState } from "react";
 import './TextInput.scss';
 
 export default function BasicTextFields(props) {
 
-  // const [input, setInput] = useState("");
 
   return (
     <form className="text-input--container" noValidate autoComplete="off">

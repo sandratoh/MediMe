@@ -1,4 +1,4 @@
-import Button, { ButtonGroup } from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button';
 
 import classnames from 'classnames';
 import './TextButton.scss';
@@ -27,6 +27,7 @@ export default function TextButton(props) {
       onClick={props.onClick}
       disabled={props.disabled}
       selected={props.selected}
+      // error={props.error}
     >
       {props.children}
     </Button>
