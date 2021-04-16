@@ -24,7 +24,7 @@ export default function EditUser() {
   } = useContext(dataContext);
 
   const user = users.find(
-    (user) => user.id === null
+    (user) => user.id === 1
   );
 
   console.log("user: ", user)
