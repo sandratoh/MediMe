@@ -25,7 +25,6 @@ export default function TextButtonGroup(props) {
       onClick={props.setState}
       disabled={props.disabled}
       selected={props.selected}
-      error={props.error}
       style={{ border: '1.5px solid' }}
     >
       {props.children}

@@ -27,6 +27,7 @@ export default function TextButton(props) {
       onClick={props.onClick}
       disabled={props.disabled}
       selected={props.selected}
+      // error={props.error}
     >
       {props.children}
     </Button>

@@ -26,21 +26,24 @@ export default function ClinicGroupedButtons(props) {
     
   ];
 
-  const colorByErrorState = error => {
-    return error ? "secondary" : "primary";
+  const colorByStates = (validate, state) => {
+    if (validate && !state) {
+      return "secondary"
+    } else {
+      return "primary"
+    }
   }
 
   const clinicGroup = clinicGroupArray.map((value) => {
     return (
       <ThemeProvider theme={GroupedButtonTheme}>
         <TextButtonGroup
-          color={colorByErrorState(props.validate)}
+          color={colorByStates(props.validate, props.state)}
           key={value.id}
           setState={() => props.onChange(value.name)}
           groupButtons
           selected={value.name === props.state}
           value={value.name}
-          error={props.validate}
         >
           {value.name}
         </TextButtonGroup>
