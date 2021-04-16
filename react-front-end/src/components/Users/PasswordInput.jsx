@@ -15,11 +15,12 @@ export default function PasswordInput(props) {
     showPassword: false,
   });
 
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
+  const handleChange = (input) => (event) => {
+    setValues({ ...values, [input]: event.target.value });
+    props.setInput(values);
   };
 
-  const handleClickShowPassword = (props) => {
+  const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
 
@@ -30,13 +31,27 @@ export default function PasswordInput(props) {
   return (
     <div className="password-input--container">
       <FormControl variant="outlined">
-        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+        <InputLabel
+          htmlFor="outlined-adornment-password"
+          required={props.required}
+        >
+          {props.children}
+        </InputLabel>
         <OutlinedInput
           className="password-input--field"
           id="outlined-adornment-password"
           type={values.showPassword ? "text" : "password"}
           value={values.password}
           onChange={handleChange("password")}
+          required={props.required}
+          error={
+            props.required &&
+            props.validate &&
+            (props.value === "" || props.value === null)
+          }
+          helperText={
+            !props.value && props.validate && "This field cannot be blank."
+          }
           endAdornment={
             <InputAdornment position="end">
               <IconButton

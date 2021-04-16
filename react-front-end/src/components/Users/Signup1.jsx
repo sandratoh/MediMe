@@ -7,10 +7,6 @@ import TextInput from "../TextInput";
 import PasswordInput from "./PasswordInput";
 import TextButton from "../TextButton";
 
-// Material UI Components
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-
 // Stylesheet
 import "../../styles/form.scss";
 
@@ -33,10 +29,7 @@ export default function Signup1() {
   return (
     <section className="signup">
       {/* {redirect && <Redirect to="/" />} */}
-      <div className="signup-form--title">
-        <h1>Create Account</h1>
-        <h4 className="signup-form--subtitle">Step 1 of 2 : Your Name</h4>
-      </div>
+      <h1 className="signup-form--title">Create Account</h1>
 
       <div className="signup-form--container">
         <div className="signup-form--field">
@@ -74,7 +67,12 @@ export default function Signup1() {
           </PasswordInput>
         </div>
         <div className="signup-form--user-action">
-          <TextButton variant="contained" color="secondary" onClick={onSubmit}>
+          <TextButton
+            userAction
+            variant="contained"
+            color="secondary"
+            onClick={onSubmit}
+          >
             Submit
           </TextButton>
         </div>
