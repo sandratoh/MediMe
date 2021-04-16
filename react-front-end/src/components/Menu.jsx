@@ -1,6 +1,9 @@
 // Libraries
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 
+// Helpers
+import { dataContext } from "./hooks/DataProvider";
 // Components
 import TextButton from "./TextButton";
 
@@ -8,20 +11,22 @@ import TextButton from "./TextButton";
 import "./Menu.scss";
 
 export default function Menu() {
+  const { menu, setMenu } = useContext(dataContext);
+
   return (
     <section className="nav-menu">
       <div className="nav-menu--heading">
         <Link to="/clinics">
-          <ul>Clinical Visits</ul>
+          <ul onClick={() => setMenu(false)}>Clinical Visits</ul>
         </Link>
         <Link to="/labs">
-          <ul>Lab Records</ul>
+          <ul onClick={() => setMenu(false)}>Lab Records</ul>
         </Link>
         <Link to="/medications">
-          <ul>Medications</ul>
+          <ul onClick={() => setMenu(false)}>Medications</ul>
         </Link>
         <Link to="/vaccinations">
-          <ul>Vaccinations</ul>
+          <ul onClick={() => setMenu(false)}>Vaccinations</ul>
         </Link>
       </div>
       <div className="nav-menu--button">
