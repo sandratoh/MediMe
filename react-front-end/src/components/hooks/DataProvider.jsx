@@ -168,8 +168,8 @@ export default function DataProvider(props) {
     return axios
     .post("/api/users", formData)
     .then((res) => {
-      // setUsers([res.data[0], ...users]);
-      refreshAllUsers()
+      refreshAllUsers();
+
       return res;
     })
     .catch((err) => console.log(err));
@@ -186,12 +186,33 @@ export default function DataProvider(props) {
     .catch((err) => console.log(err));
   };
 
+  const loginUser = (formData) => {
+    const { email, password } = formData;
+    console.log('email', email)
+    return axios
+      .get("/api/users")
+      .then((res) => {
+        const users = res.data.users;
+        const user = users.find(user => user.email === email);
+        
+        if (user.password === password) {
+          console.log('user', user)
+          return user;
+        }
+
+        // console.log('users', users);
+        // console.log('user', user);
+        // console.log('res', res);
+        return res;
+      })
+      .catch((err) => console.log(err));
+  };
+
   const refreshAllUsers = () => {
     return axios.get("/api/users").then((res) => {
       setUsers(res.data.users);
     });
-  
-  }
+  };
 
   // Vaccinations & Doses database calls
 
@@ -359,6 +380,7 @@ export default function DataProvider(props) {
     setUserEditId,
     addUser,
     editUser,
+    loginUser,
     // Vaccinations exports
     vaccinations,
     vaccinationDetailId,
