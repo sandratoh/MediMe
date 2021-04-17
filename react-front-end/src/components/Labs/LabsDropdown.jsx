@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
@@ -7,13 +7,6 @@ import "./LabsDropdown.scss";
 import { FormHelperText } from "@material-ui/core";
 
 export default function LabDropdown(props) {
-  // const [recordType, setRecordType] = useState("");
-
-  // const handleChange = (e) => {
-  //   setRecordType(e.target.value);
-  //   console.log("target", e.target.value);
-  // };
-  // console.log("recordType", recordType);
 
   return (
     <section className="dropdown-container">
