@@ -25,13 +25,15 @@ export default function Login() {
 
   const onLogin = () => {
     const userDetail = {email, password}
+    // password:password
     
     loginUser(userDetail)
     .then(res => {
-
-      res.data.error ? setValidate(true) : setUserDetailId(res.id);
-
       console.log('res from login,', res);
+
+      // res.data.error ? setValidate(true) : setUserDetailId(res.id);
+      res.data ? setValidate(true) : setRedirect(true);
+
       // if (res.password === password) {
       //   setUserDetailId(res.id);
       //   setRedirect(true);
@@ -40,7 +42,7 @@ export default function Login() {
       // res.data.error ? setValidate(true) : setRedirect(true)
       console.log('userDetailId', userDetailId);
       })
-      .then(res => setRedirect(true));
+      // .then(res => setRedirect(true));
   };
 
   return (
