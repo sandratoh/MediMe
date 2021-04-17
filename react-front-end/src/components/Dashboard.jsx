@@ -8,7 +8,7 @@ import UserSummaryCard from "./Users/UserSummaryCard";
 import TextButton from "./TextButton";
 
 // Helpers
-import { dataContext } from "./hooks/DataProvider";
+import { dataContext } from "./Provider/DataProvider";
 
 // Stylesheet
 import "./Dashboard.scss";

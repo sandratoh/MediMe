@@ -14,7 +14,7 @@ import { formatDate } from "../../../helpers/dateHelpers";
 
 // Stylesheet
 import "./DoseDetail.scss";
-import { dataContext } from "../../hooks/DataProvider";
+import { dataContext } from "../../Provider/DataProvider";
 
 export default function DoseDetail() {
   const {
@@ -68,10 +68,11 @@ export default function DoseDetail() {
         </div>
         <div className="dose-detail--data">
           <h5 className="">Next Scheduled Dose:</h5>
-          {dose.next_scheduled_dose
-            ? <p className="form-body">{formatDate(dose.next_scheduled_dose)}</p>
-            : <p className="form-body empty-data">{"No data entered yet"}</p>
-          }
+          {dose.next_scheduled_dose ? (
+            <p className="form-body">{formatDate(dose.next_scheduled_dose)}</p>
+          ) : (
+            <p className="form-body empty-data">{"No data entered yet"}</p>
+          )}
         </div>
       </div>
 

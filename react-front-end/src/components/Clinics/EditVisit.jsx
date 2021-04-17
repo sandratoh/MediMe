@@ -9,7 +9,7 @@ import DateInput from "../DateInput";
 import IconButton from "../IconButton";
 
 // Helpers
-import { dataContext } from "../hooks/DataProvider";
+import { dataContext } from "../Provider/DataProvider";
 import { findNameById } from "../../helpers/selectors";
 
 // Stylesheet
@@ -22,9 +22,9 @@ export default function EditVisit() {
     doctors,
     clinicalVisitEditId,
     editClinicVisit,
-    clinicExists, 
-    addClinic, 
-    doctorExists, 
+    clinicExists,
+    addClinic,
+    doctorExists,
     addDoctor,
   } = useContext(dataContext);
 
@@ -51,8 +51,8 @@ export default function EditVisit() {
 
   const onSave = () => {
     if (!date || medicalCenter === "" || doctor === "" || !visitType) {
-      return setValidate(true)
-    };
+      return setValidate(true);
+    }
 
     const visitDetail = {
       user_id: 1,
@@ -64,13 +64,13 @@ export default function EditVisit() {
       doctor_diagnosis: diagnosis,
     };
 
-    if (!(clinicExists(medicalCenter))) {
-      addClinic({name: medicalCenter})
-    };
+    if (!clinicExists(medicalCenter)) {
+      addClinic({ name: medicalCenter });
+    }
 
-    if (!(doctorExists(doctor))) {
-      addDoctor({name: doctor})
-    };
+    if (!doctorExists(doctor)) {
+      addDoctor({ name: doctor });
+    }
 
     editClinicVisit(visitDetail).then((res) => {
       !res.data.error && setRedirect(true);

@@ -11,7 +11,7 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 // Helpers
-import { dataContext } from "../hooks/DataProvider";
+import { dataContext } from "../Provider/DataProvider";
 
 // Stylesheet
 import "../../styles/form.scss";

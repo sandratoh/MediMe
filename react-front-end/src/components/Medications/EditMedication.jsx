@@ -15,7 +15,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
 // Helpers
-import { dataContext } from "../hooks/DataProvider";
+import { dataContext } from "../Provider/DataProvider";
 import { findNameById } from "../../helpers/selectors";
 
 // Stylesheet

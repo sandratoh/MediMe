@@ -9,7 +9,7 @@ import IconButton from "../IconButton";
 import LabRecordType from "./LabsDropdown";
 
 // Helpers
-import { dataContext } from "../hooks/DataProvider";
+import { dataContext } from "../Provider/DataProvider";
 import { findNameById } from "../../helpers/selectors";
 
 // Stylesheet

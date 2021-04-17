@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 
 // Helpers
-import { dataContext } from "./hooks/DataProvider";
+import { dataContext } from "./Provider/DataProvider";
 // Components
 import TextButton from "./TextButton";
 
@@ -31,8 +31,8 @@ export default function Menu() {
       </div>
       <div className="nav-menu--button">
         <Link to="/">
-          <TextButton 
-            color="secondary" 
+          <TextButton
+            color="secondary"
             userAction
             onClick={() => setUserDetailId(null)}
           >
@@ -41,5 +41,5 @@ export default function Menu() {
         </Link>
       </div>
     </section>
-  )
-};
+  );
+}

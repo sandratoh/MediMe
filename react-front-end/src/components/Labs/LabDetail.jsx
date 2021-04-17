@@ -9,7 +9,7 @@ import IconButton from "../IconButton";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 // Helpers
-import { dataContext } from "../hooks/DataProvider";
+import { dataContext } from "../Provider/DataProvider";
 import { findNameById } from "../../helpers/selectors";
 import { formatDate } from "../../helpers/dateHelpers";
 

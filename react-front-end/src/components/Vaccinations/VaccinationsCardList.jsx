@@ -4,7 +4,7 @@ import { useContext } from "react";
 import VaccinationCard from "./VaccinationCard";
 
 // Helpers
-import { dataContext } from "../hooks/DataProvider";
+import { dataContext } from "../Provider/DataProvider";
 
 export default function VaccinationsCardList() {
   const {

@@ -9,7 +9,7 @@ import IconButton from "../IconButton";
 
 // Stylesheet
 import "../../styles/form.scss";
-import { dataContext } from "../hooks/DataProvider";
+import { dataContext } from "../Provider/DataProvider";
 
 export default function Login() {
   const { loginUser, setUserDetailId } = useContext(dataContext);

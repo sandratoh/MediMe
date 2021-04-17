@@ -10,12 +10,18 @@ import TextInput from "../TextInput";
 
 // Helpers
 import { currentDate } from "../../helpers/dateHelpers";
-import { dataContext } from "../hooks/DataProvider";
+import { dataContext } from "../Provider/DataProvider";
 
 import "../../styles/form.scss";
 
 export default function NewVisit(props) {
-  const { addClinicVisit, clinicExists, addClinic, doctorExists, addDoctor } = useContext(dataContext);
+  const {
+    addClinicVisit,
+    clinicExists,
+    addClinic,
+    doctorExists,
+    addDoctor,
+  } = useContext(dataContext);
 
   const [medicalCenter, setMedicalCenter] = useState("");
   const [doctor, setDoctor] = useState("");
@@ -34,9 +40,9 @@ export default function NewVisit(props) {
 
   const onSave = () => {
     if (!date || medicalCenter === "" || doctor === "" || !visitType) {
-      return setValidate(true)
-    };
-    
+      return setValidate(true);
+    }
+
     const visitDetail = {
       user_id: 1,
       clinic_id: medicalCenter,
@@ -47,19 +53,18 @@ export default function NewVisit(props) {
       doctor_diagnosis: diagnosis,
     };
 
-    if (!(clinicExists(medicalCenter))) {
-      addClinic({name: medicalCenter})
-    };
+    if (!clinicExists(medicalCenter)) {
+      addClinic({ name: medicalCenter });
+    }
 
-    if (!(doctorExists(doctor))) {
-      addDoctor({name: doctor})
-    };
+    if (!doctorExists(doctor)) {
+      addDoctor({ name: doctor });
+    }
 
     addClinicVisit(visitDetail).then((res) => {
       !res.data.error && setRedirect(true);
     });
   };
-
 
   return (
     <section className="clinics-new">
@@ -71,7 +76,11 @@ export default function NewVisit(props) {
             Date:
           </DateInput>
 
-          <ClinicGroupedButtons state={visitType} onChange={setVisitType} validate={validate}/>
+          <ClinicGroupedButtons
+            state={visitType}
+            onChange={setVisitType}
+            validate={validate}
+          />
 
           <TextInput
             required

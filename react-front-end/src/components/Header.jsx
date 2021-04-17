@@ -11,7 +11,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
 
 // Helpers
-import { dataContext } from "./hooks/DataProvider";
+import { dataContext } from "./Provider/DataProvider";
 
 // Stylesheet
 import "./Header.scss";

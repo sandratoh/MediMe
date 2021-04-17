@@ -14,7 +14,7 @@ import DoseCard from "./Doses/DoseCard";
 import IconButton from "../IconButton";
 
 // Helpers
-import { dataContext } from "../hooks/DataProvider";
+import { dataContext } from "../Provider/DataProvider";
 
 // Stylesheet
 import "../../styles/card.scss";

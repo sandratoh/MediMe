@@ -10,7 +10,7 @@ import IconButton from "../../IconButton";
 
 // Helpers
 import { currentDate } from "../../../helpers/dateHelpers";
-import { dataContext } from "../../hooks/DataProvider";
+import { dataContext } from "../../Provider/DataProvider";
 
 // Stylesheet
 import "../../../styles/form.scss";

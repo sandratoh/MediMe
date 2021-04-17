@@ -7,17 +7,16 @@ import TextButton from "../TextButton";
 import hiIcon from "../../images/hi.png";
 
 // Helper
-import { dataContext } from "../hooks/DataProvider";
+import { dataContext } from "../Provider/DataProvider";
 
 // Stylesheet
 import "./SignupSuccess.scss";
 
-
 export default function SignupSuccess() {
-  const {userDetailId} = useContext(dataContext);
-  console.log('sign up success userdetailid:', userDetailId);
+  const { userDetailId } = useContext(dataContext);
+  console.log("sign up success userdetailid:", userDetailId);
 
-  return(
+  return (
     <section className="signup-success">
       <h1 className="signup-success--title">Welcome to MediMe!</h1>
       <div className="signup-success--icon">
@@ -36,4 +35,4 @@ export default function SignupSuccess() {
       </div>
     </section>
   );
-};
+}

@@ -23,7 +23,7 @@ import bloodO from "../../images/blood-type-o.png";
 import { useContext } from "react";
 
 // Helpers
-import { dataContext } from "../hooks/DataProvider";
+import { dataContext } from "../Provider/DataProvider";
 
 // Stylesheet
 import "./UserSummaryCard.scss";

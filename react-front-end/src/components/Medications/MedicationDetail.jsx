@@ -9,19 +9,17 @@ import IconButton from "../IconButton";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 // Helpers
-import { dataContext } from "../hooks/DataProvider";
+import { dataContext } from "../Provider/DataProvider";
 import { findNameById } from "../../helpers/selectors";
 import { formatDate } from "../../helpers/dateHelpers";
 
 // Stylesheet
 import "../Clinics/ClinicDetail.scss";
-import './MedicationDetail.scss'
+import "./MedicationDetail.scss";
 
 // Icons
 import takeWithFood from "../../images/takeWithFood.png";
 import takeWithWater from "../../images/takeWithWater.png";
-
-
 
 export default function MedicationDetail() {
   const {
@@ -39,12 +37,26 @@ export default function MedicationDetail() {
   const medication = medications.find((med) => med.id === medicationDetailId);
 
   const iconWater = (water) => {
-    return water ? <img className='medication--icon--water' src={takeWithWater} component="img" alt="water icon"/> : null
-  }
+    return water ? (
+      <img
+        className="medication--icon--water"
+        src={takeWithWater}
+        component="img"
+        alt="water icon"
+      />
+    ) : null;
+  };
 
   const iconFood = (food) => {
-    return food ? <img className='medication--icon--food' src={takeWithFood} component="img" alt="food icon"/> : null
-  }
+    return food ? (
+      <img
+        className="medication--icon--food"
+        src={takeWithFood}
+        component="img"
+        alt="food icon"
+      />
+    ) : null;
+  };
 
   const onDelete = () => {
     deleteMedication().then((res) => {
@@ -54,7 +66,7 @@ export default function MedicationDetail() {
 
   const onEdit = () => setMedicationEditId(medication.id);
 
-  const emptyDataPrompt = "No data entered yet"
+  const emptyDataPrompt = "No data entered yet";
 
   return (
     <section className="clinic-detail">
@@ -79,10 +91,11 @@ export default function MedicationDetail() {
 
         <div className="clinic-detail--data">
           <h5 className="form-label">Nickname:</h5>
-          {medication.nickname
-            ? <p className="form-body">{medication.nickname}</p>
-            : <p className="form-body empty-data">{emptyDataPrompt}</p>
-          }
+          {medication.nickname ? (
+            <p className="form-body">{medication.nickname}</p>
+          ) : (
+            <p className="form-body empty-data">{emptyDataPrompt}</p>
+          )}
         </div>
 
         <div className="clinic-detail--data">
@@ -106,17 +119,17 @@ export default function MedicationDetail() {
 
         <div className="clinic-detail--data">
           <h5 className="form-label">Instructions:</h5>
-          {medication.instructions
-          ? <p className="form-body">{medication.instructions}</p>
-          : <p className="form-body empty-data">{emptyDataPrompt}</p>
-          }
+          {medication.instructions ? (
+            <p className="form-body">{medication.instructions}</p>
+          ) : (
+            <p className="form-body empty-data">{emptyDataPrompt}</p>
+          )}
         </div>
 
         <div className="medication--icon">
           {iconWater(medication.is_take_with_water)}
           {iconFood(medication.is_take_with_food)}
         </div>
-
       </div>
 
       <div className="clinic-detail--user-action">
