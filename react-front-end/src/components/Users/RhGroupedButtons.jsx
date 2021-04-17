@@ -1,6 +1,11 @@
-
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+// Components
 import TextButton from "../TextButtonGroup";
+
+// Material UI Components
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+
+//Stylesheets
+import "./RhGroupedButtons.scss";
 
 const GroupedButtonTheme = createMuiTheme({
   typography: {
@@ -9,19 +14,16 @@ const GroupedButtonTheme = createMuiTheme({
   palette: {
     primary: {
       main: "#AED6B5",
-      contrastText: "#fff"
+      contrastText: "#fff",
     },
     secondary: {
       main: "#f77777",
       contrastText: "#fff",
-    }
+    },
   },
 });
 
-export default function RhGroupButtons(props) {
-  
-
-  
+export default function RhGroupedButtons(props) {
   const rhGroupArray = [
     { id: 1, name: "POSITIVE" },
     { id: 2, name: "NEGATIVE" },
@@ -29,22 +31,22 @@ export default function RhGroupButtons(props) {
   ];
 
   const colorByStates = (validation, valueSelected) => {
-    return validation && !valueSelected ? "secondary" : "primary"
+    return validation && !valueSelected ? "secondary" : "primary";
   };
 
   const rhGroup = rhGroupArray.map((value) => {
     return (
       <ThemeProvider theme={GroupedButtonTheme}>
-      <TextButton
-        key={value.id}
-        color={colorByStates(props.validate, props.state)}
-        setState={() => props.onChange(value.name)}
-        groupButtons
-        selected={value.name === props.state}
-        value={value.name}
-      >
-        {value.name}
-      </TextButton>
+        <TextButton
+          key={value.id}
+          color={colorByStates(props.validate, props.state)}
+          setState={() => props.onChange(value.name)}
+          groupButtons
+          selected={value.name === props.state}
+          value={value.name}
+        >
+          {value.name}
+        </TextButton>
       </ThemeProvider>
     );
   });
