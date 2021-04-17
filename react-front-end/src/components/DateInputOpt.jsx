@@ -1,6 +1,9 @@
 // Material UI Components
 import TextField from "@material-ui/core/TextField";
 
+// Helpers
+import { formatDateToISO } from "../helpers/dateHelpers";
+
 // Stylesheet
 import "./DateInput.scss";
 
@@ -14,7 +17,7 @@ export default function DateInputOpt(props) {
         className="date-input--field"
         error={!props.value && props.validate}
         label={props.children}
-        defaultValue={null}
+        defaultValue={props.date ? formatDateToISO(props.date) : null}
         inputProps={{
           min: new Date().toISOString().substring(0, 10),
         }}
@@ -22,9 +25,6 @@ export default function DateInputOpt(props) {
         size="medium"
         InputLabelProps={{
           shrink: true,
-        }}
-        onKeyDown={(event) => {
-          event.preventDefault();
         }}
       />
     </form>
