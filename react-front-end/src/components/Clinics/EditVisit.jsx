@@ -22,13 +22,20 @@ export default function EditVisit() {
     doctors,
     clinicalVisitEditId,
     editClinicVisit,
+    clinicExists, 
+    addClinic, 
+    doctorExists, 
+    addDoctor,
   } = useContext(dataContext);
+
   const visit = clinicalVisits.find(
     (visit) => visit.id === clinicalVisitEditId
   );
+
   const [medicalCenter, setMedicalCenter] = useState(
     findNameById(clinics, visit.clinic_id)
   );
+
   const [doctor, setDoctor] = useState(findNameById(doctors, visit.doctor_id));
   const [date, setDate] = useState(visit.date);
   const [visitType, setVisitType] = useState(visit.type_of_visit);
@@ -43,6 +50,10 @@ export default function EditVisit() {
   const onCancel = () => setRedirect(true);
 
   const onSave = () => {
+    if (!date || medicalCenter === "" || doctor === "" || !visitType) {
+      return setValidate(true)
+    };
+
     const visitDetail = {
       user_id: 1,
       clinic_id: medicalCenter,
@@ -53,8 +64,16 @@ export default function EditVisit() {
       doctor_diagnosis: diagnosis,
     };
 
+    if (!(clinicExists(medicalCenter))) {
+      addClinic({name: medicalCenter})
+    };
+
+    if (!(doctorExists(doctor))) {
+      addDoctor({name: doctor})
+    };
+
     editClinicVisit(visitDetail).then((res) => {
-      res.data.error ? setValidate(true) : setRedirect(true);
+      !res.data.error && setRedirect(true);
     });
   };
 
