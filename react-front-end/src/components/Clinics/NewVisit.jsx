@@ -15,7 +15,7 @@ import { dataContext } from "../hooks/DataProvider";
 import "../../styles/form.scss";
 
 export default function NewVisit(props) {
-  const { addClinicVisit } = useContext(dataContext);
+  const { clinics, addClinicVisit, checkClinic, addNewClinic } = useContext(dataContext);
 
   const [medicalCenter, setMedicalCenter] = useState("");
   const [doctor, setDoctor] = useState("");
@@ -42,10 +42,21 @@ export default function NewVisit(props) {
       reason_for_visit: reasonFor,
       doctor_diagnosis: diagnosis,
     };
+    console.log('clinics in nevisit', clinics)
+    const clinicExist = checkClinic(medicalCenter);
+    console.log('clinicExist?:', clinicExist);
+    console.log('medicalcenter', medicalCenter)
+    if (!clinicExist) {
+      addNewClinic({name: medicalCenter})
+        // .then(res => console.log(res))
+      .then(() => addClinicVisit(visitDetail))
+      .then((res) => res.data.error ? setValidate(true) : setRedirect(true));
+    }
 
-    addClinicVisit(visitDetail).then((res) => {
-      res.data.error ? setValidate(true) : setRedirect(true);
-    });
+
+    // addClinicVisit(visitDetail).then((res) => {
+    //   res.data.error ? setValidate(true) : setRedirect(true);
+    // });
   };
 
   return (
