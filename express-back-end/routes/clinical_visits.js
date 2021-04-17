@@ -3,6 +3,7 @@ const router = express.Router();
 const {
   addClinicalVisit,
   updateClinicalVisit,
+  addNewClinic
 } = require("../db/queries/queries-clinics");
 
 module.exports = (client) => {
@@ -42,6 +43,14 @@ module.exports = (client) => {
       .catch((err) => {
         res.status(500).json({ error: err.message });
       });
+  });
+
+  // add new clinic
+  router.post("/list", (req, res) => {
+
+    addNewClinic(req.body.name)
+      .then((data) => res.status(200).json({data}))
+      .catch((err) => res.json({ error: err.message }));
   });
 
   // get specific clinical record

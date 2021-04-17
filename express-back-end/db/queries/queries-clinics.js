@@ -56,4 +56,16 @@ const updateClinicalVisit = async (cv) => {
   return client.query(query, values).then((res) => res.rows);
 };
 
-module.exports = { addClinicalVisit, updateClinicalVisit };
+const addNewClinic = (name) => {
+  const query = `
+    INSERT INTO clinics (name)
+    VALUES ($1)
+    RETURNING *
+    ;`;
+
+  return client
+    .query(query, [name])
+    .then((res) => res.rows);
+};
+
+module.exports = { addClinicalVisit, updateClinicalVisit, addNewClinic };
