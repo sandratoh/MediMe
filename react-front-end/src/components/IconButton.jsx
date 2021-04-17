@@ -1,12 +1,16 @@
-import Button from "@material-ui/core/Button";
-import DeleteIcon from "@material-ui/icons/Delete";
-import SaveIcon from "@material-ui/icons/Save";
+// Libraries
+import classnames from "classnames";
+
+// Material UI Components
 import AddIcon from "@material-ui/icons/Add";
+import Button from "@material-ui/core/Button";
 import CancelIcon from "@material-ui/icons/Cancel";
+import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
+import SaveIcon from "@material-ui/icons/Save";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 
-import classnames from "classnames";
+// Stylesheet
 import "./IconButton.scss";
 
 export default function IconButton(props) {

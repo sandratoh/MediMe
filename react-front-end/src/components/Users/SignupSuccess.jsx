@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 // Components
 import TextButton from "../TextButton";
+
+//Icons
 import hiIcon from "../../images/hi.png";
 
 // Stylesheet

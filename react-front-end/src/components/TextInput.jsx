@@ -1,6 +1,8 @@
-import TextField from "@material-ui/core/TextField";
+// Material UI Components
 import InputAdornment from "@material-ui/core/InputAdornment";
+import TextField from "@material-ui/core/TextField";
 
+// Stylesheet
 import "./TextInput.scss";
 
 export default function TextInput(props) {

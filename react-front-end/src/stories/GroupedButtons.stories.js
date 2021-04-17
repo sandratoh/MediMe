@@ -1,5 +1,10 @@
+// Libraries
 import { action } from "@storybook/addon-actions";
+
+// Components
 import ClinicGroupedButtons from "../components/Clinics/ClinicGroupedButtons";
+
+// Stylesheet
 import "../index.scss";
 
 export default {
@@ -19,12 +24,12 @@ export const Preselected = () => (
     // clinical_visits={clinical_visits}
     // onChange={action("onChange")}
 
-    value={"CLINIC"}
+    state={"CLINIC"}
   ></ClinicGroupedButtons>
 );
 
 export const Clickable = () => (
   <ClinicGroupedButtons
-    onClick={action("Button clicked")}
+    onChange={action("Button clicked")}
   ></ClinicGroupedButtons>
 );

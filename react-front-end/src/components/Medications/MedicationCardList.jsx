@@ -2,11 +2,11 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-// Helpers
-import { dataContext } from "../Provider/DataProvider";
-
 // Components
 import MedicationCard from "./MedicationCard";
+
+// Helpers
+import { dataContext } from "../Provider/DataProvider";
 
 export default function MedicationCardList() {
   const { medications, setMedicationDetailId } = useContext(dataContext);

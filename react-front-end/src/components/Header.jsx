@@ -4,17 +4,18 @@ import { Link, useHistory } from "react-router-dom";
 
 // Material UI Compoennts
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
+import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import CloseIcon from "@material-ui/icons/Close";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 
 // Helpers
 import { dataContext } from "./Provider/DataProvider";
 
 // Stylesheet
 import "./Header.scss";
+
 export default function Header() {
   const { menu, setMenu, users, userDetailId } = useContext(dataContext);
 

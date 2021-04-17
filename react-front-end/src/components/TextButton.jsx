@@ -1,6 +1,10 @@
+// Libraries
+import classnames from "classnames";
+
+// Material UI Components
 import Button from "@material-ui/core/Button";
 
-import classnames from "classnames";
+// Stylesheet
 import "./TextButton.scss";
 
 export default function TextButton(props) {
@@ -20,7 +24,10 @@ export default function TextButton(props) {
   return (
     <Button
       className={buttonClass}
-      variant={props.variant || (props.groupButtons ? variantStateGroup() : "contained")}
+      variant={
+        props.variant ||
+        (props.groupButtons ? variantStateGroup() : "contained")
+      }
       color={props.color}
       onChange={props.onChange}
       onClick={props.onClick}

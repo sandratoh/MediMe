@@ -3,10 +3,10 @@ import { useContext, useState } from "react";
 import { Redirect } from "react-router-dom";
 
 // Components
-import TextInput from "../../TextInput";
 import DateInput from "../../DateInput";
-import DateInput2 from "../../DateInput2";
+import DateInputOpt from "../../DateInputOpt";
 import IconButton from "../../IconButton";
+import TextInput from "../../TextInput";
 
 // Helpers
 import { currentDate } from "../../../helpers/dateHelpers";
@@ -75,13 +75,13 @@ export default function NewDose() {
             Administration Site:
           </TextInput>
           <div className="doses-form--next">
-            <DateInput2
+            <DateInputOpt
               notRequired
               date={nextDoseDate}
               setInput={setNextDoseDate}
             >
               Next Scheduled Date:
-            </DateInput2>
+            </DateInputOpt>
           </div>
         </div>
         <div className="doses-form--user-action">

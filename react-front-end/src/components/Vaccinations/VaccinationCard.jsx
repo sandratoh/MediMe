@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 // Components
 import DoseCard from "./Doses/DoseCard";

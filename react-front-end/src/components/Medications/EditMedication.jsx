@@ -9,16 +9,16 @@ import TextInput from "../TextInput";
 
 // Material UI Components
 import AddCircleIcon from "@material-ui/icons/AddCircle";
-import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormGroup from "@material-ui/core/FormGroup";
+import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 // Helpers
 import { dataContext } from "../Provider/DataProvider";
 import { findNameById } from "../../helpers/selectors";
 
-// Stylesheet
+// Stylesheets
 import "../../styles/form.scss";
 import "./MedicationsList.scss";
 

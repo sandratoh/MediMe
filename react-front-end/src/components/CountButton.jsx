@@ -1,9 +1,11 @@
-import AddCircleIcon from "@material-ui/icons/AddCircle";
-import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
+// Libraries
 import { useState } from "react";
-
 import { makeStyles } from "@material-ui/core/styles";
+
+// Material UI Components
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 import IconButton from "@material-ui/core/IconButton";
+import RemoveCircleIcon from "@material-ui/icons/RemoveCircle";
 
 const useStyles = makeStyles((theme) => ({
   root: {

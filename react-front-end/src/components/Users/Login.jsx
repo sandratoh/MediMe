@@ -3,13 +3,15 @@ import { useContext, useState } from "react";
 import { Redirect, Link } from "react-router-dom";
 
 // Components
-import TextInput from "../TextInput";
-import PasswordInput from "./PasswordInput";
 import IconButton from "../IconButton";
+import PasswordInput from "./PasswordInput";
+import TextInput from "../TextInput";
+
+// Helpers
+import { dataContext } from "../Provider/DataProvider";
 
 // Stylesheet
 import "../../styles/form.scss";
-import { dataContext } from "../Provider/DataProvider";
 
 export default function Login() {
   const { loginUser, setUserDetailId } = useContext(dataContext);

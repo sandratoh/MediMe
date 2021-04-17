@@ -1,10 +1,10 @@
-// Libraries import
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+// Libraries
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
-// Components import
-import Header from "./Header";
+// App Components
 import Dashboard from "./Dashboard";
+import Header from "./Header";
 import Menu from "./Menu";
 
 // Clinic Components
@@ -14,26 +14,22 @@ import EditVisit from "./Clinics/EditVisit";
 import NewVisit from "./Clinics/NewVisit";
 
 // Lab Components
+import EditRecord from "./Labs/EditRecord";
 import LabDetail from "./Labs/LabDetail";
 import LabsList from "./Labs/LabsList";
-import EditRecord from "./Labs/EditRecord";
 import NewRecord from "./Labs/NewRecord";
 
-// Login Components
-import Login from "./Users/Login";
-
 // Medication Components
+import EditMedication from "./Medications/EditMedication";
 import MedicationDetail from "./Medications/MedicationDetail";
 import MedicationsList from "./Medications/MedicationsList";
-import EditMedication from "./Medications/EditMedication";
 import NewMedication from "./Medications/NewMedication";
-
-// Signup Components
-import Signup from "./Users/Signup";
-import SignupSuccess from "./Users/SignupSuccess";
 
 // User Components
 import EditUser from "./Users/EditUser";
+import Login from "./Users/Login";
+import Signup from "./Users/Signup";
+import SignupSuccess from "./Users/SignupSuccess";
 
 // Vaccination & Dose Components
 import DoseDetail from "./Vaccinations/Doses/DoseDetail";

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import ClinicsCardList from "./ClinicsCardList";
 import IconButton from "../IconButton";
 
-// Material components
+// Material UI Components
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 // Stylesheet

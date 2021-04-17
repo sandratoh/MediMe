@@ -1,9 +1,8 @@
+// Libraries
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// const LabContext = createContext();
-
-export default function LabContext() {
+export default function useLabContext() {
   // Lab states
   const [labs, setLabs] = useState([]);
   const [labRecords, setLabRecords] = useState([]);
@@ -67,7 +66,7 @@ export default function LabContext() {
     );
   }, []);
 
-  // Lab Exports
+  // Lab exports
   const labData = {
     labs,
     setLabs,

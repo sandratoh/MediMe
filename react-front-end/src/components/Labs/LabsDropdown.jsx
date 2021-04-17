@@ -1,16 +1,23 @@
-import React from "react";
+// Material UI Components
+import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import "./LabsDropdown.scss";
+
+//Helpers
 import { FormHelperText } from "@material-ui/core";
+
+// Stylesheet
+import "./LabsDropdown.scss";
 
 export default function LabsDropdown(props) {
   return (
     <section className="dropdown-container">
       <FormControl variant="outlined" className="dropdown--input">
-        <InputLabel id="demo-simple-select-outlined-label" error={!props.value && props.validate}>
+        <InputLabel
+          id="demo-simple-select-outlined-label"
+          error={!props.value && props.validate}
+        >
           Type of Record
         </InputLabel>
         <Select

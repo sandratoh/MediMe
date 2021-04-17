@@ -1,7 +1,10 @@
-import React from "react";
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+//
 import TextButtonGroup from "../TextButtonGroup";
 
+// Material UI Components
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+
+// Stylesheet
 import "./BloodGroupedButtons.scss";
 
 const GroupedButtonTheme = createMuiTheme({

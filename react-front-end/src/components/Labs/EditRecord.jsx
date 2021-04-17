@@ -3,10 +3,11 @@ import { useState, useContext } from "react";
 import { Redirect } from "react-router";
 
 // Components
-import TextInput from "../TextInput";
-import DateInput from "../DateInput";
+
 import IconButton from "../IconButton";
+import DateInput from "../DateInput";
 import LabRecordType from "./LabsDropdown";
+import TextInput from "../TextInput";
 
 // Helpers
 import { dataContext } from "../Provider/DataProvider";

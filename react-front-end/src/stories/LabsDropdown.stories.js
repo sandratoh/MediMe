@@ -1,4 +1,7 @@
+// Libraries
 import { action } from "@storybook/addon-actions";
+
+// Component
 import LabsDropdown from "../components/Labs/LabsDropdown";
 
 export default {

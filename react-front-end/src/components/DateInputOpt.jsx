@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 // Stylesheet
 import "./DateInput.scss";
 
-export default function DateInput2(props) {
+export default function DateInputOpt(props) {
   return (
     <form className="date-input--container" noValidate autoComplete="off">
       <TextField

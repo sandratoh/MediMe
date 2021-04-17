@@ -2,8 +2,8 @@
 import { Link } from "react-router-dom";
 
 // Components
-import VaccinationsCardList from "./VaccinationsCardList";
 import IconButton from "../IconButton";
+import VaccinationsCardList from "./VaccinationsCardList";
 
 // Material UI Components
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
@@ -12,7 +12,6 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import "./VaccinationsList.scss";
 
 export default function VaccinationsList() {
-
   return (
     <section className="vaccinations-list">
       <div className="vaccinations-list--icons">
@@ -24,9 +23,8 @@ export default function VaccinationsList() {
         </IconButton>
       </div>
       <h1 className="vaccinations-list--title">Vaccinations</h1>
-      <div className="vaccinations-list--content">
-      </div>
+      <div className="vaccinations-list--content"></div>
       <VaccinationsCardList />
     </section>
   );
-};
+}

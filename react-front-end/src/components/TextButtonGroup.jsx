@@ -1,5 +1,10 @@
-import Button from "@material-ui/core/Button";
+// Libraries
 import classnames from "classnames";
+
+// Material UI Components
+import Button from "@material-ui/core/Button";
+
+// Stylesheet
 import "./TextButton.scss";
 
 export default function TextButtonGroup(props) {

@@ -1,14 +1,15 @@
+// Libraries
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function ClinicContext() {
+export default function useClinicContext() {
   // Clinic states
   const [clinicalVisits, setClinicalVisits] = useState([]);
   const [clinicalVisitDetailId, setClinicalVisitDetailId] = useState({});
   const [clinicalVisitEditId, setClinicalVisitEditId] = useState({});
   const [clinics, setClinics] = useState([]);
 
-  // Clinics database calls
+  // Clinic database calls
   const clinicExists = (name) => {
     return clinics.find((clinic) => clinic.name === name) ? true : false;
   };
@@ -81,7 +82,7 @@ export default function ClinicContext() {
     });
   }, []);
 
-  // Clinic Exports
+  // Clinic exports
   const clinicData = {
     clinics,
     clinicalVisits,

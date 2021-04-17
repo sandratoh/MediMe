@@ -1,15 +1,18 @@
+// Libraries
 import { action } from "@storybook/addon-actions";
+
+// Components
 import IconButton from "../components/IconButton";
 
-export default { 
-  title: 'IconButton',
+export default {
+  title: "IconButton",
   component: IconButton,
- };
+};
 
 export const Delete = () => (
   <IconButton
     delete
-    onClick={action('Delete button clicked')}
+    onClick={action("Delete button clicked")}
     variant="outlined"
     color="secondary"
   >
@@ -20,7 +23,7 @@ export const Delete = () => (
 export const Save = () => (
   <IconButton
     save
-    onClick={action('Save button clicked')} 
+    onClick={action("Save button clicked")}
     color="primary"
     variant="contained"
   >
@@ -29,10 +32,10 @@ export const Save = () => (
 );
 
 export const New = () => (
-  <IconButton 
+  <IconButton
     new
-    onClick={action('New button clicked')} 
-    color="secondary" 
+    onClick={action("New button clicked")}
+    color="secondary"
     variant="contained"
   >
     New
@@ -40,10 +43,10 @@ export const New = () => (
 );
 
 export const Cancel = () => (
-  <IconButton 
+  <IconButton
     cancel
-    onClick={action('New button clicked')} 
-    color="secondary" 
+    onClick={action("New button clicked")}
+    color="secondary"
     variant="outlined"
   >
     Cancel
@@ -51,13 +54,23 @@ export const Cancel = () => (
 );
 
 export const Edit = () => (
-  <IconButton 
-    cancel
-    onClick={action('Edit button clicked')} 
-    color="secondary" 
+  <IconButton
+    edit
+    onClick={action("Edit button clicked")}
+    color="secondary"
     variant="contained"
   >
     Edit
   </IconButton>
 );
 
+export const Login = () => (
+  <IconButton
+    login
+    onClick={action("Login button clicked")}
+    color="secondary"
+    variant="contained"
+  >
+    Login
+  </IconButton>
+);

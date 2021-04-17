@@ -1,3 +1,4 @@
+// Libraries
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -12,7 +13,6 @@ export default function VaxContext() {
   const [doseEditId, setDoseEditId] = useState({});
 
   // Vaccinations & Doses database calls
-  // add vaccine record
   const addVaccinationRecord = (formData) => {
     return axios
       .post("/api/vaccinations", formData)
@@ -24,7 +24,6 @@ export default function VaxContext() {
       .catch((err) => console.log(err));
   };
 
-  // add dose record
   const addDoseRecord = (formData) => {
     return axios
       .post(`/api/vaccinations/${vaccinationDetailId}/dose`, formData)
@@ -37,7 +36,6 @@ export default function VaxContext() {
       .catch((err) => console.log(err));
   };
 
-  // edit dose record
   const editDoseRecord = (formData) => {
     return axios
       .put(
@@ -53,7 +51,6 @@ export default function VaxContext() {
       .catch((err) => console.log(err));
   };
 
-  // delete dose record
   const deleteDoseRecord = () => {
     return axios
       .delete(`/api/vaccinations/${vaccinationDetailId}/dose/${doseDetailId}`)
@@ -66,14 +63,12 @@ export default function VaxContext() {
       .catch((err) => console.log(err));
   };
 
-  // refresh all vaccines
   const refreshAllVaccinations = () => {
     return axios.get("/api/vaccinations").then((res) => {
       setVaccinations(res.data.vaccinations);
     });
   };
 
-  // refresh all dose
   const refreshAllDoses = () => {
     return axios.get("/api/vaccinations/dose").then((res) => {
       setDoses(res.data.doses);
@@ -95,13 +90,12 @@ export default function VaxContext() {
     );
   }, []);
 
+  // Vaccination and dose exports
   const vaxData = {
-    // Vaccinations exports
     vaccinations,
     vaccinationDetailId,
     setVaccinationDetailId,
     addVaccinationRecord,
-    // Vaccinations-dose exports
     doses,
     setDoses,
     doseDetailId,

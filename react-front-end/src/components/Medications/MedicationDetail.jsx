@@ -8,18 +8,18 @@ import IconButton from "../IconButton";
 // Material UI Components
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
+// Icons
+import takeWithFood from "../../images/takeWithFood.png";
+import takeWithWater from "../../images/takeWithWater.png";
+
 // Helpers
 import { dataContext } from "../Provider/DataProvider";
 import { findNameById } from "../../helpers/selectors";
 import { formatDate } from "../../helpers/dateHelpers";
 
-// Stylesheet
+// Stylesheets
 import "../Clinics/ClinicDetail.scss";
 import "./MedicationDetail.scss";
-
-// Icons
-import takeWithFood from "../../images/takeWithFood.png";
-import takeWithWater from "../../images/takeWithWater.png";
 
 export default function MedicationDetail() {
   const {

@@ -1,8 +1,9 @@
+// Libraries
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function AppContext() {
-  // Menu states
+export default function useAppContext() {
+  // App menu states
   const [menu, setMenu] = useState(false);
 
   // Doctor states
@@ -12,6 +13,24 @@ export default function AppContext() {
   const [users, setUsers] = useState([]);
   const [userDetailId, setUserDetailId] = useState({});
   const [userEditId, setUserEditId] = useState({});
+
+  // Doctor database calls
+  const doctorExists = (name) => {
+    return doctors.find((doctor) => doctor.name === name) ? true : false;
+  };
+
+  const addDoctor = (formData) => {
+    return axios
+      .post("/api/doctors", formData)
+      .then(() => refreshAllDoctors())
+      .catch((err) => console.log(err));
+  };
+
+  const refreshAllDoctors = () => {
+    return axios.get("/api/doctors").then((res) => {
+      setDoctors(res.data.doctors);
+    });
+  };
 
   // Users database calls
   const addUser = (formData) => {
@@ -59,26 +78,7 @@ export default function AppContext() {
     });
   };
 
-  // Doctor database calls
-  const doctorExists = (name) => {
-    return doctors.find((doctor) => doctor.name === name) ? true : false;
-  };
-
-  const addDoctor = (formData) => {
-    return axios
-      .post("/api/doctors", formData)
-      .then(() => refreshAllDoctors())
-      .catch((err) => console.log(err));
-  };
-
-  const refreshAllDoctors = () => {
-    return axios.get("/api/doctors").then((res) => {
-      setDoctors(res.data.doctors);
-    });
-  };
-
   useEffect(() => {
-    console.log("hello from inside appContext useEffect");
     const apiDoctorsUrl = "/api/doctors";
     const apiAllUsersUrl = "api/users";
 
@@ -93,15 +93,16 @@ export default function AppContext() {
     );
   }, []);
 
+  // App exports
   const appData = {
-    // App menu exports
+    // App menu
     menu,
     setMenu,
-    // Doctor exports
+    // Doctor
     doctors,
     doctorExists,
     addDoctor,
-    // User exports
+    // User
     users,
     userDetailId,
     userEditId,

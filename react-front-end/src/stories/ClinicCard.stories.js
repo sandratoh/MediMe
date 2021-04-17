@@ -1,4 +1,7 @@
+// Libraries
 import { action } from "@storybook/addon-actions";
+
+// Components
 import CardListItem from "../components/Clinics/ClinicCard";
 
 const clinical_visits = [

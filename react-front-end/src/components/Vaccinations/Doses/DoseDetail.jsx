@@ -9,12 +9,12 @@ import IconButton from "../../IconButton";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 // Helpers
+import { dataContext } from "../../Provider/DataProvider";
 import { findNameById } from "../../../helpers/selectors";
 import { formatDate } from "../../../helpers/dateHelpers";
 
 // Stylesheet
 import "./DoseDetail.scss";
-import { dataContext } from "../../Provider/DataProvider";
 
 export default function DoseDetail() {
   const {

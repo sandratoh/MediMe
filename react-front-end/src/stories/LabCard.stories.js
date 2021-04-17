@@ -1,4 +1,7 @@
+// Libraries
 import { action } from "@storybook/addon-actions";
+
+// Components
 import CardListItem from "../components/Labs/LabCard";
 
 const lab_records = [

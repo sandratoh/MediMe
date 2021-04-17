@@ -1,8 +1,10 @@
-// Components
+// Material UI Components
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
-import hospitalIcon from "../../images/hospital.png";
+
+// Icons
 import clinicIcon from "../../images/clinic.png";
+import hospitalIcon from "../../images/hospital.png";
 
 // Helpers
 import { findNameById } from "../../helpers/selectors";

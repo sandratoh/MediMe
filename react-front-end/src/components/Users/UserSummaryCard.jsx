@@ -1,26 +1,26 @@
 // Libraries
-import { makeStyles } from "@material-ui/core/styles";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 
 // Material UI Components
+import { makeStyles } from "@material-ui/core/styles";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionActions from "@material-ui/core/AccordionActions";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import Typography from "@material-ui/core/Typography";
 
 // Icons
-import rhTypeNeg from "../../images/rh-neg.png";
-import rhTypePos from "../../images/rh-pos.png";
 import bloodA from "../../images/blood-type-a.png";
 import bloodB from "../../images/blood-type-b.png";
 import bloodAB from "../../images/blood-type-ab.png";
 import bloodO from "../../images/blood-type-o.png";
-import { useContext } from "react";
+import rhTypeNeg from "../../images/rh-neg.png";
+import rhTypePos from "../../images/rh-pos.png";
 
 // Helpers
 import { dataContext } from "../Provider/DataProvider";

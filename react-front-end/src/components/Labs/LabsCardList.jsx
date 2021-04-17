@@ -2,11 +2,11 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-// Helpers
-import { dataContext } from "../Provider/DataProvider";
-
 // Components
 import LabCard from "./LabCard";
+
+// Helpers
+import { dataContext } from "../Provider/DataProvider";
 
 export default function LabsCardList() {
   const { labRecords, labs, setLabRecordDetailId } = useContext(dataContext);

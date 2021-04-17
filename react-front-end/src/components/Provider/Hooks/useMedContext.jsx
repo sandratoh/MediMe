@@ -1,15 +1,17 @@
+// Libraries
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function MedContext() {
+export default function useMedContext() {
   // Medication states
   const [medications, setMedications] = useState([]);
   const [medicationDetailId, setMedicationDetailId] = useState({});
   const [medicationEditId, setMedicationEditId] = useState({});
+
   // Pharmacy states
   const [pharmacies, setPharmacies] = useState([]);
 
-  // Medications database calls
+  // Medication database calls
   const addMedication = (formData) => {
     return axios
       .post("/api/medications", formData)
@@ -67,8 +69,8 @@ export default function MedContext() {
     });
   }, []);
 
+  // Medication exports
   const medData = {
-    // Medication exports
     medications,
     setMedications,
     medicationDetailId,
@@ -78,6 +80,7 @@ export default function MedContext() {
     addMedication,
     editMedication,
     deleteMedication,
+    // Pharmacies
     pharmacies,
     setPharmacies,
   };

@@ -1,12 +1,16 @@
+// Libraries
 import { useState } from "react";
-import IconButton from "@material-ui/core/IconButton";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
+
+// Material UI Components
+import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
-import FormControl from "@material-ui/core/FormControl";
+import IconButton from "@material-ui/core/IconButton";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
+//Stylesheet
 import "./PasswordInput.scss";
 
 export default function PasswordInput(props) {

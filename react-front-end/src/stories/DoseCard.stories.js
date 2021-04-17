@@ -1,3 +1,4 @@
+// Components
 import DoseCard from "../components/Vaccinations/Doses/DoseCard";
 
 export default {

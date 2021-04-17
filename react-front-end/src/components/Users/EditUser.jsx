@@ -3,10 +3,10 @@ import { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 
 // Components
-import TextInput from "../TextInput";
+import BloodGroupButtons from "./BloodGroupedButtons";
 import IconButton from "../IconButton";
 import RhGroupedButtons from "./RhGroupedButtons";
-import BloodGroupButtons from "./BloodGroupedButtons";
+import TextInput from "../TextInput";
 
 // Helpers
 import { dataContext } from "../Provider/DataProvider";

@@ -1,3 +1,4 @@
+// Components
 import PasswordInput from "../components/Users/PasswordInput";
 
 export default {

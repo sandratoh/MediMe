@@ -1,4 +1,7 @@
+// Libraries
 import { createContext } from "react";
+
+// Helpers
 import useAppContext from "./Hooks/useAppContext";
 import useClinicContext from "./Hooks/useClinicContext";
 import useLabContext from "./Hooks/useLabContext";
@@ -6,15 +9,16 @@ import useMedContext from "./Hooks/useMedContext";
 import useVaxContext from "./Hooks/useVaxContext";
 
 export default function DataProvider(props) {
+  // App imports
   const {
-    // App menu exports
+    // App menu
     menu,
     setMenu,
-    // Doctor exports
+    // Doctor
     doctors,
     doctorExists,
     addDoctor,
-    // User exports
+    // User
     users,
     userDetailId,
     userEditId,
@@ -25,12 +29,10 @@ export default function DataProvider(props) {
     loginUser,
   } = useAppContext();
 
-  // Clinic exports
+  // Clinic imports
   const {
     clinics,
-    // setClinics,
     clinicalVisits,
-    // setClinicalVisits,
     clinicalVisitDetailId,
     setClinicalVisitDetailId,
     clinicalVisitEditId,
@@ -42,10 +44,10 @@ export default function DataProvider(props) {
     clinicExists,
   } = useClinicContext();
 
+  // Lab imports
   const {
     labs,
     labRecords,
-    // setLabRecords,
     labRecordDetailId,
     labRecordEditId,
     setLabRecordDetailId,
@@ -53,16 +55,14 @@ export default function DataProvider(props) {
     addLabRecord,
     deleteLabRecord,
     editLabRecord,
-    // setLabs,
   } = useLabContext();
 
+  // Vaccination and dose imports
   const {
-    // Vaccinations exports
     vaccinations,
     vaccinationDetailId,
     setVaccinationDetailId,
     addVaccinationRecord,
-    // Doses exports
     doses,
     setDoses,
     doseDetailId,
@@ -74,10 +74,9 @@ export default function DataProvider(props) {
     deleteDoseRecord,
   } = useVaxContext();
 
-  // Medication exports
+  // Medication imports
   const {
     medications,
-    // setMedications,
     medicationDetailId,
     setMedicationDetailId,
     medicationEditId,
@@ -87,15 +86,14 @@ export default function DataProvider(props) {
     deleteMedication,
     // Pharmacies
     pharmacies,
-    // setPharmacies,
   } = useMedContext();
 
-  // need to rename this variable
+  // Data exports
   const data = {
-    // App menu exports
+    // App menu
     menu,
     setMenu,
-    // Clinics exports
+    // Clinic
     clinics,
     clinicalVisits,
     clinicalVisitDetailId,
@@ -107,11 +105,11 @@ export default function DataProvider(props) {
     deleteClinicVisit,
     clinicExists,
     addClinic,
-    // Doctor exports
+    // Doctor
     doctors,
     doctorExists,
     addDoctor,
-    // Labs exports
+    // Labs
     labs,
     labRecords,
     labRecordDetailId,
@@ -121,7 +119,7 @@ export default function DataProvider(props) {
     addLabRecord,
     deleteLabRecord,
     editLabRecord,
-    // Medication exports
+    // Medication
     medications,
     medicationDetailId,
     medicationEditId,
@@ -130,9 +128,9 @@ export default function DataProvider(props) {
     addMedication,
     editMedication,
     deleteMedication,
-    // Pharmacy exports
+    // Pharmacy
     pharmacies,
-    // User exports
+    // User
     users,
     userDetailId,
     userEditId,
@@ -141,12 +139,11 @@ export default function DataProvider(props) {
     addUser,
     editUser,
     loginUser,
-    // Vaccinations exports
+    // Vaccination and dose
     vaccinations,
     vaccinationDetailId,
     setVaccinationDetailId,
     addVaccinationRecord,
-    // Vaccinations-dose exports
     doses,
     setDoses,
     doseDetailId,
@@ -157,8 +154,6 @@ export default function DataProvider(props) {
     editDoseRecord,
     deleteDoseRecord,
   };
-
-  // console.log("data", data);
 
   return (
     <dataContext.Provider value={data}>{props.children}</dataContext.Provider>

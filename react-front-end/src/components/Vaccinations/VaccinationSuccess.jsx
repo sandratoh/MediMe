@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 // Components
 import TextButton from "../TextButton";
+
+// Icons
 import checkIcon from "../../images/check-mark.png";
 
 // Stylesheet

@@ -1,5 +1,7 @@
-import { action } from "@storybook/addon-actions";
+// Components
 import CountButton2 from "../components/CountButton";
+
+// Stylesheet
 import "../index.scss";
 
 export default {
@@ -7,9 +9,4 @@ export default {
   component: CountButton2,
 };
 
-export const Initial = () => (
-  <CountButton2
-  // clinical_visits={clinical_visits}
-  // onChange={action("onChange")}
-  ></CountButton2>
-);
+export const Initial = () => <CountButton2></CountButton2>;

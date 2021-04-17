@@ -3,8 +3,8 @@ import { useContext, useState } from "react";
 import { Redirect } from "react-router-dom";
 
 // Components
-import TextInput from "../TextInput";
 import IconButton from "../IconButton";
+import TextInput from "../TextInput";
 
 // Material UI Components
 import AddCircleIcon from "@material-ui/icons/AddCircle";
