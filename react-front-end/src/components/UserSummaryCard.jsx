@@ -1,7 +1,9 @@
-// import React from 'react';
+// Libraries
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from 'react-router-dom'
 import clsx from "clsx";
+
+// Material UI Components
 import Accordion from "@material-ui/core/Accordion";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
@@ -11,9 +13,17 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 
-import "./UserSummaryCard.scss";
+// Icons
 import rhType from "../images/blood-type.png";
 import bloodO from "../images/blood-type-o-1.png";
+import { useContext } from "react";
+
+// Helpers
+import { dataContext } from "./hooks/DataProvider";
+
+// Stylesheet
+import "./UserSummaryCard.scss";
+
 
 const useStyles = makeStyles((theme) => ({
   column: {
@@ -32,20 +42,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const users = [
-  {
-    first_name: "Rachel",
-    last_name: "Greene",
-    email: "rachel@email.com",
-    password: "password",
-    height_in_cm: 150,
-    weight_in_lb: 120,
-    blood_type: "O",
-    rh_group: "POSITIVE",
-  },
-];
+// const users = [
+//   {
+//     first_name: "Rachel",
+//     last_name: "Greene",
+//     email: "rachel@email.com",
+//     password: "password",
+//     height_in_cm: 150,
+//     weight_in_lb: 120,
+//     blood_type: "O",
+//     rh_group: "POSITIVE",
+//   },
+// ];
 
 export default function UserSummaryCard() {
+  const { users, userDetailId } = useContext(dataContext);
+
+  const user = users.find(user => user.id === userDetailId);
+
   const classes = useStyles();
 
   return (
@@ -57,7 +71,7 @@ export default function UserSummaryCard() {
           id="panel1c-header"
         >
           <Typography id="summary--title">
-            {users[0].first_name} {users[0].last_name}
+            {user.first_name} {user.last_name}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
@@ -66,13 +80,13 @@ export default function UserSummaryCard() {
               Height:
               <br />
             </Typography>
-            <Typography>{users[0].height_in_cm}cm</Typography>
+            <Typography>{user.height_in_cm}cm</Typography>
 
             <Typography id="summary--w-h-b-r" variant="caption">
               Weight:
               <br />
             </Typography>
-            <Typography>{users[0].weight_in_lb}lbs</Typography>
+            <Typography>{user.weight_in_lb}lbs</Typography>
           </div>
           <div className={clsx(classes.column)}>
             <Typography id="summary--w-h-b-r" variant="caption">
