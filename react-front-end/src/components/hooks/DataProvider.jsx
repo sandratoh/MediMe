@@ -177,8 +177,7 @@ export default function DataProvider(props) {
 
   const editUser = (formData) => {
     return axios
-    // .put(`/api/users/${userDetailId}`, formData)
-    .put("/api/users/1", formData)
+    .put(`/api/users/${userDetailId}`, formData)
     .then((res) => {
       refreshAllUsers();
 
@@ -189,30 +188,15 @@ export default function DataProvider(props) {
 
   const loginUser = (formData) => {
     const { email, password } = formData;
-    console.log('email', email)
-    console.log('password', password)
     return axios
       .get("/api/users")
       .then((res) => {
         const users = res.data.users;
         const user = users.find(user => user.email === email);
         
-        console.log('user password', user.password);
-
-        console.log('do they equal?', user.password === password.password)
-
-        console.log('typeof from res:', typeof user.password);
-
-        console.log('typeof from form', typeof password.password)
         if (user.password === password.password) {
-          console.log('user', user)
-          setUserDetailId(user.id)
           return user;
         }
-
-        // console.log('users', users);
-        // console.log('user', user);
-        console.log('res', res);
         return res;
       })
       .catch((err) => console.log(err));
@@ -411,7 +395,7 @@ export default function DataProvider(props) {
     deleteDoseRecord,
   };
 
-  console.log("data", data);
+  // console.log("data", data);
   
 
   return (
