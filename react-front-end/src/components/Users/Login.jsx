@@ -28,19 +28,9 @@ export default function Login() {
     
     loginUser(userDetail)
     .then(res => {
-
-      res.data.error ? setValidate(true) : setUserDetailId(res.id);
-
-      console.log('res from login,', res);
-      // if (res.password === password) {
-      //   setUserDetailId(res.id);
-      //   setRedirect(true);
-      // }
-      // console.log(res);
-      // res.data.error ? setValidate(true) : setRedirect(true)
-      console.log('userDetailId', userDetailId);
-      })
-      .then(res => setRedirect(true));
+      res.data ? setValidate(true) : setUserDetailId(res.id);
+    })
+    .then(() => setRedirect(true));
   };
 
   return (
@@ -79,4 +69,4 @@ export default function Login() {
       </div>
     </section>
   );
-}
+};

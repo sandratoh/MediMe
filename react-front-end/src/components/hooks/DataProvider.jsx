@@ -177,8 +177,7 @@ export default function DataProvider(props) {
 
   const editUser = (formData) => {
     return axios
-    // .put(`/api/users/${userDetailId}`, formData)
-    .put("/api/users/1", formData)
+    .put(`/api/users/${userDetailId}`, formData)
     .then((res) => {
       refreshAllUsers();
 
@@ -190,23 +189,15 @@ export default function DataProvider(props) {
   const loginUser = (formData) => {
     console.log("formDate: ", formData)
     const { email, password } = formData;
-    console.log('email', email)
-    console.log("password: ", password)
-    
     return axios
       .get("/api/users")
       .then((res) => {
         const users = res.data.users;
         const user = users.find(user => user.email === email);
         
-        if (user.password === password) {
-          console.log('user', user)
+        if (user.password === password.password) {
           return user;
         }
-
-        // console.log('users', users);
-        // console.log('user', user);
-        // console.log('res', res);
         return res;
       })
       .catch((err) => console.log(err));
