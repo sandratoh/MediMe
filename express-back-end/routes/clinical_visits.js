@@ -47,7 +47,6 @@ module.exports = (client) => {
 
   // add new clinic
   router.post("/list", (req, res) => {
-
     addNewClinic(req.body.name)
       .then((data) => res.status(200).json({data}))
       .catch((err) => res.json({ error: err.message }));

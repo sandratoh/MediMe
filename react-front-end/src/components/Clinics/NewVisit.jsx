@@ -15,7 +15,7 @@ import { dataContext } from "../hooks/DataProvider";
 import "../../styles/form.scss";
 
 export default function NewVisit(props) {
-  const { clinics, addClinicVisit, checkClinic, addNewClinic } = useContext(dataContext);
+  const { addClinicVisit, clinicExist, addNewClinic } = useContext(dataContext);
 
   const [medicalCenter, setMedicalCenter] = useState("");
   const [doctor, setDoctor] = useState("");
@@ -33,6 +33,10 @@ export default function NewVisit(props) {
   const onCancel = () => setRedirect(true);
 
   const onSave = () => {
+    if (!date || medicalCenter === "" || doctor === "" || !visitType) {
+      return setValidate(true)
+    };
+    
     const visitDetail = {
       user_id: 1,
       clinic_id: medicalCenter,
@@ -42,21 +46,14 @@ export default function NewVisit(props) {
       reason_for_visit: reasonFor,
       doctor_diagnosis: diagnosis,
     };
-    console.log('clinics in nevisit', clinics)
-    const clinicExist = checkClinic(medicalCenter);
-    console.log('clinicExist?:', clinicExist);
-    console.log('medicalcenter', medicalCenter)
-    if (!clinicExist) {
+
+    if (!(clinicExist(medicalCenter))) {
       addNewClinic({name: medicalCenter})
-        // .then(res => console.log(res))
-      .then(() => addClinicVisit(visitDetail))
-      .then((res) => res.data.error ? setValidate(true) : setRedirect(true));
-    }
+    };
 
-
-    // addClinicVisit(visitDetail).then((res) => {
-    //   res.data.error ? setValidate(true) : setRedirect(true);
-    // });
+    addClinicVisit(visitDetail).then((res) => {
+      !res.data.error && setRedirect(true);
+    });
   };
 
   return (

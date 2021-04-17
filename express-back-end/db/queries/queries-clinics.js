@@ -65,11 +65,7 @@ const addNewClinic = (name) => {
 
   return client
     .query(query, [name])
-    .then((res) => {
-      console.log('res from queries-clinics', res);
-      
-      return res.rows;
-    });
+    .then((res) => res.rows);
 };
 
 module.exports = { addClinicalVisit, updateClinicalVisit, addNewClinic };
