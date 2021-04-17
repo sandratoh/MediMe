@@ -31,8 +31,7 @@ export default function TextInput(props) {
         multiline
         className="text-input--field"
         label={props.children}
-        defaultValue={props.defaultValue}
-        value={props.value}
+        defaultValue={props.value || props.defaultValue}
         onChange={(event) => props.setInput(event.target.value)}
       />
     </form>

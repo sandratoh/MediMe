@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function MedContext(props) {
+export default function MedContext() {
   // Medication states
   const [medications, setMedications] = useState([]);
   const [medicationDetailId, setMedicationDetailId] = useState({});
@@ -49,27 +49,31 @@ export default function MedContext(props) {
     });
   };
 
-  // useEffect(() => {
-  //   const apiMedRecordsUrl = "/api/medications";
-  //   const apiPharmaciesUrl = "/api/pharmacies";
+  useEffect(() => {
+    const apiMedRecordsUrl = "/api/medications";
+    const apiPharmaciesUrl = "/api/pharmacies";
 
-  //   Promise.all([axios.get(apiMedRecordsUrl)]).then((res) => {
-  //     const medications = res[0].data.medications;
-  //     const pharmacies = res[1].data.pharmacies;
+    Promise.all([
+      axios.get(apiMedRecordsUrl),
+      axios.get(apiPharmaciesUrl),
+    ]).then((res) => {
+      const medications = res[0].data.medications;
+      const pharmacies = res[1].data.pharmacies;
 
-  //     setMedications(medications);
-  //     setPharmacies(pharmacies);
+      setMedications(medications);
+      setPharmacies(pharmacies);
 
-  //     return;
-  //   });
-  // }, []);
+      return;
+    });
+  }, []);
 
   const medData = {
     // Medication exports
     medications,
+    setMedications,
     medicationDetailId,
-    medicationEditId,
     setMedicationDetailId,
+    medicationEditId,
     setMedicationEditId,
     addMedication,
     editMedication,

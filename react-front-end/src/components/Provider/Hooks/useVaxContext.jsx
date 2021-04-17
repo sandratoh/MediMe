@@ -103,9 +103,10 @@ export default function VaxContext() {
     addVaccinationRecord,
     // Vaccinations-dose exports
     doses,
+    setDoses,
     doseDetailId,
-    doseEditId,
     setDoseDetailId,
+    doseEditId,
     setDoseEditId,
     addDoseRecord,
     editDoseRecord,

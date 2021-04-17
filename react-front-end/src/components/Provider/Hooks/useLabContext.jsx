@@ -3,7 +3,7 @@ import axios from "axios";
 
 // const LabContext = createContext();
 
-export default function LabContext(props) {
+export default function LabContext() {
   // Lab states
   const [labs, setLabs] = useState([]);
   const [labRecords, setLabRecords] = useState([]);
@@ -50,26 +50,29 @@ export default function LabContext(props) {
     });
   };
 
-  // useEffect(() => {
-  //   const apiLabRecordsUrl = "/api/labs";
-  //   const apiLabsUrl = "/api/labs/list";
+  useEffect(() => {
+    const apiLabRecordsUrl = "/api/labs";
+    const apiLabsUrl = "/api/labs/list";
 
-  //   Promise.all([axios.get(apiLabRecordsUrl), axios.get(apiLabsUrl)]).then(
-  //     (res) => {
-  //       const records = res[0].data.labs;
-  //       const labs = res[1].data.labs;
+    Promise.all([axios.get(apiLabRecordsUrl), axios.get(apiLabsUrl)]).then(
+      (res) => {
+        const records = res[0].data.labs;
+        const labs = res[1].data.labs;
 
-  //       setLabRecords(records);
-  //       setLabs(labs);
+        setLabRecords(records);
+        setLabs(labs);
 
-  //       return;
-  //     }
-  //   );
-  // }, []);
+        return;
+      }
+    );
+  }, []);
 
+  // Lab Exports
   const labData = {
     labs,
+    setLabs,
     labRecords,
+    setLabRecords,
     labRecordDetailId,
     labRecordEditId,
     setLabRecordDetailId,

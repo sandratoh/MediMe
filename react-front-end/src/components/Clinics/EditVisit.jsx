@@ -9,7 +9,6 @@ import DateInput from "../DateInput";
 import IconButton from "../IconButton";
 
 // Helpers
-import { clinicContext } from "../Provider/ClinicContext";
 import { dataContext } from "../Provider/DataProvider";
 import { findNameById } from "../../helpers/selectors";
 
@@ -24,9 +23,10 @@ export default function EditVisit() {
     editClinicVisit,
     clinicExists,
     addClinic,
-  } = useContext(clinicContext);
-
-  const { doctors, doctorExists, addDoctor } = useContext(dataContext);
+    doctors,
+    doctorExists,
+    addDoctor,
+  } = useContext(dataContext);
 
   const visit = clinicalVisits.find(
     (visit) => visit.id === clinicalVisitEditId

@@ -51,7 +51,7 @@ export default function VaccinationCard(props) {
         >
           {props.doses.length > 0 ? (
             props.doses.map((dose, index) => (
-              <Link to="/vaccinations/dose/view" key={props.id}>
+              <Link to="/vaccinations/dose/view" key={index}>
                 <DoseCard
                   current={index + 1}
                   total={props.total}

@@ -1,21 +1,14 @@
 // Libraries
 import { Link } from "react-router-dom";
-import { useContext } from "react";
 
 // Components
 import TextButton from "../TextButton";
 import hiIcon from "../../images/hi.png";
 
-// Helper
-import { dataContext } from "../Provider/DataProvider";
-
 // Stylesheet
 import "./SignupSuccess.scss";
 
 export default function SignupSuccess() {
-  const { userDetailId } = useContext(dataContext);
-  console.log("sign up success userdetailid:", userDetailId);
-
   return (
     <section className="signup-success">
       <h1 className="signup-success--title">Welcome to MediMe!</h1>

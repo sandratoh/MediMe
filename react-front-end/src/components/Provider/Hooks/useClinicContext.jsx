@@ -1,8 +1,8 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function ClinicContext(props) {
-  // Clinic
+export default function ClinicContext() {
+  // Clinic states
   const [clinicalVisits, setClinicalVisits] = useState([]);
   const [clinicalVisitDetailId, setClinicalVisitDetailId] = useState({});
   const [clinicalVisitEditId, setClinicalVisitEditId] = useState({});
@@ -66,7 +66,6 @@ export default function ClinicContext(props) {
   };
 
   useEffect(() => {
-    console.log("Use effect from clinicContext");
     const apiClinicalVisitsUrl = "/api/clinics";
     const apiClinicsUrl = "/api/clinics/list";
 
@@ -82,6 +81,7 @@ export default function ClinicContext(props) {
     });
   }, []);
 
+  // Clinic Exports
   const clinicData = {
     clinics,
     clinicalVisits,
@@ -96,13 +96,5 @@ export default function ClinicContext(props) {
     addClinic,
   };
 
-  console.log("Clinic Data", clinicData);
-
-  return (
-    <clinicContext.Provider value={clinicData}>
-      {props.children}
-    </clinicContext.Provider>
-  );
+  return clinicData;
 }
-
-export const clinicContext = createContext();

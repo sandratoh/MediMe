@@ -10,7 +10,6 @@ import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 
 // Helpers
 import { dataContext } from "../Provider/DataProvider";
-import { clinicContext } from "../Provider/ClinicContext";
 import { findNameById } from "../../helpers/selectors";
 import { formatDate } from "../../helpers/dateHelpers";
 
@@ -24,9 +23,8 @@ export default function ClinicDetail() {
     clinicalVisitDetailId,
     setClinicalVisitEditId,
     deleteClinicVisit,
-  } = useContext(clinicContext);
-
-  const { doctors } = useContext(dataContext);
+    doctors,
+  } = useContext(dataContext);
 
   // Manage redirect state based on axios call
   const [redirect, setRedirect] = useState(false);
