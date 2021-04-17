@@ -51,5 +51,5 @@ export default function RhGroupedButtons(props) {
     );
   });
 
-  return <div className="grouped-buttons--container">{rhGroup}</div>;
+  return <div className="rh-grouped-buttons--container">{rhGroup}</div>;
 }

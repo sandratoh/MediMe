@@ -16,7 +16,7 @@ import { dataContext } from "../hooks/DataProvider";
 import "../../styles/form.scss";
 
 export default function EditUser() {
-  const { users, setUser, userEditId, editUser, userDetailId } = useContext(
+  const { users, editUser, userDetailId } = useContext(
     dataContext
   );
 
