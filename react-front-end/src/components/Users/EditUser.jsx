@@ -42,6 +42,8 @@ export default function EditUser() {
   const [bloodType, setBloodType] = useState(user ? user.blood_type : null)
   const [rhGroup, setRhGroup] = useState(user ? user.rh_group : null)
 
+  console.log("button state: ", bloodType, rhGroup)
+
   // Manage redirect state based on axios call
   const [redirect, setRedirect] = useState(false);
 
@@ -53,25 +55,26 @@ export default function EditUser() {
 
   const onSave = () => {
     const userDetail = {
-      height_in_cm: height,
-      weight_in_lb: weight,
-      blood_type: bloodType,
-      rh_group: rhGroup
-    };
+        ...user, 
+        height_in_cm: parseInt(height),
+        weight_in_lb: parseInt(weight),
+        blood_type: bloodType,
+        rh_group: rhGroup
+      };
 
     editUser(userDetail).then((res) => {
+      console.log("RES: ", res)
       res.data.error ? setValidate(true) : setRedirect(true);
     });
   };
 
   return (
     <section className="clinics-edit">
-      {redirect && <Redirect to="/edit" />}
+      {redirect && <Redirect to="/" />}
       <h1 className="clinics-form--title">Your MEdi-info</h1>
       <div className="clinics-form--container">
         <div className="clinics-form--field">
           
-          {/* <ClinicGroupedButtons state={visitType} onChange={setVisitType} /> */}
           <TextInput
             
             value={height}

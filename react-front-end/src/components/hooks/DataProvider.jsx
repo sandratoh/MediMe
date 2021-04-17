@@ -177,7 +177,8 @@ export default function DataProvider(props) {
 
   const editUser = (formData) => {
     return axios
-    .put(`/api/users/${userDetailId}`, formData)
+    // .put(`/api/users/${userDetailId}`, formData)
+    .put("/api/users/1", formData)
     .then((res) => {
       refreshAllUsers();
 

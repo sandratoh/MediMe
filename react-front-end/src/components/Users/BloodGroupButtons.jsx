@@ -34,7 +34,7 @@ export default function BloodGroupedButtons(props) {
     key={value.id}
     setState={(event) => props.onChange(value.name)}
     groupButtons
-    selected={value.name === props.value}
+    selected={value.name === props.state}
     value={value.name}
     >
      {value.name}
