@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 // Components
 import DashboardCard from "./DashboardCard";
-import SummaryCard from "./UserSummaryCard";
+import UserSummaryCard from "./Users/UserSummaryCard";
 import TextButton from "./TextButton";
 
 // Helpers
@@ -18,48 +18,51 @@ export default function Dashboard() {
 
   const dashboard = (
     <section className="dashboard-card--container">
-      <SummaryCard/>
+      <UserSummaryCard />
       <Link to="/clinics">
-        <DashboardCard category="clinics">
-          Clinical Visits
-        </DashboardCard>
-        </Link>
+        <DashboardCard category="clinics">Clinical Visits</DashboardCard>
+      </Link>
       <Link to="/labs">
-        <DashboardCard category="labs">
-          Lab Records
-        </DashboardCard>
+        <DashboardCard category="labs">Lab Records</DashboardCard>
       </Link>
       <Link to="/medications">
-        <DashboardCard category="medications">
-          Medications
-        </DashboardCard>
+        <DashboardCard category="medications">Medications</DashboardCard>
       </Link>
       <Link to="/vaccinations">
-        <DashboardCard category="vaccinations">
-          Vaccinations
-        </DashboardCard>
+        <DashboardCard category="vaccinations">Vaccinations</DashboardCard>
       </Link>
-  </section>
+    </section>
   );
 
   const welcome = (
     <section className="welcome--container">
       <h1 className="welcome--title">Welcome to MediMe</h1>
-      <h2 className="welcome--text">Keep track of your health whenever and wherever!</h2>
+      <h2 className="welcome--text">
+        Keep track of your health whenever and wherever!
+      </h2>
       <div className="welcome--user-action">
         <Link to="/signup">
-          <TextButton userAction color="secondary">Get started</TextButton>
+          <TextButton userAction color="secondary">
+            Get started
+          </TextButton>
         </Link>
         <Link to="/login">
-          <TextButton userAction variant="outlined" color="secondary" style={{ border: '1.5px solid'}}>Log In</TextButton>
+          <TextButton
+            userAction
+            variant="outlined"
+            color="secondary"
+            style={{ border: "1.5px solid" }}
+          >
+            Log In
+          </TextButton>
         </Link>
       </div>
     </section>
-  )
-  
-  const user = users.find(user => user.id === userDetailId);
-  
-  const viewByUser = user => user ? dashboard : welcome;
+  );
+
+  const user = users.find((user) => user.id === userDetailId);
+
+  const viewByUser = (user) => (user ? dashboard : welcome);
 
   return viewByUser(user);
-};
+}
