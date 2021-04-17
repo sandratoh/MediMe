@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BloodGroupButtons(props) {
+export default function BloodGroupedButtons(props) {
   const classes = useStyles();
   const bloodGroupArray = [
     { id: 1, name: "A" },
