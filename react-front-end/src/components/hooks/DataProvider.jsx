@@ -44,15 +44,14 @@ export default function DataProvider(props) {
   const [doseEditId, setDoseEditId] = useState({});
 
   // Clinics database calls
-  const clinicExist = (name) => {
+  const clinicExists = (name) => {
     return clinics.find(clinic => clinic.name === name) ? true : false;
   };
 
-  const addNewClinic = (formData) => {
-    console.log('formdata', formData);
+  const addClinic = (formData) => {
     return axios
       .post("/api/clinics/list", formData)
-      .then(res => refreshAllClinicsList())
+      .then(() => refreshAllClinicsList())
       .catch(err => console.log(err));
   };
 
@@ -305,7 +304,7 @@ export default function DataProvider(props) {
   const addDoctor = (formData) => {
     return axios
       .post("/api/doctors", formData)
-      .then(res => refreshAllDoctors())
+      .then(() => refreshAllDoctors())
       .catch(err => console.log(err));
   };
 
@@ -384,8 +383,8 @@ export default function DataProvider(props) {
     addClinicVisit,
     editClinicVisit,
     deleteClinicVisit,
-    clinicExist,
-    addNewClinic,
+    clinicExists,
+    addClinic,
     // Doctor exports
     doctors,
     doctorExists,
