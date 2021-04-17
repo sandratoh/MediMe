@@ -3,8 +3,7 @@ import { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 
 // Components
-import TextInputLb from "../TextInputLb";
-import TextInputCm from "../TextInputCm";
+import TextInput from "../TextInput";
 import IconButton from "../IconButton";
 import RhGroupedButtons from "./RhGroupedButtons";
 import BloodGroupButtons from "./BloodGroupedButtons";
@@ -16,9 +15,7 @@ import { dataContext } from "../hooks/DataProvider";
 import "../../styles/form.scss";
 
 export default function EditUser() {
-  const { users, editUser, userDetailId } = useContext(
-    dataContext
-  );
+  const { users, editUser, userDetailId } = useContext(dataContext);
 
   const user = users.find((user) => user.id === userDetailId);
 
@@ -54,12 +51,22 @@ export default function EditUser() {
       <h1 className="users-form--title">Your MEdi-info</h1>
       <div className="users-form--container">
         <div className="users-form--field">
-          <TextInputCm value={height} setInput={setHeight} validate={validate}>
+          <TextInput
+            unit="cm"
+            value={height}
+            setInput={setHeight}
+            validate={validate}
+          >
             Height:
-          </TextInputCm>
-          <TextInputLb value={weight} setInput={setWeight} validate={validate}>
+          </TextInput>
+          <TextInput
+            unit="lb"
+            value={weight}
+            setInput={setWeight}
+            validate={validate}
+          >
             Weight:
-          </TextInputLb>
+          </TextInput>
           <br />
           <h4>Blood Type:</h4>
           <BloodGroupButtons state={bloodType} onChange={setBloodType} />

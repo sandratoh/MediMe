@@ -1,20 +1,19 @@
-import Button from '@material-ui/core/Button';
-import classnames from 'classnames';
-import './TextButton.scss';
+import Button from "@material-ui/core/Button";
+import classnames from "classnames";
+import "./TextButton.scss";
 
 export default function TextButtonGroup(props) {
   const buttonClass = classnames({
-    'button--group': props.groupButtons,
+    "button--group": props.groupButtons,
   });
 
   const variantStateGroup = () => {
     if (props.groupButtons && props.selected) {
-      return "contained"
+      return "contained";
+    } else {
+      return "outlined";
     }
-    else {
-      return "outlined"
-    }
-  }
+  };
 
   return (
     <Button
@@ -25,9 +24,9 @@ export default function TextButtonGroup(props) {
       onClick={props.setState}
       disabled={props.disabled}
       selected={props.selected}
-      style={{ border: '1.5px solid' }}
+      style={{ border: "1.5px solid" }}
     >
       {props.children}
     </Button>
   );
-};
+}

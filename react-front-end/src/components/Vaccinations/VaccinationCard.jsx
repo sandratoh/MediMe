@@ -49,20 +49,20 @@ export default function VaccinationCard(props) {
           className="card--vaccination--doses"
           onClick={props.onClick}
         >
-          {props.doses.length > 0
-            ? props.doses.map((dose, index) => (
-            <Link to="/vaccinations/dose/view">
-              <DoseCard
-                key={props.id}
-                current={index + 1}
-                total={props.total}
-                date_taken={dose.date_taken}
-                onClick={() => setDoseDetailId(dose.id)}
-              />
-            </Link>
+          {props.doses.length > 0 ? (
+            props.doses.map((dose, index) => (
+              <Link to="/vaccinations/dose/view" key={props.id}>
+                <DoseCard
+                  current={index + 1}
+                  total={props.total}
+                  date_taken={dose.date_taken}
+                  onClick={() => setDoseDetailId(dose.id)}
+                />
+              </Link>
             ))
-            : <p className="empty-data">No data entered yet ✏️</p>
-          }
+          ) : (
+            <p className="empty-data">No data entered yet ✏️</p>
+          )}
         </AccordionDetails>
         <Link to="/vaccinations/dose/new">
           <IconButton

@@ -16,9 +16,8 @@ export default function ClinicsCardList() {
   const visits = clinicalVisits.map((visit) => {
     const onSelect = () => setClinicalVisitDetailId(visit.id);
     return (
-      <Link to="/clinics/view">
+      <Link to="/clinics/view" key={visit.id}>
         <ClinicCard
-          key={visit.id}
           className="list-items"
           date={visit.date}
           type={visit.type_of_visit}
@@ -30,9 +29,5 @@ export default function ClinicsCardList() {
     );
   });
 
-  return (
-    <ul>
-      <Link to="/clinics/view">{visits}</Link>
-    </ul>
-  );
+  return <ul>{visits}</ul>;
 }

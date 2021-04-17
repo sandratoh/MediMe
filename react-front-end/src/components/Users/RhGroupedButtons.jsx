@@ -1,5 +1,5 @@
 // Components
-import TextButton from "../TextButtonGroup";
+import TextButtonGroup from "../TextButtonGroup";
 
 // Material UI Components
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
@@ -36,9 +36,8 @@ export default function RhGroupedButtons(props) {
 
   const rhGroup = rhGroupArray.map((value) => {
     return (
-      <ThemeProvider theme={GroupedButtonTheme}>
-        <TextButton
-          key={value.id}
+      <ThemeProvider key={value.id} theme={GroupedButtonTheme}>
+        <TextButtonGroup
           color={colorByStates(props.validate, props.state)}
           setState={() => props.onChange(value.name)}
           groupButtons
@@ -46,7 +45,7 @@ export default function RhGroupedButtons(props) {
           value={value.name}
         >
           {value.name}
-        </TextButton>
+        </TextButtonGroup>
       </ThemeProvider>
     );
   });

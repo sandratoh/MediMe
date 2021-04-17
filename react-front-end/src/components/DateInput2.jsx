@@ -19,7 +19,7 @@ export default function DateInput2(props) {
           min: new Date().toISOString().substring(0, 10),
         }}
         type="date"
-        size="large"
+        size="medium"
         InputLabelProps={{
           shrink: true,
         }}

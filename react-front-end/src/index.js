@@ -10,10 +10,10 @@ if (process.env.REACT_APP_API_BASE_URL) {
 }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <DataProvider>
-      <App />
-    </DataProvider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <DataProvider>
+    <App />
+  </DataProvider>,
+  // </React.StrictMode>,
   document.getElementById("root")
 );

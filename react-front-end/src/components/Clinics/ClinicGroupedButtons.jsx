@@ -10,32 +10,30 @@ const GroupedButtonTheme = createMuiTheme({
   palette: {
     primary: {
       main: "#AED6B5",
-      contrastText: "#fff"
+      contrastText: "#fff",
     },
     secondary: {
       main: "#f77777",
       contrastText: "#fff",
-    }
+    },
   },
 });
 
 export default function ClinicGroupedButtons(props) {
   const clinicGroupArray = [
     { id: 1, name: "HOSPITAL" },
-    { id: 2, name: "CLINIC" }
-    
+    { id: 2, name: "CLINIC" },
   ];
 
   const colorByStates = (validation, valueSelected) => {
-    return validation && !valueSelected ? "secondary" : "primary"
-  }
+    return validation && !valueSelected ? "secondary" : "primary";
+  };
 
   const clinicGroup = clinicGroupArray.map((value) => {
     return (
-      <ThemeProvider theme={GroupedButtonTheme}>
+      <ThemeProvider key={value.id} theme={GroupedButtonTheme}>
         <TextButtonGroup
           color={colorByStates(props.validate, props.state)}
-          key={value.id}
           setState={() => props.onChange(value.name)}
           groupButtons
           selected={value.name === props.state}
@@ -48,4 +46,4 @@ export default function ClinicGroupedButtons(props) {
   });
 
   return <div className="grouped-buttons--container">{clinicGroup}</div>;
-};
+}

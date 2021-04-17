@@ -35,10 +35,9 @@ export default function BloodGroupedButtons(props) {
 
   const bloodGroup = bloodGroupArray.map((value) => {
     return (
-      <ThemeProvider theme={GroupedButtonTheme}>
+      <ThemeProvider key={value.id} theme={GroupedButtonTheme}>
         <TextButtonGroup
           color={colorByStates(props.validate, props.state)}
-          key={value.id}
           setState={(event) => props.onChange(value.name)}
           groupButtons
           selected={value.name === props.state}

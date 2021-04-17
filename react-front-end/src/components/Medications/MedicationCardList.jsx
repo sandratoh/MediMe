@@ -14,9 +14,8 @@ export default function MedicationCardList() {
   const meds = medications.map((medication) => {
     const onSelect = () => setMedicationDetailId(medication.id);
     return (
-      <Link to="/medications/view">
+      <Link to="/medications/view" key={medication.id}>
         <MedicationCard
-          key={medication.id}
           className="list-items"
           date={medication.prescribed_date}
           nickName={medication.nickname}
@@ -29,9 +28,5 @@ export default function MedicationCardList() {
     );
   });
 
-  return (
-    <ul>
-      <Link to="/medications/view">{meds}</Link>
-    </ul>
-  );
+  return <ul>{meds}</ul>;
 }

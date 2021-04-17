@@ -1,10 +1,22 @@
 import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+
 import "./TextInput.scss";
 
 export default function TextInput(props) {
+  const unitMarker = (unit) => {
+    return unit
+      ? {
+          endAdornment: (
+            <InputAdornment position="end">{props.unit}</InputAdornment>
+          ),
+        }
+      : null;
+  };
   return (
     <form className="text-input--container" noValidate autoComplete="off">
       <TextField
+        InputProps={unitMarker(props.unit)}
         required={props.required}
         error={
           props.required &&
