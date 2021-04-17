@@ -15,7 +15,7 @@ import { dataContext } from "../hooks/DataProvider";
 import "../../styles/form.scss";
 
 export default function NewVisit(props) {
-  const { addClinicVisit, clinicExist, addNewClinic } = useContext(dataContext);
+  const { addClinicVisit, clinicExist, addNewClinic, addDoctor, doctorExists } = useContext(dataContext);
 
   const [medicalCenter, setMedicalCenter] = useState("");
   const [doctor, setDoctor] = useState("");
@@ -51,10 +51,15 @@ export default function NewVisit(props) {
       addNewClinic({name: medicalCenter})
     };
 
+    if (!(doctorExists(doctor))) {
+      addDoctor({name: doctor})
+    };
+
     addClinicVisit(visitDetail).then((res) => {
       !res.data.error && setRedirect(true);
     });
   };
+
 
   return (
     <section className="clinics-new">

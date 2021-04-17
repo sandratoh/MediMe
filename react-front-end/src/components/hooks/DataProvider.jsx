@@ -297,6 +297,24 @@ export default function DataProvider(props) {
     });
   };
 
+  // Doctor database calls
+  const doctorExists = (name) => {
+    return doctors.find(doctor => doctor.name === name) ? true : false;
+  };
+
+  const addDoctor = (formData) => {
+    return axios
+      .post("/api/doctors", formData)
+      .then(res => refreshAllDoctors())
+      .catch(err => console.log(err));
+  };
+
+  const refreshAllDoctors = () => {
+    return axios.get("/api/doctors").then((res) => {
+      setDoctors(res.data.doctors);
+    });
+  };
+
   useEffect(() => {
     const apiClinicalVisitsUrl = "/api/clinics";
     const apiClinicsUrl = "/api/clinics/list";
@@ -370,6 +388,8 @@ export default function DataProvider(props) {
     addNewClinic,
     // Doctor exports
     doctors,
+    doctorExists,
+    addDoctor,
     // Labs exports
     labs,
     labRecords,
