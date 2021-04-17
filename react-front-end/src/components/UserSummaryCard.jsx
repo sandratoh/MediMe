@@ -14,8 +14,12 @@ import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 
 // Icons
-import rhType from "../images/blood-type.png";
-import bloodO from "../images/blood-type-o-1.png";
+import rhTypeNeg from "../images/rh-neg.png";
+import rhTypePos from "../images/rh-pos.png";
+import bloodA from "../images/blood-type-a.png";
+import bloodB from "../images/blood-type-b.png";
+import bloodAB from "../images/blood-type-ab.png";
+import bloodO from "../images/blood-type-o.png";
 import { useContext } from "react";
 
 // Helpers
@@ -42,25 +46,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const users = [
-//   {
-//     first_name: "Rachel",
-//     last_name: "Greene",
-//     email: "rachel@email.com",
-//     password: "password",
-//     height_in_cm: 150,
-//     weight_in_lb: 120,
-//     blood_type: "O",
-//     rh_group: "POSITIVE",
-//   },
-// ];
-
 export default function UserSummaryCard() {
   const { users, userDetailId } = useContext(dataContext);
 
   const user = users.find(user => user.id === userDetailId);
 
   const classes = useStyles();
+
+  const iconByBloodType = type => {
+    switch (type) {
+      case "A": return bloodA;
+      case "B": return bloodB;
+      case "AB": return bloodAB;
+      default: return bloodO;
+    }
+  }
+
+  const iconByRhGroup = rhGroup => {
+    return rhGroup === "POSITIVE" ? rhTypePos : rhTypeNeg;
+  };
 
   return (
     <div className="summary--root">
@@ -92,7 +96,7 @@ export default function UserSummaryCard() {
             <Typography id="summary--w-h-b-r" variant="caption">
               Blood Type:
               <br />
-              <img className="sum--icon" src={bloodO} component="img" alt="blood icon" />
+              <img className="sum--icon" src={iconByBloodType(user.blood_type)} component="img" alt="blood icon" />
             </Typography>
           </div>
 
@@ -102,7 +106,7 @@ export default function UserSummaryCard() {
             <Typography id="summary--w-h-b-r" variant="caption">
               Rh Group:
               <br />
-              <img className="sum--icon" src={rhType} component="img" alt="sum icon" />
+              <img className="sum--icon" src={iconByRhGroup(user.rh_group)} component="img" alt="rhGroup icon" />
             </Typography>
           </div>
         </AccordionDetails>
