@@ -1,17 +1,26 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import TextButtonGroup from "../TextButtonGroup";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
+import "./BloodGroupedButtons.scss";
+
+const GroupedButtonTheme = createMuiTheme({
+  typography: {
+    fontFamily: ["Poppins", "sans-serif"].join(","),
+  },
+  palette: {
+    primary: {
+      main: "#AED6B5",
+      contrastText: "#fff",
+    },
+    secondary: {
+      main: "#f77777",
+      contrastText: "#fff",
     },
   },
-}));
+});
 
 export default function BloodGroupedButtons(props) {
-  const classes = useStyles();
   const bloodGroupArray = [
     { id: 1, name: "A" },
     { id: 2, name: "B" },
@@ -26,18 +35,20 @@ export default function BloodGroupedButtons(props) {
 
   const bloodGroup = bloodGroupArray.map((value) => {
     return (
-      <TextButtonGroup
-        color={colorByStates(props.validate, props.state)}
-        key={value.id}
-        setState={(event) => props.onChange(value.name)}
-        groupButtons
-        selected={value.name === props.state}
-        value={value.name}
-      >
-        {value.name}
-      </TextButtonGroup>
+      <ThemeProvider theme={GroupedButtonTheme}>
+        <TextButtonGroup
+          color={colorByStates(props.validate, props.state)}
+          key={value.id}
+          setState={(event) => props.onChange(value.name)}
+          groupButtons
+          selected={value.name === props.state}
+          value={value.name}
+        >
+          {value.name}
+        </TextButtonGroup>
+      </ThemeProvider>
     );
   });
 
-  return <div className={classes.root}>{bloodGroup}</div>;
+  return <div className="grouped-buttons--container-blood">{bloodGroup}</div>;
 }

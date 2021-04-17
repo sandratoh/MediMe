@@ -1,5 +1,11 @@
-import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+// Components
 import TextButton from "../TextButtonGroup";
+
+// Material UI Components
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+
+//Stylesheets
+import "./RhGroupedButtons.scss";
 
 const GroupedButtonTheme = createMuiTheme({
   typography: {

@@ -61,14 +61,10 @@ export default function EditUser() {
             Weight:
           </TextInputLb>
           <br />
-          <div className="users-form--blood-type">
-            <h4>Blood Type:</h4>
-            <BloodGroupButtons state={bloodType} onChange={setBloodType} />
-          </div>
-          <div className="users-form--rh-group">
-            <h4>Rh Group:</h4>
-            <RhGroupedButtons state={rhGroup} onChange={setRhGroup} />
-          </div>
+          <h4>Blood Type:</h4>
+          <BloodGroupButtons state={bloodType} onChange={setBloodType} />
+          <h4>Rh Group:</h4>
+          <RhGroupedButtons state={rhGroup} onChange={setRhGroup} />
         </div>
         <div className="users-form--user-action">
           <IconButton
