@@ -14,7 +14,7 @@ import { dataContext } from "../hooks/DataProvider";
 import "../../styles/form.scss";
 
 export default function Signup() {
-  const { addUser } = useContext(dataContext);
+  const { addUser, setUserDetailId } = useContext(dataContext);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -35,14 +35,16 @@ export default function Signup() {
       password: password.password,
     };
 
-    addUser(userData).then((res) => {
-      res.data.error ? setValidate(true) : setRedirect(true);
-    });
+    addUser(userData)
+      .then((res) => {
+        res.data.error ? setValidate(true) : setUserDetailId(res.data[0].id);
+      })
+      .then(() => setRedirect(true));
   };
 
   return (
     <section className="signup">
-      {redirect && <Redirect to="/" />}
+      {redirect && <Redirect to="/signup/success" />}
       <h1 className="signup-form--title">Create Account</h1>
 
       <div className="signup-form--container">

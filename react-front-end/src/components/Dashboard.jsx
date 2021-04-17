@@ -56,11 +56,10 @@ export default function Dashboard() {
       </div>
     </section>
   )
-
+  
+  const user = users.find(user => user.id === userDetailId);
+  
   const viewByUser = user => user ? dashboard : welcome;
-
-   //change 1 to userDetailId after log in route complete
-  const user = users.find(user => user.id === 1);
 
   return viewByUser(user);
 };

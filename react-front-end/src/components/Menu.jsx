@@ -11,7 +11,7 @@ import TextButton from "./TextButton";
 import "./Menu.scss";
 
 export default function Menu() {
-  const { setMenu } = useContext(dataContext);
+  const { setMenu, setUserDetailId } = useContext(dataContext);
 
   return (
     <section className="nav-menu">
@@ -30,7 +30,15 @@ export default function Menu() {
         </Link>
       </div>
       <div className="nav-menu--button">
-        <TextButton color="secondary" userAction>Log Out</TextButton>
+        <Link to="/">
+          <TextButton 
+            color="secondary" 
+            userAction
+            onClick={() => setUserDetailId(null)}
+          >
+            Log Out
+          </TextButton>
+        </Link>
       </div>
     </section>
   )

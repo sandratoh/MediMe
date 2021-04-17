@@ -9,8 +9,11 @@ import IconButton from "../IconButton";
 
 // Stylesheet
 import "../../styles/form.scss";
+import { dataContext } from "../hooks/DataProvider";
 
 export default function Login() {
+  const { loginUser, userDetailId, setUserDetailId } = useContext(dataContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,12 +24,28 @@ export default function Login() {
   const [validate, setValidate] = useState(false);
 
   const onLogin = () => {
-    console.log("Login button clicked");
+    const userDetail = {email, password}
+    
+    loginUser(userDetail)
+    .then(res => {
+
+      res.data.error ? setValidate(true) : setUserDetailId(res.id);
+
+      console.log('res from login,', res);
+      // if (res.password === password) {
+      //   setUserDetailId(res.id);
+      //   setRedirect(true);
+      // }
+      // console.log(res);
+      // res.data.error ? setValidate(true) : setRedirect(true)
+      console.log('userDetailId', userDetailId);
+      })
+      .then(res => setRedirect(true));
   };
 
   return (
     <section className="login">
-      {/* {redirect && <Redirect to="/" />} */}
+      {redirect && <Redirect to="/" />}
       <h1 className="login-form--title">Login</h1>
       <div className="login-form--container">
         <div className="login-form--field">
