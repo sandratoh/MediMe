@@ -1,16 +1,31 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
+import clinicContext from "./ClinicContext";
 
 export default function DataProvider(props) {
   // User and App states
   const [menu, setMenu] = useState(false);
 
-
+  // const {
+  //   clinics,
+  //   setClinics,
+  //   clinicalVisits,
+  //   setClinicalVisits,
+  //   clinicalVisitDetailId,
+  //   setClinicalVisitDetailId,
+  //   clinicalVisitEditId,
+  //   setClinicalVisitEditId,
+  //   addClinicVisit,
+  //   editClinicVisit,
+  //   deleteClinicVisit,
+  //   addClinic,
+  //   clinicExists,
+  // } = useContext(clinicContext);
   // Clinic states
-  const [clinics, setClinics] = useState([]);
-  const [clinicalVisits, setClinicalVisits] = useState([]);
-  const [clinicalVisitDetailId, setClinicalVisitDetailId] = useState({});
-  const [clinicalVisitEditId, setClinicalVisitEditId] = useState({});
+  // const [clinics, setClinics] = useState([]);
+  // const [clinicalVisits, setClinicalVisits] = useState([]);
+  // const [clinicalVisitDetailId, setClinicalVisitDetailId] = useState({});
+  // const [clinicalVisitEditId, setClinicalVisitEditId] = useState({});
 
   // Doctor states
   const [doctors, setDoctors] = useState([]);
@@ -32,7 +47,7 @@ export default function DataProvider(props) {
   // User states
   const [users, setUsers] = useState([]);
   const [userDetailId, setUserDetailId] = useState({});
-  const [userEditId, setUserEditId] = useState({})
+  const [userEditId, setUserEditId] = useState({});
 
   // Vaccination states
   const [vaccinations, setVaccinations] = useState([]);
@@ -43,62 +58,62 @@ export default function DataProvider(props) {
   const [doseDetailId, setDoseDetailId] = useState({});
   const [doseEditId, setDoseEditId] = useState({});
 
-  // Clinics database calls
-  const clinicExists = (name) => {
-    return clinics.find(clinic => clinic.name === name) ? true : false;
-  };
+  // // Clinics database calls
+  // const clinicExists = (name) => {
+  //   return clinics.find((clinic) => clinic.name === name) ? true : false;
+  // };
 
-  const addClinic = (formData) => {
-    return axios
-      .post("/api/clinics/list", formData)
-      .then(() => refreshAllClinicsList())
-      .catch(err => console.log(err));
-  };
+  // const addClinic = (formData) => {
+  //   return axios
+  //     .post("/api/clinics/list", formData)
+  //     .then(() => refreshAllClinicsList())
+  //     .catch((err) => console.log(err));
+  // };
 
-  const addClinicVisit = (formData) => {
-    return axios
-      .post("/api/clinics/", formData)
-      .then((res) => {
-        refreshAllClinics();
+  // const addClinicVisit = (formData) => {
+  //   return axios
+  //     .post("/api/clinics/", formData)
+  //     .then((res) => {
+  //       refreshAllClinics();
 
-        return res;
-      })
-      .catch((err) => console.log(err));
-  };
+  //       return res;
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
-  const editClinicVisit = (formData) => {
-    return axios
-      .put(`/api/clinics/${clinicalVisitDetailId}`, formData)
-      .then((res) => {
-        refreshAllClinics();
+  // const editClinicVisit = (formData) => {
+  //   return axios
+  //     .put(`/api/clinics/${clinicalVisitDetailId}`, formData)
+  //     .then((res) => {
+  //       refreshAllClinics();
 
-        return res;
-      })
-      .catch((err) => console.log(err));
-  };
+  //       return res;
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
-  const deleteClinicVisit = () => {
-    return axios
-      .delete(`/api/clinics/${clinicalVisitDetailId}`)
-      .then((res) => {
-        refreshAllClinics();
+  // const deleteClinicVisit = () => {
+  //   return axios
+  //     .delete(`/api/clinics/${clinicalVisitDetailId}`)
+  //     .then((res) => {
+  //       refreshAllClinics();
 
-        return res;
-      })
-      .catch((err) => console.log(err));
-  };
+  //       return res;
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
-  const refreshAllClinics = () => {
-    return axios.get("/api/clinics").then((res) => {
-      setClinicalVisits(res.data.clinical_visits);
-    });
-  };
+  // const refreshAllClinics = () => {
+  //   return axios.get("/api/clinics").then((res) => {
+  //     setClinicalVisits(res.data.clinical_visits);
+  //   });
+  // };
 
-  const refreshAllClinicsList = () => {
-    return axios.get("/api/clinics/list").then((res) => {
-      setClinics(res.data.clinics);
-    });
-  };
+  // const refreshAllClinicsList = () => {
+  //   return axios.get("/api/clinics/list").then((res) => {
+  //     setClinics(res.data.clinics);
+  //   });
+  // };
 
   // Labs database calls
   const addLabRecord = (formData) => {
@@ -183,35 +198,35 @@ export default function DataProvider(props) {
   // Users
   const addUser = (formData) => {
     return axios
-    .post("/api/users", formData)
-    .then((res) => {
-      refreshAllUsers();
+      .post("/api/users", formData)
+      .then((res) => {
+        refreshAllUsers();
 
-      return res;
-    })
-    .catch((err) => console.log(err));
+        return res;
+      })
+      .catch((err) => console.log(err));
   };
 
   const editUser = (formData) => {
     return axios
-    .put(`/api/users/${userDetailId}`, formData)
-    .then((res) => {
-      refreshAllUsers();
+      .put(`/api/users/${userDetailId}`, formData)
+      .then((res) => {
+        refreshAllUsers();
 
-      return res;
-    })
-    .catch((err) => console.log(err));
+        return res;
+      })
+      .catch((err) => console.log(err));
   };
 
   const loginUser = (formData) => {
     const { email, password } = formData;
-    
+
     return axios
       .get("/api/users")
       .then((res) => {
         const users = res.data.users;
-        const user = users.find(user => user.email === email);
-        
+        const user = users.find((user) => user.email === email);
+
         if (user.password === password.password) {
           return user;
         }
@@ -298,14 +313,14 @@ export default function DataProvider(props) {
 
   // Doctor database calls
   const doctorExists = (name) => {
-    return doctors.find(doctor => doctor.name === name) ? true : false;
+    return doctors.find((doctor) => doctor.name === name) ? true : false;
   };
 
   const addDoctor = (formData) => {
     return axios
       .post("/api/doctors", formData)
       .then(() => refreshAllDoctors())
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   const refreshAllDoctors = () => {
@@ -315,6 +330,7 @@ export default function DataProvider(props) {
   };
 
   useEffect(() => {
+    console.log("Hello from inside DP useEffect");
     const apiClinicalVisitsUrl = "/api/clinics";
     const apiClinicsUrl = "/api/clinics/list";
     const apiDoctorsUrl = "/api/doctors";
@@ -325,11 +341,10 @@ export default function DataProvider(props) {
     const apiVaccinationsUrl = "/api/vaccinations";
     const apiAllDoseUrl = "/api/vaccinations/dose";
     const apiAllUsersUrl = "api/users";
-    
 
     Promise.all([
-      axios.get(apiClinicalVisitsUrl),
-      axios.get(apiClinicsUrl),
+      // axios.get(apiClinicalVisitsUrl),
+      // axios.get(apiClinicsUrl),
       axios.get(apiDoctorsUrl),
       axios.get(apiLabRecordsUrl),
       axios.get(apiLabsUrl),
@@ -338,23 +353,21 @@ export default function DataProvider(props) {
       axios.get(apiMedRecordsUrl),
       axios.get(apiPharmaciesUrl),
       axios.get(apiAllUsersUrl),
-      
     ]).then((res) => {
-      // console.log("res", res);
-      const visits = res[0].data.clinical_visits;
-      const clinics = res[1].data.clinics;
-      const doctors = res[2].data.doctors;
-      const records = res[3].data.labs;
-      const labs = res[4].data.labs;
-      const vaccinations = res[5].data.vaccinations;
-      const doses = res[6].data.doses;
-      const medications = res[7].data.medications;
-      const pharmacies = res[8].data.pharmacies;
-      const users = res[9].data.users;
-      
+      console.log("res", res);
+      // const visits = res[0].data.clinical_visits;
+      // const clinics = res[1].data.clinics;
+      const doctors = res[0].data.doctors;
+      const records = res[1].data.labs;
+      const labs = res[2].data.labs;
+      const vaccinations = res[3].data.vaccinations;
+      const doses = res[4].data.doses;
+      const medications = res[5].data.medications;
+      const pharmacies = res[6].data.pharmacies;
+      const users = res[7].data.users;
 
-      setClinicalVisits(visits);
-      setClinics(clinics);
+      // setClinicalVisits(visits);
+      // setClinics(clinics);
       setDoctors(doctors);
       setLabRecords(records);
       setLabs(labs);
@@ -363,7 +376,7 @@ export default function DataProvider(props) {
       setMedications(medications);
       setPharmacies(pharmacies);
       setUsers(users);
-      
+
       return;
     });
   }, []);
@@ -374,17 +387,17 @@ export default function DataProvider(props) {
     menu,
     setMenu,
     // Clinics exports
-    clinics,
-    clinicalVisits,
-    clinicalVisitDetailId,
-    clinicalVisitEditId,
-    setClinicalVisitDetailId,
-    setClinicalVisitEditId,
-    addClinicVisit,
-    editClinicVisit,
-    deleteClinicVisit,
-    clinicExists,
-    addClinic,
+    // clinics,
+    // clinicalVisits,
+    // clinicalVisitDetailId,
+    // clinicalVisitEditId,
+    // setClinicalVisitDetailId,
+    // setClinicalVisitEditId,
+    // addClinicVisit,
+    // editClinicVisit,
+    // deleteClinicVisit,
+    // clinicExists,
+    // addClinic,
     // Doctor exports
     doctors,
     doctorExists,
@@ -435,8 +448,7 @@ export default function DataProvider(props) {
     deleteDoseRecord,
   };
 
-  // console.log("data", data);
-  
+  console.log("data", data);
 
   return (
     <dataContext.Provider value={data}>{props.children}</dataContext.Provider>

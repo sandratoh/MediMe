@@ -10,18 +10,15 @@ import TextInput from "../TextInput";
 
 // Helpers
 import { currentDate } from "../../helpers/dateHelpers";
+import { clinicContext } from "../Provider/ClinicContext";
 import { dataContext } from "../Provider/DataProvider";
 
 import "../../styles/form.scss";
 
 export default function NewVisit(props) {
-  const {
-    addClinicVisit,
-    clinicExists,
-    addClinic,
-    doctorExists,
-    addDoctor,
-  } = useContext(dataContext);
+  const { addClinicVisit, clinicExists, addClinic } = useContext(clinicContext);
+
+  const { doctorExists, addDoctor } = useContext(dataContext);
 
   const [medicalCenter, setMedicalCenter] = useState("");
   const [doctor, setDoctor] = useState("");

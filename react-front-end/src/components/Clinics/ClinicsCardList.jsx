@@ -3,14 +3,14 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 // Helpers
-import { dataContext } from "../Provider/DataProvider";
+import { clinicContext } from "../Provider/ClinicContext";
 
 // Components
 import ClinicCard from "./ClinicCard";
 
 export default function ClinicsCardList() {
   const { clinicalVisits, clinics, setClinicalVisitDetailId } = useContext(
-    dataContext
+    clinicContext
   );
 
   const visits = clinicalVisits.map((visit) => {
