@@ -96,7 +96,10 @@ export default function UserSummaryCard() {
             <Typography id="summary--w-h-b-r" variant="caption">
               Blood Type:
               <br />
-              <img className="sum--icon" src={iconByBloodType(user.blood_type)} component="img" alt="blood icon" />
+              {user.blood_type === "UNKNOWN"
+                ? <Typography>Unknown</Typography>
+                : <img className="sum--icon" src={iconByBloodType(user.blood_type)} component="img" alt="blood icon" />
+              }
             </Typography>
           </div>
 
@@ -106,7 +109,10 @@ export default function UserSummaryCard() {
             <Typography id="summary--w-h-b-r" variant="caption">
               Rh Group:
               <br />
-              <img className="sum--icon" src={iconByRhGroup(user.rh_group)} component="img" alt="rhGroup icon" />
+              {user.rh_group === "UNKNOWN"
+                ? <Typography>Unknown</Typography>
+                : <img className="sum--icon" src={iconByRhGroup(user.rh_group)} component="img" alt="rhGroup icon" />
+              }
             </Typography>
           </div>
         </AccordionDetails>
