@@ -41,7 +41,7 @@ import EditDose from "./Vaccinations/Doses/EditDose";
 import NewDose from "./Vaccinations/Doses/NewDose";
 import NewVaccine from "./Vaccinations/NewVaccine";
 import VaccinationsList from "./Vaccinations/VaccinationsList";
-import Success from "./Vaccinations/Success";
+import VaccinationSuccess from "./Vaccinations/VaccinationSuccess";
 
 // Stylesheet import
 import "./App.scss";
@@ -104,7 +104,11 @@ function App() {
             />
 
             <Route exact path="/vaccinations" component={VaccinationsList} />
-            <Route exact path="/vaccinations/success" component={Success} />
+            <Route
+              exact
+              path="/vaccinations/success"
+              component={VaccinationSuccess}
+            />
 
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/signup/success" component={SignupSuccess} />

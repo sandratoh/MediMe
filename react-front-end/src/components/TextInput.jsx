@@ -1,7 +1,7 @@
 import TextField from "@material-ui/core/TextField";
 import "./TextInput.scss";
 
-export default function BasicTextFields(props) {
+export default function TextInput(props) {
   return (
     <form className="text-input--container" noValidate autoComplete="off">
       <TextField

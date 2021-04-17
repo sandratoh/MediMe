@@ -17,16 +17,23 @@ import { formatDate } from "../../helpers/dateHelpers";
 // Stylesheet
 import "../../styles/card.scss";
 
-export default function CardListItem(props) {
-  const iconByType = type => {
+export default function LabCard(props) {
+  const iconByType = (type) => {
     switch (type) {
-      case "BLOOD": return bloodIcon
-      case "MAMMOGRAM": return mammogramIcon;
-      case "MRI": return mriIcon;
-      case "ULTRASOUND": return ultrasoundIcon;
-      case "URINE": return urineIcon;
-      case "XRAY": return xrayIcon;
-      default: console.log("Lab type not supported.")
+      case "BLOOD":
+        return bloodIcon;
+      case "MAMMOGRAM":
+        return mammogramIcon;
+      case "MRI":
+        return mriIcon;
+      case "ULTRASOUND":
+        return ultrasoundIcon;
+      case "URINE":
+        return urineIcon;
+      case "XRAY":
+        return xrayIcon;
+      default:
+        console.log("Lab type not supported.");
     }
   };
 
@@ -36,7 +43,9 @@ export default function CardListItem(props) {
         <Typography variant="subtitle1" color="textSecondary">
           {formatDate(props.date)}
         </Typography>
-        <Typography variant="subtitle1">{findNameById(props.labs, props.value)}</Typography>
+        <Typography variant="subtitle1">
+          {findNameById(props.labs, props.value)}
+        </Typography>
       </div>
       <div className="card--icon">
         <img src={iconByType(props.type)} component="img" alt="card icon" />

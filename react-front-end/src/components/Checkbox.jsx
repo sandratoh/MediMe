@@ -3,7 +3,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
-export default function CheckboxLabels() {
+export default function Checkbox() {
   const [checkbox, setCheckbox] = React.useState({
     food: false,
     water: false,

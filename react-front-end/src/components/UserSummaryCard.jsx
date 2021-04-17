@@ -45,7 +45,7 @@ const users = [
   },
 ];
 
-export default function UserSummary() {
+export default function UserSummaryCard() {
   const classes = useStyles();
 
   return (

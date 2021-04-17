@@ -16,7 +16,7 @@ import { dataContext } from "../hooks/DataProvider";
 // Stylesheet
 import "../../styles/form.scss";
 
-export default function VaccineNew() {
+export default function NewVaccine() {
   const { addVaccinationRecord, setVaccinationDetailId } = useContext(
     dataContext
   );
@@ -26,7 +26,9 @@ export default function VaccineNew() {
 
   // Redirect state
   const [redirectBack, setRedirectBack] = useState(false);
-  const [redirectSuccess, setRedirectSuccess] = useState(false);
+  const [redirectVaccinationSuccess, setRedirectVaccinationSuccess] = useState(
+    false
+  );
 
   // Validate form error state
   const [validate, setValidate] = useState(false);
@@ -39,17 +41,19 @@ export default function VaccineNew() {
       total_num_doses: totalDose,
     };
 
-    addVaccinationRecord(vaccinationData).then((res) => {
-      res.data.error
-        ? setValidate(true)
-        : setVaccinationDetailId(res.data[0].id) && setRedirectSuccess(true);
-    });
+    addVaccinationRecord(vaccinationData)
+      .then((res) => {
+        res.data.error
+          ? setValidate(true)
+          : setVaccinationDetailId(res.data[0].id);
+      })
+      .then(() => setRedirectVaccinationSuccess(true));
   };
 
   return (
     <section className="vaccinations-new">
       {redirectBack && <Redirect to="/vaccinations" />}
-      {redirectSuccess && <Redirect to="/vaccinations/success" />}
+      {redirectVaccinationSuccess && <Redirect to="/vaccinations/success" />}
       <h1 className="vaccinations-form--title">New Vaccination</h1>
       <div className="vaccinations-form--container">
         <div className="vaccinations-form--field">

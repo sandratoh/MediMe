@@ -14,7 +14,7 @@ import { dataContext } from "../../hooks/DataProvider";
 // Stylesheet
 import "../../../styles/form.scss";
 
-export default function DoseEdit() {
+export default function EditDose() {
   // Redirect state
   const [redirect, setRedirect] = useState("");
 
