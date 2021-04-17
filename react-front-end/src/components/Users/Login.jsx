@@ -23,21 +23,29 @@ export default function Login() {
   // Validate form error state
   const [validate, setValidate] = useState(false);
 
+  
   const onLogin = () => {
-    const userDetail = {email, password}
+    if (!email || !password) {
+      return setValidate(true)
+    };
     
+    const userDetail = {email, password}
+
     loginUser(userDetail)
     .then(res => {
-      res.data ? setValidate(true) : setUserDetailId(res.id);
-    })
-    .then(() => setRedirect(true));
+      if (!res) {
+        return setValidate(true)
+      }
+      setUserDetailId(res.id);
+      setRedirect(true);
+    });
   };
 
   return (
     <section className="login">
       {redirect && <Redirect to="/" />}
       <h1 className="login-form--title">Login</h1>
-      <div className="login-form--container">
+      <form className="login-form--container">
         <div className="login-form--field">
           <TextInput
             required
@@ -66,7 +74,7 @@ export default function Login() {
             Login
           </IconButton>
         </div>
-      </div>
+      </form>
     </section>
   );
 };

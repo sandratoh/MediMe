@@ -187,8 +187,8 @@ export default function DataProvider(props) {
   };
 
   const loginUser = (formData) => {
-    console.log("formDate: ", formData)
     const { email, password } = formData;
+    
     return axios
       .get("/api/users")
       .then((res) => {
@@ -198,7 +198,7 @@ export default function DataProvider(props) {
         if (user.password === password.password) {
           return user;
         }
-        return res;
+        return null;
       })
       .catch((err) => console.log(err));
   };

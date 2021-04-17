@@ -10,7 +10,7 @@ export default function LabsDropdown(props) {
   return (
     <section className="dropdown-container">
       <FormControl variant="outlined" className="dropdown--input">
-        <InputLabel id="demo-simple-select-outlined-label">
+        <InputLabel id="demo-simple-select-outlined-label" error={!props.value && props.validate}>
           Type of Record
         </InputLabel>
         <Select
@@ -30,7 +30,7 @@ export default function LabsDropdown(props) {
           <MenuItem value={"XRAY"}>X-ray</MenuItem>
         </Select>
       </FormControl>
-      <FormHelperText>
+      <FormHelperText error={!props.value && props.validate}>
         {!props.value && props.validate && "This field cannot be blank."}
       </FormHelperText>
     </section>

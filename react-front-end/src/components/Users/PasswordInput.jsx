@@ -34,6 +34,11 @@ export default function PasswordInput(props) {
         <InputLabel
           htmlFor="outlined-adornment-password"
           required={props.required}
+          error={
+            props.required &&
+            props.validate &&
+            (props.value === "" || props.value === null)
+          }
         >
           {props.children}
         </InputLabel>
