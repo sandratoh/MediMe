@@ -168,8 +168,8 @@ export default function DataProvider(props) {
     return axios
     .post("/api/users", formData)
     .then((res) => {
-      setUsers([res.data[0], ...users]);
-
+      // setUsers([res.data[0], ...users]);
+      refreshAllUsers()
       return res;
     })
     .catch((err) => console.log(err));

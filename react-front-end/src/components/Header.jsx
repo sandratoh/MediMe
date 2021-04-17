@@ -16,10 +16,9 @@ import { dataContext } from "./hooks/DataProvider";
 // Stylesheet
 import './Header.scss';
 export default function Header(props) {
-  const { menu, setMenu, users, /* userDetailId */ } = useContext(dataContext);
+  const { menu, setMenu, users, userDetailId } = useContext(dataContext);
 
-  //change 1 to userDetailId after log in route complete
-  const user = users.find(user => user.id === 1);
+  const user = users.find(user => user.id === userDetailId);
 
   const history = useHistory();
 
