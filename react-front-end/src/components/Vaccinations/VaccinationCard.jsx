@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 
@@ -54,6 +53,7 @@ export default function VaccinationCard(props) {
             ? props.doses.map((dose, index) => (
             <Link to="/vaccinations/dose/view">
               <DoseCard
+                key={props.id}
                 current={index + 1}
                 total={props.total}
                 date_taken={dose.date_taken}

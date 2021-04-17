@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
 
 // Components
 import VaccinationCard from "./VaccinationCard";
@@ -16,7 +15,6 @@ export default function VaccinationsCardList() {
   } = useContext(dataContext);
 
   const vaccines = vaccinations.map((vaccination) => {
-    // To find dose array: filter doses to return only ones that vaccination_id = vaccine id
     return (
       <VaccinationCard
         key={vaccination.id}

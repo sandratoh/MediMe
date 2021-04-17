@@ -1,6 +1,6 @@
 // Libraries
 import { useContext, useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 // Components
 import TextInput from "../TextInput";
@@ -12,7 +12,7 @@ import "../../styles/form.scss";
 import { dataContext } from "../hooks/DataProvider";
 
 export default function Login() {
-  const { loginUser, userDetailId, setUserDetailId } = useContext(dataContext);
+  const { loginUser, setUserDetailId } = useContext(dataContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -73,6 +73,15 @@ export default function Login() {
           >
             Login
           </IconButton>
+        </div>
+        <div className="login-form--redirect">
+          <p>
+            Don't have an account yet?
+            <span> </span>
+            <Link to="/signup" className="link-text">
+              Sign up here!
+            </Link>
+          </p>
         </div>
       </form>
     </section>
