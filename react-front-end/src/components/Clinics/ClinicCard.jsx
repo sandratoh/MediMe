@@ -11,8 +11,9 @@ import { formatDate } from "../../helpers/dateHelpers";
 // Stylesheet
 import "../../styles/card.scss";
 
-export default function CardListItem(props) {
-  const iconByType = type => type === "HOSPITAL" ? hospitalIcon : clinicIcon;
+export default function ClinicCard(props) {
+  const iconByType = (type) =>
+    type === "HOSPITAL" ? hospitalIcon : clinicIcon;
 
   return (
     <Card className="card" variant="outlined" onClick={props.onClick}>

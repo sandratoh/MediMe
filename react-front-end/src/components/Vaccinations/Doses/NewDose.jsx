@@ -15,7 +15,7 @@ import { dataContext } from "../../hooks/DataProvider";
 // Stylesheet
 import "../../../styles/form.scss";
 
-export default function DoseNew() {
+export default function NewDose() {
   const { addDoseRecord } = useContext(dataContext);
 
   const [date, setDate] = useState(currentDate());

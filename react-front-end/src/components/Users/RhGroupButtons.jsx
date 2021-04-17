@@ -18,7 +18,7 @@ const GroupedButtonTheme = createMuiTheme({
   },
 });
 
-export default function RhGroupedButtons(props) {
+export default function RhGroupButtons(props) {
   
 
   

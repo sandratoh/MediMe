@@ -6,9 +6,9 @@ import TextButton from "../TextButton";
 import checkIcon from "../../images/check-mark.png";
 
 // Stylesheet
-import "./Success.scss";
+import "./VaccinationSuccess.scss";
 
-export default function Success() {
+export default function VaccinationSuccess() {
   return (
     <section className="vaccination-success">
       <h1 className="vaccination-success--title">Vaccination Record Saved!</h1>
