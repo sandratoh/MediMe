@@ -68,7 +68,7 @@ export default function Login() {
             </PasswordInput>
           </div>
         </div>
-        <div className="login-form--user-action">
+        <div className="login-form--user-action" data-testid="login-button">
           <IconButton
             login
             variant="contained"
