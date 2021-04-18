@@ -1,6 +1,5 @@
 // Libraries
-import { useRef, useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { useState, useEffect } from 'react';
 
 // Material UI Components
 import Fab from '@material-ui/core/Fab';
