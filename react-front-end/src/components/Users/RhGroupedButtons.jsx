@@ -13,7 +13,7 @@ const GroupedButtonTheme = createMuiTheme({
   },
   palette: {
     primary: {
-      main: "#AED6B5",
+      main: "#AACFD0",
       contrastText: "#fff",
     },
     secondary: {
