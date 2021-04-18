@@ -79,7 +79,7 @@ export default function EditVisit() {
       <h1 className="clinics-form--title">Update Clinical Visit</h1>
       <div className="clinics-form--container">
         <div className="clinics-form--field">
-          <DateInput date={date} setInput={setDate} validate={validate}>
+          <DateInput value={date} setInput={setDate} validate={validate}>
             Date:
           </DateInput>
           <ClinicGroupedButtons state={visitType} onChange={setVisitType} />

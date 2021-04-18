@@ -73,7 +73,7 @@ export default function EditRecord() {
       <h1 className="labs-form--title">Update Lab Record</h1>
       <div className="labs-form--container">
         <div className="labs-form--field">
-          <DateInput date={date} setInput={setDate} validate={validate}>
+          <DateInput value={date} setInput={setDate} validate={validate}>
             Date:
           </DateInput>
           <TextInput required value={lab} setInput={setLab} validate={validate}>

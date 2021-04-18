@@ -102,7 +102,7 @@ export default function EditMedication() {
         <div className="medications-form--field">
           <DateInput
             required
-            date={date}
+            value={date}
             setInput={setDate}
             validate={validate}
           >

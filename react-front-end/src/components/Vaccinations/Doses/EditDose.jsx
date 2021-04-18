@@ -66,7 +66,7 @@ export default function EditDose() {
       <div className="doses-form--container">
         <div className="doses-form--field">
           <DateInput
-            date={dateTaken}
+            value={dateTaken}
             setInput={setDateTaken}
             validate={validate}
           >
@@ -90,7 +90,7 @@ export default function EditDose() {
             Administration Site:
           </TextInput>
           <div className="doses-form--next">
-            <DateInputOpt notRequired date={nextDose} setInput={setNextDose}>
+            <DateInputOpt notRequired value={nextDose} setInput={setNextDose}>
               Next Scheduled Date:
             </DateInputOpt>
           </div>
