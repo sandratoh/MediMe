@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // Components
 import ClinicsCardList from "./ClinicsCardList";
 import IconButton from "../IconButton";
+import NavUpButton from "../NavUpButton";
 
 // Material UI Components
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
@@ -21,6 +22,7 @@ export default function ClinicsList() {
         <IconButton new color="secondary" variant="contained">
           <Link to="/clinics/new">New</Link>
         </IconButton>
+        <NavUpButton/>
       </div>
       <h1 className="clinics-list--title">Clinical Visits</h1>
       <div className="clinics-list--content">
