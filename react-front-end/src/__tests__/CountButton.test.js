@@ -1,5 +1,5 @@
 // Libraries
-import { render, cleanup, fireEvent, prettyDOM } from "@testing-library/react";
+import { render, cleanup, fireEvent } from "@testing-library/react";
 
 // Component
 import CountButton from "../components/CountButton";
@@ -31,6 +31,18 @@ describe("CountButton", () => {
   it("subtracts from count when clicked on minus button", () => {
     const { getByText, getByTestId } = render(<CountButton />);
     
+    const minusButton = getByTestId("minus");
+
+    expect(getByText(1)).toBeInTheDocument();
+
+    fireEvent.click(minusButton);
+
+    expect(getByText(0)).toBeInTheDocument();
+  });
+
+  it("adds to and subtracts from count when clicked on plus and minus button", () => {
+    const { getByText, getByTestId } = render(<CountButton />);
+    
     const plusButton = getByTestId("plus");
     const minusButton = getByTestId("minus");
 
@@ -38,10 +50,11 @@ describe("CountButton", () => {
 
     fireEvent.click(plusButton);
     fireEvent.click(plusButton);
-    
+
     expect(getByText(3)).toBeInTheDocument();
     
     fireEvent.click(minusButton);
+
     expect(getByText(2)).toBeInTheDocument();
   });
 
@@ -57,6 +70,7 @@ describe("CountButton", () => {
     expect(getByText(0)).toBeInTheDocument();
 
     fireEvent.click(minusButton);
+
     expect(getByText(0)).toBeInTheDocument();
   });
 });
