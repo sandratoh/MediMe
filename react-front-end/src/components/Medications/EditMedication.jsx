@@ -29,6 +29,10 @@ export default function EditMedication() {
     medications,
     medicationEditId,
     pharmacies,
+    pharmacyExists, 
+    addPharmacy,
+    doctorExists,
+    addDoctor,
   } = useContext(dataContext);
 
   const medication = medications.find(
@@ -64,6 +68,10 @@ export default function EditMedication() {
   const onCancel = () => setRedirect(true);
 
   const onSave = () => {
+    if (!date || medicationName === "" || doctor === "" || pharmacy === "") {
+      return setValidate(true);
+    }
+
     const medicationData = {
       user_id: 1,
       name: medicationName,
@@ -77,8 +85,16 @@ export default function EditMedication() {
       is_take_with_water: checkbox.water,
     };
 
+    if (!pharmacyExists(pharmacy)) {
+      addPharmacy({ name: pharmacy });
+    };
+
+    if (!doctorExists(doctor)) {
+      addDoctor({ name: doctor });
+    };
+
     editMedication(medicationData).then((res) => {
-      res.data.error ? setValidate(true) : setRedirect(true);
+      !res.data.error && setRedirect(true);
     });
   };
 
