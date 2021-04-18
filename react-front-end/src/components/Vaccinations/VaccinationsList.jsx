@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // Components
 import IconButton from "../IconButton";
 import VaccinationsCardList from "./VaccinationsCardList";
+import NavUpButton from "../NavUpButton";
 
 // Material UI Components
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
@@ -21,6 +22,7 @@ export default function VaccinationsList() {
         <IconButton new color="secondary" variant="contained">
           <Link to="/vaccinations/new">New</Link>
         </IconButton>
+        <NavUpButton/>
       </div>
       <h1 className="vaccinations-list--title">Vaccinations</h1>
       <div className="vaccinations-list--content"></div>
