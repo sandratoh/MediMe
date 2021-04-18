@@ -22,7 +22,9 @@ export default function MedicationCard(props) {
           {formatDate(props.date)}
         </Typography>
         <Typography variant="subtitle1">{props.value}</Typography>
-        <Typography variant="subtitle1">{props.nickName}</Typography>
+        <p className="card--nickname">
+          {props.nickName ? `(${props.nickName})` : null}
+        </p>
       </div>
       <div className="card--icon">
         <img
