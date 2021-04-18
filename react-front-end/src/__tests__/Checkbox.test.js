@@ -1,5 +1,5 @@
 // Libraries
-import { render, cleanup, fireEvent, prettyDOM } from "@testing-library/react";
+import { render, cleanup, fireEvent } from "@testing-library/react";
 
 // Component
 import CheckBox from "../components/Checkbox";
@@ -24,17 +24,36 @@ describe("Checkbox", () => {
   it("renders unchecked checkboxes on default", () => {
     const { getByLabelText } = render(<CheckBox />);
 
-    const foodCheckboxWrapper = getByLabelText("Take with food").closest("label");
-    const foodCheckbox = foodCheckboxWrapper.querySelector("input[type='checkbox']");
-    // console.log(prettyDOM(foodCheckbox))
-
-    const waterCheckboxWrapper = getByLabelText("Take with water").closest("label");
-    const waterCheckbox = waterCheckboxWrapper.querySelector("input[type='checkbox'");
+    const foodCheckbox = getByLabelText("Take with food")
+      .closest("label")
+      .querySelector("input[type='checkbox']");
+      
+    const waterCheckbox = getByLabelText("Take with water")
+      .closest("label")
+      .querySelector("input[type='checkbox']");   
     
     expect(foodCheckbox.checked).toBe(false);
     expect(waterCheckbox.checked).toBe(false);
-    // Alternate test methods (all passes)
-    expect(foodCheckbox).toHaveProperty('checked', false);
-    expect(waterCheckbox).toHaveProperty('checked', false);
-  })
-})
+  });
+
+  it("renders checked checkboxes when clicked", () => {
+    const { getByLabelText } = render(<CheckBox />);
+
+    const foodCheckbox = getByLabelText("Take with food")
+      .closest("label")
+      .querySelector("input[type='checkbox']");
+      
+    const waterCheckbox = getByLabelText("Take with water")
+      .closest("label")
+      .querySelector("input[type='checkbox']");    
+
+      expect(foodCheckbox.checked).toBe(false);
+      expect(waterCheckbox.checked).toBe(false);
+      
+      fireEvent.click(foodCheckbox);
+      fireEvent.click(waterCheckbox);
+      
+      expect(foodCheckbox.checked).toBe(true);
+      expect(waterCheckbox.checked).toBe(true);
+  });
+});
