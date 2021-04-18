@@ -47,22 +47,26 @@ export default function Login() {
       <h1 className="login-form--title">Login</h1>
       <div className="login-form--container">
         <div className="login-form--field">
-          <TextInput
-            required
-            value={email}
-            setInput={setEmail}
-            validate={validate}
-          >
-            Email:
-          </TextInput>
-          <PasswordInput
-            required
-            value={password}
-            setInput={setPassword}
-            validate={validate}
-          >
-            Password:
-          </PasswordInput>
+          <div data-testid="email-input">
+            <TextInput
+              required
+              value={email}
+              setInput={setEmail}
+              validate={validate}
+            >
+              Email:
+            </TextInput>
+          </div>
+          <div data-testid="password-input">
+            <PasswordInput
+              required
+              value={password}
+              setInput={setPassword}
+              validate={validate}
+            >
+              Password:
+            </PasswordInput>
+          </div>
         </div>
         <div className="login-form--user-action">
           <IconButton
