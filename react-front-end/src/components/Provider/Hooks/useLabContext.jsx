@@ -56,7 +56,7 @@ export default function useLabContext() {
 
   const refreshAllLabs = () => {
     return axios.get("/api/labs").then((res) => {
-      setLabRecords(res.data.labs);
+      setLabRecords(res.data.lab_records);
     });
   };
 
@@ -72,7 +72,7 @@ export default function useLabContext() {
 
     Promise.all([axios.get(apiLabRecordsUrl), axios.get(apiLabsUrl)]).then(
       (res) => {
-        const records = res[0].data.labs;
+        const records = res[0].data.lab_records;
         const labs = res[1].data.labs;
 
         setLabRecords(records);

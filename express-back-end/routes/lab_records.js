@@ -10,8 +10,8 @@ module.exports = (client) => {
     client
       .query(query)
       .then((data) => {
-        const labs = data.rows;
-        res.json({ labs });
+        const lab_records = data.rows;
+        res.json({ lab_records });
       })
       .catch((err) => {
         res.status(500).json({ error: err.message });
