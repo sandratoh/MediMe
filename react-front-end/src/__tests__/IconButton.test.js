@@ -1,5 +1,5 @@
 // Libraries
-import { render, cleanup, fireEvent, prettyDOM } from "@testing-library/react"
+import { render, cleanup, fireEvent } from "@testing-library/react";
 
 // Component
 import IconButton from "../components/IconButton";
