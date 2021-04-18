@@ -1,3 +1,19 @@
-.nav-bar, .nav-bar--logo {
+.nav-bar {
+  display:flex;
+  justify-content: center;
   flex-grow: 1;
+  height: 72px;
+}
+
+.nav-bar--container {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-bar--logo {
+  flex-grow: 1;
+  height: 56px;
+  width: auto;
+  margin-top: 4px;
 }

@@ -8,7 +8,6 @@ import CloseIcon from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 
 // Helpers
 import { dataContext } from "./Provider/DataProvider";
@@ -34,7 +33,7 @@ export default function Header() {
         <Link to="/menu">
           <IconButton
             edge="end"
-            color="inherit"
+            style={{ color: 'white' }}
             aria-label="menu"
             onClick={() => setMenu(true)}
           >
@@ -49,14 +48,10 @@ export default function Header() {
 
   return (
     <AppBar position="absolute" className="nav-bar">
-      <Toolbar>
-        <Typography
-          variant="h6"
-          className="nav-bar--logo"
-          onClick={() => setMenu(false)}
-        >
-          <Link to="/">MediMe</Link>
-        </Typography>
+      <Toolbar className="nav-bar--container">
+        <Link to="/">
+          <img className="nav-bar--logo" src={"/logo.png"} alt="logo" />
+        </Link>
         {user && iconByState(menu)} {/* no menu access if not logged in*/}
       </Toolbar>
     </AppBar>
