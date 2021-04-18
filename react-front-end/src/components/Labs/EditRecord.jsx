@@ -58,13 +58,9 @@ export default function EditRecord() {
       type_of_test: recordType,
     };
 
-    if(!labExists(lab)) {
-      addLab({ name: lab });
-    };
+    !labExists(lab) && addLab({ name: lab });
 
-    if (!doctorExists(doctor)) {
-      addDoctor({ name: doctor });
-    };
+    !doctorExists(doctor) && addDoctor({ name: doctor });
 
     editLabRecord(labDetail).then((res) => {
       !res.data.error && setRedirect(true);

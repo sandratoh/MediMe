@@ -72,13 +72,9 @@ export default function NewMedication() {
       is_take_with_water: checkbox.water,
     };
 
-    if (!pharmacyExists(pharmacy)) {
-      addPharmacy({ name: pharmacy });
-    };
+    !pharmacyExists(pharmacy) && addPharmacy({ name: pharmacy });
 
-    if (!doctorExists(doctor)) {
-      addDoctor({ name: doctor });
-    };
+    !doctorExists(doctor) && addDoctor({ name: doctor });
 
     addMedication(medicationData).then((res) => {
       !res.data.error && setRedirect(true);

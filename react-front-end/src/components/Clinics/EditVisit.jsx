@@ -64,13 +64,9 @@ export default function EditVisit() {
       doctor_diagnosis: diagnosis,
     };
 
-    if (!clinicExists(medicalCenter)) {
-      addClinic({ name: medicalCenter });
-    }
+    !clinicExists(medicalCenter) && addClinic({ name: medicalCenter });
 
-    if (!doctorExists(doctor)) {
-      addDoctor({ name: doctor });
-    }
+    !doctorExists(doctor) && addDoctor({ name: doctor });
 
     editClinicVisit(visitDetail).then((res) => {
       !res.data.error && setRedirect(true);

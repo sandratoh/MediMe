@@ -53,13 +53,9 @@ export default function NewVisit(props) {
       doctor_diagnosis: diagnosis,
     };
 
-    if (!clinicExists(medicalCenter)) {
-      addClinic({ name: medicalCenter });
-    }
+    !clinicExists(medicalCenter) && addClinic({ name: medicalCenter });
 
-    if (!doctorExists(doctor)) {
-      addDoctor({ name: doctor });
-    }
+    !doctorExists(doctor) && addDoctor({ name: doctor });
 
     addClinicVisit(visitDetail).then((res) => {
       !res.data.error && setRedirect(true);
