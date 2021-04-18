@@ -4,7 +4,7 @@ const router = express.Router();
 module.exports = (client) => {
   // get all doctors
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM doctors;`;
+    const query = `SELECT * FROM doctors;`;
 
     client
       .query(query)
@@ -18,7 +18,7 @@ module.exports = (client) => {
   });
 
   router.post("/", (req, res) => {
-    let query = `
+    const query = `
       INSERT INTO doctors (name)
       VALUES ($1)
       RETURNING *

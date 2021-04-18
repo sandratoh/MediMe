@@ -9,7 +9,7 @@ const {
 module.exports = (client) => {
   // get all clinical visit records
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM clinical_visits ORDER BY date DESC;`;
+    const query = `SELECT * FROM clinical_visits ORDER BY date DESC;`;
 
     client
       .query(query)
@@ -32,7 +32,7 @@ module.exports = (client) => {
 
   // get all clinics
   router.get("/list", (req, res) => {
-    let query = `SELECT * FROM clinics;`;
+    const query = `SELECT * FROM clinics;`;
 
     client
       .query(query)
@@ -54,7 +54,7 @@ module.exports = (client) => {
 
   // get specific clinical record
   router.get("/:id", (req, res) => {
-    let query = `SELECT * FROM clinical_visits WHERE id = $1;`;
+    const query = `SELECT * FROM clinical_visits WHERE id = $1;`;
 
     client
       .query(query, [req.params.id])
@@ -78,7 +78,7 @@ module.exports = (client) => {
 
   // delete specific clinical record
   router.delete("/:id", (req, res) => {
-    let query = `DELETE FROM clinical_visits WHERE id = $1`;
+    const query = `DELETE FROM clinical_visits WHERE id = $1`;
 
     client
       .query(query, [req.params.id])

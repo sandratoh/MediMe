@@ -5,7 +5,7 @@ const { addUser, updateUser } = require("../db/queries/queries-users");
 module.exports = (client) => {
   // get all users
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM users;`;
+    const query = `SELECT * FROM users;`;
 
     client
       .query(query)
@@ -27,7 +27,7 @@ module.exports = (client) => {
 
   // get specific user
   router.get("/:id", (req, res) => {
-    let query = `SELECT * FROM users WHERE id = $1;`;
+    const query = `SELECT * FROM users WHERE id = $1;`;
 
     client
       .query(query, [req.params.id])

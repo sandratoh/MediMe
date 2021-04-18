@@ -8,7 +8,7 @@ const {
 module.exports = (client) => {
   // get all medications
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM medications ORDER BY prescribed_date DESC;`;
+    const query = `SELECT * FROM medications ORDER BY prescribed_date DESC;`;
 
     client
       .query(query)
@@ -33,7 +33,7 @@ module.exports = (client) => {
 
   // get specific medication
   router.get("/:id", (req, res) => {
-    let query = `SELECT * FROM medications where id = $1;`;
+    const query = `SELECT * FROM medications where id = $1;`;
 
     client
       .query(query, [req.params.id])
@@ -59,7 +59,7 @@ module.exports = (client) => {
 
   // delete specific medication
   router.delete("/:id", (req, res) => {
-    let query = `DELETE FROM medications WHERE id = $1`;
+    const query = `DELETE FROM medications WHERE id = $1`;
 
     client
       .query(query, [req.params.id])

@@ -5,7 +5,7 @@ const { addLab, updateLab, addNewLab } = require("../db/queries/queries-lab_reco
 module.exports = (client) => {
   // get all lab records
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM lab_records ORDER BY date DESC;`;
+    const query = `SELECT * FROM lab_records ORDER BY date DESC;`;
 
     client
       .query(query)
@@ -30,7 +30,7 @@ module.exports = (client) => {
 
   // get all labs
   router.get("/list", (req, res) => {
-    let query = `SELECT * FROM labs;`;
+    const query = `SELECT * FROM labs;`;
 
     client
       .query(query)
@@ -52,7 +52,7 @@ module.exports = (client) => {
 
   // get specific lab record
   router.get("/:id", (req, res) => {
-    let query = `SELECT * FROM lab_records where id = $1;`;
+    const query = `SELECT * FROM lab_records where id = $1;`;
 
     client
       .query(query, [req.params.id])
@@ -77,7 +77,7 @@ module.exports = (client) => {
 
   // delete specific lab record
   router.delete("/:id", (req, res) => {
-    let query = `DELETE FROM lab_records WHERE id = $1`;
+    const query = `DELETE FROM lab_records WHERE id = $1`;
 
     client
       .query(query, [req.params.id])

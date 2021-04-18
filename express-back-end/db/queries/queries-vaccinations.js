@@ -26,7 +26,6 @@ const addDose = async (dose) => {
     dose.next_scheduled_dose,
   ];
 
-  // console.log("values", values);
   return client.query(query, values).then((res) => res.rows);
 };
 
@@ -46,7 +45,6 @@ const updateDose = async (dose) => {
     dose.doseId,
   ];
 
-  // console.log("values", values);
   return client.query(query, values).then((res) => res.rows);
 };
 

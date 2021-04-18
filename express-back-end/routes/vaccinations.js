@@ -9,7 +9,7 @@ const {
 module.exports = (client) => {
   // get all vaccinations
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM vaccinations ORDER BY id DESC;`;
+    const query = `SELECT * FROM vaccinations ORDER BY id DESC;`;
 
     client
       .query(query)
@@ -32,7 +32,7 @@ module.exports = (client) => {
 
   // delete vaccination record
   router.delete("/:id", (req, res) => {
-    let query = `DELETE FROM vaccinations WHERE id = $1`;
+    const query = `DELETE FROM vaccinations WHERE id = $1`;
 
     client
       .query(query, [req.params.id])
@@ -44,7 +44,7 @@ module.exports = (client) => {
 
   // get all doses
   router.get("/dose", (req, res) => {
-    let query = `SELECT * FROM vaccination_doses ORDER BY date_taken ASC`;
+    const query = `SELECT * FROM vaccination_doses ORDER BY date_taken ASC`;
 
     client
       .query(query)
@@ -59,7 +59,7 @@ module.exports = (client) => {
 
   // get one specific vaccination record
   router.get("/:id", (req, res) => {
-    let query = `SELECT * FROM vaccination_doses WHERE id = $1;`;
+    const query = `SELECT * FROM vaccination_doses WHERE id = $1;`;
 
     client
       .query(query, [req.params.id])
@@ -74,7 +74,7 @@ module.exports = (client) => {
 
   // get all doses associated to specific vaccination
   router.get("/:id/dose", (req, res) => {
-    let query = `SELECT * FROM vaccination_doses WHERE vaccination_id = $1;`;
+    const query = `SELECT * FROM vaccination_doses WHERE vaccination_id = $1;`;
 
     client
       .query(query, [req.params.id])
@@ -97,7 +97,7 @@ module.exports = (client) => {
 
   // get specific dose record
   router.get("/:id/dose/:doseId", (req, res) => {
-    let query = `SELECT * FROM vaccination_doses WHERE vaccination_id = $1 AND id = $2;`;
+    const query = `SELECT * FROM vaccination_doses WHERE vaccination_id = $1 AND id = $2;`;
 
     client
       .query(query, [req.params.id, req.params.doseId])
@@ -121,7 +121,7 @@ module.exports = (client) => {
 
   // delete dose record
   router.delete("/:id/dose/:doseId", (req, res) => {
-    let query = `DELETE FROM vaccination_doses WHERE vaccination_id = $1 AND id = $2`;
+    const query = `DELETE FROM vaccination_doses WHERE vaccination_id = $1 AND id = $2`;
 
     client
       .query(query, [req.params.id, req.params.doseId])
