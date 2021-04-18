@@ -16,21 +16,23 @@ describe("TextButton", () => {
     expect(getByText("Default")).toBeInTheDocument();
   });
 
-  it("renders a default button style", () => {
-    const { getByText } = render(
-      <TextButton variant="contained">Default</TextButton>
-    );
-    expect(getByText("Default").closest("button")).toHaveClass(
-      "MuiButton-contained"
-    );
-  });
-
   it("renders a userAction button", () => {
     const { getByText } = render(
       <TextButton userAction>User Action Button</TextButton>
     );
     expect(getByText("User Action Button").closest("button")).toHaveClass(
       "button--user-action"
+    );
+  });
+
+  it("renders a userAction button with styling", () => {
+    const { getByText } = render(
+      <TextButton userAction variant="contained">
+        User Action Button
+      </TextButton>
+    );
+    expect(getByText("User Action Button").closest("button")).toHaveClass(
+      "MuiButton-contained"
     );
   });
 
