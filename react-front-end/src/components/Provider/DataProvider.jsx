@@ -88,6 +88,8 @@ export default function DataProvider(props) {
     deleteMedication,
     // Pharmacies
     pharmacies,
+    pharmacyExists,
+    addPharmacy,
   } = useMedContext();
 
   // Data exports
@@ -134,6 +136,8 @@ export default function DataProvider(props) {
     deleteMedication,
     // Pharmacy
     pharmacies,
+    pharmacyExists,
+    addPharmacy,
     // User
     users,
     userDetailId,

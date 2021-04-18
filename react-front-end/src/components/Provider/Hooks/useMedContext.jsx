@@ -51,6 +51,24 @@ export default function useMedContext() {
     });
   };
 
+  // Pharmacies database calls
+  const pharmacyExists = (name) => {
+    return pharmacies.find((pharmacy) => pharmacy.name === name) ? true : false;
+  };
+
+  const addPharmacy = (formData) => {
+    return axios
+      .post("/api/pharmacies", formData)
+      .then(() => refreshAllPharmacies())
+      .catch((err) => console.log(err));
+  };
+
+  const refreshAllPharmacies = () => {
+    return axios.get("/api/pharmacies").then((res) => {
+      setPharmacies(res.data.pharmacies);
+    });
+  };
+
   useEffect(() => {
     const apiMedRecordsUrl = "/api/medications";
     const apiPharmaciesUrl = "/api/pharmacies";
@@ -83,6 +101,8 @@ export default function useMedContext() {
     // Pharmacies
     pharmacies,
     setPharmacies,
+    pharmacyExists,
+    addPharmacy,
   };
 
   return medData;

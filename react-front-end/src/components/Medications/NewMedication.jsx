@@ -22,7 +22,13 @@ import { dataContext } from "../Provider/DataProvider";
 import "../../styles/form.scss";
 
 export default function NewMedication() {
-  const { addMedication } = useContext(dataContext);
+  const { 
+    addMedication, 
+    pharmacyExists, 
+    addPharmacy,
+    doctorExists,
+    addDoctor,
+   } = useContext(dataContext);
 
   const [date, setDate] = useState(currentDate());
   const [medicationName, setMedicationName] = useState("");
@@ -49,6 +55,10 @@ export default function NewMedication() {
   const onCancel = () => setRedirect(true);
 
   const onSave = () => {
+    if (!date || medicationName === "" || doctor === "" || pharmacy === "") {
+      return setValidate(true);
+    }
+
     const medicationData = {
       user_id: 1,
       name: medicationName,
@@ -62,8 +72,16 @@ export default function NewMedication() {
       is_take_with_water: checkbox.water,
     };
 
+    if (!pharmacyExists(pharmacy)) {
+      addPharmacy({ name: pharmacy });
+    };
+
+    if (!doctorExists(doctor)) {
+      addDoctor({ name: doctor });
+    };
+
     addMedication(medicationData).then((res) => {
-      res.data.error ? setValidate(true) : setRedirect(true);
+      !res.data.error && setRedirect(true);
     });
   };
 
