@@ -33,8 +33,7 @@ export default function Header() {
         <Link to="/menu">
           <IconButton
             edge="end"
-            // color="inherit"
-            className="nav-bar--icon"
+            style={{ color: 'white' }}
             aria-label="menu"
             onClick={() => setMenu(true)}
           >
@@ -43,7 +42,7 @@ export default function Header() {
         </Link>
       );
     } else {
-      return <CloseIcon className="nav-bar--icon" onClick={onClose} />;
+      return <CloseIcon onClick={onClose} />;
     }
   };
 
