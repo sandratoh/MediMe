@@ -55,6 +55,7 @@ export default function IconButton(props) {
       color={props.color}
       startIcon={icon(props)}
       onClick={props.onClick}
+      disabled={props.disabled}
     >
       {props.children}
     </Button>
