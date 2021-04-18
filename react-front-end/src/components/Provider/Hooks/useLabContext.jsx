@@ -10,6 +10,17 @@ export default function useLabContext() {
   const [labRecordEditId, setLabRecordEditId] = useState({});
 
   // Labs database calls
+  const labExists = (name) => {
+    return labs.find((lab) => lab.name === name) ? true : false;
+  };
+
+  const addLab = (formData) => {
+    return axios
+      .post("/api/labs/list", formData)
+      .then(() => refreshAllLabsList())
+      .catch((err) => console.log(err));
+  };
+
   const addLabRecord = (formData) => {
     return axios
       .post("/api/labs/", formData)
@@ -49,6 +60,12 @@ export default function useLabContext() {
     });
   };
 
+  const refreshAllLabsList = () => {
+    return axios.get("/api/labs/list").then((res) => {
+      setLabs(res.data.labs);
+    });
+  }
+
   useEffect(() => {
     const apiLabRecordsUrl = "/api/labs";
     const apiLabsUrl = "/api/labs/list";
@@ -79,6 +96,8 @@ export default function useLabContext() {
     addLabRecord,
     deleteLabRecord,
     editLabRecord,
+    labExists,
+    addLab,
   };
 
   return labData;

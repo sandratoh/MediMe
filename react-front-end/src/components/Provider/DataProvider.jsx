@@ -55,6 +55,8 @@ export default function DataProvider(props) {
     addLabRecord,
     deleteLabRecord,
     editLabRecord,
+    labExists,
+    addLab,
   } = useLabContext();
 
   // Vaccination and dose imports
@@ -119,6 +121,8 @@ export default function DataProvider(props) {
     addLabRecord,
     deleteLabRecord,
     editLabRecord,
+    labExists,
+    addLab,
     // Medication
     medications,
     medicationDetailId,

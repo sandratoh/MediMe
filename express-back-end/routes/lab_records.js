@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { addLab, updateLab } = require("../db/queries/queries-lab_records");
+const { addLab, updateLab, addNewLab } = require("../db/queries/queries-lab_records");
 
 module.exports = (client) => {
   // get all lab records
@@ -41,6 +41,13 @@ module.exports = (client) => {
       .catch((err) => {
         res.status(500).json({ error: err.message });
       });
+  });
+
+  // add new lab
+  router.post("/list", (req, res) => {
+    addNewLab(req.body.name)
+      .then((data) => res.status(200).json({data}))
+      .catch((err) => res.json({ error: err.message }));
   });
 
   // get specific lab record
