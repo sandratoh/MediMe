@@ -16,7 +16,13 @@ import { dataContext } from "../Provider/DataProvider";
 import "../../styles/form.scss";
 
 export default function NewRecord() {
-  const { addLabRecord } = useContext(dataContext);
+  const { 
+    addLabRecord, 
+    labExists, 
+    addLab, 
+    doctorExists, 
+    addDoctor 
+  } = useContext(dataContext);
 
   const [date, setDate] = useState(currentDate());
   const [lab, setLab] = useState("");
@@ -32,6 +38,10 @@ export default function NewRecord() {
   const onCancel = () => setRedirect(true);
 
   const onSave = () => {
+    if (!date || lab === "" || doctor === "" || recordType === "") {
+      return setValidate(true);
+    };
+
     const labDetail = {
       user_id: 1,
       date,
@@ -40,8 +50,16 @@ export default function NewRecord() {
       type_of_test: recordType,
     };
 
+    if(!labExists(lab)) {
+      addLab({ name: lab });
+    };
+
+    if (!doctorExists(doctor)) {
+      addDoctor({ name: doctor });
+    };
+
     addLabRecord(labDetail).then((res) => {
-      res.data.error ? setValidate(true) : setRedirect(true);
+      !res.data.error && setRedirect(true);
     });
   };
 
