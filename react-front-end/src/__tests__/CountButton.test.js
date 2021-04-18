@@ -44,4 +44,19 @@ describe("CountButton", () => {
     fireEvent.click(minusButton);
     expect(getByText(2)).toBeInTheDocument();
   });
-})
+
+  it("cannot subtract from count if the count is at 0", () => {
+    const { getByText, getByTestId } = render(<CountButton />);
+
+    const minusButton = getByTestId("minus");
+
+    expect(getByText(1)).toBeInTheDocument();    
+
+    fireEvent.click(minusButton);
+
+    expect(getByText(0)).toBeInTheDocument();
+
+    fireEvent.click(minusButton);
+    expect(getByText(0)).toBeInTheDocument();
+  });
+});
