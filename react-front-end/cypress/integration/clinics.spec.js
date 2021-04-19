@@ -42,6 +42,8 @@ describe("User can add, edit, delete clinical visits", () => {
 
     cy.contains(".card", "Hospital A").click();
 
+    cy.contains("Clinical Visit Detail").should("exist");
+
     cy.contains("Hospital A").should("exist");
 
     cy.contains(/edit/i).click();
