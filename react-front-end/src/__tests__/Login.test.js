@@ -23,11 +23,11 @@ describe("Login", () => {
 
   it("renders without email if not provided", () => {
     const { getByTestId } = render(
-      <Router>
-        <DataProvider>
+      <DataProvider>
+        <Router>
           <Login />
-        </DataProvider>
-      </Router>
+        </Router>
+      </DataProvider>
     );
     expect(getByTestId("email-input").querySelector("textarea")).toHaveValue(
       ""
@@ -36,11 +36,11 @@ describe("Login", () => {
 
   it("renders without password if not provided", () => {
     const { getByTestId } = render(
-      <Router>
-        <DataProvider>
+      <DataProvider>
+        <Router>
           <Login />
-        </DataProvider>
-      </Router>
+        </Router>
+      </DataProvider>
     );
     expect(getByTestId("password-input").querySelector("input")).toHaveValue(
       ""
@@ -49,11 +49,11 @@ describe("Login", () => {
 
   it("renders a login button", () => {
     const { getByText } = render(
-      <Router>
-        <DataProvider>
+      <DataProvider>
+        <Router>
           <Login />
-        </DataProvider>
-      </Router>
+        </Router>
+      </DataProvider>
     );
 
     const button = getByText("LOGIN");
@@ -64,11 +64,11 @@ describe("Login", () => {
   it("renders an error if email or password is not provided when Login is clicked", () => {
     const onLogin = jest.fn();
     const { getByTestId, getByText } = render(
-      <Router>
-        <DataProvider>
+      <DataProvider>
+        <Router>
           <Login />
-        </DataProvider>
-      </Router>
+        </Router>
+      </DataProvider>
     );
 
     expect(getByTestId("email-input").querySelector("textarea")).toHaveValue(
@@ -94,14 +94,13 @@ describe("Login", () => {
     );
   });
 
-  it("renders corresponding values when user types in email and password", async () => {
-    const onLogin = jest.fn();
-    const { getByTestId, getByText, debug } = await render(
-      <Router>
-        <DataProvider>
+  it("renders corresponding values when user types in email and password", () => {
+    const { getByTestId } = render(
+      <DataProvider>
+        <Router>
           <Login />
-        </DataProvider>
-      </Router>
+        </Router>
+      </DataProvider>
     );
 
     expect(getByTestId("email-input").querySelector("textarea")).toHaveValue(
