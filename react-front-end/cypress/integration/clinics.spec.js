@@ -2,7 +2,7 @@ describe("User can add, edit, delete clinical visits", () => {
   beforeEach(() => {
     cy.visit("/");
 
-    cy.contains("Log In").click();
+    cy.contains(/log in/i).click();
 
     cy.get("[data-testid=email-input]").type("rachel@email.com");
     cy.get("[data-testid=password-input]").type("password");
@@ -11,11 +11,9 @@ describe("User can add, edit, delete clinical visits", () => {
   });
 
   it("should add new clinical visit", () => {
-    cy.wait(1000);
-
     cy.contains("Clinical Visits").click();
 
-    cy.contains("New").click();
+    cy.contains(/new/i).click();
 
     cy.contains("HOSPITAL").click();
 
@@ -34,30 +32,42 @@ describe("User can add, edit, delete clinical visits", () => {
 
     cy.get("form").get("[data-testid=diagnosis-input]").type("Common cold");
 
-    cy.contains("Save").click();
+    cy.contains(/save/i).click();
+
+    cy.contains(".card", "Hospital A").should("exist");
   });
 
   it("should update a clinical visit", () => {
-    cy.wait(1000);
-
     cy.contains("Clinical Visits").click();
 
-    cy.contains("Hospital A").click();
+    cy.contains(".card", "Hospital A").click();
 
-    cy.contains("Edit").click();
+    cy.contains("Clinical Visit Detail").should("exist");
+
+    cy.contains("Hospital A").should("exist");
+
+    cy.contains(/edit/i).click();
 
     cy.contains("Hospital A").clear().type("Hospital C");
 
-    cy.contains("Save").click();
+    cy.contains(/save/i).click();
+
+    cy.contains("Clinical Visit Detail").should("exist");
+
+    cy.contains("Hospital C").should("exist");
+
+    cy.get("[data-testid=back-button]").click();
+
+    cy.contains(".card", "Hospital C").should("exist");
   });
 
   it("should delete a clinical visit", () => {
-    cy.wait(1000);
-
     cy.contains("Clinical Visits").click();
 
-    cy.contains("Hospital C").click();
+    cy.contains(".card", "Hospital C").click();
 
-    cy.contains("Delete").click();
+    cy.contains(/delete/i).click();
+
+    cy.contains(".card", "Hospital C").should("not.exist");
   });
 });
