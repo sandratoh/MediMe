@@ -1,3 +1,5 @@
+/* global cy */
+
 describe("User can add, edit, delete clinical visits", () => {
   it("should log in", () => {
     cy.visit("/");
