@@ -14,8 +14,6 @@ describe("User can add, edit, and delete lab records", () => {
   });
   
   it("should add a lab record", () => {
-    // cy.visit("/labs");
-    cy.wait(1000);
     cy.contains("Lab Records").click();
 
     cy.contains(/new/i).click();
@@ -43,7 +41,6 @@ describe("User can add, edit, and delete lab records", () => {
   });
 
   it("should edit a lab record", () => {
-    cy.wait(1000);
     cy.contains("Lab Records").click();
 
     cy.contains(".card", "Dexter's Laboratory")
@@ -73,7 +70,6 @@ describe("User can add, edit, and delete lab records", () => {
   });
 
   it("should delete a lab record", () => {
-    cy.wait(1000);
     cy.contains("Lab Records").click();
 
     cy.contains(".card", "Dexter's New Lab")
