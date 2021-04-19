@@ -43,11 +43,9 @@ export default function LabDetail() {
     <section className="lab-detail">
       {redirect && <Redirect to="/labs" />}
       <div className="labs-list--icons">
-        <span className="back-button">
-          <Link to="/labs">
-            <ArrowBackIosIcon />
-          </Link>
-        </span>
+        <Link to="/labs">
+          <ArrowBackIosIcon />
+        </Link>
       </div>
       <h1 className="labs-list--title">Lab Record Detail</h1>
 
