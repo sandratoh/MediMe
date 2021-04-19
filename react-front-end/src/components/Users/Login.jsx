@@ -68,14 +68,14 @@ export default function Login() {
             </PasswordInput>
           </div>
         </div>
-        <div className="login-form--user-action" data-testid="login-button">
+        <div className="login-form--user-action">
           <IconButton
             login
             variant="contained"
             color="secondary"
             onClick={onLogin}
           >
-            Login
+            LOGIN
           </IconButton>
         </div>
         <div className="login-form--redirect">

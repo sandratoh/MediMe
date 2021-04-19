@@ -47,9 +47,23 @@ describe("Login", () => {
     );
   });
 
-  it("renders an error if email or password is not provided when login is clicked", () => {
-    const handleClick = jest.fn();
-    const { getByTestId, getByRole, getByLabelText, getByText } = render(
+  it("renders a login button", () => {
+    const { getByText } = render(
+      <Router>
+        <DataProvider>
+          <Login />
+        </DataProvider>
+      </Router>
+    );
+
+    const button = getByText("LOGIN");
+
+    expect(button).toBeInTheDocument();
+  });
+
+  it("renders an error if email or password is not provided when Login is clicked", () => {
+    const onLogin = jest.fn();
+    const { getByTestId, getByText } = render(
       <Router>
         <DataProvider>
           <Login />
@@ -64,25 +78,57 @@ describe("Login", () => {
       ""
     );
 
-    const button = getByTestId("login-button").querySelector("button");
-
-    // const button = getByText("LOGIN");
-
-    // const button = getByRole("button", { name: /Login/i });
-
-    // console.log(button);
+    const button = getByText("LOGIN");
 
     fireEvent.click(button);
 
-    expect(handleClick).toHaveBeenCalledTimes(1);
+    expect(onLogin).not.toHaveBeenCalled();
 
-    // expect(getByText("This field cannot be blank.")).toBeInTheDocument();
+    expect(getByText("This field cannot be blank.")).toBeInTheDocument();
+
+    expect(getByTestId("email-input").querySelector("label")).toHaveClass(
+      "Mui-error"
+    );
+    expect(getByTestId("password-input").querySelector("label")).toHaveClass(
+      "Mui-error"
+    );
+  });
+
+  it("successfully logs in with correct user info", async () => {
+    const onLogin = jest.fn();
+    const { getByTestId, getByText, debug } = await render(
+      <Router>
+        <DataProvider>
+          <Login />
+        </DataProvider>
+      </Router>
+    );
+
+    expect(getByTestId("email-input").querySelector("textarea")).toHaveValue(
+      ""
+    );
+    expect(getByTestId("password-input").querySelector("input")).toHaveValue(
+      ""
+    );
+
+    fireEvent.change(getByTestId("email-input").querySelector("textarea"), {
+      target: { value: "rachel@email.com" },
+    });
+    fireEvent.change(getByTestId("password-input").querySelector("input"), {
+      target: { value: "password" },
+    });
+
+    expect(getByTestId("email-input").querySelector("textarea")).toHaveValue(
+      "rachel@email.com"
+    );
+    expect(getByTestId("password-input").querySelector("input")).toHaveValue(
+      "password"
+    );
+
+    const button = getByText("LOGIN");
+
+    fireEvent.click(button);
+    debug();
+    expect(onLogin).toHaveBeenCalledTimes(1);
   });
 });
-
-// expect(getByTestId("email-input").querySelector("label")).toHaveClass(
-//   "Mui-error"
-// );
-// expect(getByTestId("password-input").querySelector("label")).toHaveClass(
-//   "Mui-error"
-// );
