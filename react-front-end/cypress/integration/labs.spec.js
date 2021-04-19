@@ -16,45 +16,36 @@ describe("User can add, edit, and delete lab records", () => {
   it("should add a lab record", () => {
     // 1. Click into lab records
     // cy.visit("/labs");
-    cy.wait(500);
+    cy.wait(1000);
     cy.contains("Lab Records").click();
 
     // 2. Click new button
     cy.contains(/new/i).click();
 
     // 3. Enter info into fields
-    cy.contains(/date:/i)
-      .get("input").first()
-      .type("2022-02-22");
+    cy.get("[data-testid=lab-date-input]")
+      .type("2024-03-01");
 
-    // Alternate method with data test id
-    // cy.get("form")
-    //   .get("[data-testid=lab-date-input]")
-    //   .type("2022-02-22");
-
-    cy.contains(/lab:/i)
-      .get("textarea").first()
+    cy.get("[data-testid=lab-name]")
+      // .get("textarea").first()
       .type("Dexter's Laboratory")
 
-    cy.contains(/type of record/i)
-      .click({ force: true })
-      // .closest(".MuiSelect-icon")
-      // .focus()
-      // .get("input").eq(1)
-      // .click({ force: true })
-      .type("MRI", { force: true })
-      // .focus()
+    cy.get("[data-testid=lab-record-type")
+      .click()
 
-    cy.contains(/referral doctor:/i)
-      .get("textarea").eq(2)
+    cy.contains("MRI")
+      .click()
+
+    cy.get("[data-testid=lab-doctor")
       .type("Dr. Janice Flamingo")
-
 
     // 4. Press save
     cy.contains(/save/i)
       .click()
 
     // 5. Expect to contain new record
+    cy.contains(".card", "Mar 01 2024")
+    cy.contains(".card", "Dexter's Laboratory")
 
   });
 
