@@ -21,7 +21,9 @@ export default function DateInput(props) {
         error={!props.value && props.validate}
         label={props.children}
         type="date"
-        defaultValue={props.date ? formatDateToISO(props.date) : currentDate()}
+        defaultValue={
+          props.value ? formatDateToISO(props.value) : currentDate()
+        }
         size="medium"
         InputLabelProps={{
           shrink: true,
