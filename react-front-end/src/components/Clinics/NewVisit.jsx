@@ -68,15 +68,18 @@ export default function NewVisit(props) {
       <h1 className="clinics-form--title">New Clinical Visit</h1>
       <div className="clinics-form--container">
         <div className="clinics-form--field">
-          <DateInput value={date} setInput={setDate} validate={validate}>
-            Date:
-          </DateInput>
+          <div data-testid="visit-date-input">
+            <DateInput value={date} setInput={setDate} validate={validate}>
+              Date:
+            </DateInput>
 
-          <ClinicGroupedButtons
-            state={visitType}
-            onChange={setVisitType}
-            validate={validate}
-          />
+            <ClinicGroupedButtons
+              state={visitType}
+              onChange={setVisitType}
+              validate={validate}
+            />
+          </div>
+
           <div data-testid="medical-center-input">
             <TextInput
               required

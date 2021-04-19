@@ -19,6 +19,11 @@ describe("User can add, edit, delete clinical visits", () => {
 
     cy.contains("HOSPITAL").click();
 
+    cy.get("form")
+      .get("[data-testid=visit-date-input]")
+      .get("input")
+      .type("2025-04-20");
+
     cy.get("form").get("[data-testid=medical-center-input]").type("Hospital A");
 
     cy.get("form").get("[data-testid=doctor-input]").type("Dr. Strange");
