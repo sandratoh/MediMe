@@ -13,11 +13,11 @@ afterEach(cleanup);
 describe("Login", () => {
   it("renders without crashing", () => {
     render(
-      <Router>
-        <DataProvider>
+      <DataProvider>
+        <Router>
           <Login />
-        </DataProvider>
-      </Router>
+        </Router>
+      </DataProvider>
     );
   });
 
@@ -94,41 +94,35 @@ describe("Login", () => {
     );
   });
 
-  // it("successfully logs in with correct user info", async () => {
-  //   const onLogin = jest.fn();
-  //   const { getByTestId, getByText, debug } = await render(
-  //     <Router>
-  //       <DataProvider>
-  //         <Login />
-  //       </DataProvider>
-  //     </Router>
-  //   );
+  it("renders corresponding values when user types in email and password", async () => {
+    const onLogin = jest.fn();
+    const { getByTestId, getByText, debug } = await render(
+      <Router>
+        <DataProvider>
+          <Login />
+        </DataProvider>
+      </Router>
+    );
 
-  //   expect(getByTestId("email-input").querySelector("textarea")).toHaveValue(
-  //     ""
-  //   );
-  //   expect(getByTestId("password-input").querySelector("input")).toHaveValue(
-  //     ""
-  //   );
+    expect(getByTestId("email-input").querySelector("textarea")).toHaveValue(
+      ""
+    );
+    expect(getByTestId("password-input").querySelector("input")).toHaveValue(
+      ""
+    );
 
-  //   fireEvent.change(getByTestId("email-input").querySelector("textarea"), {
-  //     target: { value: "rachel@email.com" },
-  //   });
-  //   fireEvent.change(getByTestId("password-input").querySelector("input"), {
-  //     target: { value: "password" },
-  //   });
+    fireEvent.change(getByTestId("email-input").querySelector("textarea"), {
+      target: { value: "rachel@email.com" },
+    });
+    fireEvent.change(getByTestId("password-input").querySelector("input"), {
+      target: { value: "password" },
+    });
 
-  //   expect(getByTestId("email-input").querySelector("textarea")).toHaveValue(
-  //     "rachel@email.com"
-  //   );
-  //   expect(getByTestId("password-input").querySelector("input")).toHaveValue(
-  //     "password"
-  //   );
-
-  //   const button = getByText("LOGIN");
-
-  //   fireEvent.click(button);
-  //   debug();
-  //   expect(onLogin).toHaveBeenCalledTimes(1);
-  // });
+    expect(getByTestId("email-input").querySelector("textarea")).toHaveValue(
+      "rachel@email.com"
+    );
+    expect(getByTestId("password-input").querySelector("input")).toHaveValue(
+      "password"
+    );
+  });
 });
