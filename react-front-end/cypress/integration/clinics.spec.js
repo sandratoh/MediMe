@@ -4,7 +4,7 @@ describe("User can add, edit, delete clinical visits", () => {
 
     cy.contains("Log In").click();
 
-    cy.get("[data-testid=email-input]").type("angel@email.com");
+    cy.get("[data-testid=email-input]").type("rachel@email.com");
     cy.get("[data-testid=password-input]").type("password");
 
     cy.contains("LOGIN").click();
