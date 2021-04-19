@@ -77,29 +77,36 @@ export default function NewVisit(props) {
             onChange={setVisitType}
             validate={validate}
           />
-
-          <TextInput
-            required
-            value={medicalCenter}
-            setInput={setMedicalCenter}
-            validate={validate}
-          >
-            Medical Center:
-          </TextInput>
-          <TextInput
-            required
-            value={doctor}
-            setInput={setDoctor}
-            validate={validate}
-          >
-            Doctor:
-          </TextInput>
-          <TextInput value={reasonFor} setInput={setReasonFor}>
-            Reason for Visit:
-          </TextInput>
-          <TextInput value={diagnosis} setInput={setDiagnosis}>
-            Doctor's Diagnosis
-          </TextInput>
+          <div data-testid="medical-center-input">
+            <TextInput
+              required
+              value={medicalCenter}
+              setInput={setMedicalCenter}
+              validate={validate}
+            >
+              Medical Center:
+            </TextInput>
+          </div>
+          <div data-testid="doctor-input">
+            <TextInput
+              required
+              value={doctor}
+              setInput={setDoctor}
+              validate={validate}
+            >
+              Doctor:
+            </TextInput>
+          </div>
+          <div data-testid="reason-visit-input">
+            <TextInput value={reasonFor} setInput={setReasonFor}>
+              Reason for Visit:
+            </TextInput>
+          </div>
+          <div data-testid="diagnosis-input">
+            <TextInput value={diagnosis} setInput={setDiagnosis}>
+              Doctor's Diagnosis
+            </TextInput>
+          </div>
         </div>
         <div className="clinics-form--user-action">
           <IconButton
