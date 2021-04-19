@@ -1,6 +1,5 @@
 describe("Medications, user can add, edit and delete", () => {
-
-  beforeEach(() => {
+  it("should log in", () => {
     cy.visit("/");
 
     cy.contains("Log In").click();
@@ -9,12 +8,9 @@ describe("Medications, user can add, edit and delete", () => {
     cy.get("[data-testid=password-input]").type("password");
 
     cy.contains("LOGIN").click();
-
   });
 
   it("should add a new medication", () => {
-
-    cy.wait(1000);
 
     cy.contains("Medications").click();
 
@@ -42,9 +38,9 @@ describe("Medications, user can add, edit and delete", () => {
   })
 
   it("should update a medication ", () => {
-    cy.wait(1000);
+  
 
-    cy.contains("Medications").click();
+    // cy.contains("Medications").click();
 
     cy.contains("New Med Name Test").click();
 
@@ -54,13 +50,14 @@ describe("Medications, user can add, edit and delete", () => {
 
     cy.contains("Save").click();
 
-
+    cy.get("[data-testid=back-button]")
+      .click();
   })
 
   it("should delete a medication", () => {
-    cy.wait(1000);
 
-    cy.contains("Medications").click();
+
+    // cy.contains("Medications").click();
 
     cy.contains("Updated Med Test").click();
 

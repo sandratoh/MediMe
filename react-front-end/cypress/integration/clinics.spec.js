@@ -1,5 +1,5 @@
 describe("User can add, edit, delete clinical visits", () => {
-  beforeEach(() => {
+  it("should log in", () => {
     cy.visit("/");
 
     cy.contains(/log in/i).click();
@@ -38,8 +38,6 @@ describe("User can add, edit, delete clinical visits", () => {
   });
 
   it("should update a clinical visit", () => {
-    cy.contains("Clinical Visits").click();
-
     cy.contains(".card", "Hospital A").click();
 
     cy.contains("Clinical Visit Detail").should("exist");
@@ -62,8 +60,6 @@ describe("User can add, edit, delete clinical visits", () => {
   });
 
   it("should delete a clinical visit", () => {
-    cy.contains("Clinical Visits").click();
-
     cy.contains(".card", "Hospital C").click();
 
     cy.contains(/delete/i).click();

@@ -59,6 +59,7 @@ export default function NewVaccine() {
       <h1 className="vaccinations-form--title">New Vaccination</h1>
       <div className="vaccinations-form--container">
         <div className="vaccinations-form--field">
+          <div data-testid="vaccine-input">
           <TextInput
             required
             value={vaccine}
@@ -67,6 +68,8 @@ export default function NewVaccine() {
           >
             Vaccine Name:
           </TextInput>
+          </div>
+          
           <div className="vaccinations-form--doses">
             <p className="form-label">Total Number of Doses</p>
             <div>
@@ -75,7 +78,7 @@ export default function NewVaccine() {
                   setTotalDose(Math.max(totalDose - 1, 0));
                 }}
               >
-                <RemoveCircleIcon />
+                <RemoveCircleIcon data-testid="vax--minus-button"/>
               </IconButton>
               {totalDose}
               <IconButton
@@ -83,7 +86,7 @@ export default function NewVaccine() {
                   setTotalDose(totalDose + 1, 5);
                 }}
               >
-                <AddCircleIcon />
+                <AddCircleIcon data-testid="vax--plus-button"/>
               </IconButton>
             </div>
           </div>

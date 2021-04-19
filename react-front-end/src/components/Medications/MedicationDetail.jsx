@@ -72,9 +72,11 @@ export default function MedicationDetail() {
     <section className="clinic-detail">
       {redirect && <Redirect to="/medications" />}
       <div className="clinics-list--icons">
-        <Link to="/medications">
-          <ArrowBackIosIcon />
-        </Link>
+        <div data-testid="back-button">
+          <Link to="/medications">
+            <ArrowBackIosIcon />
+          </Link>
+        </div>
       </div>
       <h1 className="clinics-list--title">Medication Detail</h1>
 

@@ -1,7 +1,5 @@
 describe("User can add, edit, and delete lab records", () => {
-  beforeEach(() => {
-    cy.viewport("iphone-6+");
-
+  it("should log in", () => {
     cy.visit("/");
 
     cy.contains(/log in/i).click();
@@ -10,7 +8,6 @@ describe("User can add, edit, and delete lab records", () => {
     cy.get("[data-testid=password-input]").type("password");
 
     cy.contains("LOGIN").click();
-
   });
   
   it("should add a lab record", () => {
@@ -36,13 +33,11 @@ describe("User can add, edit, and delete lab records", () => {
     cy.contains(/save/i)
       .click();
 
-    cy.contains(".card", "Mar 01 2024");
-    cy.contains(".card", "Dexter's Laboratory");
+    cy.contains(".card", "Mar 01 2024").should("exist");
+    cy.contains(".card", "Dexter's Laboratory").should("exist");
   });
 
   it("should edit a lab record", () => {
-    cy.contains("Lab Records").click();
-
     cy.contains(".card", "Dexter's Laboratory")
       .click();
 
@@ -67,11 +62,14 @@ describe("User can add, edit, and delete lab records", () => {
 
     cy.get(".lab-detail--data")
       .contains(/ultrasound/i);
+
+    cy.get("[data-testid=back-button]")
+      .click();
+
+    cy.contains(".card", "Dexter's New Lab").should("exist");
   });
 
   it("should delete a lab record", () => {
-    cy.contains("Lab Records").click();
-
     cy.contains(".card", "Dexter's New Lab")
       .click();
 

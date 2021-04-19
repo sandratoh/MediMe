@@ -58,22 +58,26 @@ export default function NewDose() {
           <DateInput value={date} setInput={setDate} validate={validate}>
             Date:
           </DateInput>
-          <TextInput
-            required
-            value={serialNumber}
-            setInput={setSerialNumber}
-            validate={validate}
-          >
-            Serial Number:
-          </TextInput>
-          <TextInput
-            required
-            value={adminSite}
-            setInput={setAdminSite}
-            validate={validate}
-          >
-            Administration Site:
-          </TextInput>
+          <div data-testid="dose--serial" >
+            <TextInput
+              required
+              value={serialNumber}
+              setInput={setSerialNumber}
+              validate={validate}
+            >
+              Serial Number:
+            </TextInput>
+          </div>
+          <div data-testid="dose--site" >
+            <TextInput
+              required
+              value={adminSite}
+              setInput={setAdminSite}
+              validate={validate}
+            >
+              Administration Site:
+            </TextInput>
+          </div>
           <div className="doses-form--next">
             <DateInputOpt
               notRequired
