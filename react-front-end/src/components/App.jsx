@@ -39,6 +39,9 @@ import NewVaccine from "./Vaccinations/NewVaccine";
 import VaccinationsList from "./Vaccinations/VaccinationsList";
 import VaccinationSuccess from "./Vaccinations/VaccinationSuccess";
 
+// Helpers
+import ScrollToTop from "../helpers/ScrollToTop";
+
 // Stylesheet import
 import "./App.scss";
 
@@ -68,53 +71,56 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <Router>
-          <Header />
-          <Switch>
-            <Route exact path="/clinics/edit" component={EditVisit} />
-            <Route exact path="/clinics/new" component={NewVisit} />
-            <Route exact path="/clinics/view" component={ClinicDetail} />
-            <Route exact path="/clinics" component={ClinicsList} />
+          <>
+            <ScrollToTop />
+              <Header />
+              <Switch>
+                <Route exact path="/clinics/edit" component={EditVisit} />
+                <Route exact path="/clinics/new" component={NewVisit} />
+                <Route exact path="/clinics/view" component={ClinicDetail} />
+                <Route exact path="/clinics" component={ClinicsList} />
 
-            <Route exact path="/labs/edit" component={EditRecord} />
-            <Route exact path="/labs/new" component={NewRecord} />
-            <Route exact path="/labs/view" component={LabDetail} />
-            <Route exact path="/labs" component={LabsList} />
+                <Route exact path="/labs/edit" component={EditRecord} />
+                <Route exact path="/labs/new" component={NewRecord} />
+                <Route exact path="/labs/view" component={LabDetail} />
+                <Route exact path="/labs" component={LabsList} />
 
-            <Route exact path="/medications/edit" component={EditMedication} />
-            <Route exact path="/medications/new" component={NewMedication} />
-            <Route
-              exact
-              path="/medications/view"
-              component={MedicationDetail}
-            />
-            <Route exact path="/medications" component={MedicationsList} />
+                <Route exact path="/medications/edit" component={EditMedication} />
+                <Route exact path="/medications/new" component={NewMedication} />
+                <Route
+                  exact
+                  path="/medications/view"
+                  component={MedicationDetail}
+                />
+                <Route exact path="/medications" component={MedicationsList} />
 
-            <Route exact path="/vaccinations/new" component={NewVaccine} />
-            <Route exact path="/vaccinations/dose/new" component={NewDose} />
-            <Route exact path="/vaccinations/dose/edit" component={EditDose} />
-            <Route
-              exact
-              path="/vaccinations/dose/view"
-              component={DoseDetail}
-            />
+                <Route exact path="/vaccinations/new" component={NewVaccine} />
+                <Route exact path="/vaccinations/dose/new" component={NewDose} />
+                <Route exact path="/vaccinations/dose/edit" component={EditDose} />
+                <Route
+                  exact
+                  path="/vaccinations/dose/view"
+                  component={DoseDetail}
+                />
 
-            <Route exact path="/vaccinations" component={VaccinationsList} />
-            <Route
-              exact
-              path="/vaccinations/success"
-              component={VaccinationSuccess}
-            />
+                <Route exact path="/vaccinations" component={VaccinationsList} />
+                <Route
+                  exact
+                  path="/vaccinations/success"
+                  component={VaccinationSuccess}
+                />
 
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/signup/success" component={SignupSuccess} />
+                <Route exact path="/signup" component={Signup} />
+                <Route exact path="/signup/success" component={SignupSuccess} />
 
-            <Route exact path="/login" component={Login} />
+                <Route exact path="/login" component={Login} />
 
-            <Route exact path="/edit" component={EditUser} />
+                <Route exact path="/edit" component={EditUser} />
 
-            <Route exact path="/menu" component={Menu} />
-            <Route exact path="/" component={Dashboard} />
-          </Switch>
+                <Route exact path="/menu" component={Menu} />
+                <Route exact path="/" component={Dashboard} />
+              </Switch>
+          </>
         </Router>
       </div>
     </ThemeProvider>
