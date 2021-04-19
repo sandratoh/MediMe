@@ -92,24 +92,23 @@ describe("User can add, edit, and delete lab records", () => {
     // cy.contains(".card", "Dexter's New Lab")
   });
 
-  xit("should delete a lab record", () => {
+  it("should delete a lab record", () => {
     // 1. Click on lab record
-
+    cy.wait(1000);
+    cy.contains("Lab Records").click();
 
     // 2. Find the first lab record
-
+    cy.contains(".card", "Dexter's New Lab")
+      .click();
 
     // 3. Expect to see detail page
-
-
     // 4. Click on delete
-
+    cy.contains(/delete/i)
+      .click();
 
     // 5. Expect to be redirected back to list
-
-
     // 6. Expect to not find deleted record
-
+    cy.contains(".card", "Dexter's New Lab").should('not.exist')
 
   });
 });
