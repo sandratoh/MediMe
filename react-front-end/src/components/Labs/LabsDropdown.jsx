@@ -18,7 +18,7 @@ export default function LabsDropdown(props) {
           id="demo-simple-select-outlined-label"
           error={!props.value && props.validate}
         >
-          Type of Record
+          Type of Record:
         </InputLabel>
         <Select
           labelId="demo-simple-select-outlined-label"

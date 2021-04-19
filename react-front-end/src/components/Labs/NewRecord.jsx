@@ -65,9 +65,11 @@ export default function NewRecord() {
       <h1 className="labs-form--title">New Lab Record</h1>
       <div className="labs-form--container">
         <div className="labs-form--field">
-          <DateInput value={date} setInput={setDate} validate={validate}>
-            Date:
-          </DateInput>
+          <div data-testid="lab-date-input">
+            <DateInput value={date} setInput={setDate} validate={validate}>
+              Date:
+            </DateInput>
+          </div>
           <TextInput required value={lab} setInput={setLab} validate={validate}>
             Lab:
           </TextInput>
