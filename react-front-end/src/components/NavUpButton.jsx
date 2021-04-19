@@ -10,15 +10,25 @@ import "./NavUpButton.scss"
 
 export default function NavUpButton() {
 
-  const myButton = document.getElementById("button--navigate-up");
+  // Scroll position state
+  const [offset, setOffset] = useState(0);
+  
+  useEffect(() => {
+    const myButton = document.getElementById("button--navigate-up");
+    
+    const scrollFunction = () => {
+      if (document.documentElement.scrollTop > 100) {
+        myButton.style.display = "block";
+      } else {
+        myButton.style.display = "none";
+      }
+    };
 
-  const scrollFunction = () => {
-    if (document.documentElement.scrollTop > 100) {
-      myButton.style.display = "block";
-    } else {
-      myButton.style.display = "none";
+    window.onscroll = () => {
+      scrollFunction();
+      setOffset(window.pageYOffset)
     }
-  };
+  }, [offset]);
 
   const navOnButton = () => {
     document.documentElement.scrollTop = 0;
@@ -26,7 +36,7 @@ export default function NavUpButton() {
 
   return (
     <div id="button--navigate-up">
-      <Fab onClick={() => navOnButton()} onScroll={() => scrollFunction()} color='primary' aria-label="add">
+      <Fab onClick={() => navOnButton()} color='primary' aria-label="add">
         <UpIcon />
       </Fab>
     </div>
