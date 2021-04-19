@@ -67,16 +67,19 @@ describe("User can add, edit and delete vacccination and vaccination dose", () =
    
     cy.contains("New Vaccine").click();
 
-    cy.contains("Dose 2/2").should("exist");
+    cy.contains("Apr 01 2030").should("exist");
   });
 
   it("should edit a vaccination dose", () => {
-
-    cy.contains("New Vaccine").click()
-
     cy.contains("Dose 2/2").click();
 
     cy.contains(/edit/i).click();
+
+    cy.get("form")
+      .get("input")
+      .first()
+      .clear()
+      .type("2030-05-01");
 
     cy.contains("SECONDSERIAL2030")
       .clear()
@@ -84,17 +87,22 @@ describe("User can add, edit and delete vacccination and vaccination dose", () =
     
     cy.contains(/save/i).click();
 
+    cy.get(".dose-detail--data")
+      .contains("THIRDSERIAL2030")
+
     cy.get("[data-testid=back-button]").click();
+
+    cy.contains(".card--vaccination", "New Vaccine").click();
+    cy.contains("Dose 2/2").should("exist");
+    cy.contains("May 01 2030").should("exist");
   });
 
   it("should delete a vaccination dose", () => {
-    cy.contains(".card--vaccination", "New Vaccine").click()
-
     cy.contains("Dose 2/2").click();
 
     cy.contains("Vaccination Dose Detail").should("exist");
 
-    cy.contains("NEWSERIAL2030").should("exist");
+    cy.contains("THIRDSERIAL2030").should("exist");
 
     cy.contains(/delete/i).click();
 
@@ -102,6 +110,6 @@ describe("User can add, edit and delete vacccination and vaccination dose", () =
     
     cy.contains(".card--vaccination", "New Vaccine").click();
 
-    cy.contains(/Apr 01 2030/i).should("not.exist");
+    cy.contains(/May 01 2030/i).should("not.exist");
   });
 });

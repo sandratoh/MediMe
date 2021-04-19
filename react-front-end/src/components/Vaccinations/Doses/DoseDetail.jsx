@@ -41,11 +41,9 @@ export default function DoseDetail() {
     <section className="dose-detail">
       {redirect && <Redirect to="/vaccinations" />}
       <div className="dose-detail--icons">
-        <div data-testid="back-button">
-          <Link to="/vaccinations">
-            <ArrowBackIosIcon />
-          </Link>
-        </div>
+        <Link to="/vaccinations" data-testid="back-button">
+          <ArrowBackIosIcon />
+        </Link>
       </div>
       <h1 className="dose-detail--title">Vaccination Dose Detail</h1>
 
