@@ -11,7 +11,6 @@ describe("Medications, user can add, edit and delete", () => {
   });
 
   it("should add a new medication", () => {
-
     cy.contains("Medications").click();
 
     cy.contains("New").click();
@@ -33,16 +32,10 @@ describe("Medications, user can add, edit and delete", () => {
     cy.get("form").get("[name=water]").click();
 
     cy.contains("Save").click();
-
-
   })
 
   it("should update a medication ", () => {
-  
-
-    // cy.contains("Medications").click();
-
-    cy.contains("New Med Name Test").click();
+    cy.contains(".card", "New Med Name Test").click();
 
     cy.contains("Edit").click();
 
@@ -55,15 +48,10 @@ describe("Medications, user can add, edit and delete", () => {
   })
 
   it("should delete a medication", () => {
-
-
-    // cy.contains("Medications").click();
-
     cy.contains("Updated Med Test").click();
 
     cy.contains("Delete").click();
 
+    cy.contains(".card", "Updated Med Test").should("not.exist");
   })
-
-
 })
