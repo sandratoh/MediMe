@@ -1,5 +1,5 @@
 // Libraries
-import { render, cleanup, fireEvent } from "@testing-library/react";
+import { render, cleanup, fireEvent, getByTestId } from "@testing-library/react";
 
 // Component
 import TextInput from "../components/TextInput";
@@ -14,8 +14,13 @@ describe("Text Input", () => {
   });
 
   it("renders with validation check on required inputs when nothing is added", () => {
-    const { container, getByTestId } = render(<TextInput  />);
-    const myTextInput = getByTestId('my--test-id')
+    const { getByText } = render(<TextInput  require validate />);
+    expect(getByText("This field cannot be blank.")).toBeInTheDocument();
   })
+ 
+  it("renders with the correct value from input", () => {
+    const { getByText } = render(<TextInput value="Dr. Gale Dodek-Wenner" />);
+    expect(getByText('Dr. Gale Dodek-Wenner')).toBeInTheDocument();
+  } )
 
 });

@@ -17,6 +17,7 @@ export default function TextInput(props) {
   };
   return (
     <form className="text-input--container" noValidate autoComplete="off">
+      <div data-testid="text--input--test" >
       <TextField
         InputProps={unitMarker(props.unit)}
         required={props.required}
@@ -36,6 +37,7 @@ export default function TextInput(props) {
         defaultValue={props.value || props.defaultValue}
         onChange={(event) => props.setInput(event.target.value)}
       />
+      </div>
     </form>
   );
 }
