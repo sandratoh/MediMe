@@ -13,12 +13,12 @@ import "./LabsDropdown.scss";
 export default function LabsDropdown(props) {
   return (
     <section className="dropdown-container">
-      <FormControl variant="outlined" className="dropdown--input">
+      <FormControl variant="outlined" className="dropdown--input" required>
         <InputLabel
           id="demo-simple-select-outlined-label"
           error={!props.value && props.validate}
         >
-          Type of Record
+          Type of Record:
         </InputLabel>
         <Select
           labelId="demo-simple-select-outlined-label"

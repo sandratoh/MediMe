@@ -24,7 +24,7 @@ export default function LabsList(props) {
         </IconButton>
         <NavUpButton/>
       </div>
-      <h1 className="labs-list--title">Lab Visits</h1>
+      <h1 className="labs-list--title">Lab Records</h1>
       <div className="labs-list--content">
         <LabsCardList />
       </div>

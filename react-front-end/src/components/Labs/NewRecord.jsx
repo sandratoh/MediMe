@@ -65,26 +65,34 @@ export default function NewRecord() {
       <h1 className="labs-form--title">New Lab Record</h1>
       <div className="labs-form--container">
         <div className="labs-form--field">
-          <DateInput value={date} setInput={setDate} validate={validate}>
-            Date:
-          </DateInput>
-          <TextInput required value={lab} setInput={setLab} validate={validate}>
-            Lab:
-          </TextInput>
-          <LabRecordType
-            required
-            value={recordType}
-            setInput={setRecordType}
-            validate={validate}
-          />
-          <TextInput
-            required
-            value={doctor}
-            setInput={setDoctor}
-            validate={validate}
-          >
-            Referral Doctor:
-          </TextInput>
+          <div data-testid="lab-date-input">
+            <DateInput value={date} setInput={setDate} validate={validate}>
+              Date:
+            </DateInput>
+          </div>
+          <div data-testid="lab-name">
+            <TextInput required value={lab} setInput={setLab} validate={validate}>
+              Lab:
+            </TextInput>
+          </div>
+          <div data-testid="lab-record-type">
+            <LabRecordType
+              required
+              value={recordType}
+              setInput={setRecordType}
+              validate={validate}
+            />
+          </div>
+          <div data-testid="lab-doctor">
+            <TextInput
+              required
+              value={doctor}
+              setInput={setDoctor}
+              validate={validate}
+            >
+              Referral Doctor:
+            </TextInput>
+          </div>
         </div>
         <div className="labs-form--user-action">
           <IconButton
