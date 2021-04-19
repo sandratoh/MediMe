@@ -113,5 +113,9 @@ describe("User can add, edit and delete vacccination and vaccination dose", () =
     cy.contains(".card--vaccination", "New Vaccine").click();
 
     cy.contains(/May 01 2030/i).should("not.exist");
-  });
+
+    cy.get("[alt=logo]").click();
+
+    cy.contains("Rachel Greene").should("exist");
+    });
 });
