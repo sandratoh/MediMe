@@ -19,7 +19,7 @@ describe("CountButton", () => {
   it("adds to count when clicked on plus button", () => {
     const { getByText, getByTestId } = render(<CountButton />);
     
-    const plusButton = getByTestId("plus");
+    const plusButton = getByTestId("plus-button");
 
     expect(getByText(1)).toBeInTheDocument();
 
@@ -31,7 +31,7 @@ describe("CountButton", () => {
   it("subtracts from count when clicked on minus button", () => {
     const { getByText, getByTestId } = render(<CountButton />);
     
-    const minusButton = getByTestId("minus");
+    const minusButton = getByTestId("minus-button");
 
     expect(getByText(1)).toBeInTheDocument();
 
@@ -43,8 +43,8 @@ describe("CountButton", () => {
   it("adds to and subtracts from count when clicked on plus and minus button", () => {
     const { getByText, getByTestId } = render(<CountButton />);
     
-    const plusButton = getByTestId("plus");
-    const minusButton = getByTestId("minus");
+    const plusButton = getByTestId("plus-button");
+    const minusButton = getByTestId("minus-button");
 
     expect(getByText(1)).toBeInTheDocument();
 
@@ -61,7 +61,7 @@ describe("CountButton", () => {
   it("cannot subtract from count if the count is at 0", () => {
     const { getByText, getByTestId } = render(<CountButton />);
 
-    const minusButton = getByTestId("minus");
+    const minusButton = getByTestId("minus-button");
 
     expect(getByText(1)).toBeInTheDocument();    
 

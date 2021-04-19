@@ -26,7 +26,7 @@ export default function CountButton() {
           setCount(Math.max(count - 1, 0));
         }}
       >
-        <RemoveCircleIcon data-testid="minus"/>
+        <RemoveCircleIcon data-testid="minus-button"/>
       </IconButton>
       {count}
       <IconButton
@@ -34,7 +34,7 @@ export default function CountButton() {
           setCount(count + 1, 5);
         }}
       >
-        <AddCircleIcon data-testid="plus"/>
+        <AddCircleIcon data-testid="plus-button"/>
       </IconButton>
     </div>
   );
