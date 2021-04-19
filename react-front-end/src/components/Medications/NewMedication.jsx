@@ -95,33 +95,41 @@ export default function NewMedication() {
           >
             Date:
           </DateInput>
-          <TextInput
-            required
-            value={medicationName}
-            setInput={setMedicationName}
-            validate={validate}
-          >
-            Medication Name:
-          </TextInput>
-          <TextInput value={nickname} setInput={setNickname}>
-            Nickname:
-          </TextInput>
-          <TextInput
-            required
-            value={pharmacy}
-            setInput={setPharmacy}
-            validate={validate}
-          >
-            Pharmacy:
-          </TextInput>
-          <TextInput
-            required
-            value={doctor}
-            setInput={setDoctor}
-            validate={validate}
-          >
-            Prescribed Doctor:
-          </TextInput>
+          <div data-testid="med--name-input">
+            <TextInput
+              required
+              value={medicationName}
+              setInput={setMedicationName}
+              validate={validate}
+            >
+              Medication Name:
+            </TextInput>
+          </div>
+          <div data-testid="med--nickname-input" >
+            <TextInput value={nickname} setInput={setNickname}>
+              Nickname:
+            </TextInput>
+          </div>
+          <div data-testid="med--pharmacy-input" >
+            <TextInput
+              required
+              value={pharmacy}
+              setInput={setPharmacy}
+              validate={validate}
+            >
+              Pharmacy:
+            </TextInput>
+          </div>
+          <div data-testid="med--doctor-input" >
+            <TextInput
+              required
+              value={doctor}
+              setInput={setDoctor}
+              validate={validate}
+            >
+              Prescribed Doctor:
+            </TextInput>
+          </div>
           <div className="medications-form--refills">
             <p className="form-label">Refills Remaining:</p>
             <div>
@@ -130,7 +138,7 @@ export default function NewMedication() {
                   setRefills(Math.max(refills - 1, 0));
                 }}
               >
-                <RemoveCircleIcon />
+                <RemoveCircleIcon data-testid="med--minus-button"/>
               </IconButton>
               {refills}
               <IconButton
@@ -138,13 +146,15 @@ export default function NewMedication() {
                   setRefills(refills + 1, 5);
                 }}
               >
-                <AddCircleIcon />
+                <AddCircleIcon data-testid="med--plus-button"/>
               </IconButton>
             </div>
           </div>
-          <TextInput value={instructions} setInput={setInstructions}>
-            Instructions:
-          </TextInput>
+          <div data-testid="med--instructions-input" >
+            <TextInput value={instructions} setInput={setInstructions}>
+              Instructions:
+            </TextInput>
+          </div>
         </div>
         <div className="medications-form--checkbox">
           <FormGroup row>
