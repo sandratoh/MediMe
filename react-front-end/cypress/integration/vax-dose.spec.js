@@ -1,3 +1,5 @@
+/* global cy */
+
 describe("User can add, edit and delete vacccination and vaccination dose", () => {
   it("should log in", () => {
     cy.visit("/");

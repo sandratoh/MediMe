@@ -1,3 +1,5 @@
+/* global cy */
+
 describe("Medications, user can add, edit and delete", () => {
   it("should log in", () => {
     cy.visit("/");
@@ -34,7 +36,7 @@ describe("Medications, user can add, edit and delete", () => {
     cy.contains("Save").click();
   })
 
-  it("should update a medication ", () => {
+  it("should update a medication", () => {
     cy.contains(".card", "New Med Name Test").click();
 
     cy.contains("Edit").click();

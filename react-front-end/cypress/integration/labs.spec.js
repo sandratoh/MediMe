@@ -1,3 +1,5 @@
+/* global cy */
+
 describe("User can add, edit, and delete lab records", () => {
   it("should log in", () => {
     cy.visit("/");
