@@ -12,12 +12,11 @@ export default function DateInputOpt(props) {
     <form className="date-input--container" noValidate autoComplete="off">
       <TextField
         id={props.id}
-        value={props.value}
         onChange={(event) => props.setInput(event.target.value)}
         className="date-input--field"
         error={!props.value && props.validate}
         label={props.children}
-        defaultValue={props.date ? formatDateToISO(props.date) : null}
+        defaultValue={props.value ? formatDateToISO(props.value) : null}
         inputProps={{
           min: new Date().toISOString().substring(0, 10),
         }}
