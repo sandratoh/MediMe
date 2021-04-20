@@ -58,10 +58,7 @@ export default function useAppContext() {
   const loginUser = (formData) => {
     return axios
       .post("/api/users/login", formData)
-      .then((res) => {
-        console.log('res login user:', res)
-        return res;
-      })
+      .then((res) => res)
       .catch((err) => console.log(err));
   };
 
@@ -106,6 +103,5 @@ export default function useAppContext() {
     loginUser,
   };
 
-  console.log('UserDetailId', userDetailId)
   return appData;
 }
