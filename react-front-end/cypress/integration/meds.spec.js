@@ -20,51 +20,51 @@ describe("Medications, user can add, edit and delete", () => {
     cy.get("input").first().type("2030-02-02");
 
     cy.get("[data-testid=med--name-input]")
-      .type("New Med Name Test");
+      .type("Acetaminophen");
 
     cy.get("[data-testid=med--nickname-input]")
-      .type("NickName Test");
+      .type("Pain relief");
 
     cy.get("[data-testid=med--pharmacy-input]")
-      .type("New Pharmacy Test");
+      .type("The Medicine Shoppe Pharmacy");
 
     cy.get("[data-testid=med--doctor-input]")
-      .type("Dr.Testing");
+      .type("Dr. Strange");
 
     cy.get("[data-testid=med--plus-button]")
       .click();
 
     cy.get("[data-testid=med--instructions-input]")
-      .type("Test instructions here");
+      .type("Twice a day");
 
     cy.get("[name=water]")
       .click();
 
     cy.contains("Save").click();
 
-    cy.contains("New Med Name Test").should("exist");
+    cy.contains("Acetaminophen").should("exist");
   })
 
   it("should update a medication", () => {
-    cy.contains(".card", "New Med Name Test").click();
+    cy.contains(".card", "Acetaminophen").click();
 
     cy.contains("Edit").click();
 
-    cy.contains("New Med Name Test").clear().type("Updated Med Test");
+    cy.contains("Acetaminophen").clear().type("Oxycodone");
 
     cy.contains("Save").click();
 
     cy.get("[data-testid=back-button]")
       .click();
 
-    cy.contains("Updated Med Test").should("exist");
+    cy.contains("Oxycodone").should("exist");
   })
 
   it("should delete a medication", () => {
-    cy.contains("Updated Med Test").click();
+    cy.contains("Oxycodone").click();
 
     cy.contains("Delete").click();
 
-    cy.contains(".card", "Updated Med Test").should("not.exist");
+    cy.contains(".card", "Oxycodone").should("not.exist");
   })
 })

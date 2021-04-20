@@ -17,7 +17,7 @@ describe("User can add, edit and delete vacccination and vaccination dose", () =
 
     cy.contains(/new/i).click();
 
-    cy.get("[data-testid=vaccine-input]").type("New Vaccine Only");
+    cy.get("[data-testid=vaccine-input]").type("AstraZeneca");
     
     cy.contains(/save/i).click();
     
@@ -25,13 +25,13 @@ describe("User can add, edit and delete vacccination and vaccination dose", () =
 
     cy.contains("Skip for now").click();
 
-    cy.contains(".card--vaccination", "New Vaccine Only").should("exist");
+    cy.contains(".card--vaccination", "AstraZeneca").should("exist");
   });
 
   it("should add a new vaccination and a new dose", () => {
     cy.contains(/new/i).click();
 
-    cy.get("[data-testid=vaccine-input]").type("New Vaccine");
+    cy.get("[data-testid=vaccine-input]").type("Moderna");
     
     cy.get("[data-testid=vax--plus-button]").click();
     
@@ -43,31 +43,31 @@ describe("User can add, edit and delete vacccination and vaccination dose", () =
 
     cy.get("form").get("input").first().type("2030-02-02");
     
-    cy.get("[data-testid=dose--serial]").type("FIRSTSERIAL2030");
+    cy.get("[data-testid=dose--serial]").type("FIRSTSERIAL#");
     
     cy.get("[data-testid=dose--site]").type("Pure Integrative Pharmacy");
 
     cy.contains("Save").click();
     
-    cy.contains(".card--vaccination", "New Vaccine").should("exist");
+    cy.contains(".card--vaccination", "Moderna").should("exist");
   });
 
   it("should add a new dose from the summary page", () => {
-    cy.contains("New Vaccine").click();
+    cy.contains("Moderna").click();
     
     cy.contains(/new dose/i).click();
 
     cy.get("form").get("input").first().type("2030-04-01");
     
-    cy.get("[data-testid=dose--serial]").type("SECONDSERIAL2030");
+    cy.get("[data-testid=dose--serial]").type("SECONDSERIAL#");
     
-    cy.get("[data-testid=dose--site]").type("Unpure Integrative Pharmacy");
+    cy.get("[data-testid=dose--site]").type("Pure Integrative Pharmacy");
 
     cy.contains("Save").click();
 
-    cy.contains(".card--vaccination", "New Vaccine").should("exist");
+    cy.contains(".card--vaccination", "Moderna").should("exist");
    
-    cy.contains("New Vaccine").click();
+    cy.contains("Moderna").click();
 
     cy.contains("Apr 01 2030").should("exist");
   });
@@ -83,18 +83,18 @@ describe("User can add, edit and delete vacccination and vaccination dose", () =
       .clear()
       .type("2030-05-01");
 
-    cy.contains("SECONDSERIAL2030")
+    cy.contains("SECONDSERIAL#")
       .clear()
-      .type("THIRDSERIAL2030");
+      .type("THIRDSERIAL#");
     
     cy.contains(/save/i).click();
 
     cy.get(".dose-detail--data")
-      .contains("THIRDSERIAL2030")
+      .contains("THIRDSERIAL#")
 
     cy.get("[data-testid=back-button]").click();
 
-    cy.contains(".card--vaccination", "New Vaccine").click();
+    cy.contains(".card--vaccination", "Moderna").click();
     cy.contains("Dose 2/2").should("exist");
     cy.contains("May 01 2030").should("exist");
   });
@@ -104,13 +104,13 @@ describe("User can add, edit and delete vacccination and vaccination dose", () =
 
     cy.contains("Vaccination Dose Detail").should("exist");
 
-    cy.contains("THIRDSERIAL2030").should("exist");
+    cy.contains("THIRDSERIAL#").should("exist");
 
     cy.contains(/delete/i).click();
 
     cy.contains("Vaccinations").should("exist");
     
-    cy.contains(".card--vaccination", "New Vaccine").click();
+    cy.contains(".card--vaccination", "Moderna").click();
 
     cy.contains(/May 01 2030/i).should("not.exist");
 

@@ -24,7 +24,7 @@ describe("User can add, edit, delete clinical visits", () => {
       .get("input")
       .type("2025-04-20");
 
-    cy.get("form").get("[data-testid=medical-center-input]").type("Hospital A");
+    cy.get("form").get("[data-testid=medical-center-input]").type("St. Paul's Hospital");
 
     cy.get("form").get("[data-testid=doctor-input]").type("Dr. Strange");
 
@@ -36,36 +36,36 @@ describe("User can add, edit, delete clinical visits", () => {
 
     cy.contains(/save/i).click();
 
-    cy.contains(".card", "Hospital A").should("exist");
+    cy.contains(".card", "St. Paul's Hospital").should("exist");
   });
 
   it("should update a clinical visit", () => {
-    cy.contains(".card", "Hospital A").click();
+    cy.contains(".card", "St. Paul's Hospital").click();
 
     cy.contains("Clinical Visit Detail").should("exist");
 
-    cy.contains("Hospital A").should("exist");
+    cy.contains("St. Paul's Hospital").should("exist");
 
     cy.contains(/edit/i).click();
 
-    cy.contains("Hospital A").clear().type("Hospital C");
+    cy.contains("St. Paul's Hospital").clear().type("Surrey Memorial Hospital");
 
     cy.contains(/save/i).click();
 
     cy.contains("Clinical Visit Detail").should("exist");
 
-    cy.contains("Hospital C").should("exist");
+    cy.contains("Surrey Memorial Hospital").should("exist");
 
     cy.get("[data-testid=back-button]").click();
 
-    cy.contains(".card", "Hospital C").should("exist");
+    cy.contains(".card", "Surrey Memorial Hospital").should("exist");
   });
 
   it("should delete a clinical visit", () => {
-    cy.contains(".card", "Hospital C").click();
+    cy.contains(".card", "Surrey Memorial Hospital").click();
 
     cy.contains(/delete/i).click();
 
-    cy.contains(".card", "Hospital C").should("not.exist");
+    cy.contains(".card", "Surrey Memorial Hospital").should("not.exist");
   });
 });
