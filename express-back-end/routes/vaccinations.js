@@ -9,7 +9,7 @@ const {
 module.exports = (client) => {
   // get all vaccinations
   router.get("/", (req, res) => {
-    const query = `SELECT * FROM vaccinations ORDER BY id ASC;`;
+    const query = `SELECT * FROM vaccinations ORDER BY id DESC;`;
 
     client
       .query(query)
