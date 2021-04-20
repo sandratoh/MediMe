@@ -1,6 +1,10 @@
 .rh-grouped-buttons--container {
   margin: 16px 0 32px;
   display: flex;
-  justify-content: space-around;
+  justify-content: start;
   width: 100%;
+
+  button {
+    margin-right: 11px;
+  }
 }

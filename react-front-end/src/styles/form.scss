@@ -99,3 +99,10 @@
   margin: 32px 0;
   width: 214px;
 }
+
+.users-form--button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin: 0;
+}
