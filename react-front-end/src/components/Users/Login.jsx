@@ -26,17 +26,20 @@ export default function Login() {
   const [validate, setValidate] = useState(false);
 
   const onLogin = () => {
-    if (!email || !password) {
-      return setValidate(true);
-    }
+    // if (!email || !password) {
+    //   return setValidate(true);
+    // }
 
-    const userDetail = { email, password };
+    const userDetail = { email, password: password.password };
+    console.log("userDetail:", userDetail);
 
     loginUser(userDetail).then((res) => {
+      console.log("res from login user then:", res);
+      // return !res ? setValidate(true) : setRedirect(true);
       if (!res) {
         return setValidate(true);
       }
-      setUserDetailId(res.id);
+      setUserDetailId(res.data.id);
       setRedirect(true);
     });
   };

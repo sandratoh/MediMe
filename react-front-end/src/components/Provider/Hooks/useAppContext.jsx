@@ -56,28 +56,10 @@ export default function useAppContext() {
   };
 
   const loginUser = (formData) => {
-    // const { email, password } = formData;
-
     return axios
       .post("/api/users/login", formData)
-      .then((res) => setUserDetailId(res.id));
+      .then((res) => res)
       .catch((err) => console.log(err));
-    // .catch()
-    // res.json({ id: user.id }).catch((err) => console.log(err))
-    // );
-
-    // return axios
-    //   .get("/api/users")
-    //   .then((res) => {
-    //     const users = res.data.users;
-    //     const user = users.find((user) => user.email === email);
-
-    //     if (user.password === password.password) {
-    //       return user;
-    //     }
-    //     return null;
-    //   })
-    //   .catch((err) => console.log(err));
   };
 
   const refreshAllUsers = () => {
