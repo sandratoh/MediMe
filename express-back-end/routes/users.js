@@ -33,18 +33,48 @@ module.exports = (client) => {
 
   // login user with bcrypt
   router.post("/login", (req, res) => {
+    console.log('req body:', req.body);
     const email = req.body.email;
     const password = req.body.password;
 
+    // const user = getUserByEmail(email);
+
+    // if (user) {
+
+    //   bcrypt.compare(password, user.password)
+    //     .then(res => {
+    //       console.log('hi from bcrypt promise version');
+    //       console.log('user id:', user.id);
+    //       return user.id;
+    //     })
+    //     .catch(err => console.log(err));
+    // }
+
+
     getUserByEmail(email)
       .then((user) => {
-        return bcrypt.compare(password, user.password)
-          ? user.id
-          : "The email or password you entered is incorrect.";
+        console.log('user:', user);
+
+
+        bcrypt.compare(password, user.password, (err, result) => {
+          console.log("this res: ", res);
+          if (result) {
+    //         // console.log("input password after hash", password);
+    //         // console.log("user password after hash,", user.password);
+    //         // console.log("res from loginUser", res);
+    //         console.log("user logged in successfully");
+            console.log("this user.id", user.id);
+            // return user.id;
+            return res.status(200).json({ id: user.id });
+    //       // return res.status(200).json({ id: user.id });
+          } else {
+            console.log('Password does not match database');
+            res.status(403).send("The email or password you entered is incorrect.");
+          }
+        })
       })
-      .then((data) => res.status(200).json({ id: data }))
-      .catch((err) => res.json({ error: err.message }));
   });
+
 
   // get specific user
   router.get("/:id", (req, res) => {
