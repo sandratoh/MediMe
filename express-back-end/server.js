@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 8000;
 const express = require("express");
 const bodyParser = require("body-parser");
 const client = require("./elephantsql");
+const bcrypt = require("bcryptjs");
 
 const app = express();
 

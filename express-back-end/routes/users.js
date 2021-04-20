@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 const { addUser, updateUser } = require("../db/queries/queries-users");
 
+// // checking password
+// bcrypt.compareSync("password they typed", users.password);
+
 module.exports = (client) => {
   // get all users
   router.get("/", (req, res) => {
