@@ -32,7 +32,6 @@ module.exports = (client) => {
 
   // login user with bcrypt
   router.post("/login", (req, res) => {
-    console.log('req body:', req.body);
     const email = req.body.email;
     const password = req.body.password;
 
@@ -40,24 +39,12 @@ module.exports = (client) => {
       .then((user) => {
 
         bcrypt.compare(password, user.password, (err, result) => {
-          console.log("this res: ", res);
-          if (result) {
-    //         // console.log("input password after hash", password);
-    //         // console.log("user password after hash,", user.password);
-    //         // console.log("res from loginUser", res);
-    //         console.log("user logged in successfully");
-            console.log("this user.id", user.id);
-            // return user.id;
-            return res.status(200).json({ id: user.id });
-    //       // return res.status(200).json({ id: user.id });
-          } else {
-            console.log('Password does not match database');
-            res.status(403).send("The email or password you entered is incorrect.");
-          }
-        })
-      })
+          return result
+            ? res.status(200).json({ id: user.id })
+            : res.status(403).send("The email or password you entered is incorrect.");
+        });
+      });
   });
-
 
   // get specific user
   router.get("/:id", (req, res) => {

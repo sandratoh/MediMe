@@ -34,8 +34,6 @@ export default function useAppContext() {
 
   // Users database calls
   const addUser = (formData) => {
-    console.log('formData from addUser in app context: ', formData)
-
     return axios
       .post("/api/users", formData)
       .then((res) => {

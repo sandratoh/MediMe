@@ -9,11 +9,8 @@ const addUser = (user) => {
       ;`;
 
   const inputPassword = user.password;
-  console.log('inputPassword from queries-users', inputPassword);
 
   const hashPassword = bcrypt.hashSync(inputPassword, 10);
-
-  console.log('hashPassword from queries-users', hashPassword);
 
   const values = [
     user.first_name,
@@ -50,7 +47,7 @@ const updateUser = async(user) => {
   return client.query(query, values).then((res) => res.rows);
 };
 
-const getUserByEmail = async (email) => {
+const getUserByEmail = async(email) => {
   const query = `
     SELECT *
     FROM users
