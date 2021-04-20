@@ -10,7 +10,7 @@ const addUser = async (user) => {
 
   const inputPassword = user.password;
 
-  const hashPassword = bcrypt.hashSync(inputPassword, 10);
+  const hashPassword = bcrypt.hash(inputPassword, 10);
 
   const values = [
     user.first_name,
@@ -47,6 +47,55 @@ const updateUser = async (user) => {
   return client.query(query, values).then((res) => res.rows);
 };
 
-// const loginUser = () => {};
+const getUserByEmail = async (email) => {
+  const query = `
+    SELECT *
+    FROM users
+    WHERE email LIKE $1;
+  `;
 
-module.exports = { addUser, updateUser };
+  // console.log("getUserbyEmail before query, after defining query");
+  // console.log("email param in getUserByEmail:", email);
+  // console.log("query in getUserByEmail:", query);
+
+  return client.query(query, [email]).then((res) => {
+    // console.log("getuserbyemail res", res);
+    return res.rows[0];
+  });
+};
+
+// const loginUser = (email, password) => {
+//   console.log("before getUserByEmail function");
+//   // console.log("email from loginUser: ", email);
+//   // console.log("password from loginuser: ", password);
+//   getUserByEmail(email).then((user) => {
+//     console.log("input password:", password);
+//     console.log("user password:", user.password);
+
+//     bcrypt.compare(password, user.password, (err, res) => {
+//       console.log("input password after hash", password);
+//       console.log("user password after hash,", user.password);
+//       console.log("res from loginUser", res);
+
+//       console.log("err before if/else", err);
+//       console.log("res before if/else", res);
+//       if (res) {
+//         console.log("user logged in successfully");
+//         console.log("user.id from loginUser", user.id);
+//         return user.id;
+//         // return res.status(200).json({ id: user.id });
+//         // } else {
+//         //   console.log("password not match");
+//         //   return "The email or password you entered is incorrect.";
+//         // return res
+//         //   .status(403)
+//         //   .json({ error: "The email or password you entered is incorrect." });
+//       } else {
+//         console.log("did not log in");
+//       }
+//     });
+//     return;
+//   });
+// };
+
+module.exports = { addUser, updateUser, getUserByEmail };
