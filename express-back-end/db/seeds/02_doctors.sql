@@ -1,5 +1,5 @@
 INSERT INTO doctors (name)
-             VALUES ('Dr. Gale Dodek-Wenner'),
+             VALUES ('Dr. Gail Dodek-Wenner'),
                     ('Dr. Howard Liang'),
                     ('Dr. Gregory House'),
                     ('Dr. Sheldon Cooper'),

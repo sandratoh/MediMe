@@ -1,6 +1,7 @@
 INSERT INTO clinics (name)
-     VALUES ('Dr. Dodek Wenner Family Practice'),
-            ('Dr. Howard Liang S.H. Inc.'),
+     VALUES ('Dodek Wenner Family Practices'),
+            ('Dr. Howard S.H. Liang Inc.'),
+            ('Yulje Medical Center'),
             ('Vancouver General Hospital'),
             ('Granville Medical Clinic'),
             ('Keefer Walk-In and Medical Clinic'),
