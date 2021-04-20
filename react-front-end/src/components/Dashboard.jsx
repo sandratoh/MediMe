@@ -1,5 +1,5 @@
 // Libraries
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // Components
@@ -14,7 +14,11 @@ import { dataContext } from "./Provider/DataProvider";
 import "./Dashboard.scss";
 
 export default function Dashboard() {
-  const { users, userDetailId } = useContext(dataContext);
+  const { users, userDetailId, setMenu } = useContext(dataContext);
+
+  useEffect(() => {
+    setMenu(false)
+  }, []);
 
   const dashboard = (
     <section className="dashboard-card--container">
