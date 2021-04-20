@@ -28,8 +28,6 @@ export default function Signup() {
   const [validate, setValidate] = useState(false);
 
   const onSubmit = () => {
-    console.log('password:', password);
-
     const userData = {
       first_name: firstName,
       last_name: lastName,
