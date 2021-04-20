@@ -4,7 +4,6 @@ const router = express.Router();
 const {
   addUser,
   updateUser,
-  loginUser,
   getUserByEmail,
 } = require("../db/queries/queries-users");
 
@@ -37,24 +36,8 @@ module.exports = (client) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    // const user = getUserByEmail(email);
-
-    // if (user) {
-
-    //   bcrypt.compare(password, user.password)
-    //     .then(res => {
-    //       console.log('hi from bcrypt promise version');
-    //       console.log('user id:', user.id);
-    //       return user.id;
-    //     })
-    //     .catch(err => console.log(err));
-    // }
-
-
     getUserByEmail(email)
       .then((user) => {
-        console.log('user:', user);
-
 
         bcrypt.compare(password, user.password, (err, result) => {
           console.log("this res: ", res);

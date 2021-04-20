@@ -34,6 +34,8 @@ export default function useAppContext() {
 
   // Users database calls
   const addUser = (formData) => {
+    console.log('formData from addUser in app context: ', formData)
+
     return axios
       .post("/api/users", formData)
       .then((res) => {
@@ -58,7 +60,10 @@ export default function useAppContext() {
   const loginUser = (formData) => {
     return axios
       .post("/api/users/login", formData)
-      .then((res) => res)
+      .then((res) => {
+        console.log('res login user:', res)
+        return res;
+      })
       .catch((err) => console.log(err));
   };
 
@@ -103,5 +108,6 @@ export default function useAppContext() {
     loginUser,
   };
 
+  console.log('UserDetailId', userDetailId)
   return appData;
 }
