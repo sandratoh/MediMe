@@ -7,6 +7,9 @@ import IconButton from "../IconButton";
 import PasswordInput from "./PasswordInput";
 import TextInput from "../TextInput";
 
+// Material UI Component
+import Alert from "@material-ui/lab/Alert";
+
 // Helpers
 import { dataContext } from "../Provider/DataProvider";
 
@@ -22,8 +25,20 @@ export default function Login() {
   // Redirect state
   const [redirect, setRedirect] = useState(false);
 
-  // Validate form error state
+  // Validate form if empty
   const [validate, setValidate] = useState(false);
+
+  // Show error message if unsuccessful login
+  const [error, setError] = useState(false);
+
+  const wrongPassword = () => {
+    if(error) {
+      return (
+        <Alert severity="error">Your password or email is incorrect.</Alert>
+      )
+    }
+    return null
+  }
 
   const onLogin = () => {
     if (!email || !password.password) {
@@ -34,7 +49,9 @@ export default function Login() {
 
     loginUser(userDetail).then((res) => {
       if (!res) {
-        return setValidate(true);
+        setValidate(true);
+        setError(true);
+        return;
       }
       setUserDetailId(res.data.id);
       setRedirect(true);
@@ -66,6 +83,7 @@ export default function Login() {
             >
               Password:
             </PasswordInput>
+            {wrongPassword()}
           </div>
         </div>
         <div className="login-form--user-action">
