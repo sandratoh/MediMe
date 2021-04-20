@@ -17,23 +17,32 @@ describe("Medications, user can add, edit and delete", () => {
 
     cy.contains("New").click();
 
-    cy.get("form").get("input").first().type("2030-02-02");
+    cy.get("input").first().type("2030-02-02");
 
-    cy.get("form").get("[data-testid=med--name-input]").type("New Med Name Test");
+    cy.get("[data-testid=med--name-input]")
+      .type("New Med Name Test");
 
-    cy.get("form").get("[data-testid=med--nickname-input]").type("NickName Test");
+    cy.get("[data-testid=med--nickname-input]")
+      .type("NickName Test");
 
-    cy.get("form").get("[data-testid=med--pharmacy-input]").type("New Pharmacy Test");
+    cy.get("[data-testid=med--pharmacy-input]")
+      .type("New Pharmacy Test");
 
-    cy.get("form").get("[data-testid=med--doctor-input]").type("Dr.Testing");
+    cy.get("[data-testid=med--doctor-input]")
+      .type("Dr.Testing");
 
-    cy.get("form").get("[data-testid=med--plus-button]").click();
+    cy.get("[data-testid=med--plus-button]")
+      .click();
 
-    cy.get("form").get("[data-testid=med--instructions-input]").type("Test instructions here")
+    cy.get("[data-testid=med--instructions-input]")
+      .type("Test instructions here");
 
-    cy.get("form").get("[name=water]").click();
+    cy.get("[name=water]")
+      .click();
 
     cy.contains("Save").click();
+
+    cy.contains("New Med Name Test").should("exist");
   })
 
   it("should update a medication", () => {
@@ -47,6 +56,8 @@ describe("Medications, user can add, edit and delete", () => {
 
     cy.get("[data-testid=back-button]")
       .click();
+
+    cy.contains("Updated Med Test").should("exist");
   })
 
   it("should delete a medication", () => {
