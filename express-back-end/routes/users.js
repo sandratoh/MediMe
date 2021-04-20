@@ -8,9 +8,6 @@ const {
   getUserByEmail,
 } = require("../db/queries/queries-users");
 
-// // checking password
-// bcrypt.compareSync("password they typed", users.password);
-
 module.exports = (client) => {
   // get all users
   router.get("/", (req, res) => {
@@ -34,23 +31,16 @@ module.exports = (client) => {
       .catch((err) => res.json({ error: err.message }));
   });
 
-  // login
+  // login user with bcrypt
   router.post("/login", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
     getUserByEmail(email)
       .then((user) => {
-        console.log("user.id from loginUser", user.id);
-        console.log("user.password from loginUser", user.password);
-
-        if (bcrypt.compare(password, user.password)) {
-          return user.id;
-        } else {
-          console.log("password not match");
-          return "The email or password you entered is incorrect.";
-        }
-        // return user.id;
+        return bcrypt.compare(password, user.password)
+          ? user.id
+          : "The email or password you entered is incorrect.";
       })
       .then((data) => res.status(200).json({ id: data }))
       .catch((err) => res.json({ error: err.message }));
