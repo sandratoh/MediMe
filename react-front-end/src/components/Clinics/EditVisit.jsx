@@ -113,7 +113,7 @@ export default function EditVisit() {
             value={diagnosis}
             setInput={setDiagnosis}
           >
-            Doctor's Diagnosis
+            Doctor's Diagnosis:
           </TextInput>
         </div>
         <div className="clinics-form--user-action">

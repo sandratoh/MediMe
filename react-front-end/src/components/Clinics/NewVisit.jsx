@@ -107,7 +107,7 @@ export default function NewVisit(props) {
           </div>
           <div data-testid="diagnosis-input">
             <TextInput value={diagnosis} setInput={setDiagnosis}>
-              Doctor's Diagnosis
+              Doctor's Diagnosis:
             </TextInput>
           </div>
         </div>
