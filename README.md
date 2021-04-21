@@ -15,12 +15,15 @@ MediMe is a mobile health passport developed with the intention to help improve 
 ![Screens Mockup](https://github.com/charleenmperrier/MediMe/blob/docs/mockup/docs/screens-mockup.png)
 
 #### Lab record tracking
+
 ![Labs gif](https://github.com/charleenmperrier/MediMe/blob/docs/gif/docs/medime-labs.gif)
 
 #### Medication instructions and refills
+
 ![Meds gif](https://github.com/charleenmperrier/MediMe/blob/docs/gif/docs/medime-meds.gif)
 
 #### Vaccination dose schedule
+
 ![Vax and dose gif](https://github.com/charleenmperrier/MediMe/blob/docs/gif/docs/medime-vax-dose.gif)
 
 ## Getting Started
@@ -37,9 +40,17 @@ Fork this repository, and clone your fork of the repository. You will need to ha
 
 4. Sign up for your MediMe account!
 
+#### Database Setup
+
+1. In the second terminal, `cd` into `express-back-end` and create a `.env` file by using `.env.example` as a reference: `cp .env.example .env`
+
+2. Create an ElephantSQL account on their webpage: https://www.elephantsql.com/ and copy the URL or database authentication info into the `.env` file
+
+3. To reset database, `cd` into `express-back-end` and run command: `npm run db:reset`
+
 #### Express Back End
 
-1. In the second terminal, `cd` into `express-back-end` and install the dependencies with `npm install`
+1. After database is set up, within `express-back-end` install the dependencies with `npm install`
 
 2. Once the dependencies are installed, run `npm start` to start the server
 
