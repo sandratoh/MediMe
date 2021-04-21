@@ -1,4 +1,4 @@
-![Dashboard Mockup](https://github.com/charleenmperrier/MediMe/blob/docs/mockup/docs/dashboard-mockup.png)
+![Dashboard Mockup](https://github.com/charleenmperrier/MediMe/blob/master/docs/dashboard-mockup.png)
 
 # MediMe
 
@@ -12,19 +12,19 @@ MediMe is a mobile health passport developed with the intention to help improve 
 
 ## Final Product
 
-![Screens Mockup](https://github.com/charleenmperrier/MediMe/blob/docs/mockup/docs/screens-mockup.png)
+![Screens Mockup](https://github.com/charleenmperrier/MediMe/blob/master/docs/screens-mockup.png)
 
 #### Lab record tracking
 
-![Labs gif](https://github.com/charleenmperrier/MediMe/blob/docs/gif/docs/medime-labs.gif)
+![Labs gif](https://github.com/charleenmperrier/MediMe/blob/master/docs/medime-labs.gif)
 
 #### Medication instructions and refills
 
-![Meds gif](https://github.com/charleenmperrier/MediMe/blob/docs/gif/docs/medime-meds.gif)
+![Meds gif](https://github.com/charleenmperrier/MediMe/blob/master/docs/medime-meds.gif)
 
 #### Vaccination dose schedule
 
-![Vax and dose gif](https://github.com/charleenmperrier/MediMe/blob/docs/gif/docs/medime-vax-dose.gif)
+![Vax and dose gif](https://github.com/charleenmperrier/MediMe/blob/master/docs/medime-vax-dose.gif)
 
 ## Getting Started
 
