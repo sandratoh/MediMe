@@ -1,3 +1,5 @@
+![Dashboard Mockup](https://github.com/charleenmperrier/MediMe/blob/docs/mockup/docs/dashboard-mockup.png)
+
 # MediMe
 
 MediMe is a mobile health passport developed with the intention to help improve current healthcare efficiency, and to enhance the doctor-patient experience. This app is perfect for individuals who would like to have a central place to keep track of all their medical health records.
@@ -10,7 +12,7 @@ MediMe is a mobile health passport developed with the intention to help improve 
 
 ## Final Product
 
-**Screenshot 1**
+![Screens Mockup](https://github.com/charleenmperrier/MediMe/blob/docs/mockup/docs/screens-mockup.png)
 
 **Screenshot 2**
 
