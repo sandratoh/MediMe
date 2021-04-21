@@ -7,7 +7,7 @@ MediMe is a mobile health passport developed with the intention to help improve 
 ## Project Stack
 
 **Front-End**: HTML, SASS, JavaScript, React, Axios, Material UI  
-**Back-End**: Express, Nodejs, ElephantSQL, PostgreSQL  
+**Back-End**: Express, Nodejs, ElephantSQL (PostgreSQL cloud database)
 **Testing**: Storybook, JEST, Cypress
 
 ## Final Product
