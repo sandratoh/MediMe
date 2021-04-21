@@ -12,19 +12,11 @@ MediMe is a mobile health passport developed with the intention to help improve 
 
 **Screenshot 1**
 
-!["title"](link)
-
 **Screenshot 2**
-
-!["title"](link)
 
 **Screenshot 3**
 
-!["title"](link)
-
 **Screenshot 4**
-
-!["title"](link)
 
 ## Getting Started
 
@@ -32,19 +24,21 @@ You will need to have TWO terminals to run the app.
 
 #### React Front End
 
-In one terminal, `cd` into `react-front-end` and install the dependencies with `npm install`
+1. Fork this repository, and clone your fork of the repository
 
-Once the dependencies are installed, run `npm start`
+2. In one terminal, `cd` into `react-front-end` and install the dependencies with `npm install`
 
-In your browser, go to `localhost:3001`
+3. Once the dependencies are installed, run `npm start`
 
-Sign up for your MediMe account!
+4. In your browser, go to `localhost:3001`
+
+5. Sign up for your MediMe account!
 
 #### Express Back End
 
-In the second terminal, `cd` into `express-back-end` and install the dependencies with `npm install`
+1. In the second terminal, `cd` into `express-back-end` and install the dependencies with `npm install`
 
-Once the dependencies are installed, run `npm start` to start the server
+2. Once the dependencies are installed, run `npm start` to start the server
 
 ## Dependencies
 
