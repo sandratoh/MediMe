@@ -14,11 +14,14 @@ MediMe is a mobile health passport developed with the intention to help improve 
 
 ![Screens Mockup](https://github.com/charleenmperrier/MediMe/blob/docs/mockup/docs/screens-mockup.png)
 
-**Screenshot 2**
+#### Lab record tracking
+![Labs gif](https://github.com/charleenmperrier/MediMe/blob/docs/gif/docs/medime-labs.gif)
 
-**Screenshot 3**
+#### Medication instructions and refills
+![Meds gif](https://github.com/charleenmperrier/MediMe/blob/docs/gif/docs/medime-meds.gif)
 
-**Screenshot 4**
+#### Vaccination dose schedule
+![Vax and dose gif](https://github.com/charleenmperrier/MediMe/blob/docs/gif/docs/medime-vax-dose.gif)
 
 ## Getting Started
 
