@@ -6,4 +6,4 @@ export default {
   component: NavUpButton,
 };
 
-export const initial = () => <NavUpButton></NavUpButton>;
+export const initial = () => <NavUpButton />;

@@ -10,4 +10,4 @@ export function currentDate() {
 export function formatDateToISO(dateStr) {
   const date = new Date(dateStr);
   return date.toISOString().substring(0, 10);
-}
+};

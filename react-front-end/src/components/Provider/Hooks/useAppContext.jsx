@@ -104,4 +104,4 @@ export default function useAppContext() {
   };
 
   return appData;
-}
+};

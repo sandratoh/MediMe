@@ -6,4 +6,4 @@ export default {
   component: VaccinationCard,
 };
 
-export const Vaccination1 = () => <VaccinationCard></VaccinationCard>;
+export const Vaccination1 = () => <VaccinationCard />;

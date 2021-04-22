@@ -12,7 +12,7 @@ export default {
   component: RhGroupedButtons,
 };
 
-export const Initial = () => <RhGroupedButtons></RhGroupedButtons>;
+export const Initial = () => <RhGroupedButtons />;
 
 export const Preselected = () => (
   <RhGroupedButtons

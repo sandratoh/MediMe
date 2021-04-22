@@ -70,7 +70,7 @@ describe('findNameById', () => {
 
     const index = id - 1;
 
-    expect(result).toEqual(clinics[index].name)
+    expect(result).toEqual(clinics[index].name);
   });
 
   it('returns correct doctor name when given an doctor id that exists', () => {
@@ -80,7 +80,7 @@ describe('findNameById', () => {
 
     const index = id - 1;
 
-    expect(result).toEqual(doctors[index].name)
+    expect(result).toEqual(doctors[index].name);
   });
 
   it('returns correct labs name when given an labs id that exists', () => {
@@ -90,7 +90,7 @@ describe('findNameById', () => {
 
     const index = id - 1;
 
-    expect(result).toEqual(labs[index].name)
+    expect(result).toEqual(labs[index].name);
   });
 
   it('returns correct vaccination name when given an vaccination id that exists', () => {
@@ -100,6 +100,6 @@ describe('findNameById', () => {
 
     const index = id - 1;
 
-    expect(result).toEqual(vaccinations[index].name)
+    expect(result).toEqual(vaccinations[index].name);
   });
 });

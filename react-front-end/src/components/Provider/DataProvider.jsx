@@ -166,6 +166,6 @@ export default function DataProvider(props) {
   return (
     <dataContext.Provider value={data}>{props.children}</dataContext.Provider>
   );
-}
+};
 
 export const dataContext = createContext();

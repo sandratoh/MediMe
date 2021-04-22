@@ -6,4 +6,4 @@ export default {
   component: PasswordInput,
 };
 
-export const Password = () => <PasswordInput></PasswordInput>;
+export const Password = () => <PasswordInput />;

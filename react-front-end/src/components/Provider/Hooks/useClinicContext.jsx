@@ -98,4 +98,4 @@ export default function useClinicContext() {
   };
 
   return clinicData;
-}
+};

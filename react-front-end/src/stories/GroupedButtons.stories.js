@@ -13,23 +13,13 @@ export default {
 };
 
 export const Initial = () => (
-  <ClinicGroupedButtons
-  // clinical_visits={clinical_visits}
-  // onChange={action("onChange")}
-  ></ClinicGroupedButtons>
+  <ClinicGroupedButtons />
 );
 
 export const Preselected = () => (
-  <ClinicGroupedButtons
-    // clinical_visits={clinical_visits}
-    // onChange={action("onChange")}
-
-    state={"CLINIC"}
-  ></ClinicGroupedButtons>
+  <ClinicGroupedButtons state={"CLINIC"}></ClinicGroupedButtons>
 );
 
 export const Clickable = () => (
-  <ClinicGroupedButtons
-    onChange={action("Button clicked")}
-  ></ClinicGroupedButtons>
+  <ClinicGroupedButtons onChange={action("Button clicked")}></ClinicGroupedButtons>
 );
