@@ -8,7 +8,7 @@ afterEach(cleanup);
 
 describe("IconButton", () => {
   it("renders without crashing", () => {
-    render(<IconButton />)
+    render(<IconButton />);
   });
 
   it("renders its 'children' prop as text", () => {
@@ -82,5 +82,5 @@ describe("IconButton", () => {
     fireEvent.click(button);
 
     expect(handleClick).toHaveBeenCalledTimes(0);
-  })
-})
+  });
+});
