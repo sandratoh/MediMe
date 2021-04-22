@@ -3,7 +3,7 @@ const router = express.Router();
 const { addLab, updateLab, addNewLab } = require("../db/queries/queries-lab_records");
 
 module.exports = (client) => {
-  // get all lab records
+  // Get all lab records
   router.get("/", (req, res) => {
     const query = `SELECT * FROM lab_records ORDER BY date DESC;`;
 
@@ -13,14 +13,11 @@ module.exports = (client) => {
         const lab_records = data.rows;
         res.json({ lab_records });
       })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
+      .catch((err) => res.status(500).json({ error: err.message }));
   });
 
-  // add new lab record
+  // Add new lab record
   router.post("/", (req, res) => {
-    // may need to update user_id later...
     const user_id = 1;
 
     addLab({ user_id, ...req.body })
@@ -28,7 +25,7 @@ module.exports = (client) => {
       .catch((err) => res.json({ error: err.message }));
   });
 
-  // get all labs
+  // Get all labs
   router.get("/list", (req, res) => {
     const query = `SELECT * FROM labs;`;
 
@@ -38,19 +35,17 @@ module.exports = (client) => {
         const labs = data.rows;
         res.json({ labs });
       })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
+      .catch((err) => res.status(500).json({ error: err.message }));
   });
 
-  // add new lab
+  // Add new lab
   router.post("/list", (req, res) => {
     addNewLab(req.body.name)
       .then((data) => res.status(200).json({data}))
       .catch((err) => res.json({ error: err.message }));
   });
 
-  // get specific lab record
+  // Get specific lab record
   router.get("/:id", (req, res) => {
     const query = `SELECT * FROM lab_records where id = $1;`;
 
@@ -60,31 +55,27 @@ module.exports = (client) => {
         const labs = data.rows;
         res.status(200).json({ labs });
       })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
+      .catch((err) => res.status(500).json({ error: err.message }));
   });
 
-  // update specific lab record
+  // Update specific lab record
   router.put("/:id", (req, res) => {
-    // may need to update user_id later...
     const user_id = 1;
     const id = req.params.id;
+
     updateLab({ user_id, id, ...req.body })
       .then((lab) => res.status(200).json(lab))
       .catch((err) => res.json({ error: err.message }));
   });
 
-  // delete specific lab record
+  // Delete specific lab record
   router.delete("/:id", (req, res) => {
     const query = `DELETE FROM lab_records WHERE id = $1`;
 
     client
       .query(query, [req.params.id])
       .then(res.status(200).json({ status: "succcessfully deleted" }))
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
+      .catch((err) => res.status(500).json({ error: err.message }));
   });
 
   return router;

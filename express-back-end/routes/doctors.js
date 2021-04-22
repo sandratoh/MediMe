@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (client) => {
-  // get all doctors
+  // Get all doctors
   router.get("/", (req, res) => {
     const query = `SELECT * FROM doctors;`;
 
@@ -12,17 +12,16 @@ module.exports = (client) => {
         const doctors = data.rows;
         res.json({ doctors });
       })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
+      .catch((err) => res.status(500).json({ error: err.message }));
   });
 
+  // Add new doctor
   router.post("/", (req, res) => {
     const query = `
       INSERT INTO doctors (name)
       VALUES ($1)
       RETURNING *
-    ;`;
+      ;`;
 
     client
       .query(query, [req.body.name])

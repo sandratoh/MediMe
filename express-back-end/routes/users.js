@@ -1,14 +1,10 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const router = express.Router();
-const {
-  addUser,
-  updateUser,
-  getUserByEmail,
-} = require("../db/queries/queries-users");
+const { addUser, updateUser, getUserByEmail } = require("../db/queries/queries-users");
 
 module.exports = (client) => {
-  // get all users
+  // Get all users
   router.get("/", (req, res) => {
     const query = `SELECT * FROM users;`;
 
@@ -18,26 +14,23 @@ module.exports = (client) => {
         const users = data.rows;
         res.json({ users });
       })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
+      .catch((err) => res.status(500).json({ error: err.message }));
   });
 
-  // add new user
+  // Add new user
   router.post("/", (req, res) => {
     addUser({ ...req.body })
       .then((data) => res.json(data))
       .catch((err) => res.json({ error: err.message }));
   });
 
-  // login user with bcrypt
+  // Login user with bcrypt
   router.post("/login", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
     getUserByEmail(email)
       .then((user) => {
-
         bcrypt.compare(password, user.password, (err, result) => {
           return result
             ? res.status(200).json({ id: user.id })
@@ -46,7 +39,7 @@ module.exports = (client) => {
       });
   });
 
-  // get specific user
+  // Get specific user
   router.get("/:id", (req, res) => {
     const query = `SELECT * FROM users WHERE id = $1;`;
 
@@ -56,12 +49,10 @@ module.exports = (client) => {
         const user = data.rows;
         res.status(200).json({ user });
       })
-      .catch((err) => {
-        res.status(500).json({ error: err.message });
-      });
+      .catch((err) => res.status(500).json({ error: err.message }));
   });
 
-  // update specific user
+  // Update specific user
   router.put("/:id", (req, res) => {
     const id = req.params.id;
     updateUser({ id, ...req.body })
