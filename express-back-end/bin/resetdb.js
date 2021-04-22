@@ -1,7 +1,7 @@
-// load .env data into process.env
+// Load .env data into process.env
 require('dotenv').config();
 
-// other dependencies
+// Other dependencies
 const fs = require('fs');
 const chalk = require('chalk');
 const Client = require('pg-native');
@@ -44,5 +44,3 @@ try {
   console.error(chalk.red(`Failed due to error: ${err}`));
   client.end();
 }
-
-

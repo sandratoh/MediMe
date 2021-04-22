@@ -2,13 +2,13 @@ const client = require("../../elephantsql");
 
 const getDoctorIdByName = async (name) => {
   return client
-    .query(`SELECT id FROM doctors where name = $1`, [name])
+    .query(`SELECT id FROM doctors where name = $1;`, [name])
     .then((res) => res.rows[0].id);
 };
 
 const getPharmacyIdByName = async (name) => {
   return client
-    .query(`SELECT id FROM pharmacies where name = $1`, [name])
+    .query(`SELECT id FROM pharmacies where name = $1;`, [name])
     .then((res) => res.rows[0].id);
 };
 

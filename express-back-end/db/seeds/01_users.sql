@@ -1,2 +1,2 @@
 INSERT INTO users (first_name, last_name, email, password, height_in_cm, weight_in_lb, blood_type, rh_group)
-            VALUES ('Rachel', 'Greene', 'rachel@email.com', '$2a$10$wk2T4anAfgrDllN6O7TvCupa0egrzE7QYBAQcf4p4VWgCbhqrvsuC', 150, 120, 'O', 'POSITIVE');
+           VALUES ('Rachel', 'Greene', 'rachel@email.com', '$2a$10$wk2T4anAfgrDllN6O7TvCupa0egrzE7QYBAQcf4p4VWgCbhqrvsuC', 150, 120, 'O', 'POSITIVE');

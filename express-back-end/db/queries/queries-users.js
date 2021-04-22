@@ -51,12 +51,10 @@ const getUserByEmail = async(email) => {
   const query = `
     SELECT *
     FROM users
-    WHERE email LIKE $1;
-  `;
+    WHERE email LIKE $1
+    ;`;
 
-  return client.query(query, [email]).then((res) => {
-    return res.rows[0];
-  });
+  return client.query(query, [email]).then((res) => res.rows[0]);
 };
 
 module.exports = { addUser, updateUser, getUserByEmail };

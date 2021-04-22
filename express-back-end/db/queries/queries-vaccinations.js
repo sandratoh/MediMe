@@ -15,8 +15,8 @@ const addDose = async (dose) => {
   const query = `
       INSERT INTO vaccination_doses (vaccination_id, serial_number, date_taken, administration_site, next_scheduled_dose)
       VALUES ($1, $2, $3, $4, $5)
-      RETURNING *;
-      `;
+      RETURNING *
+      ;`;
 
   const values = [
     dose.id,
@@ -33,8 +33,8 @@ const updateDose = async (dose) => {
   const query = `
       UPDATE vaccination_doses SET vaccination_id = $1, serial_number = $2, date_taken = $3, administration_site = $4, next_scheduled_dose = $5
       WHERE id = $6
-      RETURNING *;
-      `;
+      RETURNING *
+      ;`;
 
   const values = [
     dose.id,

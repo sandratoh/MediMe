@@ -2,13 +2,13 @@ const client = require("../../elephantsql");
 
 const getDoctorIdByName = async (name) => {
   return client
-    .query(`SELECT id FROM doctors where name = $1`, [name])
+    .query(`SELECT id FROM doctors where name = $1;`, [name])
     .then((res) => res.rows[0].id);
 };
 
 const getClinicIdByName = async (name) => {
   return client
-    .query(`SELECT id FROM clinics where name = $1`, [name])
+    .query(`SELECT id FROM clinics where name = $1;`, [name])
     .then((res) => res.rows[0].id);
 };
 
@@ -37,8 +37,8 @@ const updateClinicalVisit = async (cv) => {
   const query = `
         UPDATE clinical_visits SET user_id = $1, clinic_id = $2, doctor_id = $3, date = $4, type_of_visit = $5, reason_for_visit = $6, doctor_diagnosis = $7
         WHERE id = $8
-        RETURNING *;
-        `;
+        RETURNING *
+        ;`;
 
   const doctor_id = await getDoctorIdByName(cv.doctor_id);
   const clinic_id = await getClinicIdByName(cv.clinic_id);
