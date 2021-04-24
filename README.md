@@ -4,6 +4,12 @@
 
 MediMe is a mobile health passport developed with the intention to help improve current healthcare efficiency, and to enhance the doctor-patient experience. This app is perfect for individuals who would like to have a central place to keep track of all their medical health records.
 
+## Contributors
+
+- <a href="https://github.com/angel-sinn" target="_blank">Angel Sinn</a>
+- <a href="https://github.com/charleenmperrier" target="_blank">Charlee Perrier</a>
+- <a href="https://github.com/sandratoh" target="_blank">Sandra To</a>
+
 ## Project Stack
 
 **Front-End**: HTML, SASS, JavaScript, React, Axios, Material UI  
